@@ -1,0 +1,350 @@
+[
+  {
+    "question": "Точно или неточно: Software Fault претставува статичен дефект во софтверот.",
+    "choices": ["Точно", "Неточно"],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Која дефиниција најдобро го опишува Software Failure?",
+    "choices": [
+      "Статичен дефект во кодот",
+      "Надворешно, некоректно однесување во однос на барањата или очекуваното однесување",
+      "Неточна внатрешна состојба што е манифестација на fault",
+      "Процес на наоѓање fault откако ќе се забележи failure"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е Validation според IEEE?",
+    "choices": [
+      "Процес на евалуација на софтверот на крајот од развојот за да се осигури усогласеност со intended usage",
+      "Процес на проверка дали производите од една фаза ги исполнуваат барањата од претходната фаза",
+      "Процес на извршување само на unit tests",
+      "Процес на наоѓање fault по појава на failure"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е Verification според IEEE?",
+    "choices": [
+      "Процес на наоѓање fault по појава на failure",
+      "Процес на одредување дали производите од дадена фаза ги исполнуваат барањата од претходната фаза",
+      "Процес на евалуација на софтверот на крајот од развојот за intended usage",
+      "Автоматско извршување на regression tests на CI server"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што значи кратенката IV&V?",
+    "choices": [
+      "Integrated Verification and Validation",
+      "Internal Verification and Variance",
+      "Independent Verification and Validation",
+      "Input Validation and Verification"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Која е главната цел на тестирањето на Test Process Maturity Level 3?",
+    "choices": [
+      "Тестирањето е исто што и debugging",
+      "Да се докаже целосна correctness на софтверот",
+      "Да се покажат што повеќе failures без друга цел",
+      "Да се намали ризикот од користење на софтверот"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Точно или неточно: Testing може да го покаже присуството на failures, но не и нивното отсуство.",
+    "choices": ["Точно", "Неточно"],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е Debugging?",
+    "choices": [
+      "Процес на дефинирање test requirements",
+      "Процес на автоматизирање test scripts",
+      "Процес на наоѓање fault ако веќе е забележан failure",
+      "Процес на мерење coverage level"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Кој редослед во RIPR моделот е точен?",
+    "choices": [
+      "Reveal -> Propagation -> Infection -> Reachability",
+      "Reachability -> Infection -> Propagation -> Reveal",
+      "Infection -> Reachability -> Reveal -> Propagation",
+      "Propagation -> Reachability -> Infection -> Reveal"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што значи Infection во RIPR моделот?",
+    "choices": [
+      "Тестерот мора да го забележи погрешниот дел од состојбата",
+      "Fault мора да биде поправен пред извршување",
+      "Излезот на програмата мора секогаш да биде точен",
+      "Состојбата на програмата мора да стане некоректна"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Која е примарната улога на Test Manager?",
+    "choices": [
+      "Да пишува production code наместо developers",
+      "Да раководи со test engineers, да поставува test policies и да координира со други managers",
+      "Да извршува само manual tests без документација",
+      "Да ги заменува acceptance tests со user stories"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Кое традиционално ниво на тестирање одговара на прашањето „дали софтверот е прифатлив за корисникот?“",
+    "choices": [
+      "Unit testing",
+      "Integration testing",
+      "Acceptance testing",
+      "Module testing"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Во Object-Oriented testing levels, како се вика тестирање на парови методи во иста класа?",
+    "choices": [
+      "Inter-method testing",
+      "Inter-class testing",
+      "Intra-class testing",
+      "System testing"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Кој е важен бенефит на coverage criteria?",
+    "choices": [
+      "Гарантираат дека софтверот нема faults",
+      "Ја елиминираат потребата од test evaluation",
+      "Даваат structured и practical начин за пребарување на input space",
+      "Го заменуваат секој вид human-based testing"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Од што најчесто се изведуваат тестови во black-box testing?",
+    "choices": [
+      "Од internals на source code, branches и statements",
+      "Само од domain knowledge на tester-от",
+      "Само од UML diagrams без спецификации",
+      "Од надворешни описи на софтверот, како specifications, requirements и design"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Што опфаќа test maintenance?",
+    "choices": [
+      "Бришење на старите тестови по секоја верзија",
+      "Чување на тестовите за повторна употреба додека софтверот еволуира",
+      "Извршување само на manual tests",
+      "Пишување requirements наместо developers"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Зошто Agile methods често ги отфрлаат традиционалните претпоставки за upfront analysis и extensive modeling?",
+    "choices": [
+      "Бидејќи requirements секогаш се complete и current",
+      "Бидејќи modeling никогаш не помага во тестирање",
+      "Бидејќи requirements брзо застаруваат, а проектите често се менуваат",
+      "Бидејќи automation е забранета во Agile"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Во Agile methods, correctness е редефинирана како:",
+    "choices": [
+      "Релативна на специфичен сет од тестови",
+      "Апсолутна математичка гаранција за сите можни влезови",
+      "Нешто што се мери само преку documentation",
+      "Својство што важи само за system tests"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што мора да содржи секој автоматизиран тест во test harness?",
+    "choices": [
+      "Design document",
+      "Debugger script",
+      "Compiler flag",
+      "Test oracle"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Што е клучната улога на Continuous Integration server?",
+    "choices": [
+      "Да провери дали тимот е задоволен од build-от",
+      "Да одлучи дали budget-от е доволен за release",
+      "Да одлучи дали модифицираниот систем е сè уште correct",
+      "Да пишува user stories автоматски"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Што е user story?",
+    "choices": [
+      "Детален formal specification од 20 страници",
+      "Неколку реченици што опишуваат што корисникот ќе прави со софтверот",
+      "Список на сите unit tests во проектот",
+      "Извештај од CI server за последниот build"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што најчесто пропуштаат Agile methods ако се потпрат само на happy paths?",
+    "choices": [
+      "Compile-time грешки",
+      "Само documentation issues",
+      "Само performance metrics",
+      "Confused-user paths, creative-user paths и malicious-user paths"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Што е Coverage Criterion?",
+    "choices": [
+      "Правило или збир правила што наметнуваат test requirements на test set",
+      "Список на сите bugs најдени по release",
+      "Метод за замена на verification со validation",
+      "Алгоритам што секогаш ја наоѓа најмалата test suite"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што се infeasible test requirements?",
+    "choices": [
+      "Test requirements што секогаш откриваат failures",
+      "Test requirements што се однесуваат само на white-box testing",
+      "Test requirements што не можат да бидат задоволени",
+      "Test requirements што важат само за regression testing"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Што значи дека criterion C1 subsumes criterion C2?",
+    "choices": [
+      "Секој test set што го задоволува C2 мора да го задоволува и C1",
+      "Секој test set што го задоволува C1 мора да го задоволува и C2",
+      "C1 и C2 секогаш имаат ист број test requirements",
+      "C1 може да се користи само со generators, а C2 само со recognizers"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Кое од следниве НЕ се смета за model во criteria-based test design?",
+    "choices": [
+      "Source",
+      "Graphs",
+      "Logic expressions",
+      "Syntax descriptions"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Кои две својства мора да ги задоволи partition на input domain?",
+    "choices": [
+      "Blocks да бидат сортирани и секогаш еднакви по големина",
+      "Blocks да содржат само valid values и да нема boundaries",
+      "Blocks да бидат pairwise disjoint и заедно да го покриваат целиот domain",
+      "Blocks да бидат автоматски генерирани од CI server"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Која слабост е типична за interface-based input domain modeling?",
+    "choices": [
+      "Не може да се применува на unit testing",
+      "Ги игнорира релациите меѓу параметрите бидејќи ги разгледува изолирано",
+      "Секогаш бара source code internals",
+      "Не може да користи valid и invalid values"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е карактеристично за functionality-based input domain modeling?",
+    "choices": [
+      "Секогаш е целосно автоматизирано и механичко",
+      "Гледа само individual parameters без нивни релации",
+      "Се користи само за hardware testing",
+      "Ги развива characteristics од behavioral view и може да користи релации меѓу параметрите"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Што бара Each Choice Coverage (ECC)?",
+    "choices": [
+      "По една вредност од секој block за секоја characteristic да се користи барем во еден test case",
+      "Секој pair од blocks да се комбинира со секој друг pair",
+      "Сите можни комбинации на вредности да се извршат",
+      "Да се избере само еден base test и ништо повеќе"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што бара Pair-Wise Coverage (PWC)?",
+    "choices": [
+      "Да се избере само најголемиот block од секоја characteristic",
+      "Да се тестира само една вредност по characteristic",
+      "Вредност од секој block за секоја characteristic да биде комбинирана со вредност од секој block на секоја друга characteristic",
+      "Да се користат само valid values без invalid cases"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Која е суштината на Base Choice Coverage (BCC)?",
+    "choices": [
+      "Се тестираат само invalid blocks",
+      "Се избираат две најголеми characteristics и се комбинираат сите вредности",
+      "Се извршуваат сите можни комбинации на blocks",
+      "Се избира base choice за секоја characteristic, се формира base test, а потоа се менува по еден non-base choice додека другите остануваат константни"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Точно или неточно: Multiple Base Choice Coverage (MBCC) дозволува да се изберат еден или повеќе base choice blocks за секоја characteristic.",
+    "choices": ["Точно", "Неточно"],
+    "correct": [0],
+    "type": "single"
+  }
+]

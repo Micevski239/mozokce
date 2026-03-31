@@ -1,0 +1,244 @@
+[
+  {
+    "question": "Што бара Node Coverage (NC) во graph coverage?",
+    "choices": [
+      "TR да го содржи секој reachable node во графот",
+      "TR да го содржи секој reachable edge во графот",
+      "TR да го содржи секој prime path во графот",
+      "TR да ги содржи само initial и final nodes"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што бара Edge Coverage (EC) во graph coverage?",
+    "choices": [
+      "TR да го содржи секој reachable path со должина точно 2",
+      "TR да го содржи секој reachable path со должина до 1, вклучително",
+      "TR да го содржи секој simple path во графот",
+      "TR да го содржи секој round-trip path"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Зошто Edge Coverage е дефиниран како reachable path со должина до 1, а не само должина 1?",
+    "choices": [
+      "За да важи и за графови со само еден node и без edges",
+      "За да ги исклучи сите self-edges",
+      "За да биде послаб од Node Coverage",
+      "За да важи само за SESE графови"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што бара Edge-Pair Coverage (EPC)?",
+    "choices": [
+      "TR да го содржи секој reachable path со должина до 2, вклучително",
+      "TR да го содржи секој reachable path со должина точно 1",
+      "TR да го содржи секој pair од nodes",
+      "TR да го содржи секој pair од test cases"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е simple path?",
+    "choices": [
+      "Патека во која ниту еден јазол не се појавува повеќе од еднаш, освен евентуално првиот и последниот да бидат исти",
+      "Патека што секогаш почнува и завршува во ист јазол",
+      "Патека што нема edges",
+      "Патека што ги содржи сите reachable nodes"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е prime path?",
+    "choices": [
+      "Simple path што не се појавува како proper subpath на ниту еден друг simple path",
+      "Било кој loop во графот",
+      "Најкратка патека од initial до final node",
+      "Патека со точно еден edge"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што бара Prime Path Coverage (PPC)?",
+    "choices": [
+      "TR да го содржи секој prime path во графот",
+      "TR да го содржи секој feasible test case",
+      "TR да ги содржи само loops што се executable",
+      "TR да го содржи секој path со должина точно 2"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Кое тврдење е точно за PPC?",
+    "choices": [
+      "PPC е послаб од Node Coverage",
+      "PPC subsumes node и edge coverage, но не секогаш и edge-pair coverage",
+      "PPC и EPC секогаш се еквивалентни",
+      "PPC не може да опфати loops"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е Control Flow Graph (CFG)?",
+    "choices": [
+      "Модел што ги опишува сите извршувања на една метода преку control structures",
+      "Модел што ги опишува само data-flow dependencies",
+      "Дијаграм што се користи само за acceptance testing",
+      "Граф што ги содржи само return statements"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што претставуваат nodes во CFG?",
+    "choices": [
+      "Само edges меѓу методи",
+      "Statements или секвенци од statements, односно basic blocks",
+      "Само predicates",
+      "Само return nodes"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што претставуваат edges во CFG?",
+    "choices": [
+      "Transfers of control",
+      "Assignments to variables",
+      "Only data dependencies",
+      "Only calls to external methods"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е basic block?",
+    "choices": [
+      "Еден predicate без edges",
+      "Секвенца од statements така што ако првиот се изврши, сите ќе се извршат, без branches",
+      "Било која линија код што содржи return",
+      "Секвенца од method calls без assignments"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е точно за if-return statement при цртање CFG?",
+    "choices": [
+      "Сите return statements мора да се спојат во ист јазол",
+      "Не треба да се црта return node",
+      "Return nodes мора да бидат distinct",
+      "Секогаш има edge од првиот return node до следниот statement"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Што е типично за loops во CFG?",
+    "choices": [
+      "Loops не се претставуваат во CFG",
+      "Loops бараат додавање extra nodes што не претставуваат statements или basic blocks",
+      "Loops секогаш се modelираат со еден единствен edge",
+      "Loops не можат да се користат со coverage criteria"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што најдобро го опишува integration testing in the small?",
+    "choices": [
+      "Тестирање на една метода изолирано",
+      "Тестирање на повеќе од една компонента и нивната комуникација",
+      "Тестирање на целиот систем од корисници",
+      "Тестирање исклучиво на non-functional requirements"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Кои integration стратегии се спомнати за integration testing in the small?",
+    "choices": [
+      "Big-bang, incremental, top-down, bottom-up, functional",
+      "Only waterfall and spiral",
+      "Alpha, beta, gamma",
+      "Static, dynamic, hybrid"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е contract acceptance testing?",
+    "choices": [
+      "Тестирање против договорот и documented agreed changes, а не против тоа што корисниците подоцна посакале",
+      "Тестирање само на unit level според coding contract",
+      "Тестирање што се изведува исклучиво од developers",
+      "Тестирање без однапред дефинирани acceptance criteria"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Кое тврдење е точно за alpha и beta tests?",
+    "choices": [
+      "Alpha testing се прави на site на клиентот, а beta секогаш во developers’ site",
+      "И alpha и beta тестираат стабилен продукт на реалистичен начин и собираат feedback од потенцијални корисници",
+      "Alpha и beta tests се користат само за bespoke software",
+      "Beta testing секогаш се прави пред component testing"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Која е разликата меѓу alpha и beta testing според презентацијата?",
+    "choices": [
+      "Alpha testing е operational testing на in-house site, а beta testing е operational testing на site надвор од developers’ site",
+      "Alpha testing е секогаш manual, а beta testing секогаш automated",
+      "Alpha testing го прават developers, а beta testing никогаш не го прават корисници",
+      "Нема разлика, термините се синоними"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е важно да се тестира во maintenance testing?",
+    "choices": [
+      "Само новиот или сменетиот код, без impact analysis",
+      "Секогаш целиот систем, без разлика на промената",
+      "Нов или изменет код, плус impact analysis за што сè може да биде засегнато",
+      "Само user interface деловите"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Што треба да се направи кога specifications се poor или missing?",
+    "choices": [
+      "Да се игнорираат и да се продолжи со random testing",
+      "Да се разговара со корисници, да се документираат претпоставките и да се подобри тековната ситуација",
+      "Да се прекине тестирањето додека не се добијат формални спецификации",
+      "Да се прави само verification, без validation"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е точно кога нема спецификација?",
+    "choices": [
+      "Може целосно да се верификува системот, но не и да се валидира",
+      "Не може навистина да се тестира, само да се explore; може да се валидира, но не и да се верификува",
+      "Verification и validation значат исто во овој случај",
+      "Единствено може да се прави component testing"
+    ],
+    "correct": [1],
+    "type": "single"
+  }
+]

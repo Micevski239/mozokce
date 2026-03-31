@@ -1,0 +1,378 @@
+       1. Sto pretstavuva poimot validacija?
+          - Validacija e proces na evaluacija na softverot na kraj na softverskiot razvoj se so cel da se usoglasi predvidenata
+          upotreba.
+
+
+
+
+       2. Za sekoe od tvrdenjata povrzani so modeliranjeto na vlezniot prostor, oznacete dali se odnesuvaat na interface
+          based (I) ili na functionality based(F) pristapot. Soodvetno vo tekst polinjata stavete I ili F.
+          -Ednostavna primena (Interface)
+          -Karakteristikite gi otkriva odnesuvanjeto na programata (I) F
+          -Moze delumno da se avtomatizira (F)          I
+          -Potesko za razvivanje(F)
+          -Rezultira na podobri testovi(F)
+
+
+
+                                             F
+                                I
+
+
+
+
+       3. Testiranjeto e proces koj bara najmnogu vreme i pretstavuva najskap del od razvojot na softver?
+          -TRUE
+
+       4. Kade moze da detektirame predikati ?
+vtor
+          - Predikatite se pojavuvaat vo kontrolnite strukturi
+
+           -Predikatite se pojavuvaat vo uslovite za kontrolni strukturi
+           - Predikatite se pojavuvaat vo kontrolni strukturi
+       5. Kade se moze da se primeni sintaksno bazirano testiranje?
+          -Testiranje na modeli
+          -Integracisko testiranje
+          -Testiranje na izvoren kod
+          -Testiranje na vlezen domen
+
+
+
+
+       6. Za sekoj od poimite da se odbere pravilnata definicija
+          -Softverska greska (error) : Nekorektna vnatresna sostojba na softverot predizvikana od nekoj nedostatok
+          -Softverski ispad (failure) : Nekorektno nadvoresno odnesuvanje na softverot
+          -Softverski nedostatok (fault): Staticka greska vo kodot
+
+
+
+
+       7. Daden e sledniot kod:
+vtor
+
+
+
+
+          Da se odgovarat prasanjata:
+
+          - Koj e predikatot koj proizleguva od kodot?
+                   CanGo
+          -Kolku klauzuli ima predikatot?
+                   - 3 klauzuli
+          - Koi se tie klauzuli
+                   - Klauzulite se : person.MoneySaved > person.MoneyNeeded vacationDates.datesAreWorkingDays ;
+          person.canUseVacationDays == 1
+
+          - Da se izbere edna od klauzulite na predikatot za major I da se opredeli koga taa go operdeluva predikatot
+                   -
+
+
+
+
+          Kaj delot Pa, Pb, Pc, soodvetno kade ima true toa znaci deka taa klauzula vo toj red e major.
+
+          -Da se napravi vistinitosna tabeli I da se oderedi test koj go zadovoluva CACC koga izbranata major klauzula go
+          opredeluva predikatot
+
+
+
+
+       8. Razgledajte go sledniot kod koj e daden eden ROR mutant. Dadeniot kod pretstavuva funkcija koja presmetuva
+vtor      broj na elementi vo dadena niza koi se pogolemi od brojot X.
+-ROR mutant reachability : Array.length > 0
+- Ror mutant infection: ( mutantot vika deka array[i]>=x, soodvetno infekcija ke ima ako array[i] ne e nitu
+pogolemo nitu ednakvo so X, ) - array[i]>x i={0.,…,array.length-1}
+-Ror mutant propagation - Array[i]=x i={0,…,array.length-1}
+-Test koj sto ne go pristapuva mutantot vo kodot -
+- Test koj sto slabo go unistuva mutantot : Slabo unstuvanje na mutant znaci da ima ista vrednot ist rezultat I
+originalnata programa I mutiranata programa – array[i]>x i={0.,…,array.length-1}
+-Test koj sto silno go unistuva mutantot : Znaci za isti test da e dobivat razlicni vrednosti na originalna programa I
+mutiranata : Array[i]=x i={0,…,array.length-1}
+       9. Odgovoreete na prasnajta za grafot definiran so slednite mnozestva ?
+
+
+
+koe e
+prasanjeto??
+
+
+
+
+            GI imame slednite test patista:
+
+
+
+
+            _ Resenie
+            Spored softverot koj go imame sleduva deka:
+            FALSE (ne e mozno)
+            FALSE ( se zadovoluvat I dvete)
+            TRUE ( Se zadovoluva)
+            FALSE (Se zadovoluva)
+            TRUE(Se zadovoluva)
+            FALSE (Ne se zadovoluva)
+
+       10. Koj e tocen raspored na izvrsuvanje na cekorite kaj Model Driven Test design
+
+            - Modeliranje spored softverski artefakti
+            - Definiranje na soodvetni test requirements
+            - Procistuvanje na soodvetnite test requirements
+            - Generiranje na vlezni vrednosti
+            - Kreiranje na test slucai
+            - Kreiranje skirpti za testovi
+            - Izvrsuvanje na testovite
+            - Nabluduvbanje na rezultatite od testovite
+
+        11. Stavi T ili F za sekoe od slednite baranja
+    vtor     - PC e dovolen kriterium koga predikatot ima samo edna klauzula
+                           - TRUE
+            - Testiranje na predikat so 2 ili 3 klauzuli e neprakticno
+                         - FALSE
+            - CC sekogas zadovoluva PC
+                            - FALSE
+            - Prednostite na pokrivanje so sktivni klauzuli moze da se vidat kaj golemi predikati
+                            - TRUE
+           - CoC (Combinational coverage) praktivno moze da se primeni na predikati so 2 klauzuli
+                      - TRUE
+
+
+
+
+       12. Sto od slednoto e tocno pri mutacisko testiranje
+vtor
+           -Koga stanuva zbor za izvoren kod, mutantite sekogas se nevalidni stringovi - FALSE
+           - Mutacisko testiranje e testiranje bazirano na gramatika -TRUE
+           -Ground string e string sto ne pripaga vo gramatikata – FALSE
+           - Mutantite moze da bidat validni I nevalidni stringovi – TRUE
+           - SO mutacija a ground srting moze da se dobie samo validen string – FALSE
+           - Koga stanuva zbor za izvoren kod, mutantite sekogas se nevalidni stringovi – TRUE
+
+
+
+
+       13. Identifikuvajte mesta vo kodot vo koi ke se sluci last def pri gradenje inter proceduralni DU parovi (fali slika na
+           kodot , blind answer):
+           Caller: last def x=14
+           Callee : last def : b=42
+
+     14. Povrzete gi poimite so soodvetnite definicii
+         - Aktuelen parametar: Promenliva vo caller
+vtor     - Caller: Softverska edinica sto povikuva druga softverska edinica
+         - Callee: Softverska edinica unit sto e povikana
+         - Callsite: Naredba ili jazol kade sto se pravi povikot
+    - Formalen parametar: Promenliva vo caller
+
+
+
+
+15. Pri crtanje na control flow graf sto se slucuva koga vo kodot ima poveke return naredbi
+    - Mora da se nacrta posebno teme za sekoja return naredba/’
+
+
+
+
+16. Povrzete gi Data flow test kriteriumite so nivnite definicii.
+    - All defs coverage: pokrivanje na site definicii na dadenata promenliva
+    -All uses coverage: Se pocnuva od edna definicija na dadena promenliva I se posetuvaat site mozni negovi
+    koristenja
+        17. Menuvanje na povik na metod e tip na mutaciski operator
+vtor         - TRUE
+
+        18. Go imame sledniot kod:
+
+
+
+
+           Call site se naoga na linijata liniite: ? 16
+ vtor
+           Kolku last def I uses parovi postojat: ?
+
+
+           Testot x=3 gp zadovoluva last-def dirst-use: ?
+
+        19. Popolnete ja formulata za nivo na pokrienost:
+            A/B
+
+           A: Broj na test slucai zadovoleno od mnozestvo na testovi
+       B: Golemina na mnozestvo na test baranja
+
+vtor
+
+
+
+
+  20. Sto pretstavuva debagiranje:
+      - Debagiranje e proces na otkrivanje na nedostatok pri poznat ispad na softverot.
+
+                                              Debugging : The process of finding a fault given a failure
+
+
+
+
+  21. Sto pretstavuva softverska greska
+      - Nekorektna vnatresna sostojba na softverot (mozno I vtorata da e )
+
+
+
+
+  22. Razgledajte go kodot vo koj e daden eden AOR mutant. Dadeniot kod pretstavva funkcija koja presmetuva suma
+      na parnite elementi od niza.
+vtor
+
+
+
+
+       - Najdete test koj sto ne go pristapuva mutantot :
+
+
+
+       - Najdete test koj sto slabo go unistuva mutantot (weakly killing mutant):
+
+
+
+       - Najdete test koj sto ispolnuva reachability no ne I infection :
+
+
+
+       - Najdete test koj sto silno go unistuva mutantot (strongly killing mutant): ? nema ponudeno
+                                                                             Tour With Sidetrips : A test path p tours subpath q with
+                                                                             sidetrips iff every edge in q is also in p in the same order
+       23. Pri obikolka so skrsnuvanje (Tour with sidetrips) tocno e deka:
+                                                                           Tour With Detours : A test path p tours subpath q with
+           - Sekoe rebro od grafot treba da bide izminato po ist redosled detours iff every node in q is also in p in the same order
+
+
+
+
+       24. Razgledajte go sledniot kod koj e daden AOR mutant. Dadeniot kod pretstavuva funkcija koja presmetuva suma
+           na parni elementi od niza
+
+
+
+
+vtor
+
+
+
+
+           Da se najdat uslovite za reachability:
+
+
+           - AOR mutant propagation:
+
+
+           - Aor mutant reachability:
+
+
+
+           - AOR mutant infection:
+
+       25. Testovite za prifakanje na softverot od strana na korisnicite pri agilnite metodi se pravat:
+    -Vo iteracii posle pisuvanje na korisnickite prikazni
+
+
+
+
+26. Podredete cekori za modeliranje na vlezen domen:
+    - Identifikacija na funckii koi moze da se testirat
+    - Naoganje na site parametri
+    - Modeliranje na vlezniot domen
+    -Primena na kriterium za testiranje za da se izberat kombinacii na vrednosti
+    -Izbiranje na kobinacii od blokvi za definiranje na vlezni podatoci za testovite
+
+
+
+
+27. Za slednata BNF gramatika izberete sto e tocno
+    - Stringot C@C.C e validen string TRUE
+           -Ima 4 produkciski pravila TRUE
+
+vtor
+
+
+
+
+       28. Kakov tip na mutant e daden vo sledniot kod (analizirajte go mutantot so zolta boja)
+vtor
+
+
+
+
+           Ekvivalenten mutant
+       29. Razgledajte go sledniot kod I odgovarajte na prasanjata (ne sum siguren)
+
+           -Call site se naoga na linijata liniite – 14
+           - Kolku last def I first uses parovi postojat – 2
+           - TEstot x=3 go zadovoluva last def first use parot – (A(),x,10)->(B(),y,25)
+vtor
+
+
+
+
+       30. Koi se negativnite strani pri izveduvanje na konecni avtomati na sostojbi so spojuvanje na poveke grafovi za
+           kontrola na tekovi (control flow graph):
+           -Softverot ne treba da bide implementiran pred da moze da se napravi control flow graph
+  tocno ama mislam e za vtor, vo prezz nemase, samo vo knigata
+
+           - Nedeterminizam pri vrakanje kon teme posle povik na metod
+
+
+
+
+        31. Sintaksno baziranite kriteriumi za pokrivanje se definiraat so cel da se unistat sto e mozno poveke mutanti vo
+            ramkite na edna test aplikacija?
+   vtor     -TRUE
+
+
+
+
+       32. UML activity dijagramite se koristat vo fazata na testiranjeto na korisnickite scenarija
+           -TRUE
+
+
+
+
+                                    spored knigata, false, se koristat vo test design fazata
+
+
+
+
+       33. Menuvanje na return naredba vo povikaniot metod e tip na mutaciski operator
+           - FALSE
+vtor
+         34. Identifikuvaje gi mestata vo kodot vo koi ke se sluci first use pri gradenje inter proceduralni DU parovi
+
+
+
+
+  vtor
+
+
+
+
+             Callee first use: print(A)
+             Caller first use: print(Y)
+
+         35. Koi se baranjata na General Active Clause Coverage (GACC)
+             - Ima po dve baranja za sekoja major klauzula. Klauzulata da bide ednas tocna I ednas netocna. Vrednostite
+             izbirani za minorni klauzuli ne mora da bidat isti koga major klauzulata e tocna, kako I koga major klauzulata e
+             netocna.
+
+ vtor
+
+
+
+
+         36. Za dadeniot predikat odgovorete na slednite prasanja
+             P = A v (!B ^ C)
+
+             Predikatot ima: 2 klauzuli.
+             A go odreduva P koga : Pa = B v !c
+vtor
+      Koga ke se napravi vistinosna tablea , GACC za A moze da se zadovoli so : (1,5)
+
+
+
+
+37.
+

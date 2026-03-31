@@ -1,0 +1,244 @@
+[
+  {
+    "question": "Што карактеризира Level 0 thinking кај Test Process Maturity?",
+    "choices": [
+      "Тестирањето и debugging се сметаат за исто",
+      "Главната цел е да се намали ризикот од користење на софтверот",
+      "Тестирањето е ментална дисциплина за подобрување на квалитетот",
+      "Главната цел е да се демонстрира correctness преку formal criteria"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Кој проблем е типичен за Level 1 thinking?",
+    "choices": [
+      "Тестерите и девелоперите секогаш соработуваат за намалување на ризик",
+      "Ако нема failures, не знаеме дали софтверот е добар или тестовите се лоши",
+      "Тестирањето целосно се заменува со debugging",
+      "Фокусот е исклучиво на malicious-user paths"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е карактеристично за Level 2 thinking?",
+    "choices": [
+      "Тестирањето се гледа како негативна активност што може да создаде adversarial однос меѓу testers и developers",
+      "Тестирањето е само една од многу техники за подобрување на квалитетот",
+      "Тестирањето има јасна stopping rule и формална техника",
+      "Тестерите имаат примарна одговорност да го мерат и подобруваат квалитетот"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Која е примарната одговорност на tester-ите во Level 4 thinking?",
+    "choices": [
+      "Да докажат апсолутна correctness на софтверот",
+      "Да најдат што повеќе failures без соработка со developers",
+      "Да го мерат и подобруваат квалитетот на софтверот",
+      "Да извршуваат само manual tests"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Што значи date criterion во контекст на tactical testing goals?",
+    "choices": [
+      "Тестирањето трае додека не се исцрпи буџетот или не дојде ship-date",
+      "Секој тест мора да има експлицитен timestamp",
+      "Се тестира само функционалност додадена после одреден датум",
+      "Се тестира само во последната итерација пред release"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е Test Requirement?",
+    "choices": [
+      "Алатка што автоматски генерира test values",
+      "Специфична работа што мора да биде задоволена или покриена за време на тестирањето",
+      "Формула за coverage level",
+      "Графички модел на софтверот"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е white-box testing?",
+    "choices": [
+      "Изведување тестови само од user stories",
+      "Изведување тестови од UML модел без да се гледа кодот",
+      "Изведување тестови од internals на source code, како branches, conditions и statements",
+      "Изведување тестови само со manual exploratory пристап"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Што е model-based testing?",
+    "choices": [
+      "Изведување тестови од model на софтверот, како UML дијаграм",
+      "Изведување тестови само од source code internals",
+      "Изведување тестови само од final executable",
+      "Изведување тестови само од bug reports"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Која е клучна тешкотија кај Test Automation според презентациите?",
+    "choices": [
+      "Потребно е познавање на observability и controllability проблеми",
+      "Не бара никакво програмирање",
+      "Секогаш е потехничко од criteria-based test design",
+      "Не бара помош од test evaluators за expected outputs"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Која е разликата меѓу generator и recognizer?",
+    "choices": [
+      "Generator проверува дали test set задоволува criterion, а recognizer генерира tests",
+      "Generator автоматски генерира вредности за задоволување criterion, а recognizer проверува дали даден test set го задоволува criterion",
+      "Двата поими значат исто",
+      "Generator и recognizer важат само за mutation testing"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Кои се двата начина да се користат test criteria?",
+    "choices": [
+      "Само директно генерирање на test values со criterion",
+      "Само рачно пишување на tests и ignore на coverage",
+      "Директно генерирање на test values или екстерно генерирање па мерење спрема criterion",
+      "Само преку CI server и regression suite"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Кое тврдење е точно за All Combinations Coverage (ACoC)?",
+    "choices": [
+      "Бара барем една вредност од секој block да се појави во некој test case",
+      "Бара сите комбинации на blocks од сите characteristics да се употребат",
+      "Бара само парови од blocks да бидат комбинирани",
+      "Секогаш дава најмал број тестови од сите ISP критериуми"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што мора да важи за base test кај Base Choice Coverage (BCC)?",
+    "choices": [
+      "Мора да биде infeasible за да открива повеќе faults",
+      "Мора да ги користи сите non-base choices",
+      "Мора да биде feasible, односно base choices да бидат меѓусебно compatible",
+      "Мора секогаш да биде најголемиот можен input"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Како се ракува со infeasible combinations кај BCC и MBCC?",
+    "choices": [
+      "Секогаш се задржуваат во test set-от",
+      "Се менува вредност во друга non-base choice за да се најде feasible combination",
+      "Секогаш се заменуваат со all combinations testing",
+      "Се бришат само ако criterion е ECC"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е test path во graph coverage?",
+    "choices": [
+      "Било која subsequence од јазли во графот",
+      "Патека што почнува во initial node и завршува во final node",
+      "Само патека што има точно две ребра",
+      "Патека што не содржи loops"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што значи дека тест path p tours subpath q?",
+    "choices": [
+      "q е подниза на p",
+      "p и q имаат ист број јазли",
+      "p и q мора да почнуваат и завршуваат во исти јазли",
+      "q мора да биде prime path"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Што е SESE graph?",
+    "choices": [
+      "Граф со повеќе initial nodes и повеќе final nodes",
+      "Graph without edges",
+      "Single-entry, single-exit graph каде N0 и Nf имаат точно по еден јазол",
+      "Граф што може да се користи само за source code"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Кое тврдење е точно за deterministic software и test paths?",
+    "choices": [
+      "Ист тест секогаш може да изврши различни test paths",
+      "Еден test може да нема никаков test path",
+      "Ист тест секогаш го извршува истиот test path",
+      "Deterministic software секогаш е loop-free"
+    ],
+    "correct": [2],
+    "type": "single"
+  },
+  {
+    "question": "Во V-Model, кое ниво на тестирање е најдиректно поврзано со Code?",
+    "choices": [
+      "Acceptance testing",
+      "Integration testing in the large",
+      "System testing",
+      "Component testing"
+    ],
+    "correct": [3],
+    "type": "single"
+  },
+  {
+    "question": "Која е клучна придобивка од early test design?",
+    "choices": [
+      "Faults се наоѓаат рано и поевтино се поправаат",
+      "Се елиминира потребата од acceptance testing",
+      "Се намалува потребата од requirements",
+      "Гарантира дека нема да има regression defects"
+    ],
+    "correct": [0],
+    "type": "single"
+  },
+  {
+    "question": "Кој е практичен недостаток на big-bang integration?",
+    "choices": [
+      "Во практика овозможува најлесно локализирање на faults",
+      "Во практика бара повеќе време за лоцирање и поправање на faults",
+      "Се користи само кај maintenance testing",
+      "Не може да се користи со повеќе од две компоненти"
+    ],
+    "correct": [1],
+    "type": "single"
+  },
+  {
+    "question": "Што е типично за maintenance testing според презентацијата?",
+    "choices": [
+      "Најчесто е predominantly regression testing",
+      "Секогаш се изведува bottom-up",
+      "Никогаш не користи live profile test data",
+      "Не вклучува breadth tests"
+    ],
+    "correct": [0],
+    "type": "single"
+  }
+]

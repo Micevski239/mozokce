@@ -1,0 +1,381 @@
+[
+  {
+    "question": "Точно или неточно: Ако нема failure, тоа не значи дека нема fault во системот.",
+    "choices": [
+      "Точно",
+      "Неточно"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: a) Точно Fault може да постои, но да не биде triggered од тестот.\nЗа испит: За испит запомни дека testing открива failures само кога се исполнети условите од RIPR."
+  },
+  {
+    "question": "Точно или неточно: Testing може да докаже дека софтверот нема грешки.",
+    "choices": [
+      "Точно",
+      "Неточно"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Неточно Презентациите велат дека testing може да покаже presence на failures, не и нивно отсуство.\nЗа испит: За испит запомни дека отсуство на failure не е доказ за correctness."
+  },
+  {
+    "question": "Кои се четирите услови од RIPR моделот?",
+    "choices": [
+      "Reachability",
+      "Infection",
+      "Propagation",
+      "Repair",
+      "Reveal"
+    ],
+    "correct": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: Точни одговори се: a) Reachability; b) Infection; c) Propagation; e) Reveal RIPR моделот ги бара reachability, infection, propagation и reveal.\nЗа испит: За испит запомни дека repair не е дел од моделот."
+  },
+  {
+    "question": "Што значи reachability?",
+    "choices": [
+      "Fault да се поправи",
+      "Да се достигне делот од кодот каде што има fault",
+      "Да се види грешката",
+      "Да се изврши тестот"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Да се достигне делот од кодот каде што има fault Reachability значи execution да стигне до местото каде што се наоѓа fault-от.\nЗа испит: За испит запомни дека ако fault не се достигне, failure не може ни да започне."
+  },
+  {
+    "question": "Што значи infection?",
+    "choices": [
+      "Да се појави failure",
+      "Да се измени состојбата на програмата во погрешна",
+      "Да се врати точен резултат",
+      "Да се изврши test case"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Да се измени состојбата на програмата во погрешна Infection е моментот кога fault создава некоректна внатрешна состојба.\nЗа испит: За испит запомни дека reachability не е доволен без infection."
+  },
+  {
+    "question": "Што значи propagation?",
+    "choices": [
+      "Fault да биде избришан",
+      "Погрешната состојба да влијае на output",
+      "Да се изврши друг test",
+      "Да се открие fault"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Погрешната состојба да влијае на output Propagation значи error state да стигне до надворешно видлив резултат.\nЗа испит: За испит запомни дека infection без propagation не создава observable failure."
+  },
+  {
+    "question": "Што значи reveal?",
+    "choices": [
+      "Да се поправи грешката",
+      "Да се изврши кодот",
+      "Тестерот да ја забележи грешката",
+      "Да се создаде fault"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: c) Тестерот да ја забележи грешката Reveal значи погрешниот output да биде навистина забележан од tester или oracle.\nЗа испит: За испит запомни дека и кога има failure, без reveal тој може да остане незабележан."
+  },
+  {
+    "question": "Што е testing?",
+    "choices": [
+      "Debugging",
+      "Execution + observation",
+      "Fixing code",
+      "Modeling"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Execution + observation Во презентацијата testing е дефинирано како evaluation на software преку негово извршување и набљудување.\nЗа испит: За испит запомни дека testing не е исто што и fixing."
+  },
+  {
+    "question": "Што е debugging?",
+    "choices": [
+      "Finding fault",
+      "Running tests",
+      "Coverage measurement",
+      "Design modeling"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: a) Finding fault Debugging е процесот на наоѓање fault откако веќе е забележан failure.\nЗа испит: За испит запомни дека testing открива дека има проблем, а debugging го лоцира изворот."
+  },
+  {
+    "question": "Што е coverage criterion?",
+    "choices": [
+      "Test case",
+      "Rule што дефинира што треба да се покрие",
+      "Bug report",
+      "Input value"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Rule што дефинира што треба да се покрие Coverage criterion е правило или збир правила што определуваат test requirements.\nЗа испит: За испит запомни дека criterion кажува што мора да се покрие, не е самиот test case."
+  },
+  {
+    "question": "Што значи input domain?",
+    "choices": [
+      "Само valid inputs",
+      "Сите можни inputs",
+      "Само test inputs",
+      "Само random inputs"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Сите можни inputs Input domain ги опфаќа сите можни влезови за функцијата или системот.\nЗа испит: За испит запомни дека тестирањето избира конечен подсклоп од тој често бесконечен простор."
+  },
+  {
+    "question": "Кои својства мора да ги има partition на input domain?",
+    "choices": [
+      "Disjoint",
+      "Complete",
+      "Overlapping",
+      "Random"
+    ],
+    "correct": [
+      0,
+      1
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: Точни одговори се: a) Disjoint; b) Complete Партициите мора да бидат disjoint и complete за да нема overlap и заедно да го покриваат целиот domain.\nЗа испит: За испит запомни дека overlapping blocks не се валидна partition шема."
+  },
+  {
+    "question": "Што е path во graph coverage?",
+    "choices": [
+      "Еден node",
+      "Sequence од nodes",
+      "Еден edge",
+      "Само loop"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Sequence од nodes Path е низа од nodes поврзани со edges во графот.\nЗа испит: За испит запомни дека test path е посебен случај што оди од initial до final node."
+  },
+  {
+    "question": "Clause Coverage (CC) бара:",
+    "choices": [
+      "Секој predicate true/false",
+      "Секој clause true/false",
+      "Сите комбинации",
+      "Сите paths"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Секој clause true/false CC бара секоја clause во предикатот да земе и true и false вредност барем еднаш.\nЗа испит: За испит запомни дека ова не е исто што и predicate coverage."
+  },
+  {
+    "question": "Predicate Coverage (PC) бара:",
+    "choices": [
+      "Секој clause true/false",
+      "Predicate true/false",
+      "Сите paths",
+      "Сите edges"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Predicate true/false PC бара целиот predicate да е true барем еднаш и false барем еднаш.\nЗа испит: За испит запомни дека PC гледа на целиот Boolean израз, не на секоја clause одделно."
+  },
+  {
+    "question": "Correlated Active Clause Coverage (CACC) бара:",
+    "choices": [
+      "Minor clauses да бидат исти",
+      "Predicate да се смени кога major clause се менува",
+      "Only nodes",
+      "Only edges"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Predicate да се смени кога major clause се менува CACC бара major clause да го одредува predicate-от така што менување на major clause ја менува и вредноста на predicate-от.\nЗа испит: За испит запомни дека корелацијата е клучниот услов кај CACC."
+  },
+  {
+    "question": "Restricted Active Clause Coverage (RACC) бара:",
+    "choices": [
+      "Minor clauses исти",
+      "Major clause го менува predicate-от",
+      "И двете",
+      "Ништо од наведеното"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: c) И двете RACC е построг бидејќи major clause мора да го смени predicate-от, а minor clauses остануваат исти.\nЗа испит: За испит запомни дека токму фиксните minor clauses го прават RACC порестриктивен од CACC."
+  },
+  {
+    "question": "ECC (Each Choice Coverage) бара:",
+    "choices": [
+      "Сите комбинации",
+      "Секој block барем еднаш",
+      "All paths",
+      "All edges"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Секој block барем еднаш ECC бара од секој block на секоја characteristic да се појави барем еднаш во некој test case.\nЗа испит: За испит запомни дека ECC е послаб од pair-wise и all-combinations критериумите."
+  },
+  {
+    "question": "BCC (Base Choice Coverage) бара:",
+    "choices": [
+      "Base test плус варијации по една characteristic",
+      "Сите комбинации",
+      "Само edges",
+      "Само nodes"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: a) Base test плус варијации по една characteristic BCC почнува со еден base test и потоа варира по една non-base вредност додека другите остануваат base.\nЗа испит: За испит запомни дека добриот избор на base values е клучен."
+  },
+  {
+    "question": "MBCC е:",
+    "choices": [
+      "Multiple base choices",
+      "Single base choice",
+      "Only edge pairs",
+      "Only paths"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: a) Multiple base choices MBCC е проширување на BCC со повеќе base choices и повеќе base tests.\nЗа испит: За испит запомни дека така се добива поголема покриеност од обичен BCC."
+  },
+  {
+    "question": "Tour with detours дозволува:",
+    "choices": [
+      "Дополнителни nodes во истиот редослед",
+      "Exact original path без отстапување",
+      "Само edges без nodes",
+      "No loops"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: a) Дополнителни nodes во истиот редослед Tour with detours дозволува да има дополнителни nodes, но редоследот на nodes од target path мора да се зачува.\nЗа испит: За испит запомни дека sidetrips се построги бидејќи бараат редослед на edges."
+  },
+  {
+    "question": "Edge Coverage (EC) subsumes:",
+    "choices": [
+      "Node Coverage (NC)",
+      "Prime Path Coverage (PPC)",
+      "Edge-Pair Coverage (EPC)",
+      "Ништо од наведеното"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: a) Node Coverage (NC) EC е посилен од NC затоа што ако ги покриеш сите reachable edges, ги посетуваш и релевантните nodes.\nЗа испит: За испит запомни дека EC не subsume-ира EPC или PPC."
+  },
+  {
+    "question": "Data-flow def е:",
+    "choices": [
+      "Use на променлива",
+      "Assignment на променлива",
+      "Condition во loop",
+      "Final state"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Assignment на променлива Во data-flow testing, def е место каде променливата добива вредност, односно assignment.\nЗа испит: За испит запомни дека use е читање, а def е запишување."
+  },
+  {
+    "question": "Data-flow use е:",
+    "choices": [
+      "Assignment на променлива",
+      "Читање на променлива",
+      "Loop header",
+      "Return node"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Читање на променлива Use е место каде вредноста на променливата се чита или користи.\nЗа испит: За испит запомни дека data-flow критериумите ги поврзуваат defs со нивните reachable uses."
+  },
+  {
+    "question": "Def-clear path значи:",
+    "choices": [
+      "Нема нова redefinition на променливата по патеката",
+      "Се посетуваат само edges",
+      "Се посетуваат само nodes",
+      "Патеката мора да биде loop-free"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: a) Нема нова redefinition на променливата по патеката Def-clear path е path на кој променливата не се редефинира меѓу def и use.\nЗа испит: За испит запомни дека нов def ја прекинува важноста на претходната дефиниција за тој path."
+  },
+  {
+    "question": "Verification vs Validation најдобро се сумира како:",
+    "choices": [
+      "Исти поими",
+      "Build the product right vs build the right product",
+      "Testing vs debugging",
+      "Compile vs run"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: b) Build the product right vs build the right product Verification проверува дали го градиш продуктот правилно, а validation дали го градиш вистинскиот продукт за корисникот.\nЗа испит: За испит запомни ја класичната формула: build the product right vs build the right product."
+  },
+  {
+    "question": "Што се случува со цената за поправање bugs како што одминува времето?",
+    "choices": [
+      "Останува иста",
+      "Се намалува",
+      "Се зголемува",
+      "Станува случајна"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Точен одговор е: c) Се зголемува Lifecycle презентацијата покажува cost-of-change крива каде поправките стануваат поскапи колку подоцна се откријат defects.\nЗа испит: За испит запомни дека ова е главна причина зошто early test design вреди."
+  }
+]

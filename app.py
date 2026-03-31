@@ -121,6 +121,7 @@ class FlashcardApp(ctk.CTk):
         self.bind("<Configure>", self._handle_resize)
 
         self.base_path = os.path.dirname(os.path.abspath(__file__))
+        self.subjects_root = os.path.join(self.base_path, "subjects")
         self.subject_name = None
         self.subject_dir = None
         self.cards_path = ""
@@ -156,6 +157,7 @@ class FlashcardApp(ctk.CTk):
         self._prefs_path = os.path.join(self.base_path, "prefs.json")
         self._dismissed_tutorials = set()
         self._load_prefs()
+        self._ensure_subjects_root()
 
         self._build_subjects_ui()
         self._build_quiz_ui()
@@ -254,7 +256,7 @@ class FlashcardApp(ctk.CTk):
         ).pack(pady=(36, 6))
         ctk.CTkLabel(
             self.subjects_frame,
-            text="Секој предмет е папка со свои карти, сесии и сетови за повторување.",
+            text="Секој предмет е папка во subjects/ со свои карти, сесии и сетови за повторување.",
             font=ctk.CTkFont(size=12),
             text_color="#94a3b8",
         ).pack()
@@ -836,9 +838,17 @@ class FlashcardApp(ctk.CTk):
         self.tainted_frame.pack_forget()
         self.guide_frame.pack_forget()
 
+    def _ensure_subjects_root(self):
+        os.makedirs(self.subjects_root, exist_ok=True)
+
+    def _subject_path(self, subject_name):
+        if not subject_name:
+            return None
+        return os.path.join(self.subjects_root, subject_name)
+
     def _set_subject_paths(self, subject_name):
         self.subject_name = subject_name
-        self.subject_dir = os.path.join(self.base_path, subject_name) if subject_name else None
+        self.subject_dir = self._subject_path(subject_name)
         if not self.subject_dir:
             self.cards_path = ""
             self.sessions_path = ""
@@ -865,9 +875,10 @@ class FlashcardApp(ctk.CTk):
         self._reload_review_counts()
 
     def _available_subjects(self):
+        self._ensure_subjects_root()
         subjects = []
-        for name in sorted(os.listdir(self.base_path)):
-            full_path = os.path.join(self.base_path, name)
+        for name in sorted(os.listdir(self.subjects_root)):
+            full_path = os.path.join(self.subjects_root, name)
             if not os.path.isdir(full_path) or name.startswith("."):
                 continue
             if os.path.exists(os.path.join(full_path, "cards.json")):
@@ -887,7 +898,7 @@ class FlashcardApp(ctk.CTk):
             "wrong_strikes.json", "redemption_strikes.json",
         ]
         for subject in self._available_subjects():
-            subject_dir = os.path.join(self.base_path, subject)
+            subject_dir = self._subject_path(subject)
             for fname in progress_files:
                 fpath = os.path.join(subject_dir, fname)
                 if os.path.exists(fpath):
@@ -902,8 +913,8 @@ class FlashcardApp(ctk.CTk):
         if not new_name or not new_name.strip() or new_name.strip() == subject_name:
             return
         new_name = new_name.strip()
-        old_path = os.path.join(self.base_path, subject_name)
-        new_path = os.path.join(self.base_path, new_name)
+        old_path = self._subject_path(subject_name)
+        new_path = self._subject_path(new_name)
         if os.path.exists(new_path):
             ctk.CTkInputDialog(
                 text=f"Папката '{new_name}' веќе постои. Избери друго име.",
@@ -921,14 +932,14 @@ class FlashcardApp(ctk.CTk):
         if not subjects:
             ctk.CTkLabel(
                 self.subjects_scroll,
-                text="Нема најдени предмети.\nСоздај папка со cards.json за да започнеш.",
+                text="Нема најдени предмети.\nСоздај папка во subjects/ со cards.json за да започнеш.",
                 text_color="#94a3b8",
                 justify="center",
             ).pack(pady=40)
             return
 
         for subject in subjects:
-            subject_dir = os.path.join(self.base_path, subject)
+            subject_dir = self._subject_path(subject)
             cards, _ = load_cards(os.path.join(subject_dir, "cards.json"))
             sessions = load_sessions(os.path.join(subject_dir, "sessions.json"))
             wrong_cards = load_wrong_cards(os.path.join(subject_dir, "wrong_cards.json"))

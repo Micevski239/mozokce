@@ -3,11 +3,23 @@ import random
 import re
 
 LETTERS = list("abcdefghijklmnopqrstuvwxyz")
+CARD_SOURCE_META = {
+    "presentation_ai": {
+        "label": "AI генерирано • презентации",
+        "fg_color": "#0f766e",
+        "text_color": "#ccfbf1",
+    },
+    "pdf_questions": {
+        "label": "PDF прашања",
+        "fg_color": "#9a3412",
+        "text_color": "#ffedd5",
+    },
+}
 
 
 def load_cards(path="cards.json"):
     try:
-        with open(path, "r") as f:
+        with open(path, "r", encoding="utf-8") as f:
             data = json.load(f)
         if not isinstance(data, list):
             return ([], "Error reading cards.json — check the file format.")
@@ -19,8 +31,16 @@ def load_cards(path="cards.json"):
 
 
 def save_cards(cards, path="cards.json"):
-    with open(path, "w") as f:
+    with open(path, "w", encoding="utf-8") as f:
         json.dump(cards, f, ensure_ascii=False, indent=2)
+
+
+def get_card_source_meta(card):
+    source_key = str(card.get("source", "")).strip()
+    meta = CARD_SOURCE_META.get(source_key)
+    if not meta:
+        return None
+    return {"key": source_key, **meta}
 
 
 def shuffle_card_choices(card, rng=None):

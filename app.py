@@ -6,6 +6,7 @@ from deck import (
     DeckState,
     build_explanation,
     format_correct_choices,
+    get_card_source_meta,
     load_cards,
     save_cards,
     shuffle_card_bank,
@@ -346,11 +347,21 @@ class FlashcardApp(ctk.CTk):
 
         self.question_frame = ctk.CTkFrame(self.quiz_frame, corner_radius=10)
         self.question_frame.pack(fill="x", padx=20, pady=(0, 10))
+        self.question_source_chip = ctk.CTkFrame(
+            self.question_frame, corner_radius=999, fg_color="#0f766e"
+        )
+        self.question_source_label = ctk.CTkLabel(
+            self.question_source_chip,
+            text="",
+            font=ctk.CTkFont(size=11, weight="bold"),
+            text_color="#ccfbf1",
+        )
+        self.question_source_label.pack(padx=12, pady=5)
         self.question_label = ctk.CTkLabel(
             self.question_frame, text="",
             font=ctk.CTkFont(size=16), wraplength=1100, justify="center"
         )
-        self.question_label.pack(fill="x", padx=20, pady=20)
+        self.question_label.pack(fill="x", padx=20, pady=(20, 20))
 
         self.choices_frame = ctk.CTkFrame(self.quiz_frame, fg_color="transparent")
         self.choices_frame.pack(fill="x", padx=20)
@@ -1077,6 +1088,7 @@ class FlashcardApp(ctk.CTk):
 
         if self._error:
             self.question_label.configure(text=self._error)
+            self.question_source_chip.pack_forget()
             for btn in self.choice_btns:
                 btn.pack_forget()
             self.hint_label.configure(text="")
@@ -1084,6 +1096,7 @@ class FlashcardApp(ctk.CTk):
 
         if not self.deck.total:
             self.question_label.configure(text=self._empty_message)
+            self.question_source_chip.pack_forget()
             for btn in self.choice_btns:
                 btn.pack_forget()
             self.hint_label.configure(text="")
@@ -1093,6 +1106,23 @@ class FlashcardApp(ctk.CTk):
         self.counter_label.configure(
             text=f"Картичка {self.deck.current_position} од {self.deck.total}")
         self.progress.set(self.deck.current_position / self.deck.total)
+        source_meta = get_card_source_meta(card)
+        if source_meta:
+            self.question_source_chip.configure(fg_color=source_meta["fg_color"])
+            self.question_source_label.configure(
+                text=source_meta["label"],
+                text_color=source_meta["text_color"],
+            )
+            self.question_source_chip.pack(
+                anchor="w",
+                padx=20,
+                pady=(16, 0),
+                before=self.question_label,
+            )
+            self.question_label.pack_configure(pady=(12, 20))
+        else:
+            self.question_source_chip.pack_forget()
+            self.question_label.pack_configure(pady=(20, 20))
         self.question_label.configure(text=card["question"])
         self._configure_question_layout()
 
@@ -1439,7 +1469,8 @@ class FlashcardApp(ctk.CTk):
 
     def _load_wrong_deck(self):
         cards = load_wrong_cards(self.wrong_cards_path)
-        self.deck = DeckState(cards)
+        main_cards, _ = load_cards(self.cards_path)
+        self.deck = DeckState(sync_cards_to_bank(main_cards, cards))
         self._error = None
         self._mastered_hidden_count = 0
         self._empty_message = "Погрешните се празни.\nНемаш нерешени пропуштени прашања."
@@ -1459,7 +1490,8 @@ class FlashcardApp(ctk.CTk):
             card for card in load_mastered_cards(self.mastered_cards_path)
             if card.get("mastered")
         ]
-        self.deck = DeckState(cards)
+        main_cards, _ = load_cards(self.cards_path)
+        self.deck = DeckState(sync_cards_to_bank(main_cards, cards))
         self._error = None
         self._mastered_hidden_count = 0
         self._empty_message = (

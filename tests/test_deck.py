@@ -1,9 +1,11 @@
 import json
 import pytest
 from deck import (
+    CARD_SOURCE_META,
     DeckState,
     build_explanation,
     format_correct_choices,
+    get_card_source_meta,
     load_cards,
     save_cards,
     shuffle_card_bank,
@@ -55,6 +57,16 @@ def test_save_cards_writes_json_list(tmp_path):
     save_cards(cards, str(f))
 
     assert json.loads(f.read_text()) == cards
+
+
+def test_get_card_source_meta_returns_display_settings():
+    meta = get_card_source_meta({"question": "Q1", "source": "presentation_ai"})
+
+    assert meta == {"key": "presentation_ai", **CARD_SOURCE_META["presentation_ai"]}
+
+
+def test_get_card_source_meta_returns_none_for_unknown_source():
+    assert get_card_source_meta({"question": "Q1", "source": "unknown"}) is None
 
 
 def test_shuffle_card_choices_updates_correct_indexes():

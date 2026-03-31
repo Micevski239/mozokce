@@ -171,6 +171,10 @@ def merge_wrong_cards(cards, path="wrong_cards.json", tainted_path=None):
         merged.append(card)
 
     save_wrong_cards(merged, path)
+    if tainted_path is not None:
+        tainted_questions = tainted_question_set(tainted_path)
+        tainted_questions.update(seen)
+        save_tainted_questions(tainted_questions, tainted_path)
     return merged
 
 

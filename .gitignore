@@ -1,2 +1,19 @@
 .worktrees/
 .superpowers/
+
+# Local Python/runtime files
+.DS_Store
+__pycache__/
+*.pyc
+.pytest_cache/
+venv/
+
+# Per-user study progress; keep question banks in git, keep sessions local
+prefs.json
+sessions.json
+wrong_cards.json
+mastered_cards.json
+mastery_progress.json
+tainted.json
+wrong_strikes.json
+redemption_strikes.json

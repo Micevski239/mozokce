@@ -442,6 +442,10 @@ class FlashcardApp(ctk.CTk):
         self.action_frame.pack(pady=(8, 0))
         self.submit_btn = ctk.CTkButton(self.action_frame, text="Поднеси",
                                         width=130, command=self._submit)
+        self.change_answer_btn = ctk.CTkButton(
+            self.action_frame, text="Промени одговор",
+            width=170, command=self._change_answer
+        )
         self.next_btn = ctk.CTkButton(self.action_frame, text="Следен →",
                                       width=130, command=self._next_card)
 
@@ -1283,6 +1287,7 @@ class FlashcardApp(ctk.CTk):
         hint = ("еден избор — кликни одговор" if card_type == "single"
                 else "повеќе избори — избери ги сите точни, потоа Поднеси")
         self.hint_label.configure(text=hint)
+        self._set_action_buttons()
 
     def _select_choice(self, idx):
         if self._answered:
@@ -1301,10 +1306,10 @@ class FlashcardApp(ctk.CTk):
                 self._selected.add(idx)
                 self.choice_btns[idx].configure(fg_color=CLR_SELECTED)
 
-            for w in self.action_frame.winfo_children():
-                w.pack_forget()
             if self._selected:
-                self.submit_btn.pack()
+                self._set_action_buttons(show_submit=True)
+            else:
+                self._set_action_buttons()
 
     def _submit(self):
         if not self._answered and self._selected:
@@ -1358,7 +1363,7 @@ class FlashcardApp(ctk.CTk):
 
         for w in self.action_frame.winfo_children():
             w.pack_forget()
-        self.next_btn.pack()
+        self._set_action_buttons(show_change=True, show_next=True)
         self.hint_label.configure(text="")
         self._show_feedback(is_correct, card)
 
@@ -1368,6 +1373,37 @@ class FlashcardApp(ctk.CTk):
         else:
             self.deck.next()
             self._update_quiz_ui()
+
+    def _change_answer(self):
+        if self._error or not self.deck.total or not self._answered:
+            return
+        self._answered = False
+        self._selected = set()
+        self._hide_feedback()
+        card = self.deck.current_card()
+        for i, btn in enumerate(self.choice_btns):
+            if i >= len(card.get("choices", [])):
+                continue
+            btn.configure(
+                fg_color=CLR_DEFAULT,
+                text_color=TXT_DEFAULT,
+                state="normal",
+            )
+        card_type = card.get("type", "single")
+        hint = ("еден избор — кликни одговор" if card_type == "single"
+                else "повеќе избори — избери ги сите точни, потоа Поднеси")
+        self.hint_label.configure(text=hint)
+        self._set_action_buttons()
+
+    def _set_action_buttons(self, show_submit=False, show_change=False, show_next=False):
+        for w in self.action_frame.winfo_children():
+            w.pack_forget()
+        if show_submit:
+            self.submit_btn.pack(side="left", padx=6)
+        if show_change:
+            self.change_answer_btn.pack(side="left", padx=6)
+        if show_next:
+            self.next_btn.pack(side="left", padx=6)
 
     def _finish_session(self):
         if self._error or not self.deck.total:

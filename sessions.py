@@ -3,6 +3,7 @@ from datetime import datetime
 from pathlib import Path
 
 MASTERED_THRESHOLD = 2
+COMPLETED_THRESHOLD = 2
 TAINTED_THRESHOLD = 3
 
 
@@ -250,9 +251,22 @@ def save_mastered_cards(cards, path="mastered_cards.json"):
     _write_json(path, cards)
 
 
+def load_completed_cards(path="completed_cards.json"):
+    return _load_json_list(path)
+
+
+def save_completed_cards(cards, path="completed_cards.json"):
+    _write_json(path, cards)
+
+
 def _mastery_progress_path(path):
     mastered_path = Path(path)
     return str(mastered_path.with_name("mastery_progress.json"))
+
+
+def _completed_progress_path(path):
+    completed_path = Path(path)
+    return str(completed_path.with_name("completed_progress.json"))
 
 
 def load_mastery_progress(path="mastered_cards.json", progress_path=None):
@@ -263,9 +277,22 @@ def save_mastery_progress(cards, path="mastered_cards.json", progress_path=None)
     _write_json(progress_path or _mastery_progress_path(path), cards)
 
 
+def load_completed_progress(path="completed_cards.json", progress_path=None):
+    return _load_json_list(progress_path or _completed_progress_path(path))
+
+
+def save_completed_progress(cards, path="completed_cards.json", progress_path=None):
+    _write_json(progress_path or _completed_progress_path(path), cards)
+
+
 def clear_mastered_state(path="mastered_cards.json", progress_path=None):
     save_mastered_cards([], path)
     save_mastery_progress([], path, progress_path)
+
+
+def clear_completed_state(path="completed_cards.json", progress_path=None):
+    save_completed_cards([], path)
+    save_completed_progress([], path, progress_path)
 
 
 def update_mastered_cards(
@@ -337,10 +364,101 @@ def update_mastered_cards(
     return mastered
 
 
+def update_completed_cards(
+    correct_cards,
+    wrong_cards,
+    path="completed_cards.json",
+    progress_path=None,
+    threshold=COMPLETED_THRESHOLD,
+    mastered_path=None,
+    mastered_progress_path=None,
+):
+    records = {
+        record.get("question"): record
+        for record in load_completed_progress(path, progress_path)
+        if record.get("question")
+    }
+
+    wrong_by_question = {
+        card.get("question"): card
+        for card in _normalize_card_items(wrong_cards)
+        if card.get("question")
+    }
+    correct_by_question = {
+        card.get("question"): card
+        for card in _normalize_card_items(correct_cards)
+        if card.get("question")
+    }
+
+    for question, card in wrong_by_question.items():
+        record = records.get(question, {})
+        record.update(card)
+        record["question"] = question
+        record["streak"] = 0
+        record["completed"] = False
+        records[question] = record
+
+    for question, card in correct_by_question.items():
+        if question in wrong_by_question:
+            continue
+        record = records.get(question, {})
+        record.update(card)
+        record["question"] = question
+        record["streak"] = int(record.get("streak", 0)) + 1
+        record["completed"] = record["streak"] >= threshold
+        records[question] = record
+
+    cleaned = []
+    for record in records.values():
+        if int(record.get("streak", 0)) <= 0:
+            continue
+        cleaned.append(record)
+
+    cleaned.sort(key=lambda record: (-int(record.get("streak", 0)), record.get("question", "")))
+    save_completed_progress(cleaned, path, progress_path)
+
+    completed = []
+    completed_questions = set()
+    for record in cleaned:
+        if int(record.get("streak", 0)) < threshold:
+            continue
+        completed_record = dict(record)
+        completed_record["completed"] = True
+        completed.append(completed_record)
+        completed_questions.add(completed_record.get("question"))
+
+    save_completed_cards(completed, path)
+
+    if completed_questions:
+        if mastered_path:
+            remaining_mastered = [
+                record for record in load_mastered_cards(mastered_path)
+                if record.get("question") not in completed_questions
+            ]
+            save_mastered_cards(remaining_mastered, mastered_path)
+        if mastered_path or mastered_progress_path:
+            resolved_mastered_path = mastered_path or "mastered_cards.json"
+            remaining_progress = [
+                record for record in load_mastery_progress(resolved_mastered_path, mastered_progress_path)
+                if record.get("question") not in completed_questions
+            ]
+            save_mastery_progress(remaining_progress, resolved_mastered_path, mastered_progress_path)
+
+    return completed
+
+
 def mastered_question_set(path="mastered_cards.json", threshold=MASTERED_THRESHOLD):
     return {
         record.get("question")
         for record in load_mastered_cards(path)
+        if record.get("question") and int(record.get("streak", 0)) >= threshold
+    }
+
+
+def completed_question_set(path="completed_cards.json", threshold=COMPLETED_THRESHOLD):
+    return {
+        record.get("question")
+        for record in load_completed_cards(path)
         if record.get("question") and int(record.get("streak", 0)) >= threshold
     }
 

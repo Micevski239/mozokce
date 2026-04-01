@@ -1,11 +1,16 @@
 import json
 
 from sessions import (
+    COMPLETED_THRESHOLD,
     MASTERED_THRESHOLD,
+    clear_completed_state,
     clear_tainted_questions,
     clear_wrong_cards,
     clear_mastered_state,
+    completed_question_set,
     delete_session_at,
+    load_completed_cards,
+    load_completed_progress,
     load_sessions,
     load_flagged_cards,
     load_mastered_cards,
@@ -19,6 +24,7 @@ from sessions import (
     sync_tainted_with_wrong_cards,
     toggle_flagged_card,
     tainted_question_set,
+    update_completed_cards,
     update_mastered_cards,
     summarize_sessions,
 )
@@ -197,6 +203,10 @@ def test_load_mastered_cards_missing_file_returns_empty():
     assert load_mastered_cards("missing_mastered_cards.json") == []
 
 
+def test_load_completed_cards_missing_file_returns_empty():
+    assert load_completed_cards("missing_completed_cards.json") == []
+
+
 def test_update_mastered_cards_increments_streak_and_marks_mastered(tmp_path):
     f = tmp_path / "mastered_cards.json"
     card = {"question": "Q1", "choices": ["A"], "correct": [0], "type": "single"}
@@ -247,3 +257,67 @@ def test_clear_mastered_state_empties_mastered_and_progress_files(tmp_path):
 
     assert load_mastered_cards(str(f)) == []
     assert load_mastery_progress(str(f)) == []
+
+
+def test_update_completed_cards_moves_card_out_of_mastered_after_two_hits(tmp_path):
+    mastered_path = tmp_path / "mastered_cards.json"
+    mastery_progress_path = tmp_path / "mastery_progress.json"
+    completed_path = tmp_path / "completed_cards.json"
+    completed_progress_path = tmp_path / "completed_progress.json"
+    card = {"question": "Q1", "choices": ["A"], "correct": [0], "type": "single"}
+
+    update_mastered_cards([card], [], str(mastered_path), str(mastery_progress_path))
+    update_mastered_cards([card], [], str(mastered_path), str(mastery_progress_path))
+
+    first = update_completed_cards(
+        [card],
+        [],
+        str(completed_path),
+        str(completed_progress_path),
+        mastered_path=str(mastered_path),
+        mastered_progress_path=str(mastery_progress_path),
+    )
+    assert first == []
+    assert load_completed_cards(str(completed_path)) == []
+    assert load_completed_progress(str(completed_path), str(completed_progress_path)) == [
+        {**card, "streak": 1, "completed": False}
+    ]
+    assert mastered_question_set(str(mastered_path)) == {"Q1"}
+
+    second = update_completed_cards(
+        [card],
+        [],
+        str(completed_path),
+        str(completed_progress_path),
+        mastered_path=str(mastered_path),
+        mastered_progress_path=str(mastery_progress_path),
+    )
+    assert second == [{**card, "streak": COMPLETED_THRESHOLD, "completed": True}]
+    assert completed_question_set(str(completed_path)) == {"Q1"}
+    assert load_mastered_cards(str(mastered_path)) == []
+    assert load_mastery_progress(str(mastered_path), str(mastery_progress_path)) == []
+
+
+def test_update_completed_cards_resets_streak_when_question_is_wrong(tmp_path):
+    completed_path = tmp_path / "completed_cards.json"
+    completed_progress_path = tmp_path / "completed_progress.json"
+    card = {"question": "Q1", "choices": ["A"], "correct": [0], "type": "single"}
+
+    update_completed_cards([card], [], str(completed_path), str(completed_progress_path))
+    result = update_completed_cards([], [card], str(completed_path), str(completed_progress_path))
+
+    assert result == []
+    assert load_completed_cards(str(completed_path)) == []
+    assert load_completed_progress(str(completed_path), str(completed_progress_path)) == []
+
+
+def test_clear_completed_state_empties_completed_and_progress_files(tmp_path):
+    completed_path = tmp_path / "completed_cards.json"
+    completed_progress_path = tmp_path / "completed_progress.json"
+    card = {"question": "Q1", "choices": ["A"], "correct": [0], "type": "single"}
+
+    update_completed_cards([card], [], str(completed_path), str(completed_progress_path))
+    clear_completed_state(str(completed_path), str(completed_progress_path))
+
+    assert load_completed_cards(str(completed_path)) == []
+    assert load_completed_progress(str(completed_path), str(completed_progress_path)) == []

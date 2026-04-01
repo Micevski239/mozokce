@@ -125,6 +125,8 @@ class FlashcardApp(ctk.CTk):
         self.bind("<Configure>", self._handle_resize)
 
         self.base_path = os.path.dirname(os.path.abspath(__file__))
+        subjects_dir = os.path.join(self.base_path, "subjects")
+        self.subjects_base_path = subjects_dir if os.path.isdir(subjects_dir) else self.base_path
         self.subject_name = None
         self.subject_dir = None
         self.cards_path = ""
@@ -881,7 +883,9 @@ class FlashcardApp(ctk.CTk):
 
     def _set_subject_paths(self, subject_name):
         self.subject_name = subject_name
-        self.subject_dir = os.path.join(self.base_path, subject_name) if subject_name else None
+        self.subject_dir = (
+            os.path.join(self.subjects_base_path, subject_name) if subject_name else None
+        )
         if not self.subject_dir:
             self.cards_path = ""
             self.sessions_path = ""
@@ -912,8 +916,8 @@ class FlashcardApp(ctk.CTk):
 
     def _available_subjects(self):
         subjects = []
-        for name in sorted(os.listdir(self.base_path)):
-            full_path = os.path.join(self.base_path, name)
+        for name in sorted(os.listdir(self.subjects_base_path)):
+            full_path = os.path.join(self.subjects_base_path, name)
             if not os.path.isdir(full_path) or name.startswith("."):
                 continue
             if os.path.exists(os.path.join(full_path, "cards.json")):
@@ -933,7 +937,7 @@ class FlashcardApp(ctk.CTk):
             "wrong_strikes.json", "redemption_strikes.json", "flagged_cards.json",
         ]
         for subject in self._available_subjects():
-            subject_dir = os.path.join(self.base_path, subject)
+            subject_dir = os.path.join(self.subjects_base_path, subject)
             for fname in progress_files:
                 fpath = os.path.join(subject_dir, fname)
                 if os.path.exists(fpath):
@@ -948,8 +952,8 @@ class FlashcardApp(ctk.CTk):
         if not new_name or not new_name.strip() or new_name.strip() == subject_name:
             return
         new_name = new_name.strip()
-        old_path = os.path.join(self.base_path, subject_name)
-        new_path = os.path.join(self.base_path, new_name)
+        old_path = os.path.join(self.subjects_base_path, subject_name)
+        new_path = os.path.join(self.subjects_base_path, new_name)
         if os.path.exists(new_path):
             ctk.CTkInputDialog(
                 text=f"Папката '{new_name}' веќе постои. Избери друго име.",
@@ -967,14 +971,14 @@ class FlashcardApp(ctk.CTk):
         if not subjects:
             ctk.CTkLabel(
                 self.subjects_scroll,
-                text="Нема најдени предмети.\nСоздај папка со cards.json за да започнеш.",
+                text="Нема најдени предмети.\nСоздај папка со cards.json во subjects/ за да започнеш.",
                 text_color="#94a3b8",
                 justify="center",
             ).pack(pady=40)
             return
 
         for subject in subjects:
-            subject_dir = os.path.join(self.base_path, subject)
+            subject_dir = os.path.join(self.subjects_base_path, subject)
             cards, _ = load_cards(os.path.join(subject_dir, "cards.json"))
             sessions = load_sessions(os.path.join(subject_dir, "sessions.json"))
             wrong_cards = load_wrong_cards(os.path.join(subject_dir, "wrong_cards.json"))

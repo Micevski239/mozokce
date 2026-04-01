@@ -5,6 +5,7 @@ import customtkinter as ctk
 from deck import (
     DeckState,
     build_explanation,
+    card_question_keys,
     format_correct_choices,
     load_cards,
     save_cards,
@@ -156,6 +157,7 @@ class FlashcardApp(ctk.CTk):
         self._resize_after_id = None
         self._last_question_wraplength = None
         self._last_choice_wraplength = None
+        self._choice_uniform_height = None
         self._new_session_dialog = None
         self._main_session_state = None
 
@@ -1122,6 +1124,8 @@ class FlashcardApp(ctk.CTk):
         if self._error:
             self.question_label.configure(text=self._error)
             self.toggle_flag_btn.configure(state="disabled", text="Означи")
+            self.question_source_chip.pack_forget()
+            self._choice_uniform_height = None
             for btn in self.choice_btns:
                 btn.pack_forget()
             self.hint_label.configure(text="")
@@ -1130,6 +1134,8 @@ class FlashcardApp(ctk.CTk):
         if not self.deck.total:
             self.question_label.configure(text=self._empty_message)
             self.toggle_flag_btn.configure(state="disabled", text="Означи")
+            self.question_source_chip.pack_forget()
+            self._choice_uniform_height = None
             for btn in self.choice_btns:
                 btn.pack_forget()
             self.hint_label.configure(text="")
@@ -1147,18 +1153,25 @@ class FlashcardApp(ctk.CTk):
         card_type = card.get("type", "single")
         self._ensure_choice_buttons(len(choices))
 
+        button_texts = []
         for i, btn in enumerate(self.choice_btns):
             if i < len(choices):
                 label = LETTERS[i] if i < len(LETTERS) else str(i + 1)
+                button_text = f"  {label})   {choices[i]}"
                 btn.configure(
-                    text=f"  {label})   {choices[i]}",
+                    text=button_text,
                     fg_color=CLR_DEFAULT, text_color=TXT_DEFAULT,
                     state="normal"
                 )
-                self._configure_choice_layout(btn)
+                button_texts.append(button_text)
                 btn.pack(fill="x", pady=3)
             else:
                 btn.pack_forget()
+
+        self._refresh_choice_uniform_height(button_texts)
+        for btn in self.choice_btns:
+            if btn.winfo_manager():
+                self._configure_choice_layout(btn)
 
         hint = ("еден избор — кликни одговор" if card_type == "single"
                 else "повеќе избори — избери ги сите точни, потоа Поднеси")
@@ -1485,7 +1498,10 @@ class FlashcardApp(ctk.CTk):
             mastered_question_set(self.mastered_cards_path)
             | tainted_question_set(self.tainted_path)
         )
-        visible_cards = [card for card in cards if card.get("question") not in hidden_questions]
+        visible_cards = [
+            card for card in cards
+            if not any(key in hidden_questions for key in card_question_keys(card))
+        ]
         self._mastered_hidden_count = len(cards) - len(visible_cards)
         self.deck = DeckState(visible_cards)
         self._error = error
@@ -1914,9 +1930,29 @@ class FlashcardApp(ctk.CTk):
             return
         wraplength = self._choice_wraplength()
         text_label.configure(justify="left", anchor="w", wraplength=wraplength)
+        if self._choice_uniform_height is not None:
+            btn.configure(height=self._choice_uniform_height)
+            return
         chars_per_line = max(18, wraplength // 10)
         line_count = max(1, (len(btn.cget("text")) + chars_per_line - 1) // chars_per_line)
         btn.configure(height=max(44, 24 + line_count * 22))
+
+    def _refresh_choice_uniform_height(self, button_texts=None):
+        texts = button_texts or [
+            btn.cget("text")
+            for btn in self.choice_btns
+            if btn.winfo_manager()
+        ]
+        if not texts:
+            self._choice_uniform_height = None
+            return
+        wraplength = self._choice_wraplength()
+        chars_per_line = max(18, wraplength // 10)
+        max_lines = max(
+            1,
+            max((len(text) + chars_per_line - 1) // chars_per_line for text in texts),
+        )
+        self._choice_uniform_height = max(44, 24 + max_lines * 22)
 
     def _apply_responsive_layout(self):
         self._resize_after_id = None
@@ -1925,6 +1961,7 @@ class FlashcardApp(ctk.CTk):
         if choice_wraplength == self._last_choice_wraplength:
             return
         self._last_choice_wraplength = choice_wraplength
+        self._refresh_choice_uniform_height()
         for btn in self.choice_btns:
             if btn.winfo_manager():
                 self._configure_choice_layout(btn)

@@ -1,0 +1,1305 @@
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Enterprise Resource Planning Systems
+Business Process Models
+
+Ivan Chorbev
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What is ERP?
+◼ The practice of consolidating an enterprise’s planning,
+
+manufacturing, sales and marketing efforts into one management
+system.1
+◼ Combines all databases across departments into a single
+database that can be accessed by all employees.2
+◼ ERP automates the tasks involved in performing a business
+process.1
+
+Sources:
+1. http://www.cio.com/summaries/enterprise/erp/index.html, viewed September 19, 2002
+2. CIO Enterprise Magazine, May 15, 1999.
+
+2
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What is ERP (Enterprise Resource Planning)?
+▪
+
+Enterprise resource planning (ERP) is a process used by companies
+to manage and integrate the important parts of their businesses.
+▪
+
+▪
+▪
+
+Many ERP software applications are important to companies because they
+help them implement resource planning by integrating all of the processes
+needed to run their companies with a single system.
+
+An ERP software system can also integrate planning, purchasing
+inventory, sales, marketing, finance, human resources, and more.
+The simplest way to define ERP is to think about all the core processes
+needed to run a company: finance, manufacturing, HR, supply chain,
+services, procurement, and others.
+▪
+
+At its most basic level, ERP integrates these processes into a single
+system.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP modules
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+A Brief History of ERP
+ 1960s :Computerized business applications were born in the accounting and finance world in the
+using mainframe computers.These pioneering applications were faster and more accurate than
+manual processes – but were expensive, limited in functionality, and still slow.Before long, these
+applications spawned the development of dedicated, standalone solutions such as sales order
+processing and manufacturing requirements planning (MRP).
+ 1980s:competition in the manufacturing sector was exploding and new tools were required. New
+MRP II software integrated accounting and finance, sales, purchasing, inventory, and manufacturing
+planning and scheduling – providing the manufacturer with an integrated system.
+ 1990s:ERP was introduced. ERP transformed the technology sector by serving a broader range of
+industries and by combining MRP II, human resources, project accounting, and end-user reporting.
+ 2000s:The introduction of browser-based software paved the way for cloud ERP, a breakthrough
+that has expanded both the reach and the functionality of ERP solutions.
+ Today: in the era of digital transformation – businesses are increasingly relying on artificial
+intelligence and other innovations to automate their business processes and stay competitive.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+A Brief History of ERP
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Evolution of ERP
+
+7
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Before ERP
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+An ERP Example: Before ERP
+Orders
+Parts
+Sends report
+
+Sales Dept.
+
+Customer
+Demographic
+Files
+
+Customers
+
+Checks for Parts
+Calls back “Not in stock”
+“We ordered the parts”
+
+Accounting
+Files
+
+Accounting
+Sends report
+
+Sends report
+
+Invoices
+accounting
+
+Ships parts
+
+Vendor
+Order is placed
+with Vendor
+Purchasing
+Files
+9
+
+Purchasing
+
+Warehouse
+
+“We Need parts #XX”
+
+“We ordered the parts”
+
+Inventory
+Files
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+After ERP
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+An ERP Example: After ERP
+Orders
+Parts
+
+Sales Dept.
+
+Customers
+
+Inventory Data
+If no parts,
+order is placed
+through DB
+
+Accounting
+Financial Data exchange;
+Books invoice against PO
+
+Order is submitted
+to Purchasing.
+Purchasing record
+order in DB
+
+Database
+
+Books inventory
+against PO
+
+Order is placed
+with Vendor
+
+Warehouse
+
+Vendor
+
+Purchasing
+Ships parts
+And invoices accounting
+
+11
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+How Do ERP Systems Work?
+Managers and
+Stakeholders
+Human
+Sales and
+Resource
+Delivery
+Management
+Applications
+Applications
+Customers
+
+Sales Force
+And Customer
+Service Reps
+
+Reporting
+Applications
+
+Central
+Database
+
+Financial
+Applications
+
+Manufacturing Back-office
+Applications Administrators
+And Workers
+
+Service
+Applications
+
+Human
+Resource
+Management
+Applications
+
+Suppliers
+
+Inventory
+And Supply
+Applications
+
+Employees
+
+Source: Davenport, Thomas, “Putting the Enterprise into the Enterprise System”, Harvard Business Review, July-Aug. 1998.
+12
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+How Does an ERP System Work?
+The main purpose of an ERP system is to increase organizational efficiency of an organization by managing and improving how
+company resources are utilized. Improving and/or reducing the number of resources necessary without sacrificing quality and
+performance are keys to effectively improving business growth and profitability.
+ERP systems typically cover all aspects of business operations and commonly provide:
+●
+●
+●
+●
+●
+●
+
+An integrated system
+Common database
+Real-time operation
+Support for all applications/components
+Common user interface across application/components
+On-premise, cloud hosted, or SaaS deployment
+
+ERP software has the ability to collect and compare metrics across departments and provide a number of different reports based
+on roles or specific user preferences. The data collected makes finding and reporting on data faster and gives a complete view of
+business performance with complete insights on how resources are being spent.
+
+ERP synchronizes reporting and automation by reducing the need to maintain separate databases and spreadsheets that would
+have to be manually merged to generate reports. This combined data collection and reporting offers valuable insight, such as
+where to cut costs and streamline processes, providing the information to make real-time business decisions.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Types of ERP :Cloud vs On-Premise vs Hybrid
+There are three main types of ERP systems that function with different deployment model options. The
+most common types of ERP systems include cloud ERP, on-premise ERP, and hybrid ERP.
+
+ On-Premise ERP software is implemented on site and maintained in physical office space within an
+organization, hosted on the company’s own computers and servers for full control, support and
+ownership of the entire system once implemented.
+ Cloud-based ERP software is a web-based solution, known as Software as a Service (SaaS),
+where an organization accesses and stores data on any device with an internet connection, usually
+through the purchase of a subscription. Continual support, updates, training, and flexible
+customizations supported by the software provider.
+ “Hybrid” ERP software refers to a combined implementation of cloud-based and on-premise ERP
+system solutions. The combination of hosting and deployment services vary by provider. These
+models can provide ERP users the flexibility to migrate between delivery models, or integrate
+benefits not available existing implementation.
+Different ERP vendors support different deployment model options. Combinations of options, often
+referred to as “hybrid” deployment may offer a combination of hosting and deployment services. These
+models can provide ERP users flexibility migrate between delivery models, or integrate benefits not
+available existing implementation.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Cloud vs On-Premise vs Hybrid
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Why ERP?
+3 Major Reasons:
+◼ To integrate financial data.
+◼ To standardize manufacturing processes.
+◼ To standardize HR information.
+
+16
+Source: http://www.cio.com/summaries/enterprise/erp/index.html, viewed September 19, 2002.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP Project and Time
+◼ Real transformational ERP efforts will usually run between 1 to 3
+
+years, on average.
+◼ Short implementations (3 to 6 months):
+ small companies,
+ implementation limited to a small area of the company, or
+ the company only used the financial pieces of the ERP system.
+
+◼ The important thing is not to focus on how long it will take but to
+
+understand why you need ERP and how you will use it to
+improve your business.
+17
+Source: http://www.cio.com/summaries/enterprise/erp/index.html, viewed September 19, 2002.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Total Cost of Ownership of ERP
+Total cost of ownership (TCO) is a model developed by Gartner Group
+to analyze the direct and indirect costs of owning and using hardware and
+software. TCO essentially helps a company determine whether it wins or
+loses from specific technology implementations.
+◼
+
+Metagroup study among 63 companies surveyed showed that:
+ the average TCO was $15 million (the highest was $300 million and
+
+lowest was $400k),
+ the average TCO per user was $53,320.
+
+18
+Source: http://www.cio.com/summaries/enterprise/erp/index.html, viewed September 19, 2002.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Total Cost of Ownership of ERP
+◼
+
+It also found that:
+ it took 8 months after the system was in to see any benefits,
+
+ but that the median annual savings from the system was $1.6
+
+million per year.
+
+19
+Source: http://www.cio.com/summaries/enterprise/erp/index.html, viewed September 19, 2002.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Hidden Costs of ERP
+Training
+◼ Integration and testing
+◼ Data conversion
+◼ Data analysis
+◼ Consultants
+◼ Replacing best and brightest staff after implementation
+◼ Implementation teams can never stop
+◼ Waiting for ROI
+◼ Post-ERP depression
+◼
+
+20
+Source: http://www.cio.com/summaries/enterprise/erp/index.html, viewed September 19, 2002.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Benefits of ERP Systems
+◼ Improving integration, flexibility
+◼ Fewer errors
+◼ Improved speed and efficiency
+◼ More complete access to information
+◼ Lower total costs in the complete supply chain
+◼ Shorten throughput times
+◼ Sustained involvement and commitment of the top
+
+management
+21
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Benefits of ERP Systems (cont’d)
+◼ Reduce stock to a minimum
+◼ Enlarge product assortment
+◼ Improve product quality
+
+◼ Provide more reliable delivery dates and higher service to
+
+the customer
+◼ Efficiently coordinate global demand, supply and
+production
+22
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Risks with ERP Implementation
+◼ Expensive (can costs 100 thousands to millions of dollars)
+◼ Time-consuming (can take months to years)
+◼ Great risk for the organization
+
+◼ Transfer of Knowledge
+◼ Acceptance with the company
+
+23
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Benefits of ERP
+ Higher productivity: Streamline and automate your core
+business processes to help everyone in your organization
+do more with fewer resources.
+ Deeper insights: Eliminate information silos, gain a
+single source of truth, and get fast answers to missioncritical business questions.
+ Accelerated reporting: Fast-track business and financial
+reporting and easily share results. Act on insights and
+improve performance in real time.
+ Lower risk: Maximize business visibility and control,
+ensure compliance with regulatory requirements, and
+predict and prevent risk.
+ Simpler IT: By using integrated ERP applications that
+share a database, you can simplify IT and give everyone
+an easier way to work.
+ Improved agility: With efficient operations and ready
+access to real-time data, you can quickly identify and
+react to new opportunities.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP solution providers
+ SAP
+ Oracle
+ Microsoft Dynamics
+ IFS Applications
+ Infor
+ Epicor
+ Acumatica
+ SYSPRO
+ IQMS
+ Salesforce
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP major features and modules
+ Human resources
+ CRM
+ Finance and accounting
+ eCommerce
+ IT Helpdesk
+ Supply Chain Management
+ Order Processing
+ Inventory and Procurement
+ Marketing automation
+ Professional Services Automation
+ Manufacturing
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Extended ERP Components
+◼ Extended ERP components include:
+ Business intelligence
+◼ Tools to help analyze your business information and better understand it so that
+
+you can better understand the business.
+ Customer relationship management
+ Supply chain management
+
+ E-business
+◼ E-logistics – manages the transportation and storage of goods
+◼ E-procurement – the business-to-business (B2B) purchase and sale of
+
+supplies and services over the Internet
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP - Human Resources HR
+A human resource management (HRM) or human capital management (HCM) module
+usually encompasses all the features of workforce management application and offers
+additional capabilities. HRM could be viewed as CRM for employees. This popular
+module has detailed records on all employees and stores documents like performance
+reviews, job descriptions and offer letters. It tracks not only hours worked but also
+paid time off (PTO)/sick days and benefits information.
+Since the HRM module stores a vast amount of information on every employee
+across the organization, it eliminates a lot of duplicate or inaccurate data that many
+organizations store in various spreadsheets.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP - CRM
+The customer relationship management (CRM) module stores all customer and
+prospect information. That includes the company’s communication history with a
+person—the date and time of calls and emails, for example—and their purchase
+history. A CRM improves customer service because staffers can easily access all the
+information they need when working with a customer.
+Many businesses also use CRM to manage sales leads and opportunities. It can track
+communication with prospects and suggest which customers should be targeted for
+certain promotions or cross-sell opportunities. More robust CRM modules may
+support customer segmentation (enabling more targeted marketing) and advanced
+contact managers and reporting tools.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP - Finance and accounting
+The finance and accounting module is the most important ERP module because it
+allows businesses to understand their current financial state and future outlook. Key
+features of this module include tracking accounts payable (AP) and accounts
+receivable (AR) and managing the general ledger. It also creates and stores crucial
+financial documents like balance sheets, payment receipts and tax statements.
+The finance module can automate tasks related to billing, vendor payments and
+account reconciliation, helping the accounting department close the books in a timely
+manner and comply with current revenue recognition standards. It also has the data
+that financial planning and analysis employees need to prepare key reports, including
+profit and loss (P&L) statements and board reports, and run scenario plans.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+EPR - eCommerce
+Certain ERP vendors offer an ecommerce module for businesses that want to sell
+online. This module allows companies to quickly launch a business-to-business (B2B)
+or business-to-consumer (B2C) ecommerce website. Leading commerce applications
+include user-friendly tools that allow employees to easily add new items, update
+product content (item descriptions, titles, specs, images, etc.) and change the look and
+feel of the website.
+When the ecommerce application is integrated with other ERP applications, all
+payment, order and inventory information feeds [from the ecommerce module] into the
+shared database. That ensures all transactions are added to the ledger, out-of-stock
+items are removed from the site and orders ship on time.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+EPR - IT helpdesk
+IT helpdesk modules keep company technology running
+smoothly. With integrated IT and ERP systems, IT team can
+field questions and bugs from across the company, prioritize
+those jobs, and quickly follow up with stakeholders. These tools
+help IT departments track the ROI (Return on Investment ) they
+bring to the team, their financial benefit to the company, and
+the impact of technology and software upgrades.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+EPR - Order processing
+While work order software alone brings continuity to the
+sales and service sectors of a company, integrating order
+processing software directly with an ERP gives business
+analysts insight into inefficiencies and improvements
+across the sales cycle.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+EPR - Inventory and Procurement
+Similar to the issues that supply chain management software
+solves, inventory and procurement software helps companies
+manage their warehouse and stockroom inventories. These
+tools ensure that companies keep the right amount of product
+in stock to cover seasonal and expected surges in demand.
+These tools, when connected with an ERP, help companies
+forecast product supply needs and ensure the right staff,
+shelf space, and logistical coverage.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+EPR - Marketing Automation
+Like with ecommerce, certain software providers have developed a marketing
+automation module. A marketing module manages marketing campaigns across
+digital channels like email, web, social media and SMS. It can automate email sends
+based on campaign rules and has advanced customer segmentation features, so
+customers only receive relevant messages.
+Marketing automation software, whether part of the ERP system or a separate
+solution, can provide detailed reports on the performance of campaigns to shape
+future marketing plans and spend. These applications increase leads, customer loyalty
+and, over time, sales.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+EPR - Professional Services Automation
+A professional services automation (PSA) module, also called a service
+resource management module, allows an organization to plan and manage
+projects. Services-based businesses often use this module.
+
+The application tracks the status of projects, managing human and
+capital resources throughout, and allows managers to approve
+expenses and timesheets. It facilitates collaboration between teams by
+keeping all related documents in a shared place. Additionally, the PSA
+module can automatically prepare and send bills to clients based on rules
+around the billing cycle.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP - Manufacturing
+The earliest version of ERP, material requirements planning (MRP) systems, were designed for
+manufacturers, and manufacturing remains a key piece of ERP.
+Today, ERP systems typically have a production management or manufacturing execution
+system (MES). The manufacturing module helps manufacturers plan production and make
+sure they have everything they need for planned production runs, like raw materials and
+machinery capacity.
+During the manufacturing process, it can update the status of goods-in-progress and help
+companies track actual output against forecasted production. It also provides a real-time picture
+of the shop floor, capturing real-time information on items in progress and finished goods. It can
+calculate the average time to produce an item and then compare supply with forecasted
+demand to plan adequate production
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Risks with ERP implementation
+Expensive ( can cost 100 thousands to millions of
+dollars)
+ Time consuming( can take months to years)
+ Great risk for the organization
+ Transfer of knowledge
+ Acceptance with the company
+
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Before ERP & and after ERP
+
+
+
+
+
+
+
+
+Stand alone system
+Lack of coordination among business
+functions ( manufacturing & sales)
+Non integrated data : Data have different
+meaning
+Systems are maintained on a procedural
+basis
+Redundant data and inconsistent
+information
+Difficult to manage
+
+
+
+
+
+
+
+Integrated system
+Support coordination among business
+functions
+Integrated data : data have the same
+meaning across multiple functions
+Changes affect multiple functions or
+Systems
+Common interfaces across systems
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Major phases of ERP implementation
+ Initiation - develop business case, project scope and implementation
+strategy
+ Planning - establish implementation team, determine goals and
+objectives, establish metrics
+ Analysis and process design - analyze and improve existing
+processes, map new processes to be adopted by the system
+ Realization - install base system, customization, adn test the system
+ Transition - replace the formal system with the new system, data
+conversion
+ Operation - monitor and improve system performance, provide
+continued training and technical support
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Business process models
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What is a business process?
+◼ A process is a series of tasks that are completed in order
+
+to accomplish a goal.
+◼ A business process, therefore, is a process that is
+focused on achieving a goal for a business.
+◼ Processes are something that businesses go through
+every day in order to accomplish their mission.
+◼ The better their processes, the more effective the
+business.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Documenting a Process
+◼ The simplest way to document a process is to simply create a list.
+◼ How to create an account on eBay, might look like this:
+
+1. Go to ebay.com.
+
+2. Click on “register.”
+3. Enter your contact information in the “Tell us about you” box.
+
+4. Choose your user ID and password.
+5. Agree to User Agreement and Privacy Policy by clicking on “Submit.”
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Documenting a Process
+◼ A list is not good enough for some processes. Below is a
+
+process diagram to determine if a new term should be
+added to Wikipedia.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Managing Business Process Documentation
+◼ The requirement to manage process documentation has been one of the
+
+driving forces behind the creation of the document management system.
+◼ A document management system stores and tracks documents and
+supports the following functions:
+ Versions and timestamps.
+ Approvals and workflows.
+ Communication.
+
+◼ A document management system will notify the appropriate people when
+
+a change to a document is approved.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What is Business Process Modeling (BPM)?
+Business process modeling (BPM) in business process management and systems engineering
+is the activity of representing processes of an enterprise, so that the current process may be
+analyzed, improved, and automated.
+BPM is typically performed by
+
+
+
+
+
+business analysts, who provide expertise in the modeling discipline,
+subject matter experts, who have specialized knowledge of the processes being
+modeled;
+or more commonly by a team comprising both.
+
+Business process modelling isn’t a new concept. However, when implemented effectively it can
+help optimise business process and identify any challenges in your established systems.
+Business process modelling gives you the opportunity to map out all of the steps in your
+business process, giving you a visual reference so that you can better understand, analyse and
+improve workflows.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Benefits
+Business process modeling is a highly effective technique that offers organizations a broad range of
+benefits. Some of these benefits include:
+ Identifies areas for improvement. The primary use of business process modeling is to provide
+stakeholders with a better understanding of the way that a process works with an eye towards
+implementing improvements.
+ Transparency. A business process model shows how tasks are expected to be performed, who is
+accountable for them, and how a process contributes to the achievement of a business objective.
+This serves an important role in increasing trust and accountability throughout an organization.
+ Agility and flexibility. Business objectives and strategies can change in an instant (think COVID19). With business process modeling stakeholders can immediately identify and implement
+improvements consistent with new objectives.
+ Standardization across departments. Many processes in an organization, particularly in larger
+ones, involve similar steps and tasks. For example, purchase order requests are often submitted at
+the unit level rather than the enterprise level. Using process models, stakeholders can identify best
+practices across units to implement efficient procedures throughout the organization.
+Business process modeling can also help you group similar processes together and anticipate how they
+should operate. The primary objective of business process modeling tools is to analyze how things are
+right now and simulate how should they be carried out to achieve better results.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Types of business process models
+ Business Process Modeling Notation ( BPMN)
+ UML Diagrams
+ Flowcharts
+ Gantt Charts
+ Workflows
+ Simulation
+ Data Flow Diagrams
+ Role Activity Diagrams
+ Role Interaction Diagrams
+ Integrated Definition for Function Modeling
+ Object oriented methods
+ Coloured Petri nets
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+1.Business Process Modeling Notation ( BPMN)
+BPMN diagrams are business process modeling tools that were developed by the
+Business Process Management Initiative (BPMI). The technique is like UML diagrams
+and is a standardized method for creating flowcharts – a step by step diagram of a
+process. Thus, when creating a process model, you use the elements specified under
+the BPMN methodology.
+Business process modelling notation (BPMN) is comprised of symbols that are used
+as a representation of tasks and workflows. Any symbols can be used in your
+business process, but using standardised ones allows you to collaborate with outside
+analysts more easily, and it spares you from having to invent your own visual
+language.
+BPMN 2.0 has become something of a standard syntax used by process analysts and
+those who create business modeling tools. It is a relatively simple usage of lines,
+arrows, and geometric shapes that all communicate the flow and nuances of the
+process. A process consultant can look at a BPMN 2.0 model and know exactly how it
+should function.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+BPMN symbols fall into the following categories:
+ Flow objects. Shows the flow of the process and are represented as follows:
+ Circles. Events are displayed inside of circular shapes
+ Rectangles. Activities fit into rectangular boxes
+ Diamonds. Control points or gateways are represented as diamond shapes
+ Connecting objects. Used to show how tasks are connected, and in what sequence they
+occur
+ Solid lines. Shows task transfers
+ Dashed lines. Shows messages
+ Swim lanes. These make provision for subprocesses that share responsibilities and how
+they interact. The swimlanes are the people or departments that the subprocess
+impacts on
+ Artifacts. Used if you have additional information that isn’t a sequence flow or message
+flow, but that will further explain the process
+ Dotted lines. These point to the flow object that the extra information expands on
+ Squares outlined with dots and dashes. These group related elements in the
+diagram
+ Square bracket. Text annotations are added here
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+2. UML Diagrams
+UML is a developmental modeling language that is used to provide a standardized way to
+visually represent a system. Diagrams include a system’s actors, actions, roles, and classes
+and help to gain a better understanding of or to document a system. UML was created in 1994
+and its rapid rise in popularity led to it being published as an approved ISO standard in 2005.
+
+Unified modelling language (UML) is a more modern approach to modelling and documenting
+processes. UML was initially developed by software developers, but has been successfully
+used in business process modelling, with a more object-oriented approach to its 14 UML
+diagram types.
+It is being widely used in businesses and according to experts, UML is an object-oriented
+representation chart whereas BPMN is process-oriented.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+3. Flowcharts
+Flowcharts explain complex process flows in a simple yet effective
+way. They illustrate process steps in their sequential order, going from
+inputs to actual process to outputs. In fact, flowcharts provide the
+basic framework for BPMN to display advanced process flows.
+This is a graphic representation of something that is manufactured or
+produced, which gives people involved in the project or process a
+single reference point. Flow charts use basic shapes and arrows to
+define relationships, such as processes, decisions, or data.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+4.Gantt Charts
+In the late 19th century, Gantt charts were the gold standard, and are often the go-to business
+process model for companies preparing for projects with distinct timelines, or that have timesensitive processes that need to be captured and tracked. Gantt charts make it easy for people
+involved in different parts of a process to see when they are meant to start work, and by when
+each task should be complete, and to check whether all the subprocesses are on schedule.
+Gantt charts are simplistic diagrams that provide a visualization of the overall time taken to
+complete a task or process. More specifically, Gantt charts can show the start and end
+times/dates of a process, the required tasks, and how long each took to complete.
+Rather than showing the steps sequentially, Gantt charts are able to show the entire process
+using ‘time taken’ as one of the main axes. It does a better job of showing the overall time
+taken to complete a project than other options.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+5. Workflow Technique
+Workflow is a flow of tasks between computer applications or people in an
+organization. Two or more members of a workgroup to reach a common
+goal can define a workflow as well as any task performed in series or in
+parallel. The work flow is more than a technique to model a process. It is a
+method to analyze and improve a process, including its modeling.
+The workflow development process uses workflow models to capture the
+relevant information of the processes. This process comprises four stages:
+Information Gathering, Business Process Modelling, Workflow Modelling,
+Implementation and Verification & Execution.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+6.Data Flow Diagrams
+Data flow diagrams (DFDs) show how data enters a system from external sources,
+how data moves internally within the system, and how the data is stored. DFD
+symbols vary slightly, but are mostly based on the same principles:
+
+ Squares. These show external entities, which are either the source of data, or the
+destination
+ Rounded rectangles. These represent processes that receive data as input,
+interact with it, and then produce an output
+ Arrows. These show the flow of data, either as electronic data or physical items
+ Open-ended rectangles. This represents data stores, and include electronic
+stores like databases or XML files, as well as physical stores, such as or filing
+cabinets or stacks of paper
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+7.Role Activity Diagrams
+Role activity diagrams (RADs) are used to map out the intangible roles or
+ideas of behaviour that are desired within the company. These can often be
+functions within the business, systems in IT, or customer and supplier roles.
+RADs are easy to read and understand, and often provide a different
+perspective on a process, which helps support communication.
+A RAD shows the roles that play a part in the process, and their component
+actions and interactions, together with external events and the logic that
+determines which actions are carried out when. So, it shows the activity of
+roles in the process and how they collaborate.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+8.Role Interaction Diagrams
+Interaction diagrams are business process models that
+graphically illustrate the interaction of various processes with
+each other within a system. Interaction diagrams come in two
+forms: sequence diagrams and collaboration diagrams. There
+are two types of interaction diagrams typically used to capture
+the various aspects of interaction in a system:
+ Sequence diagrams
+ Collaboration diagram
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+Sequence diagrams
+A sequence diagram shows the interaction
+between objects in the sequence in which they
+take place. Sequence diagrams describe how the
+objects function within a system, and in what
+order, and are often used to document and
+understand what is required for new and existing
+systems
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+Collaboration diagram
+Collaboration diagrams are used to define
+and clarify the roles of the objects that carry
+out a certain flow of events in a visual
+format, and serve as the main source of
+information when determining class
+responsibilities and interfaces
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+9.Integrated Definition for Function Modeling
+Integrated definition (IDEF) for function modelling
+displays when parent activities give rise to child
+diagrams. There are 15 forms of IDEF and each
+addresses a different type of flow for functions,
+information, data, simulation model design, process
+description capture, and so on.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+10. Object oriented methods
+The object oriented method of
+business process modelling is more
+than just modelling with objects: it
+encompasses message-passing,
+encapsulation (where internal detail
+is hidden), inheritance from class to
+subclass, and polymorphism (where
+the same procedure can operate on
+different data types).
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+11.Coloured Petri nets
+Traditionally a modeling technique in mathematics, petri-nets are also useful for modeling business processes. Petrinets classify or color-code complex workflow steps, users, and routes in different colors
+When a system has numerous processes that interact and synchronise with each other, then coloured Petri nets are
+ideal. This modelling technique is used to design, specify, simulate and verify systems.
+Petri nets are unique in that they can represent both a state – such as passive, unsent, or waiting – and an action –
+such as send, receive, or transmit – in the same diagram. Coloured nets use colours to differentiate their symbols, and
+use a formal, mathematical representation with well-defined syntax and semantics.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+..continued
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+12.Simulation
+Simulation model comes in handy when you want to study a complex real-world
+system. You want to learn more about the system to make an informed decision but
+the complexity of the system prevents you from doing that directly.
+Therefore you proceed indirectly by creating and studying another entity (the
+simulation model), which is sufficiently similar to the real-world system. Simulation can
+have many forms (for example, discrete-event simulation, continuous simulation,
+system dynamics, Monte-Carlo simulation, qualitative simulation, etc.).
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+TCO / ROI Agenda
+◼ Understand TCO
+◼ Learn to perform TCO calculations
+◼ Understand ROI
+
+◼ Learn to perform ROI calculations
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+TCO = “Total Cost of Ownership"
+ TCO a type of calculation or business concept designed to help
+
+managers assess the economic value of an investment through
+its cost.
+ In the IT world, your investment is usually a system
+(hardware/software) or a service.
+ TCO calculations consist of both direct and indirect costs
+ Direct Costs: Are directly accountable to the investment.
+Eg. Hardware, Software, Operation, and Admin. Costs
+ Indirect Costs: Are not directly accountable to the
+investment.
+Eg. End user operations (support), Downtime, Loss of
+Productivity
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+TCO In Action
+◼ TCO has demonstrated:
+◼ Approximately 30% of the total cost of owning an Workstation is the cost
+
+of the computer and software
+◼ The remaining 70% is support, downtime, and training.
+ This is the 30/70 principle.
+ This a $2000 computer really costs $6,666.67
+ (30% is $2000 of $6666.67)
+
+◼ TCO can be applied to almost any investment
+◼ Oftentimes we compare investments in term of which one has the lower
+
+TCO. This is known as a TCO analysis.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Example TCO Analysis – Open Source Software
+◼ Recent web articles have emphasized TCO as a key element in
+
+the Open-Source vs. proprietary software debate.
+◼ OSS delivers lower Direct costs over proprietary software (due to
+reduced licensing costs).
+ Seems obvious enough!
+
+◼ Several TCO studies claim OSS has higher indirect costs when
+
+compared to market-leading proprietary software.
+ How are they able to make this claim?
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+TCO Study By E-Week 4/26/2004
+◼ Office 2003 vs. OpenOffice.Org
+ FN Manufacturing in Columbia, SC. 300 PC users.
+ Evaluating whether to switch from Office 97/2000 to OpenOffice 1.1.1 or Office 2003.
+◼ Conclusion: OpenOffice a good fit for small shops:
+ OpenOffice = $0 in direct costs
+ Office 2003 = 300x$200= $60,000 in direct costs
+ Both products have associated indirect costs, and similar switching costs.
+ But will OpenOffice have more than $60,000 worth of indirect costs during its
+lifetime (3 years)?
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Example TCO Analysis Study OSS and Indirect Costs
+◼ Sample TCO analysis of the Same Windows XP computer
+
+with Microsoft Office and OpenOffice
+◼ Direct costs are green, Indirect costs are fuchsia
+XP w/ Office
+
+XP w/ OpenOffice
+
+2%
+
+2%
+Hardware
+
+44%
+
+27%
+
+18%
+
+Software
+
+26%
+
+9%
+
+52%
+
+18%
+
+2%
+
+Operations
+User Ops
+Downtime
+
+Key Determining Factor:
+software cost savings > gain in user operating costs + cost of switching
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Important Software Evaluation Considerations
+◼ Evaluate TCO numbers for yourself.
+ Estimate your own direct costs, based on hard numbers.
+ Indirect costs can be very difficult to calculate.
+◼ Don't Ignore the traditional software selection process:
+ Identify, Review, Compare, Analyze
+◼ Don't forget the cost of switching:
+ Training Costs
+ Deployment Costs
+ Training and consistent deployment help reduce indirect costs.
+ Switching costs can be an enormous indirect cost.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ROI = “Return on Investment”
+ ROI is a type of calculation designed to help managers assess the
+
+economic value of an investment through its potential
+◼ ROI = (gain-cost)/cost
+◼ Example gain=$7,500 cost=$5,000 ROI=50%
+◼ Positive ROI is good, negative is bad.
+◼ ROI is used in IT to help compare similar IT investments.
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ROI Example: Selling Products on the Web
+◼ You work for a parts distributor. Currently you do not sell
+
+products on line.
+◼ A)A Recent TCO study has revealed it will cost $12,000/year to
+begin selling products on the web.
+◼ If you would like a 25% ROI, what it the expected gain?
+◼ B) If another option is to partner with Amazon.com to sell your
+parts on line at a cost of $5,000/year What is the expected gain
+for the same 25% ROI? Is it better?
+◼ C)If the marketing department claims that by spending $5,000
+next year on local advertising they can generate an additional
+$9000 in sales boost sales
+◼ Which option has the best ROI?
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ROI Example: Selling Products on the Web
+◼ A) .25 = (gain – 12000)/12000 ➔3000 = gain-12000 ➔
+
+gain = 15,000
+◼ B) .25 = (gain – 5000)/5000 ➔ 1250 = gain – 5000 ➔
+gain = 6,250
+◼ C) ROI = (9000-5000)/5000 ➔ ROI = 4000/5000 = .8
+◼ Option C has the highest ROI.
+◼ Option A and B have the same ROI but option B has a
+lower TCO so…
+◼ Option B is better than option A
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Datacenter Virtualization
+Virtualization (to-be)
+◼ Hardware Costs?
+◼ Software Costs?
+◼ Training Costs?
+◼ SA Labor Costs?
+◼ Effect on Users or Downtime?
+◼ Others?
+
+No Virtualization (as-is)
+◼ Hardware Costs?
+◼ Software Costs?
+◼ Training Costs?
+◼ SA Labor Costs?
+◼ Effect on Users or Downtime?
+◼ Others?
+
+Some people feel this is a no-brainer from a TCO/ROI. Is it?
+Just Google Datacenter virtualization TCO and read away…
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И
+КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Datacenter TCO and ROI Resoures
+◼ Whitepaper
+ http://www.vmware.com/files/pdf/tco_roi_methdology.pdf
+
+◼ Calculators:
+
+◼ VMWare:
+ http://www.vmware.com/files/elqNow/elqRedir.htm?ref=http://w
+
+ww.vmware.com/go/calculator
+◼ Microsoft:
+ https://roianalyst.alinean.com/msft/AutoLogin.do?d=307025591
+
+178580657
+
+Заклучок
+
+83
+
+

@@ -14,6 +14,16 @@ CARD_SOURCE_META = {
         "fg_color": "#9a3412",
         "text_color": "#ffedd5",
     },
+    "notebook_lm": {
+        "label": "Notebook LM",
+        "fg_color": "#4c1d95",
+        "text_color": "#f3e8ff",
+    },
+    "discord": {
+        "label": "Discord",
+        "fg_color": "#1d4ed8",
+        "text_color": "#dbeafe",
+    },
 }
 
 
@@ -41,6 +51,19 @@ def get_card_source_meta(card):
     if not meta:
         return None
     return {"key": source_key, **meta}
+
+
+def get_card_source_reference_text(card):
+    meta = get_card_source_meta(card)
+    if not meta:
+        return "материјалот"
+    if meta["key"] == "discord":
+        return "Discord прашањата"
+    if meta["key"] == "notebook_lm":
+        return "Notebook LM прашањата"
+    if meta["key"] == "pdf_questions":
+        return "PDF прашањата"
+    return "материјалот од презентациите"
 
 
 def shuffle_card_choices(card, rng=None):
@@ -72,12 +95,23 @@ def shuffle_card_bank(cards, rng=None):
     return shuffled_cards
 
 
+def card_question_keys(card):
+    keys = []
+    question = str(card.get("question", "")).strip()
+    if question:
+        keys.append(question)
+    for alias in card.get("aliases", []) or []:
+        alias_text = str(alias).strip()
+        if alias_text and alias_text not in keys:
+            keys.append(alias_text)
+    return keys
+
+
 def sync_cards_to_bank(reference_cards, cards_to_sync):
-    reference_by_question = {
-        str(card.get("question", "")).strip(): card
-        for card in reference_cards
-        if str(card.get("question", "")).strip()
-    }
+    reference_by_question = {}
+    for card in reference_cards:
+        for key in card_question_keys(card):
+            reference_by_question[key] = card
     synced = []
     for card in cards_to_sync:
         question = str(card.get("question", "")).strip()
@@ -132,6 +166,7 @@ def build_explanation(card):
     question_lower = question.lower()
     correct_parts = format_correct_choices(card)
     correct_text = "; ".join(correct_parts) if correct_parts else "Нема означен точен одговор."
+    source_text = get_card_source_reference_text(card)
 
     if "редослед" in question_lower or "секвенца" in question_lower or "подреди" in question_lower:
         prefix = "Точниот редослед е"
@@ -141,18 +176,18 @@ def build_explanation(card):
         prefix = "Точен одговор е"
 
     if "точно или неточно" in question_lower:
-        raw = f"{prefix}: {correct_text}. Ова тврдење така е наведено во материјалот од презентациите."
+        raw = f"{prefix}: {correct_text}. Ова тврдење така е наведено во {source_text}."
         return standardize_explanation(card, raw)
     if "што претставува" in question_lower:
-        raw = f"{prefix}: {correct_text}. Ова е дефиницијата или описот што се совпаѓа со материјалот од презентациите."
+        raw = f"{prefix}: {correct_text}. Ова е дефиницијата или описот што се совпаѓа со {source_text}."
         return standardize_explanation(card, raw)
     if "кои тврдења" in question_lower or "што е точно" in question_lower:
-        raw = f"{prefix}: {correct_text}. Само овие тврдења се совпаѓаат со условите и поимите од презентациите."
+        raw = f"{prefix}: {correct_text}. Само овие тврдења се совпаѓаат со условите и поимите од {source_text}."
         return standardize_explanation(card, raw)
     if "кога" in question_lower:
-        raw = f"{prefix}: {correct_text}. Ова е условот што е наведен или директно следи од материјалот во презентациите."
+        raw = f"{prefix}: {correct_text}. Ова е условот што е наведен или директно следи од {source_text}."
         return standardize_explanation(card, raw)
-    raw = f"{prefix}: {correct_text}. Ова е точниот избор според материјалот од презентациите."
+    raw = f"{prefix}: {correct_text}. Ова е точниот избор според {source_text}."
     return standardize_explanation(card, raw)
 
 

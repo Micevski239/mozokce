@@ -1,0 +1,616 @@
+Data/Information Architectures
+and Data Integration
+Methodologies
+
+Integrated Systems 2023/2024
+
+Data Strategy
+• “Data Leadership is about understanding the organization’s
+relationship with data and seeking ways to help the organization meet
+its goals using whatever tools are available,” – Anthony Algmin
+• To truly be an effective part of the business, the data architect should
+understand the answers to these questions:
+• What is our business operation’s goal?
+• What are we trying to accomplish as an entity?
+• What is the thing we should be doing as a business fundamentally?
+
+https://www.dataversity.net/
+
+Data Strategy
+• Answers to these questions lead to more detail about how to accomplish those goals:
+• How do we source our product?
+• How do we take those products to market?
+• How do we connect to customers?
+• How do we deliver products?
+• Next, an understanding of how data can support both the overarching goals and the
+processes used to reach them:
+• How do we leverage the data that we have today?
+• How do we create more data?
+• How do we use data to support all of these processes, measure them, and then
+improve them from a business perspective?
+
+Data Architecture
+• Start with the most valuable data!
+• How does this information contribute to the primary objectives of the
+organization?
+• Does the data pertain to specific teams or individuals and their goals? How?
+• How does this information bring the technological and “business” sides of the
+organization?
+• Can you use the data to draw specific, tangible, and usable insights to benefit the
+organization?
+• Data governance: How will you manage and control information in your
+architecture
+
+https://www.idashboards.com/blog/2018/12/12/data-architecture-building-and-managing-a-dataframework/
+
+Data Architecture
+• Instead of focusing on a framework that will last forever, focus on creating a
+data architecture that has the flexibility to grow with your organization.
+• Data exists within your organization to help key decision makers make
+informed choices. This means your data architecture should facilitate realtime information so stakeholders can access the data they want when they
+need it.
+• Data is service to users. Treat your users like customers who need service!
+• Bring your data to life. Account for representation and visualization!
+
+Stakeholders in Data Architecture
+• Data architect (sometimes called big data architects)—defines the data vision based on business
+requirements, translates it to technology requirements, and defines data standards and principles.
+• Project manager—oversees projects that modify data flows or create new data flows.
+• Solution architect—designs data systems to meet business requirements.
+• Cloud architect or data center engineer—prepares the infrastructure on which data systems will run, including
+storage solutions.
+• DBA or data engineer—builds data systems, populates them with data and takes care of data quality.
+• Data analyst—an end-user of the data architecture, uses it to create reports and manage an ongoing data feed for
+the business.
+• Data scientists—also a user of the data architecture, leveraging it to mine organizational data for fresh insights.
+
+https://blog.panoply.io/data-architecture-people-process-and-technology
+
+Data architecture frameworks
+• There are several enterprise architecture frameworks that commonly serve as the foundation for
+building an organization's data architecture framework.
+• DAMA-DMBOK 2. DAMA International's Data Management Body of Knowledge is a framework
+specifically for data management. It provides standard definitions for data management
+functions, deliverables, roles, and other terminology, and presents guiding principles for data
+management.
+• Zachman Framework for Enterprise Architecture. The Zachman Framework is an enterprise
+ontology created by John Zachman at IBM in the 1980s. The "data" column of the Zachman
+Framework comprises multiple layers, including architectural standards important to the
+business, a semantic model or conceptual/enterprise data model, an enterprise/logical data
+model, a physical data model, and actual databases.
+• The Open Group Architecture Framework (TOGAF). TOGAF is an enterprise architecture
+methodology that offers a high-level framework for enterprise software development. Phase C of
+TOGAF covers developing a data architecture and building a data architecture roadmap.
+
+TOGAF
+
+https://www.opengroup.org/togaf
+
+TOGAF Phase C1: Information Systems
+Architectures - Data Architecture - Objectives
+• Purpose is to define the major types and sources of data necessary to
+support the business, in a way that is:
+• Understandable by stakeholders
+• Complete and consistent
+• Stable
+• Define the data entities relevant to the enterprise
+• Not concerned with design of logical or physical storage systems or
+databases
+
+TOGAF Phase C1: Information Systems Architectures - Data
+Architecture - Overview
+
+TOGAF Phase C1: Information Systems Architectures - Data Architecture Approach - Key Considerations for Data Architecture
+
+• Data Management
+• Important to understand and address data management issues
+• Structured and comprehensive approach to data management enables the effective use of data to capitalise
+on its competitive advantages
+• Clear definition of which application components in the landscape will serve as the system of record or
+reference for enterprise master data
+• Will there be an enterprise-wide standard that all application components, including software packages,
+need to adopt
+• Understand how data entities are utilised by business functions, processes, and services
+• Understand how and where enterprise data entities are created, stored, transported, and reported
+• Level and complexity of data transformations required to support the information exchange needs between
+applications
+• Requirement for software in supporting data integration with external organisations
+
+TOGAF Phase C1: Information Systems Architectures - Data Architecture Approach - Key Considerations for Data Architecture
+
+• Data Migration
+• Identify data migration requirements and also provide indicators as
+to the level of transformation for new/changed applications
+• Ensure target application has quality data when it is populated
+• Ensure enterprise-wide common data definition is established to
+support the transformation
+
+TOGAF Phase C1: Information Systems Architectures - Data Architecture Approach - Key Considerations for Data Architecture
+
+• Data Governance
+• Ensures that the organisation has the necessary dimensions in place to
+enable the data transformation
+• Structure – ensures the organisation has the necessary structure and the
+standards bodies to manage data entity aspects of the transformation
+• Management System - ensures the organisation has the necessary
+management system and data-related programs to manage the
+governance aspects of data entities throughout its lifecycle
+• People - addresses what data-related skills and roles the organisation
+requires for the transformation
+
+TOGAF Phase
+C1:
+Information
+Systems
+Architectures
+- Data
+Architecture
+- Outputs
+
+•
+
+•
+
+Refined and updated versions of the Architecture Vision phase deliverables
+•
+
+Statement of Architecture Work
+
+•
+
+Validated data principles, business goals, and business drivers
+
+Draft Architecture Definition Document
+•
+
+Baseline Data Architecture
+
+•
+
+Target Data Architecture
+
+•
+
+•
+
+•
+
+Business data model
+
+•
+
+Logical data model
+
+•
+
+Data management process models
+
+•
+
+Data Entity/Business Function matrix
+
+•
+
+Views corresponding to the selected viewpoints addressing key stakeholder concerns
+
+Draft Architecture Requirements Specification
+•
+
+Gap analysis results
+
+•
+
+Data interoperability requirements
+
+•
+
+Relevant technical requirements
+
+•
+
+Constraints on the Technology Architecture about to be designed
+
+•
+
+Updated business requirements
+
+•
+
+Updated application requirements
+
+Data Architecture components of an Architecture Roadmap
+
+Why the DMBOK2?
+• Data Management Body of Knowledge (DAMA-DMBOK Guide) is a
+collection of processes and best practices.
+• Contains generally accepted as best practices and references for each
+Data Management discipline.
+• Data Management (DM) is an overarching term that describes the
+processes used to plan, specify, enable, create, acquire, maintain, use,
+archive, retrieve, control, and purge data.
+• These processes overlap and interact within each data management
+knowledge area.
+
+What is the purpose of the DMBoK
+• The current DM environment can be a confusing combination of terms, methods, tools,
+opinion, and hype.
+• To mature this discipline, DAMA International’s Guide to the Data Management Body of
+Knowledge (DAMA-DMBOK) provides concepts and capability maturity models for the
+standardization of:
+• Activities, processes, and best practices
+• Roles and responsibilities
+• Deliverables and metrics
+• A maturity model
+• Standardization of data management disciplines will help data management professionals
+perform more effectively and consistently.
+
+DAMADMBOK 2
+https://damadach.org/dmbok2dama-dmbok-version-2/
+
+The 11 Data Management Knowledge Areas
+(According to DAMA DMBOK -2)
+• Data Governance – planning, oversight, and control over management of data and the use
+of data and data-related resources. While we understand that governance covers
+‘processes’, not ‘things’, the common term is Data Governance, and so we will use this term.
+• Data Architecture – the overall structure of data and data-related resources as an integral
+part of the enterprise architecture
+• Data Modeling & Design (Data Implementation) – analysis, design, building, testing, and
+maintenance
+• Data Storage & Operations – structured physical data assets storage deployment and
+management
+• Data Security – ensuring privacy, confidentiality and appropriate access to PII, PHI and an
+individuals private data. Ensuring network security as well
+
+The 11 Data Management Knowledge
+Areas(2)
+• Data Integration & Interoperability –acquisition, extraction, transformation, movement, delivery,
+replication, federation, virtualization and operational support
+• Documents & Content – storing, protecting, indexing, and enabling access to data found in
+unstructured sources (electronic files and physical records), and making this data available for
+integration and interoperability with structured (database) data.
+• Reference & Master Data – Managing shared data to reduce redundancy and ensure better data
+quality through standardized definition and use of data values.
+• Data Warehousing & Business Intelligence – managing analytical data processing and enabling access
+to decision support data for reporting and analysis.
+• Metadata – collecting, categorizing, maintaining, integrating, controlling, managing, and delivering
+metadata.
+• Data Quality – defining, monitoring, maintaining data integrity, and improving data quality.
+
+DMBOK Data Management Environmental
+Elements
+•
+
+Goals and Principles - directional business goals of each function and the fundamental principles that guide performance of each
+function
+
+•
+
+Activities - each function is composed of lower level activities, sub-activities, tasks and steps
+
+•
+
+Primary Deliverables - information and physical databases and documents created as interim and final outputs of each function.
+Some deliverables are essential, some are generally recommended, and others are optional depending on circumstances
+
+•
+
+Roles and Responsibilities - business and IT roles involved in performing and supervising the function, and the specific
+responsibilities of each role in that function. Many roles will participate in multiple functions
+
+•
+
+Practices and Techniques - common and popular methods and procedures used to perform the processes and produce the
+deliverables and may also include common conventions, best practice recommendations, and alternative approaches without
+elaboration
+
+•
+
+Technology - categories of supporting technology such as software tools, standards and protocols, product selection criteria and
+learning curves
+
+•
+
+Organisation and Culture – this can include issues such as management metrics, critical success factors, reporting structures,
+budgeting, resource allocation issues, expectations and attitudes, style, cultural, approach to change management
+
+DMBOK Data Management Functions and Environmental
+Elements
+
+Data governance
+
+Why develop and implement data
+management framework?
+• Improve organisation data management efficiency
+• Deliver better service to business
+• Improve cost-effectiveness of data management
+• Match the requirements of the business to the management of the data
+• Embed handling of compliance and regulatory rules into data management framework
+• Achieve consistency in data management across systems and applications
+• Enable growth and change more easily
+• Reduce data management and administration effort and cost
+• Assist in the selection and implementation of appropriate data management solutions
+• Implement a technology-independent data architecture
+
+Zachman Framework
+
+https://www.zachman.com/about-the-zachman-framework
+
+• The Five Ws (sometimes referred to as Five Ws and How, 5W1H,
+or Six Ws) are questions whose answers are considered basic in
+information gathering or problem solving. They are often
+mentioned in journalism, research and police investigations:
+• Who? (People)
+• What? (Data/Inventory)
+• When?(Time)
+• Where?(Network)
+• Why?(Motivation)
+• How? (Function)
+• Each question should have a factual answer—facts necessary to
+include for a report to be considered complete. Importantly,
+none of these questions can be answered with a simple "yes" or
+"no".
+
+The Five Ws
+
+Scope /
+Executive /
+Planner
+
+Rezaei, Reza. "A Methodology to Create Data Architecture in Zachman Framework“, World Applied Sciences Journal 3
+(2): 43-49 (2008).
+
+Business/Owner
+
+Architect/Designer
+
+Engineer /
+Builder
+
+Technician/Subcontractor
+
+Modern Data Architectures
+• Cloud-native: Modern data architectures are designed to support elastic scaling, high availability,
+end-to-end security for data in motion and data at rest, and cost and performance scalability
+• Scalable data pipelines: To take advantage of emerging technologies, data architectures support realtime data streaming and micro-batch data bursts
+• Seamless data integration: Data architectures integrate with legacy applications using standard API
+interfaces. They are optimised for sharing data across systems, geographies, and organisations
+• Real-time data enablement: Modern data architectures support the ability to deploy automated and
+active data validation, classification, management, and governance
+• Decoupled and extensible: Modern data architectures are designed to be loosely coupled, enabling
+services to perform minimal tasks independent of other services
+
+Data Integration Methodologies
+Manual data integration: Data managers must manually conduct all phases of the
+integration, from retrieval to presentation.
+Middleware data integration: Middleware, a type of software, facilitates communication
+between legacy systems and updated ones to expedite integration.
+Application-based integration: Software applications locate, retrieve, and integrate data
+by making data from different sources and systems compatible with one another.
+Uniform access integration: A technique that retrieves and uniformly displays data, but
+leaves it in its original source.
+Common storage integration: An approach that retrieves and uniformly displays the
+data, but also makes a copy of the data and stores it.
+https://www.talend.com/resources/data-integration-methods/
+
+Manual Data Integration
+• Pros:
+• Reduced cost: This technique requires little maintenance and typically only integrates a small
+number of data sources.
+• Greater freedom: The user has total control over the integration.
+• Cons:
+• Less access: A developer or manager must manually orchestrate each integration.
+• Difficulty scaling: Scaling for larger projects requires manually changing the code for each
+integration, and that takes time.
+• Greater room for error: A manager and/or analyst must handle the data at each stage.
+• This strategy is best for one-time instances, but it quickly becomes untenable for complex or
+recurring integrations because it is a very tedious, manual process. Everything from data collection,
+to cleaning, to presentation is done by hand, and those processes take time and resources.
+
+Middleware data integration
+• Pros:
+• Better data streaming: The software conducts the integration automatically and in the
+same way each time.
+• Easier access between systems: The software is coded to facilitate communication
+between the systems in a network.
+• Cons:
+• Less access: The middleware needs to be deployed and maintained by a developer
+with technical knowledge.
+• Limited functionality: Middleware can only work with certain systems.
+• For businesses integrating legacy systems with more modern systems, middleware is ideal,
+but it’s mostly a communications tool and has limited capabilities for data analytics.
+
+Application-based integration
+•
+
+Pros:
+•
+•
+•
+
+Simplified processes: One application does all the work automatically.
+Easier information exchange: The application allows systems and departments to transfer information seamlessly.
+Fewer resources are used: Because much of the process is automated, managers and/or analysts can pursue other projects.
+
+•
+
+Cons:
+• Limited access: This technique requires special, technical knowledge and a data manager and/or analyst to oversee
+application deployment and maintenance.
+• Inconsistent results: The approach is unstandardized and varies from businesses offering this as a service.
+• Complicated setup: Designing the application(s) to work seamlessly across departments requires developers, managers,
+and/or analysts with technical knowledge.
+• Difficult data management: Accessing different systems can lead to compromised data integrity.
+
+•
+
+Sometimes this approach is called enterprise application integration, because it’s common in enterprises working in hybrid cloud
+environments. These businesses need to work with multiple data sources — on-premises and in the cloud. This approach optimizes
+data and workflows between these environments.
+
+Uniform access integration
+• Pros:
+• Lower storage requirements: There is no need to create a separate place to store data.
+• Easier data access: This approach works well with multiple systems and data sources.
+• Simplified view of data: This technique creates a uniform appearance of data for the end user.
+• Cons:
+• Data integrity challenges: Accessing so many sources can lead to compromising data integrity.
+• Strained systems: Data host systems are not usually designed to handle the amount and
+frequency of data requests in this process.
+• For businesses needing to access multiple, disparate systems, this is an optimal approach. If the data
+request isn’t too burdensome for the host system, this approach can yield insights without the cost of
+creating a backup or copy of the data.
+
+Common storage integration
+•
+
+Pros:
+•
+•
+•
+•
+
+Reduced burden: The host system isn’t constantly handling data queries.
+Increased data version management control: Accessing data from one source, versus multiple disparate sources, leads to
+better data integrity.
+Cleaner data appearance: The stored copy of data allows managers and/or analysts to run numerous queries while
+maintaining uniformity in the data’s appearance.
+Enhanced data analytics: Maintaining a stored copy allows manager and/or analysts to run more sophisticated queries
+without worrying about compromised data integrity.
+
+•
+
+Cons:
+• Increased storage costs: Creating a copy of the data means finding and paying for a place to store it.
+• Higher maintenance costs: Orchestrating this approach requires technical experts to set up the integration, oversee, and
+maintain it.
+
+•
+
+Common storage is the most sophisticated integration approach. If businesses have the resources, this is almost certainly the best
+approach, because it allows for the most sophisticated queries. That sophistication can lead to deeper insights.
+
+When to use which approach?
+Data integration approach
+
+When to use it
+
+Manual data integration
+
+Merge data for basic analysis between a small amount of data sources
+
+Middleware data integration
+
+Automate and translate communication between legacy and modernized
+systems
+
+Application-based integration
+
+Automate and translate communication between systems and allow for more
+complicated data analysis
+
+Uniform access integration
+
+Automate and translate communication between systems and present the data
+uniformly to allow for complicated data analysis
+
+Common storage integration
+
+Present the data uniformly, create and store a copy, and perform the most
+sophisticated data analysis tasks
+
+Data Integration Tools
+Data Integration Tools
+
+Data Integration
+
+Features
+
+Connectors
+
+Hevo Data
+
+Automated Data Pipeline Platform. Supports Real-time Data Replication, Hassle-free Easy 100+ Pre-built Connectors across Databases (MySQL,
+both ETL and ELT.
+Implementation, Automatic Schema Detection,MongoDB, PostgreSQL, etc.), Cloud Applications (Google
+Change Data Capture, Enterprise-Grade
+Analytics, Salesforce, Google Ads, Facebook Ads, etc.),
+Security, Detailed Alerts and Logging, Zero
+SDKs and Streaming (Kafka, SQS, REST API, Webhooks,
+Data Loss Guarantee.
+etc.), File Storage (Amazon S3, Google Cloud Storage, etc.)
+
+IRI Voracity
+
+Fast, affordable ETL for structured, semiMulti-source, multi-action, multi- target in
+and unstructured data, with built-in data
+same I/O.
+profiling, quality, PII masking, BI, CDC, SCD,
+test data, and metadata management.
+
+Xplenty
+
+Data Integration platform. API component
+for advanced customization & flexibility.
+Supports both ETL and ELT.
+
+A complete toolkit for data pipelines, no-code Integrations are available for BI Tools, Databases,
+& low-code options, intuitive graphic
+Logging, Advertising, Analytics, Cloud Storage, etc.
+interface, etc.
+
+Informatica
+
+Advanced hybrid data integration
+capabilities.
+
+Integrated codeless environment.
+
+Connects to everything.
+
+Microsoft
+
+Hybrid data integration service.
+
+Can run SQL server integration services
+packages directly in Azure. Fully managed
+ETL service in the cloud
+
+Multiple native data connectors.
+
+Talend
+
+Integrates data with unified development
+and management tools.
+
+Open, scalable architecture. Five times faster RDBMS: Oracle, Teradata, Microsoft SQL server etc. SaaS
+than Map Reduce.
+like NetSuite & many more Packaged apps like SAP and
+Technologies like DropBox.
+
+Oracle
+
+Cloud-based data integration.
+
+Machine learning & AI capabilities. Data
+All RDBMS, Oracle and Non-Oracle technologies.
+migration across hybrid environments. Data
+profiling and governance.
+
+IBM
+
+Data integration for structured and
+unstructured data. Metadata management
+
+Massive parallel processing capabilities. Data Data source connection: Traditional data sources, Big data
+quality capabilities: Data profiling,
+and No SQL.
+standardization, matching, enrichment.
+
+https://www.softwaretestinghelp.com/tools/26-best-data-integration-tools/
+
+Multiple native and standard connectors for legacy and
+modern sources, on premise, streaming, or cloud.
+
+Questions?
+
+

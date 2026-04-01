@@ -1,0 +1,5234 @@
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integrated Systems
+- Introduction
+
+Based on slides by Marlon Dumas, Luciano García- Bañuelos,
+Orlenys López-Pintado, Gerrit Muller TNO-ESI, USN-SE
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Course Description
+The objective of this course is to introduce principles
+and methods for designing, implementing, and
+integrating enterprise applications.
+The course introduces approaches to enterprise
+system integration, including:
+◦ Resource-oriented architectures (REST)
+◦ API design methods and patterns of enterprise
+integration
+◦ Frameworks & tools for implementing &
+integrating enterprise applications
+
+INTRODUCTION
+
+ФИНКИ
+
+1
+
+2
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Course program content
+
+
+
+
+
+
+
+
+Explores the design, selection, implementation and management of
+enterprise IT solutions.
+The focus is on applications and infrastructure and their fit with the
+business.
+Students learn frameworks and strategies for infrastructure
+management, system administration, data/information architecture,
+content management, distributed computing, middleware, legacy
+system integration, system consolidation, software selection, total
+cost of ownership calculation, IT investment analysis, and emerging
+technologies.
+These topics are addressed both within and beyond the
+organization, with attention paid to managing risk and security within
+audit and compliance standards, secure software development.
+Students also hone their ability to communicate technology
+architecture strategies concisely to a general business audience.
+ФИНКИ
+
+3
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Details
+
+
+
+
+
+
+
+
+
+
+
+
+(1) Introduction to integration of IT systems (enterprise architecture
+frameworks).
+(1) Types of system integration (software, hardware).
+(1) Enterprise data models, Data / information architecture and data
+integration.
+(1) Data / information architecture and data integration (methodologies).
+(2) Introduction to data warehouses, ETL and data manipulation.
+(2) Technologies for system integration (XML, SOA, Web Services, COTS).
+(1) Virtualization, Cloud, Software as a Service, Open Source.
+(2) Enterprise Resource Planning Systems and business process models.
+(1) Management of risks, total cost of ownership and return of investment,
+revision and standards.
+(1) IT strategy and metrics, Emerging technologies, System administration
+(2) Secure software development
+ФИНКИ
+
+4
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Scope of the course
+Microservices
+
+REST
+
+Architectural
+Styles
+
+Service and
+API design
+
+Design patterns
+
+Analysis &
+Design
+
+Software
+Frameworks
+
+Agile practices
+???
+
+Domain-driven
+design
+
+???
+
+Middleware &
+Infrastructure
+MOM
+
+REST
+INTRODUCTION
+
+ФИНКИ
+
+Docker
+2
+
+5
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integrated Systems - Teaching Information
+
+
+Lectures
+ 2 classes per week
+
+
+
+Auditory Exercises
+ 2 classes per week
+
+
+
+Homework
+ homework is required to obtain a signature
+
+
+
+Independent work
+ x-y hours per week
+
+ФИНКИ
+
+6
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integrated Systems – Partial exams
+Key Point
+
+Part
+
+First partial exam
+
+35%
+
+Second partial exam
+
+35%
+
+Group or Individual Project
+
+25%
+
+Lab work
+
+5%
+
+Total
+
+100%
+
+The Project is mandatory
+
+ФИНКИ
+
+7
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integrated Systems – Final Exam
+Key Point
+
+Part
+
+Final Exam
+
+70%
+
+Group or Individual Project
+
+30%
+
+Total
+
+100%
+
+7 is the MAXIMUM grade that can be obtained without making a
+project
+
+ФИНКИ
+
+8
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integrated Systems - Information about
+Auditory Exercises
+
+
+Some of the topics that will be covered in the auditory exercises are
+given below:
+
+
+
+
+
+
+
+
+
+
+
+
+C#
+.NET vs .NET Core
+MVC
+Entity Framework
+Dependency Injection
+Onion Architecture
+Middleware
+Integration Testing (Postman)
+Background Workers
+Payment Providers
+Document manipulation and generation (upload/download)
+
+ФИНКИ
+
+9
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+People
+• Teachers
+• Ivan Chorbev
+• Petre Lameski
+• Aleksandar Stojmenski
+• Assistants
+◦ Zorica Karapancheva
+◦ Dimitar Kitanovski
+
+INTRODUCTION
+
+ФИНКИ
+
+5
+
+10
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Part 1
+PROBLEM STATEMENT AND
+INTRODUCTORY SCENARIO
+INTRODUCTION
+
+6
+
+11
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+The problem at glance
+• Users want to execute business
+functions that span multiple applications
+
+Isolated Systems
+
+• Requires disparate applications to be
+connected to a common integration
+solution
+• However:
+◦ No two applications are alike
+◦ Change is inevitable
+
+Unified Access
+Copyright © 2003 Gregor Hohpe
+
+INTRODUCTIONФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+7
+
+12
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Enterprise system scenario
+Information system of a small hotel
+Three functional areas:
+◦ Guest management: reservations, check-in (including room
+assignment), charges to room (e.g., room service), check-out,
+closing of bill
+◦ Keeping track of room availability, status – how many rooms
+still available for a given night, forecasting how many guests
+will stay beyond their reservation, forecasting occupancy of
+hotel at a future date
+◦ Scheduling room cleaning & maintenance: managing maid &
+maintenance staff, cleaning rooms after late check-out
+
+• Can you see dependencies across functional areas?
+
+Based on scenario
+by Richard Hull
+
+INTRODUCTIONФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+8
+
+13
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Enterprise system scenario
+Change # 1: A restaurant is opened for hotel
+guests and external customers:
+
+
+External customer pays for meal directly
+
+
+
+Hotel guest has option to pay for meal
+directly or charge to room
+
+◦ In either case, hotel likes to keep a record of the guest eating in
+◦ the restaurant, if guest is willing to reveal his room number
+◦ Restaurant offers breakfast
+
+for guests
+
+Restaurant billing system has touch-points with
+hotel guest system
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+9
+
+14
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Enterprise system scenario
+Change # 2: A loyalty program is introduced:
+• Set up new system to keep track of customers who are
+in loyalty program
+• Loyalty program has multiple touch-points with hotel
+system and restaurant system, e.g.,
+◦ At reservation time, inquiring if customer is a member of loyalty
+program, offering promotions, giving priority for room allocation to
+loyalty club members
+◦ At check-in, inquire if customer is in loyalty program, if not offer signup, if yes offer better room
+◦ Offer discounts at restaurant
+◦ Offer discounts on other services at check-out and record
+length of stay and points earned
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+10
+
+15
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Enterprise system scenario
+Change # 3: Hotel is bought out by a franchise:
+• Reservations can be made either through the franchise
+system or by calling the hotel
+◦ Room availability have to deal with this dual sourcing
+◦ Forecasting & pricing outsourced to franchise’s system
+
+• Loyalty program merged into franchise’s program
+◦
+
+Hotel no longer operates the loyalty program, but must interoperate
+with loyalty program system of franchise
+◦ Benefits of existing loyal customer must be honored
+◦ The franchise loyalty program gives points for all expenses paid, whereas
+the original loyalty program looked only at nights stayed in hotel
+
+• Room cleaning/maintenance LUCIANO
+still managed
+GARCÍA-BAÑUELOS locally
+ФИНКИ
+
+11
+
+16
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Part II
+EVOLUTION OF ENTERPRISE SOFTWARE
+
+12
+
+17
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Classical Enterprise System
+Application layers
+
+Enterprise software
+
+• Users interact with the system
+through a presentation layer
+(aka user interface or UI)
+• The application logic (aka
+business logic) determines what
+the system actually does:
+
+Presentation
+
+◦ Enforces business rules
+◦ Coordinates business processes
+
+Application
+logic
+
+• The data access layer facilitates
+the access to persistent data
+manipulated by the application
+logic.
+
+Data access
+
+◦ Includes access to databases,
+search engines, document
+managers and/or a file system.
+
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+18
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Tiers or Layers?
+• N-tier architectures aim at splitting the application in
+components into different tiers/layers
+• Tiers refer to physical distribution of components
+◦ Components can be executed over a collection of computers
+
+• Layers refer to logical separation of components
+◦ Layered architecture: Communication should only happen with the
+contiguous layers
+◦ Promotes reuse and logic independence (components should be
+seamlessly replaceable)
+☛ The number of tiers in the system somehow reflects the
+
+evolution of software architectures w.r.t. distribution
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+19
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Evolution of computation
+60’s
+
+70’s
+
+IBM
+mainframes
+
+IBM, DEC
+Mini-comp.
+Unix, VAX
+
+Monolithic
+applications
+Batch
+processing
+
+80’s
+
+00’s
+
+10’
+
+PC, DOS
+Windows
+Mac, MacOS Internet
+WANs & LANs Web & HTTP
+
+Web 2.0
+Mac OS X
+Windows XP
+
+iOS, Android
+HTML5
+SaaS, PaaS,
+IaaS
+
+Dumb
+terminals
+
+Client-Server
+
+CORBA &
+Browsers
+
+Application
+servers
+
+Cloud
+computing
+
+Time-sharing
+
+Relational
+DBMSs
+
+CGI
+
+SOA & ROA
+
+Microservices
+NoSQL
+
+ФИНКИ
+
+90’s
+
+LUCIANO GARCÍA-BAÑUELOS
+
+20
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+INTRODUCTION
+
+16
+
+21
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Evolution of computation
+60’s
+
+70’s
+
+IBM
+mainframes
+
+IBM, DEC
+Mini-comp.
+Unix, VAX
+
+Monolithic
+applications
+Batch
+processing
+
+80’s
+
+00’s
+
+10’
+
+PC, DOS
+Windows
+Mac, MacOS Internet
+WANs & LANs Web & HTTP
+
+Web 2.0
+Mac OS X
+Windows XP
+
+iOS, Android
+HTML5
+SaaS, PaaS,
+IaaS
+
+Dumb
+terminals
+
+Client-Server
+
+CORBA &
+Browsers
+
+Application
+servers
+
+Cloud
+computing
+
+Time-sharing
+
+Relational
+DBMSs
+
+CGI
+
+SOA & ROA
+
+Microservices
+NoSQL
+
+ФИНКИ
+
+90’s
+
+LUCIANO GARCÍA-BAÑUELOS
+
+22
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+1-tier architecture
+Enterprise software
+
+• All layers are bundled in a monolithic
+entity
+Presentation
+Application
+logic
+Data access
+
+• Typical “mainframe” architecture
+◦ Users access the system through dumb
+terminals
+◦ All computation happens in a single
+computer
+Pros
+
+Cons
+
+No context switching in
+the control flow
+
+Limited scalability due to
+restrictions in the
+number of processors
+
+Centralization eases
+resource
+management/sharing
+
+Oftentimes the code is
+platform specific, limiting
+portability
+
+Code highly optimisable
+
+Intertwined code
+hindering maintenance
+
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+23
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+2-tier architecture (1/2)
+• With the introduction of computer
+networks, computation started to be
+physically distributed
+
+Enterprise software
+
+Client
+Presentation
+Application
+logic
+Data access
+
+• Application layers are distributed
+depending on the computing power of
+clients:
+◦ Thin clients execute only presentation layer
+◦ Fat clients execute both presentation and
+application logic layers
+
+• The concept of API makes its appearance
+• Notable example: Database management
+systems
+
+Server
+
+◦ The separation of data access layer promotes
+logical independence, reducing the impact of
+replacing a database technology on the
+presentation application logic layers
+
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+24
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+2-tier architecture (2/2)
+• With the arrival of PCs, the presentation
+layer moved to the client
+Enterprise software
+
+Clients
+
+Server
+
+UI1
+
+UI2
+Application
+logic
+Data access
+
+UIn
+
+◦ Smartphones?
+
+• With this approach, it is possible to have
+multiple presentation layers
+◦ Text (console) application
+◦ Graphical user interfaces (e.g., Java swing)
+◦ Web applications (e.g., HTML5, Javascript,
+etc.)
+
+• Web as the universal platform for
+computing?
+◦ Google’s Chromium OS
+
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+25
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+3-tier architecture: The middleware arrives
+• Middleware is a level of
+indirection between
+clients and other layers
+
+Presentation
+
+Integration
+logiclogic
+Middleware or global
+application
+Local application
+logic
+
+Local application
+logic
+
+Local data access
+
+Local data access
+
+Server A
+
+◦ Simplifies the design of client
+applications by reducing the
+number of interfaces
+◦ Encapsulates integration logic
+and global application logic
+◦ Locates resources, accesses
+them, and integrates results
+(mediates between
+application logic/data access
+layers)
+
+Server B
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+26
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+N-tier architecture
+client
+Web browser
+
+Web server
+HTML filter
+
+Presentation
+layer
+
+Application logic
+layer
+
+Data access layer
+
+© Gustavo Alonso, ETH Zurich
+
+middleware
+
+• N-tier architectures result from
+connecting several 3- tier systems
+and/or adding a layer to allow
+clients to access the system
+through a Web server (“Web
+layer”)
+• The Web layer is hosted in a Web
+application server: a middleware
+accessible through the Web.
+• Web application servers are taking
+also parts of the functionality of
+traditional middleware – the
+boundary between the Web layer
+and the middleware is blurred.
+
+INTRODUCTION
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+27
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Flexibility versus Performance
+• The more boxes, the more
+modular the system: more
+opportunities for distribution and
+parallelism; more extensibility
+points.
+
+There is no problem in system
+design that cannot be solved
+by adding a level of indirection.
+There is no performance
+problem that cannot be solved
+by removing a level of
+indirection.
+
+© Gustavo Alonso, ETH Zurich
+
+• The more boxes, the more arrows:
+more connections need to be
+maintained, more coordination is
+needed. Complexity increases.
+• The more boxes, the greater the
+number of context switches and
+intermediate steps to get to the
+data. Performance degrades.
+• System designers try to balance
+the flexibility of modular design
+with performance demands.
+
+INTRODUCTION
+ФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+28
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Microservices – breaking the midtier
+Product catalog
+User manager
+Shopping cart
+Payment
+Shipping
+Application server
+
+INTRODUCTIONФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+24
+
+29
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+The GILT experience
+
+we sell every day at noon
+
+Adrian Trenaman, VP Engineering, Gilt
+Microservices Dublin Meetup, Feb 2015
+
+ФИНКИ
+
+INTRODUCTION
+
+LUCIANO GARCÍA-BAÑUELOS
+
+30
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Once upon a time …
+
+2007 - ruby-on-rails monolith
+Adrian Trenaman, VP Engineering, Gilt
+Microservices Dublin Meetup, Feb 2015
+
+ФИНКИ
+
+INTRODUCTION
+
+LUCIANO GARCÍA-BAÑUELOS
+
+31
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+… breaking apart the monolith
+teams focused on
+business lines
+
+Monolithic Java
+App; huge
+bottleneck for
+innovation.
+
+lots of
+duplicated code
+:(
+Hidden
+linkages; buried
+business logic
+
+Large looselytyped
+JSON/HTTP
+services
+
+2011: java, scala, loosely-typed services
+Adrian Trenaman, VP Engineering, Gilt
+Microservices Dublin Meetup, Feb 2015
+
+ФИНКИ
+
+INTRODUCTION
+
+LUCIANO GARCÍA-BAÑUELOS
+
+32
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+… and the story continues
+
+2015: micro-services
+Adrian Trenaman, VP Engineering, Gilt
+Microservices Dublin Meetup, Feb 2015
+
+ФИНКИ
+
+INTRODUCTION
+
+LUCIANO GARCÍA-BAÑUELOS
+
+33
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Microservices: A matter of scale …
+
+James Lewis & Martin Fowler: Microservices
+http://martinfowler.com/articles/microservices.html
+
+INTRODUCTION
+
+LUCIANO GARCÍA-BAÑUELOS
+
+34
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Organizational implications
+Any organization that designs a system (defined broadly) will produce a design
+whose structure is a copy of the organization's communication structure.
+-- Melvyn Conway, 1967
+
+James Lewis & Martin Fowler: Microservices
+INTRODUCTION
+http://martinfowler.com/articles/microservices.htmlФИНКИ
+
+LUCIANO GARCÍA-BAÑUELOS
+
+35
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Discussion question
+• UKIM’s Study Information System is currently a
+monolith
+• What could be the benefits of splitting it into microservices?
+◦ Under what conditions this would be done?
+
+• If it was broken into microservices, how could it be
+split?
+• How can we approach this question in the first place?
+
+INTRODUCTION
+
+ФИНКИ
+
+36
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Mastering Systems Integration
+ Abstract
+ The course Mastering Systems Integration
+
+discusses multiple perspectives on systems
+integration. The dominating principle underlying
+the course is that unknowns and major
+uncertainties need to be found as early as
+possible to mitigate system and project
+consequences. A good subtitle of the course is
+”Archi- tects meet Project Leaders meet Reality.”
+ФИНКИ
+
+37
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Mastering Systems Integration;
+Introduction
+
+
+Abstract
+
+
+
+This presentation introduces the ideas behind the course
+Mastering Systems Integration.
+Systems integration
+requires cooperation from many project members, such
+as project leader, product manager, architect, lead
+designer, integrator, and tester. Integration is more than a
+simple aggregation as the reverse of the decomposition.
+The purpose of systems integration is to detect anything
+nasty that has not been foreseen as early as possible.
+ФИНКИ
+
+38
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integration uncovers hidden problems
+
+
+component 1
+
+
+
+component 2
+
+
+
+component 3
+
+
+
+component 4
+
+Do you have any
+design issues for the
+design meeting?
+
+
+
+
+
+scheduled
+closing date
+
+realized
+closing date
+
+integration and test
+delay
+During integration numerous
+problems become visible
+
+The default answer
+is: No.
+39
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Project Team; Contributions to
+Integration
+Operational
+Project Leader
+
+
+
+
+
+planning
+organizing
+resources
+progress
+
+Technical
+Architect
+Lead Designer
+Integrator
+ key functionality
+ key performance
+parameters
+ concept selection
+ system design
+ integration sequence
+
+Commercial
+Product Manager
+ customer needs
+ customer value
+ system specification
+
+Tester
+
+
+
+
+
+
+testing
+test configuration
+testware
+test specifications
+test reports
+ФИНКИ
+
+40
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+The Role of Integration in
+Development
+inputs
+stakeholder needs
+business objectives
+
+architecting
+and design
+
+specification
+
+architecture
+guidelines
+top-level design
+rationale
+
+artifacts
+models
+prototypes
+parts
+
+integration
+verification &
+validation
+qualification
+evidence
+
+design
+partitioning
+interfaces
+functions
+allocation
+
+engineering
+
+documentation
+
+life cycle
+support
+
+system and parts data
+procedures
+
+feedback
+ФИНКИ
+
+41
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+The Pain of Systems Integration
+partition for
+concurrent
+engineering
+
+traditional project
+management focus
+ time
+
+aggregation
+delay
+
+ cost
+delays caused
+by knowledge gap
+
+ resources
+
+100%
+
+commitment
+
+problem
+
+knowledge gap
+
+when specifying parts and
+during project planning,
+
+system specific
+knowledge
+
+the system specific
+knowledge is low
+after: Systems Engineering and Analysis, Fifth Edition
+
+Benjamin S. Blanchard • Wolter J. Fabrycky
+Copyright ©2011, ©2006, ©1998 by Pearson Education, Inc.
+Upper Saddle River, New Jersey 07458
+
+ФИНКИ
+
+42
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Systems Integration Approach
+Systems Integration starts when the project starts
+The Integration perspective drives the project schedule by
+addressing the major risks from
+volatility, uncertainty, complexity and ambiguity
+Systems Integration strives to Fail Early; it is an early verification
+and validation
+Systems Integration requires multidisciplinary teamwork, e.g.
+Integrators, Testers, Architects, Designers, Engineers,
+Project Leaders, Product Managers, and others
+Systems Integration complements Systems Architecting
+ФИНКИ
+
+43
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Tasks
+System Specification
+
+
+determine KPPs and their
+quantified specification
+
+
+
+assess risk of KPPs caused by
+volatility, uncertainty, complexity and
+ambiguity
+
+
+
+Systems Integration Plan
+determine an incremental integration
+sequence to measure the KPP as early
+as possible
+
+
+
+assess for the parts contributing to the KPP
+ fitness for purpose in customer context
+
+pick one high-risk KPP to elaborate
+
+ integration configurations and testware
+
+describe typical use (including circumstances
+in the context) related to KPP
+
+ supplier and logistics status
+ technology readiness
+ development and resource status
+
+System design
+
+
+
+
+
+
+make system, SW, and HW block diagrams
+(parts, interfaces, connections)
+
+
+
+model dynamic behavior resulting in the KPP
+
+
+
+map dynamic behavior on block diagrams
+
+Identify tensions with development, logistics
+status, and availability of testware
+and transform the sequence in a (PERT) plan
+with required resources and integration
+configurations
+
+and budget: quantify contributions to KPP
+
+
+
+assess robustness of the plan
+
+
+
+re-assess risks of KPP
+
+
+
+capture results in presentation
+
+
+
+Reflection and Evaluation
+identify tensions or gaps in processes, organization, people, tools, instrumentation,
+context knowledge, etc. for executing the integration.
+ФИНКИ
+
+44
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+A
+
+project overview shows the
+overview of a project on a single slide
+or sheet. The overview helps the team
+share the same understanding of
+scope, objectives, and timeline.
+
+ФИНКИ
+
+45
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Project Overview Canvas
+Project Title
+
+meta information, e.g. version, date
+author, owner
+
+Project Goals
+
+system context
+
+system of interest
+
+ specific and quantified
+
+ visualization (drawing, block diagram, 3D
+model, or photo) of the system context
+
+ visualization (drawing, block diagram, 3D
+model, or photo) of the system
+
+ indication of changes in the context
+
+ indication of changes in the system of interest
+
+Key Performance
+Parameters
+ specific and quantified
+
+project master plan with timeline
+ timeline with 5 to 10 milestones, especially deliverables
+ specific and quantified
+
+ФИНКИ
+
+optional information, e.g.
+ enabling systems
+ stakeholders
+ external or internal
+interfaces
+ constraints, e.g.
+applicable legislation
+46
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Example Project Overview
+version 2.0. January 22, 2023
+author: Gerrit Muller
+
+Project overview Metal Printer R2
+Project Goals
+support production of node 1C
+process development
+
+Q2 2022
+
+volume production
+
+Q2 2023
+
+productivity
+
+30,000 W/m
+
+yield
+
+95%
+
+system context
+
+system of interest
+
+new sputter
+process
+
+power +10%
+new cooling
+
+new align
+power +10%
+
+clean
+master
+
+back-end factory
+
+Key Performance Parameters
+min. line width 100 nm
+overlay
+30 nm
+throughput
+100 WPH
+MTBF
+2000 hr
+wafer size
+300 mm
+power
+5 kW
+clean room class
+C
+floor vibration class
+D
+
+advanced
+process
+control
+
+logistics &
+automation
+
+mask
+wafer fab
+(front end) wafer
+with
+ICs
+
+power, chemicals
+consumables, waste
+
+computing &
+networking
+infrastructure
+
+metal
+printer
+
+metrology
+
+metal
+expose
+expose
+wafer
+wafer
+printer
+stepper
+stepper
+
+prefill
+
+Q1
+
+Q3
+2022
+
+prealign
+
+master
+FOUP
+
+power
+chemicals
+climate
+infrastructure
+
+wafer
+FOUP
+
+wafer
+FOUP
+
+flip
+
+changing enabling systems
+
+1st R&D
+shipmen
+t
+
+Design Design Design
+Review 1 Review 2 Review
+3
+Q2
+
+clean
+wafer
+
+robot
+
+ICs
+
+project master plan
+Spec
+freez
+e
+
+more
+accurate
+
+faster
+new clamp
+
+Q4
+
+Q1
+
+Q2
+
+SAT start volume customer
+24*7
+full spec shipments
+use
+Q3
+
+2023
+ФИНКИ
+
+Q4
+
+Q1
+
+conditioned transport
+calibration wafers
+calibration metrology
+
+Q2
+2024
+47
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Project Overview Canvas
+Project Title
+
+meta information, e.g. version, date
+author, owner
+
+Work Breakdown Structure
+
+Project Master Plan
+
+ visualization
+
+ PERT plan with major milestones
+
+ builds upon the Product
+Breakdown Structure
+
+project organization
+ allocation of roles
+ specific additions or deviations
+
+ФИНКИ
+
+48
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Excercise
+Make an initial project overview for your own project
+Project Title
+
+meta information, e.g. version, date
+author, owner
+
+Project Goals
+
+system context
+
+system of interest
+
+ specific and quantified
+
+ visualization (drawing, block diagram, 3D
+model, or photo) of the system context
+
+ visualization (drawing, block diagram, 3D
+model, or photo) of the system
+
+ indication of changes in the context
+
+ indication of changes in the system of interest
+
+Key Performance
+Parameters
+ specific and quantified
+
+project master plan with timeline
+ timeline with 5 to 10 milestones, especially deliverables
+ specific and quantified
+
+ФИНКИ
+
+optional information, e.g.
+ enabling systems
+ stakeholders
+ external or internal
+interfaces
+ constraints, e.g.
+applicable legislation
+
+49
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Discuss the Case
+Sketch the system-of-interest
+
+What are the most relevant project goals?
+
+Sketch the project master plan (the main milestones and
+their timing)
+
+ФИНКИ
+
+50
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Determine KPPs
+Determine 5 to 10 Key Performance Parameters (KPP)
+of the System
+
+Quantify these KPPs
+
+Define the KPPs roughly, using a Use Case
+
+ФИНКИ
+
+51
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+VUCA Causes Risks
+VUCA =
+Volatility
+
+Uncertainty
+
+Complexity
+
+Ambiguity
+
+ФИНКИ
+
+52
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Assess Risks of KPPs
+Assess the risk for each KPP
+
+Explain why this KPP may suffer from this risk
+
+Select one KPP to work on in the remainder of the Faceto-Face workshop
+this KPP should be “hot” (lot of organizational buzz)
+you may also select two “conflicting” KPPs
+ФИНКИ
+
+53
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Describe Typical Use
+Define the typical use (by customer stakeholders) of the
+system in relation to the selected KPP.
+
+This use case helps to define the KPP further
+
+This use case will guide the verification and validation
+
+ФИНКИ
+
+54
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Make Block Diagrams
+Make block diagrams of the system, the software, and the
+hardware.
+
+Block diagrams show parts, and interfaces or
+connections.
+
+These block diagrams need tens of blocks.
+
+ФИНКИ
+
+55
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Model Dynamic Behavior
+Model the Dynamic Behavior of the System.
+
+Focus on the Dynamic Behavior that relates to the KPP.
+
+Visualize the Dynamic Behavior with various sketches,
+diagrams, or graphs (see Visualizing Dynamic Behavior
+for inspiration).
+
+ФИНКИ
+
+56
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Make Budget
+Map the Dynamic Behavior on the block diagrams.
+
+Transform this into a budget:
+Quantify contributions of parts and functions to the
+KPP.
+
+ФИНКИ
+
+57
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Re-assess Risks
+Re-assess the risks for the chosen KPP
+using the insights gained so far
+These risks are leading when defining the integration
+sequence
+
+ФИНКИ
+
+58
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Determine an Incremental
+Integration Sequence
+Determine an incremental integration sequence to build
+confidence in the KPP ASAP.
+
+Strive for about 6 main increments.
+Reason starting at the end result and then backward in
+time.
+
+For each increment determine its prerequisites in terms of
+parts, interfaces, functions, and performance levels.
+ФИНКИ
+
+59
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Assess Other Planning Perspectives
+assess the planning from the perspectives:
+
+
+fitness for purpose in customer context
+
+
+
+integration configurations and testware
+
+
+
+supplier and logistics status
+
+
+
+technology readiness
+
+
+
+development and resource status
+ФИНКИ
+
+60
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Transform into PERT plan
+
+Transform the integration sequence and the planning from
+the other perspectives into a PERT-plan.
+A PERT-plan focuses on activities and their mutual
+relations; the logic of the plan. Time and resources are
+secondary information.
+
+ФИНКИ
+
+61
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Assess Robustness
+Assess how well the PERT plan addresses the original
+risks in the KPPs.
+Assess the robustness of the PERT-plan for changes.
+All assumptions in the integration plan will probably
+change. A good integration PERT-plan shouldn’t change
+much.
+
+ФИНКИ
+
+62
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Prepare Final Presentation
+Prepare a presentation for the management
+ to communicate the systems integration approach
+ its rationale
+ and its impact on the project, the test configurations,
+the schedule, the organization, and the suppliers
+
+ФИНКИ
+
+63
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Content for Final
+Presentation
+ Goal of this presentation, main message, desired outcome
+ Mission/goal of end customer
+ Master plan, milestones and dates
+ Key performance parameters of the system
+ Block diagrams (20..30 blocks), dynamic behavior (20..30
+blocks), some supporting visualizations, budget
+ Integration strategy and sequence
+ PERT plan (proposal)
+ Summary and specific actions, and recommendations (e.g.
+allocate these resources, order …, etc.)
+
+ФИНКИ
+
+64
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Typical Concurrent Product
+Creation Process
+policy
+
+requirements
+
+design
+
+integrate
+
+test
+
+policy
+requirements and
+specification
+design
+
+integrate
+-1
+strategy
+
+0.
+feasibility
+
+1.
+definition
+
+2.
+system
+design
+
+3.
+engineering
+
+ФИНКИ
+
+test
+
+4.
+integration
+& test
+
+5.
+field
+monitoring
+
+6.
+product operational
+life cycle
+
+65
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Zooming in on Integration and
+Tests
+focus on reducing uncertainties
+and hitting unknowns
+“Fail Early”
+
+integrate
+0.
+1.
+feasibility definition
+
+2.
+system
+design
+
+3.
+engineering
+
+focus on qualification:
+documenting objective
+evidence
+
+system
+test
+
+alph
+a
+test
+
+4.
+integration & test
+
+ФИНКИ
+
+bet
+a
+tes
+t
+
+gamma
+test
+
+5.
+field
+monitoring
+
+6.
+product operational
+life cycle
+
+66
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integration Takes Place in a
+Bottom-up Fashion
+integrate
+
+alpha
+test
+
+component
+subsystem
+system function
+product
+context
+ФИНКИ
+
+67
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ Hardware
+
+and software differ in
+their characteristics, which impacts
+their role in systems integration. The
+main message in this lesson is that
+the focus of integration is at the
+system, where both hardware and
+software contribute.
+ФИНКИ
+
+68
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+From Components to
+System Qualities
+overlay
+CD control
+productivity
+
+system qualities
+prepare
+
+align and
+calibrate
+
+transport wafer
+laser
+
+lens
+
+scan and
+expose
+
+functions
+
+stages
+
+handlers
+
+illuminator
+
+transport reticle
+electronics infra
+metro frame
+
+subsystems
+source
+mirrors
+fiducials
+lens elements
+flaps
+air showers
+
+frames
+motors
+sensors
+robot
+bolts
+nuts
+
+air mounts
+PCBs
+ICs
+cables
+cabinets
+
+OS
+computer
+disks
+monitor
+drivers
+
+database
+user interface
+TCP/IP
+comms package
+
+components
+ФИНКИ
+
+69
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Role of Software
+system qualities
+
+functions
+
+subsystems
+
+components
+ФИНКИ
+
+SW
+70
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Pitfall: Late HW-SW Integration
+SW unit 1
+SW unit 2
+SW unit 3
+SW unit 4
+
+SW
+component A
+SW
+component B
+
+SW
+(sub)system
+
+typically,
+SW uses old hardware
+or stubbed hardware
+
+system
+HW el. 1
+HW el. 2
+HW el. 3
+HW el. 4
+
+HW module A
+
+HW
+(sub)system
+
+HW module B
+
+typically, HW uses
+old, vendor-specific,
+or special software
+
+Segregation of hardware and software is
+a typical organizational problem.
+
+Erroneous assumptions about
+hardware are discovered late.
+
+Such segregation ignores close coupling
+of hardware and software.
+
+Key performance parameters
+are visible late.
+
+ФИНКИ
+
+71
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Transition from Previous
+System to New System
+adopt existing
+base SW
+
+existing
+
+new
+
+new application
+SW dev system
+
+2 partial
+systems for
+SW testing
+2 existing
+base
+systems
+
+test and refine application
+
+existing base system
+
+integrate and refine
+application
+
+application integration
+
+SW for new HW
+subsystem
+SW dev system
+
+test SW for new HW
+subsystem
+
+new subsystem
+integration
+
+new HW subsystem
+existing base system
+
+test HW subsystem
+
+integrate
+subsystem
+
+integrated
+system
+adopt existing base SW
+
+new base
+systems
+
+new base system
+
+test new base system
+
+integrate HW
+system
+
+integrate
+system
+
+time
+ФИНКИ
+
+72
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ This
+
+presentation defines terms,
+which are used in relation to systems
+integration,
+such
+as
+validation,
+verification, qualification, evidence,
+approval process, certifi- cation, and
+acceptance.
+ФИНКИ
+
+73
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Validation and Verification
+in the V-model
+validation does the system fit the
+needs and match expectations?
+
+needs
+specification
+
+system
+design
+
+verification did we build
+what we specified and
+according the design?
+
+subsystem
+design
+
+validation
+verification
+
+system test
+
+subsystem
+test
+
+component
+design
+
+component
+test
+
+component realization
+
+ФИНКИ
+
+74
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Functional Model of Verification
+test
+specification
+system-of-interest
+test inputs
+requirements
+
+test
+environment
+
+test
+report
+
+results
+
+review
+
+assess
+conclusion
+references
+
+ФИНКИ
+
+report
+
+problem reports
+deviations
+qualification
+documentation
+with objective
+evidence
+75
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Certification
+Certification: an independent agency (e.g. DNV-GL) certifies the quality of
+the system-of-interest, technology, or process
+Self-certification: the company has been accredited by the agency to do the
+certification themselves.
+check
+qualification data
+check process
+and organization
+optional audit
+certify
+ФИНКИ
+
+76
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Development and (repeated)
+Production
+system
+specification
+system
+design
+
+test
+specification
+
+qualification
+verification documentation
+
+development; only after design changes
+
+acceptance
+test
+procedure
+
+FAT
+
+factory
+FAT report
+
+SAT
+
+site
+SAT report
+
+production and delivery
+once per system
+
+ФИНКИ
+
+77
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Objective Evidence
+From a business perspective: Objective evidence is “information based on
+facts that can be proved through analysis, measurement, observation, and
+other such means of research.”
+From a legal perspective: Objective evidence is “real evidence, also known
+as demonstrative or objective evidence; this is naturally the most direct
+evidence.”
+From a scientific perspective: “To be termed scientific, a method of inquiry
+must be based on gathering observable, empirical, and measurable
+evidence subject to specific principles of reasoning. A scientific method
+consists of the collection of data through observation and experimentation,
+and the formulation and testing of hypotheses.”
+From a list of Plain English definitions related to the ISO 9000, 9001
+and 9004: Objective evidence is “data that show or prove that something
+exists or is true. Objective evidence can be collected by performing
+observations, measurements, tests, or by using any other suitable method.”
+from: Understanding Objective Evidence: (What ItIs and What It Definitely Is Not),
+by Denise Dion http://www.eduquest.net/Advisories/EduQuest%20Advisory_ObjectiveEvidence.pdf
+ФИНКИ
+
+78
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+FDA Requirements for
+Objective Evidence
+FDA is a science-based law enforcement agency and, therefore, requires
+answers that are scientifically and legally supported. FDA expects your
+objective data to answer the following questions:
+
+
+Scientific – Can the data be evaluated by independent observers to
+reach the same conclusions?
+
+
+
+Scientific – Are the data documented in a manner that allows recreation of the data or the events described?
+
+
+
+Scientific – Does the documented evidence provide sufficient data to
+prove what happened, when, by whom, how, and why?
+
+
+
+Legal – Was the documentation completed concurrently with the tasks?
+
+
+
+
+Legal – Is the documentation attributable (directly traceable to a person)?
+
+
+
+Legal – Are the data and associated documentation maintained in a manner that protects and
+secures them from changes, deletions, additions, substitutions, or alterations?
+
+Legal – Have the data and associated documentation been maintained in a manner that provides
+traceable evidence of changes, deletions, additions, substitutions, or alterations?
+
+from: Understanding Objective Evidence: (What It Is and What It Definitely Is Not),
+by Denise Dion http://www.eduquest.net/Advisories/EduQuest%20Advisory_ObjectiveEvidence.pdf
+ФИНКИ
+
+79
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Regulatory Approval Process
+manufacturer
+
+regulatory agency
+(e.g. FDA, DNV-GL)
+provide regulations
+
+create system
+perform tests and
+trials
+review and approve
+manufacture and
+deliver
+ФИНКИ
+
+audit and inspect
+80
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Abstract
+This presentation discusses economic aspects related to integration.
+
+ФИНКИ
+
+81
+
+Systems Engineering and Analysis, Fifth Edition
+Copyright ©2011, ©2006, ©1998 by Pearson Education, Inc.
+Upper Saddle River, New Jersey 07458
+
+Benjamin S. Blanchard • Wolter J. Fabrycky
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Life-cycle commitment,
+knowledge, and incurred cost
+
+ФИНКИ
+
+82
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Delays are Expensive
+Importance of Time to Market
+ No loss of value by customer
+ Return on investement & profit ASAP
+ Competitive edge, market share
+ Free up critical resources for next projects ASAP
+ Obsolesence
+
+ФИНКИ
+
+83
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Cost Related Milestones
+
+3.
+engineering
+
+4.
+integration
+& test
+
+ФИНКИ
+
+5.
+field
+monitoring
+
+decommissioning
+and recycling
+
+start
+volume operations
+at customer
+
+ship and install
+
+start logistics and
+manufacturing
+
+start sales
+
+order long lead
+items
+
+What knowledge does the project need to make these critical steps?
+
+6.
+product operational
+lifecycle
+
+84
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ The core principle of systems integration is
+
+early validation; are the assumptions of the
+needs, specifications and design decisions
+valid? it is better to fail early, then to hit
+faulty
+assumptions,
+unknowns,
+or
+uncertainties late in development.
+ФИНКИ
+
+85
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Most Problems are Found Late
+failures found during integration and test
+can be traced back to unknowns,
+unforeseens, and wrong assumptions
+ε
+
+needs
+specification
+
+validation
+verification
+
+ε
+
+system design
+subsystem design
+component design
+
+ε
+
+system test
+
+subsystem test
+
+component test
+
+component realization
+
+ФИНКИ
+
+86
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Waterfall model
+identify
+needs
+specify
+
+works well:
+ in mature product-market combinations
+ with long development cycles
+works poorly:
+ in new product-market combinations
+ short development cycles
+
+design
+realize
+integrate
+
+verify &
+validate
+ФИНКИ
+
+87
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Concurrent Engineering
+identify
+needs
+
+ total development time is shorter
+ technology constraints & opportunities
+take time to get in the picture
+ validation is still late (=feedback on
+uncertain requirements)
+
+specify
+design
+
+realize
+integrate
+qualify
+ФИНКИ
+
+88
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Iterative Approach
+learn fast by iterating over needs and
+technology
+
+identify needs
+
+ more chaotic
+ requires agile mindset
+
+specify
+design
+realize
+
+integrate
+qualify
+ФИНКИ
+
+89
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Continuous Integration
+number of
+hidden issues
+
+continuous integration forces
+ continuous confrontation
+ no build-up of issues
+
+perceived
+development
+disturbance
+
+ ensures working system
+ less complex diagnosis
+
+However,
+ongoing changes may be
+perceived as disturbing
+
+frequency of
+integration
+steps
+ФИНКИ
+
+90
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Development Processes From
+Waterfall to Agile
+waterfall
+
+M1
+
+triple-V
+
+functional
+model
+
+spiral
+
+many Vs
+
+M2
+
+M3
+
+prototype
+
+product
+
+agile/incremental/
+continuous
+and all kinds of
+hybrids
+
+ФИНКИ
+
+91
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ This
+
+presentations discusses the
+strategy for integration. The strategy
+is trans- formed into an approach to
+determine an integration sequence
+based
+on
+Key
+Performance
+Parameters and potential risks to
+achieve them.
+ФИНКИ
+
+92
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integration Strategy
+ Get Key Performance Parameters functioning ASAP
+ Work on highest risks ASAP
+ Use a pacing process (regular visible results)
+ with regular milestones
+ and increments in functionality and performance
+ Merge constraints from test configurations, suppliers,
+resources, etc.
+
+ФИНКИ
+
+93
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Pacing Milestones
+functioning
+exposure
+and
+acquisition
+
+First image
+manual
+preparation
+
+10% IQ
+manual
+preparation
+
+20% IQ
+automated
+preparation
+10% speed
+
+50% IQ
+automated
+preparation
+100%
+speed
+
+Full IQ
+Full speed
+
+time
+
+pacing:
+maximum 6 month between milestones
+depending on technology and domain
+
+ФИНКИ
+
+94
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Defining an Integration
+Sequence in Increments
+Key Performance Parameters (KPPs) and Key Functionality milestones
+functioning
+exposure
+and
+acquisition
+
+First image
+manual
+preparation
+
+10% IQ
+manual
+preparation
+
+20% IQ
+automated
+preparation
+10% speed
+
+50% IQ
+automated
+preparation
+100% speed
+
+Full IQ
+Full speed
+
+time
+
+definition of integration increments working backwards in time (demand driven)
+imaging stream
+acquisition
+increment
+
+imaging
+increment
+
+IQ 1
+increment
+
+IQ 2
+increment
+
+IQ 3
+increment
+
+IQ 4
+increment
+
+control and performance stream
+exposure
+increment
+
+manual prep
+increment
+
+automation
+increment
+ФИНКИ
+
+speed
+increment
+95
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Stepwise Integration Approach
+1
+
+Determine most critical system performance parameters.
+
+2
+
+Identify subsystems and functions involved in these parameters.
+
+3
+
+Work towards integration configurations along these chains
+of subsystems and functions.
+
+4
+
+Show system performance parameter as early as
+possible; start with showing "typical" system performance.
+
+5
+
+Show "worst-case" and "boundary" system performance.
+
+6
+
+Rework manual integration tests in steps into automated regression
+tests.
+
+7
+
+Monitor regression results with human-driven analysis.
+
+8
+
+Integrate the chains: show system performance of different parameters
+simultaneously on the same system.
+ФИНКИ
+
+96
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Abstract
+Integration requires an environment that serves as vehicle for the integration.
+Typically, a wide variation of enviroments supports the integration.
+
+ФИНКИ
+
+97
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Spectrum of Environments
+to Support Integration
+spectrum
+physical
+reality
+
+physical
+simulated
+
+complex
+virtual
+
+simple
+
+virtual environment
+
+physical
+environment
+
+simulated
+subsystems
+
+(modified)
+existing
+subsystems
+
+stubs
+
+to-be-integrated
+subsystem
+
+(prototype)
+new
+subsystems
+ФИНКИ
+
+98
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Spectrum from Real to
+Virtual Systems
+“real” world
+
+virtual world
+data
+
+stakeholders
+
+virtual world; HIL
+data
+
+stakeholders
+
+environment
+
+agentts
+mutually interacting
+systemof-interest
+
+system
+
+stakeholders
+mutually interacting
+systemof-interest
+
+environment
+
+agentts
+
+environment
+
+system
+
+data
+
+system
+
+system
+
+systemof-interest
+
+consisting of
+
+system
+
+“real” world; testing
+
+environment
+
+agentts
+mutually interacting
+
+system
+
+systemof-interest
+
+system
+
+subsystem
+
+software
+component
+
+data
+
+stakeholders
+
+mutually interacting
+
+subsystem
+
+hardware
+component
+
+virtual world; SIL
+
+subsystem
+
+consisting of
+hardware
+component
+
+software
+component
+
+system
+
+consisting of
+hardware
+component
+
+software
+component
+
+simulation in context
+data
+
+data
+
+environment
+
+environment
+
+subsystem
+
+consisting of
+hardware
+component
+
+stakeholders
+
+stakeholders
+
+mutually interacting
+
+mutually interacting
+
+system
+
+system-ofinterest
+
+system
+
+subsystem
+
+software
+component
+
+system
+
+systemof-interest
+
+subsystem
+consisting of
+
+consisting of
+hardware
+component
+
+ФИНКИ
+
+software
+component
+
+system
+
+hardware
+component
+
+software
+component
+
+99
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Scope of Test Configuration
+Management
+components
+functions
+
+104..106
+
+emerging from components
+
+specifications and designs
+infoware
+tools
+
+generating, building, manufacturing, configuring, transporting,
+installing, commissioning, diagnosing, analyzing, teaching, ...
+
+test data and objects
+environment physical conditions, physical and information infrastructure
+people and their behavior
+ФИНКИ
+
+100
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Modeling Space
+level of
+abstraction
+highly simplified
+
+collection
+of napkins
+
+reasoning
+understanding
+exploration
+
+very detailed
+
+finite
+element
+model
+
+internals only
+
+hardware
+in the
+loop
+
+single function
+test rig
+
+calibration
+validation
+
+prototype
+
+from virtual
+to physical
+
+typical conditions
+extreme conditions
+
+amount of
+context
+ФИНКИ
+
+101
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ Systems
+
+Integration
+requires
+specific project management.
+The
+challenge for project managers is to
+plan ahead, knowing that the
+integration plan will need continuous
+adaptations.
+ФИНКИ
+
+102
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integration Planning
+actual situation
+
+defining
+integration
+sequence
+
+options
+constraints
+
+master plan
+project planning
+
+needs
+options
+constraints
+
+needs
+
+lead customers
+
+(test)facility
+management
+
+suppliers
+
+ФИНКИ
+
+now
+
+resource
+management
+
+103
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Demand Driven, Fitting Constraints
+
+defining
+integration
+sequence
+defined by
+output demand
+
+lead
+customers
+
+(test)facility
+management
+
+suppliers
+
+resource
+management
+
+limited
+validation
+options
+
+mapped on
+limited set of
+test systems
+
+trade-offs with
+constraints
+from suppliers
+
+trade-offs with
+internal resource
+constraints
+
+use of various environments (from virtual to final)
+reordering of integration sequence
+
+ФИНКИ
+
+104
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Last Planner; Look Ahead!
+master planning
+
+commitment
+planning
+
+look ahead
+planning
+
+time
+~6 weeks
+~2 weeks
+now
+
+Combating Uncertainty in the Workflow of Systems Engineering Projects
+by Barry Papke and Rick Dove, INCOSE 2013
+ФИНКИ
+
+105
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Abstract
+This lesson discusses process aspects of systems integration, such as the organizational capabilities.
+
+ФИНКИ
+
+106
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What is a Process?
+
+principle
+
+drives
+
+process
+
+is
+elaborated
+in
+
+abstract
+
+procedure
+
+formalism
+is
+supported
+tool
+by
+
+template
+
+specific and executable
+
+ФИНКИ
+
+107
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Abstract
+This presentation discusses organizational aspects, such as roles of people, of
+Systems Integration.
+
+ФИНКИ
+
+108
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Roles in Systems Integration
+project leader
+organization
+resources
+schedule
+budget
+
+logistics and
+administrative support
+configuration
+orders
+administration
+
+systems architect/
+engineer/integrator
+system requirements
+design inputs
+test specification
+schedule rationale
+troubleshooting
+participate in test
+
+system tester
+
+engineers
+
+machine owner
+
+design
+component test
+troubleshooting
+participate in test
+
+maintain test model
+support test
+
+ФИНКИ
+
+test
+troubleshooting
+report
+
+109
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ This
+
+presentation addresses the
+fundamentals of budgeting: What is a
+budget, how to create and use a
+budget, what types of budgets are
+there.
+What is the relation with
+modeling and measuring.
+ФИНКИ
+
+110
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Budgeting
+
+content of this presentation
+What and why of a budget
+How to create a budget (decomposition, granularity, inputs)
+How to use a budget
+
+ФИНКИ
+
+111
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What is a Budget?
+A budget is
+a quantified instantation of a conceptual model
+
+A budget can
+
+prescribe or describe the contributions
+by parts of the solution
+to the system quality under consideration
+
+ФИНКИ
+
+112
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Why Budgets?
+• to make the design explicit
+• to provide a baseline to take decisions
+• to specify the requirements for the detailed designs
+• to have guidance during integration
+• to provide a baseline for verification
+• to manage the design margins explicitly
+
+ФИНКИ
+
+113
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Visualization of Budget Based
+Design Flow
+tuning
+
+SRS
+can be more complex
+than additions
+
+tproc
+
+tboot
+tzap
+
+0.5s
+0.2s
+
+spec
+
++
+
+feedback
+
+tover
+
++
+tdisp
+
++
+
+form
+
+tover
+
+model
+
+measurements
+existing system
+micro benchmarks
+aggregated functions
+applications
+
+tproc
+
+10
+
+tover
+
+20
+30
+
+Tproc
+
+design
+estimates;
+simulations
+ФИНКИ
+
+tdisp
+
+5
+
+tover
+
+20
+
+Tdisp
+
+25
+
+Ttotal
+
+55
+
+measurements
+new (proto)
+system
+micro benchmarks
+aggregated functions
+applications
+profiles
+traces
+
+budget
+
+114
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Stepwise Budget Based Design
+Flow
+step
+
+example
+
+1A measure old systems
+
+micro-benchmarks, aggregated functions,
+
+applications
+
+1B model the performance starting with old systems
+
+flow model and
+
+analytical model
+
+1C determine requirements for new system
+
+response time
+
+or throughput
+
+2 make a design for the new system
+
+explore design space, estimate and
+
+simulate
+
+3 make a budget for the new system:
+
+models provide
+the structure measurements and estimates
+provide initial numbers
+specification provides bottom line
+
+4 measure prototypes and new system
+
+micro-benchmarks, aggregated functions,
+
+applications
+profiles, traces
+
+5 Iterate steps 1B to 4
+ФИНКИ
+
+115
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Budgets Applied on
+Waferstepper Overlay
+off axis pos.
+meas.
+accuracy
+
+global
+alignment
+accuracy
+
+6 nm
+
+process
+overlay
+80 nm
+
+4nm
+
+off axis
+Sensor
+repro
+3 nm
+
+stage Al.
+pos. meas.
+accuracy
+4 nm
+
+blue align
+sensor
+repro
+3 nm
+
+system
+adjustment
+accuracy
+2 nm
+
+reticle
+15 nm
+
+lens
+matching
+25 nm
+
+matched
+machine
+60 nm
+
+single
+machine
+30 nm
+
+stage
+overlay
+12 nm
+
+position
+accuracy
+7 nm
+
+frame
+stability
+2.5 nm
+
+process
+dependency
+
+matching
+accuracy
+5 nm
+
+stage grid
+accuracy
+5 nm
+
+alignment
+repro
+
+tracking
+error X, Y
+
+5 nm
+
+2.5 nm
+
+sensor
+5 nm
+
+metrology
+stability
+5 nm
+ФИНКИ
+
+interferometer
+
+stability
+1 nm
+
+tracking
+error phi
+75 nrad
+
+tracking
+error WS
+2 nm
+tracking
+error RS
+1 nm
+
+116
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Budgets Applied on Medical
+Workstation Memory Use
+memory budget in Mbytes
+
+code
+
+obj data bulk data
+
+shared code
+User Interface process
+database server
+print server
+optical storage server
+communication server
+UNIX commands
+compute server
+system monitor
+
+11.0
+0.3
+0.3
+0.3
+0.3
+0.3
+0.3
+0.3
+0.3
+
+3.0
+3.2
+1.2
+2.0
+2.0
+0.2
+0.5
+0.5
+
+12.0
+3.0
+9.0
+1.0
+4.0
+0
+6.0
+0
+
+11.0
+15.3
+6.5
+10.5
+3.3
+6.3
+0.5
+6.8
+0.8
+
+application SW total
+
+13.4
+
+12.6
+
+35.0
+
+61.0
+
+total
+
+UNIX Solaris 2.x
+file cache
+
+10.0
+3.0
+
+total
+
+74.0
+ФИНКИ
+
+117
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Power Budget Visualization for
+Document Handler
+
+UI
+and
+contr
+ol
+
+power
+supplie
+s
+
+paper
+input
+module
+
+cooling
+
+procedé
+
+paper path
+power supplies
+
+legend
+
+finisher
+
+scann
+er
+feed
+er
+
+UI
+and
+contr
+ol
+
+paper path
+
+cooling
+ФИНКИ
+
+physical
+layout
+size
+proportional
+to power
+
+pape
+r input
+modul
+e
+
+scanner
+and
+feeder
+
+finisher
+
+procedé
+
+118
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Alternative Power Visualization
+electrical
+power
+
+procedé
+power supplies
+
+cooling
+
+UI and control
+
+paper path
+
+paper input
+module
+finisher
+
+paper
+
+heat
+
+ФИНКИ
+
+119
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Evolution of Budget over Time
+fact finding through details
+aggregate to end-to-end performance
+search for appropriate abstraction level(s)
+from coarse guesstimate
+to reliable prediction
+from typical case
+to boundaries of requirement space
+from static understanding
+to dynamic understanding
+from steady state
+to initialization, state change and shut down
+from old system
+to prototype
+to actual implementation
+time
+start
+
+later
+
+only if needed
+ФИНКИ
+
+120
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Potential Applications of Budget
+based design
+• resource use (CPU, memory, disk, bus, network)
+• timing (response, latency, start up, shutdown)
+• productivity (throughput, reliability)
+• Image Quality parameters (contrast, SNR, deformation, overlay, DOF)
+• cost, space, time
+
+ФИНКИ
+
+121
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What kind of budget is required?
+dynamic
+
+static
+typical case
+
+worst case
+
+global
+
+detailed
+
+approximate
+
+accurate
+
+is the budget based on
+wish, empirical data, extrapolation,
+educated guess, or expectation?
+ФИНКИ
+
+122
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Summary of Budgeting
+A budget is a quantified instantiation of a model
+A budget can prescribe or describe the contributions by parts of the solution
+to the system quality under consideration
+A budget uses a decomposition in tens of elements
+The numbers are based on historic data, user needs, first principles and
+measurements
+Budgets are based on models and estimations
+Budget visualization is critical for communication
+Budgeting requires an incremental process
+Many types of budgets can be made; start simple!
+ФИНКИ
+
+123
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ During
+
+integration,
+the
+integrators
+continuously test parts, functions, and
+systems. Testing requries the creation of an
+experimental set-up, where the test enviroment
+offers stimuli and measures responses. This
+lesson discusses some of the testing methods
+and considerations.
+ФИНКИ
+
+124
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Why Testing?
+Objectives of testing during integration:
+ to find potential quality attribute and behavior problems at
+specification and design level as early as possible.
+ to learn as much as possible about the emerging quality attributes
+and behaviors.
+Consequences for testing:
+ stimulate the object under test externally and internally (insertion)
+ observe the system externally (specification) and internally (design)
+
+ФИНКИ
+
+125
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Testing Environment
+test definitions
+
+test results
+
+part, function
+stimuli
+or system
+responses
+under test
+test environment
+
+ФИНКИ
+
+126
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Testing Environment Management
+Systems Context
+management systems
+specifications
+
+test definitions
+
+designs
+
+test data
+
+models
+
+and much
+more
+
+configuration
+& version
+managemen
+t
+
+test definitions
+
+test reports
+
+test results
+
+test results
+part, function
+stimuli
+or system
+responses
+under test
+
+test environment
+ФИНКИ
+
+127
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Accelerated Testing
+
+During normal use, stimuli are periodic, with frequencies f0, f1, f2, etc.
+During accelarated testing these frequencies are increased.
+ ALT (Accelerated Life Testing) is Test-to-Pass (showing how long
+the system can operate)
+ HALT (Highly Accelerated Life Testing) is Test-to-Fail (learning
+weaknesses and margins)
+The concepts are applicable in hardware, software, and systems.
+However, engineers know the stimuli for hardware better (temperature,
+humidity, vibrations, etc.).
+
+ФИНКИ
+
+128
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Abstract
+Readiness level models offer a yardstick to assess the status of specific project
+aspects. Examples are technology readiness and integration readiness.
+
+ФИНКИ
+
+129
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Technology Readiness Levels
+TRL 9 actual system proven in operational environment
+TRL 8 system complete and qualified
+TRL 7 system prototype demonstration in operational environment
+TRL 6 technology demonstrated in relevant environment
+TRL 5 technology validated in relevant environment
+TRL 4 technology validated in lab
+TRL 3 experimental proof of concept
+TRL 2 technology concept formulated
+TRL 1 basic principles observed
+after: https://serkanbolat.com/2014/11/03/technology-readiness-level-trl-math-for-innovative-smes/
+ФИНКИ
+
+130
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integration Readiness Levels
+TRL 7
+
+The integration of technologies has been verified and validated with
+sufficient detail to be actionable.
+
+TRL 6
+
+The integrating technologies can accept, translate, and
+structure information for its intended application.
+
+TRL 5
+
+There is sufficient control between technologies necessary to establish,
+manage, and terminate the integration.
+
+TRL 4
+
+There is sufficient detail in the quality and assurance of the integration
+between technologies.
+
+TRL 3
+
+There is compatibility (i.e. common language) between technologies to
+orderly and efficiently integrate and interact.
+
+TRL 2
+
+TRL 1
+
+There is some level of specificity to characterize the interaction
+(i.e. ability to influence) between technologies through their
+interface.
+An interface (i.e. physical connection) between technologies has been
+identified with sufficient detail to allow characterization of the relationship.
+from: From TRL to SRL: The Concept of Systems Readiness Levels, CSER2006, by Sauser et al.
+ФИНКИ
+
+131
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ Most
+
+end-user functionality and services are
+realized by Systems of Systems. Many of these
+systems may include organizations and humans;
+the systems aren’t technical artifacts anymore.
+These systems evolve over time individually and
+typically lack a centralized governance.
+The
+resulting end-to-end qualities depend on all
+consituent systems and their interoperability.
+ФИНКИ
+
+132
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Types of Systems of Systems
+Directed - The SoS is centrally managed
+
+Acknowledged - The SoS has recognized objectives, and active
+cooperation between SoS and constituent systems
+
+Collaborative - The constituent systems and stakeholders cooperate
+
+Virtual - The SoS nature more or less emerge from the constituent
+systems
+J. Dahmann and K. Baldwin. 2008. "Understanding the Current State of US Defense Systems of Systems
+and the Implications for Systems Engineering." IEEE Systems Conference 2008 in Montreal, 2008
+ФИНКИ
+
+133
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Where are the System Boundaries?
+
+data providers
+specific services
+
+unrelated
+services
+Cloud
+
+other clouds
+
+apps
+
+mobile
+access
+
+other
+other
+physical
+physical
+systems
+systems
+storage
+
+Cloud data collection
+analysis
+apps
+
+flex
+workspots
+
+local operating
+stations
+
+learning
+Information and Communication
+infrastructure
+public and proprietary
+
+ФИНКИ
+
+physical
+system
+
+physical
+system
+
+134
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+End-to-End Function
+data providers
+specific services
+
+other
+other
+physical
+physical
+systems
+systems
+
+unrelated
+services
+
+other clouds
+
+Cloud
+Cloud
+
+apps
+
+mobile
+access
+
+data collection
+analysis
+
+local operating
+stations
+
+learning
+
+apps
+
+flex
+workspots
+
+storage
+
+Information and Communication
+infrastructure
+public and proprietary
+
+ФИНКИ
+
+physical
+system
+
+physical
+system
+
+135
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Varying Dynamics
+process
+
+regulation
+
+humans
+
+services
+
+other clouds
+
+apps
+
+physical
+system
+
+Cloud
+
+other services
+
+103 seconds
+hour
+
+flex workspots
+local operating
+stations
+other
+other
+physical
+physical
+systems
+systems
+
+ICT infrastructure
+
+109
+
+106
+day
+
+month
+ФИНКИ
+
+year
+
+decade
+136
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Characterization of Black Box
+Parts
+response
+time
+
+scenarios or
+use cases
+
+load
+
+stimuli
+
+characterization
+
+COTS
+component,
+responses (p1..pn)
+system, or
+(p1..pn)
+service
+test environment
+ФИНКИ
+
+137
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Summary
+ Systems of Systems Integration continues in the field during operation
+ Ownership and responsibility for end-to-end performance is ill-defined
+ Your system may be blamed for problems with a root cause elsewhere
+ End-to-end performance depends on a mix of
+ traditional technical systems
+ modern technologies like learning
+ humans in their organizational and societal context (psychological,
+social, political, economical, legal, etc.)
+ the physical context (location, climate, etc.) and laws of physics
+ФИНКИ
+
+138
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Keywords from various SoS
+models in literature
+Boardman and
+Sauser
+
+Maier
+
+DeLaurentis
+
+Autonomy
+
+Operational
+independence
+
+Belonging
+
+Managerial
+independence
+
+Connectivity
+
+Geographic
+separation
+
+Diversity
+
+Emergent
+behavior
+
+Emergence
+
+Evolutionary
+development
+
+Type
+
+Directed
+Acknowledged
+
+Control (or
+autonomy)
+
+Connectivity
+
+ФИНКИ
+
+Dahmann and
+Baldwin
+
+Collaborative
+Virtual
+
+139
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ Abstract
+ This
+
+presentation explains the imact of
+change. A frequent problem is that people
+do not foresee the imoact of changes they
+make to the system. A naieve assumption is
+that traceability or dependecy graphs will show
+them such impact. Realty then hits them during
+systems integration.
+ФИНКИ
+
+140
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Impact of Change due to
+Unforeseens
+
+traceability graph
+ideal change impact
+
+change impact
+in practice
+
+specified requirements
+relation
+
+propagation due to
+uncharted relations
+
+unknown
+unforeseen relations
+ignored
+legend
+
+additional changes to
+repair change impact
+
+ФИНКИ
+
+141
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Root Cause is Often Elsewhere
+Physical decomposition
+
+legend
+failure
+
+Functional decomposition
+
+root
+cause
+
+unknown or unexpected relation
+ФИНКИ
+
+142
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+“Nothing has been changed...”
+test result: system fails
+Functional decomposition
+
+Physical decomposition
+
+trouble shoot identifies failing component and function
+Functional decomposition
+
+Physical decomposition
+
+first questioning does not reveal suspicious changes
+Functional decomposition
+
+Physical decomposition
+
+second questioning reveals synchronous change
+Functional decomposition
+
+Physical decomposition
+
+unknown relation caused fault
+Functional decomposition
+
+Physical decomposition
+
+ФИНКИ
+
+143
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Abstract
+Software has a number of characteristics, which impact systems integration.
+
+ФИНКИ
+
+144
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+System or Software?
+When SW engineers demand "requirements",
+then they expect frozen inputs
+to be used for
+the design, implementation and validation
+of the software
+
+ФИНКИ
+
+145
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+System vs Software Requirements
+0
+1
+
+10
+
+102
+10
+
+3
+
+104
+105
+
+number of
+details
+
+10
+
+system
+system
+requirements
+
+multi-disciplinary
+software
+requirements
+mono-disciplinary
+
+6
+
+10
+
+107
+ФИНКИ
+
+146
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Why is the Software Requirement
+Specification so Large?
+operational choices
+synergy, tools, ...
+
+user interface
+system behavior
+
+software
+subsystem
+
+control of
+physical subsystems:
+sensors, actuators
+
+limited
+computing resources
+ФИНКИ
+
+147
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+And why is it never up-to-date?
+
+2
+
+10
+
+3
+
+10
+
+104
+105
+10
+
+market
+system
+requirement
+s
+
+multi
+disciplinary
+
+106
+7
+
+system
+
+avalanche
+
+101
+
+number of
+details
+
+100
+
+monodisciplinary
+
+software
+requirement
+s
+
+ФИНКИ
+
+fashion
+
+format
+
+changes
+competition
+
+legislation
+
+problems
+technical
+
+effort
+
+duration
+
+cost
+148
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Different Focus of Software and System
+
+System engineering focus
+qualities
+productivity
+image quality
+reliability
+
+concepts
+domain requirements
+models
+
+concerns
+integral design (quality, balance)
+system context
+lifecycle
+operational processes
+education
+principles
+heuristics
+analysis and synthesis
+processes
+
+SW engineering focus
+qualities
+functionality
+maintainability
+variability
+
+concepts
+structure
+(generic) mechanisms
+
+concerns
+configuration management
+release procedure
+tools
+SW processes
+SW problems, change requests
+education
+languages
+operating systems
+algorithms
+formal methods
+149
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Caricature of a SW Architecture
+Application
+Session
+manager
+
+Property editor
+
+Spool server
+Queue
+manager
+
+NameSpace
+server
+
+Broker
+
+Event
+manager
+
+Transparant
+Communication
+
+Resource
+scheduler
+Configurable
+pipeline
+
+Registry
+
+Monitor
+
+Compliance
+profile
+
+Abstraction
+Layer
+
+Persistent
+Storage
+
+Plug-in
+framework
+
+Device
+independent
+format
+
+Plug & play
+
+ФИНКИ
+
+150
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Caricature of Physics
+Systems View
+sensor
+laser
+
+illuminator
+
+pulse-freq, bw,
+wavelength, ..
+
+uniformity
+
+reticle
+
+NA
+abberations
+transmission
+
+lens
+
+ФИНКИ
+
+aerial image
+wafer
+
+151
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Relation SW and Physics
+sensor
+
+laser
+
+illuminator
+
+pulse-freq, bw,
+wavelength, ..
+
+uniformity
+
+measure
+adjust
+calibrate
+analyse
+process
+log
+control
+
+reticule
+
+NA
+abberations
+transmission
+
+lens
+aerial image
+wafer
+ФИНКИ
+
+152
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Symptoms of too isolated
+SW efforts
+symptoms
+
+SW people are clustered together
+
+counter measures
+colocation per function, subsystem or quality
+
+SW is alpha tested before system integration
+
+continuous system integration
+
+higher level processes are shared
+SW team uses own specification and design process
+
+SW specification is in SW jargon or formalism
+ФИНКИ
+
+interaction between SW,
+HW and system engineers
+153
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Hardware Software System
+System
+product: sellable self-sustained entity
+operating in a broader context
+
+inherent
+performance
+reliability
+
+different focus:
+" qualities
+" concerns
+" concepts
+" education
+
+HW engineering
+
+actual
+performance
+reliability
+
+SW engineering
+
+tangible
+concrete
+goods flow costs & lead times
+physics laws
+ФИНКИ
+
+intangible
+abstract
+no goods flow costs
+"everything is possible"
+154
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Abstract
+Many systems, products, and services depend on sharing realizations of functions
+and subsystems. The organization may organize the sharing in platforms, such
+that the product developers focus primarily on their added value to the applications. Sharing, however, is a complication for integration. Changes in a
+component may propagate to various platforms to multiple products and services
+in widely different circumstances.
+
+ФИНКИ
+
+155
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Dependency Network
+customers, applications and their contexts
+
+product/service
+1
+
+platform 1
+
+product/service
+2
+
+platform 2
+
+platform 3
+
+components/building blocks
+
+ФИНКИ
+
+156
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Varying Clock Cycles
+across Creation Chain
+shared
+strategy, processes,
+tools, repository
+
+aligned
+strategy, processes,
+tools, repository
+
+component
+creator
+
+component
+creator
+
+component
+creator
+
+independent
+strategy, processes,
+tools, repository
+
+off the shelf
+component
+supplier
+
+ФИНКИ
+
+product
+creator &
+integrator
+
+in house
+customer
+
+partner
+product
+
+privileged
+customer
+
+complementor
+
+direct
+customer
+
+competitor
+
+customer
+via reseller
+
+157
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Release Models for Platforms and
+Projects/Products
+
+platform
+baseline
+
+R1
+
+R2
+
+R1
+
+platform
+as consolidation baseline
+ФИНКИ
+
+R2
+
+R3
+
+R3
+
+158
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ФИНКИ
+
+159
+
+

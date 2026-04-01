@@ -1,0 +1,1224 @@
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Integrated Systems
+- Steps and Types
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Preview
+◼
+
+Systems integration means that you allow a
+heterogeneous (hodgepodge) IS to communicate or
+integrate and share information (or data) seamlessly
+with one another.
+
+◼
+
+Systems integration is a key issue for an organization
+for its growth - Management needs to pay close
+attention to this issue.
+
+◼
+
+ERP systems are a major kind of enterprise information
+system allowing organizations to integrate different
+systems into one organization-wide application with an
+integrated database management system.
+2
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+What are functional silos?
+◼
+
+Functional silos in a business are teams of employees, grouped
+by function, that all operate separately from each other, without
+cross-collaboration.
+
+◼
+
+The name comes from the way of storing grains that ensures
+separation of different grains and often uses top-down
+distribution. In functional silos, departments are organized the
+same way: totally separate, with information and
+communication mimicking that top-down distribution.
+
+◼
+
+Phil S. Ensor in 1988 describes Functional Silo Syndrome as
+an “overall organizational mentality [that] is one of imposing
+control on people rather than eliciting commitment from them.”
+ФИНКИ
+
+3
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Functional Silos
+◼
+
+Silos are basically compartmentalized operating units
+isolated from their environment.
+
+Horizontal Silos
+◼ The POSDCORB (Planning, Organizing, Staffing,
+Directing, Coordinating, Reporting and Budgeting)
+categorization by Luther Gulick led to a set of formal
+organization functions such as control, management,
+supervision, and administration starting in late 1930s.
+◼
+
+Classification of organizations into departments like
+Accounting and Human Resources, reflects the
+breaking of complex tasks into smaller manageable
+tasks that could be assigned to a group of people who
+could then be held responsible.
+4
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Figure 2-1 Functional Model of
+Organization (POSDCORB)
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+5
+
+ФИНКИ
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Functional Silos (Cont’d)
+Vertical Silos
+◼ Organizations also divided roles in hierarchical layers
+from strategic planning to management control and
+operation control.
+◼
+
+CEOs and Presidents plan long-term strategy, midlevel
+management focuses on tactical issues and on the
+execution of organizational policy whereas the lower-level
+management task is to focus on the day-to-day operations
+of the company.
+
+◼
+
+As organizations get big and complex they tend to break
+functions into smaller units and assign staff the
+responsibility for these activities allowing them to manage
+complexity as well as specialize in activities that enhance
+productivity and efficiency.
+6
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Figure 2-2 Hierarchical Model
+of Organization
+
+7
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Business Process and Silos
+◼ The problem of functional silos gave birth to
+
+business process re-engineering (BPR).
+◼ The cross-functional business process can involve
+
+people and resources from various functional
+departments working together, sharing information
+at any level of the organization.
+◼ The cross-functional organizational structure
+
+breaks the functional silos by opening up the
+informational flows from one department to
+another.
+8
+
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Figure 2-3 Matrix Structure of
+Organization
+
+9
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Evolution of Information
+Systems in Organizations
+◼
+
+The functions of an organization (e.g., sales, manufacturing,
+and HR) are important as they provide a structure by which an
+organization functions smoothly.
+
+◼
+
+A silo information system is inefficient, inaccurate, and
+expensive.
+ The system creates bottlenecks for everyone and information is not
+
+available in real-time.
+◼
+
+The evolution of IS suggests that its role has generally been to
+support evolving information needs of the organization.
+10
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Figure 2-4 Functional Silos in
+Organization
+
+11
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+IS Architectures
+◼
+
+Rapid advances in computer and networking technologies
+and changing organizational dynamics, drive the
+emergence of new information system models.
+
+◼
+
+Web-based systems today use a distributed architecture
+which allows the sharing of applications and data
+resources between the client and the server computers.
+
+◼
+
+In this configuration, personal computers are connected
+via a network to a Web server that provides a window to
+an application and database server, which could be a
+mainframe or another type of computer.
+12
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+IS Functionalization
+◼ In addition to serving the different management
+
+levels, IS also supports major business functions,
+such as manufacturing, marketing, accounting,
+finance, and HR.
+◼ Each functional area has different information needs
+
+and report requirements.
+◼ Each functional area in an organization also has
+
+multiple levels of management, each requiring
+different levels of analysis and details of information.
+13
+
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Figure 2-5 Information Systems
+Architectures
+
+14
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Figure 2-6 IS as Categorized by
+Functional and Hierarchical Models
+
+15
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Systems Integration
+Logical
+◼ Develop information systems that allow organizations to
+share data with all of its stakeholders based on need and
+authorization.
+◼ Management needs to change organizational structures,
+processes, and employee roles and responsibilities.
+Physical
+◼ Provide seamless connectivity between heterogeneous
+systems.
+◼ Business process reengineering involves changing the
+mindset of the employees in the organization,
+encouraging and enabling them to do their tasks in a new
+way.
+16
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+Copyright © 2012 Pearson Education, Inc. Publishing as Prentice Hall
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Steps in Integrating Systems
+Step 1
+
+Resource
+categorization
+
+Instituting IT support for an integrated systems
+environment is necessary to avoid support and
+maintenance problems with the integrated
+system.
+
+Step 2
+
+Compliance and
+standards
+
+Develop a single sign-on policy because all
+employees and external partners will need
+access to an integrated system from anywhere,
+anytime.
+
+Step 3
+
+Legacy systems
+support
+
+Develop a policy in support of older legacy
+applications.
+
+Step 4
+
+Middleware tools
+
+Middleware tools are essential for integration in
+the short term if existing applications must be
+used by the organization.
+
+17
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Steps in Integrating Systems
+(Cont’d)
+Step 5
+
+Authentication
+and authorization
+policies
+
+Single sign-on policy for application and data
+access because all employees and external
+partners will need access to an integrated
+system from anywhere, anytime.
+
+Step 6
+
+Centralized IT
+services and
+support
+
+The IT staff needs to be able to support all
+applications and platforms with a centralized IT
+help desk support.
+
+Step 7
+
+Back-up,
+recovery, and
+security
+
+A good back-up and recovery system is
+essential if there is a system failure or a major
+disaster.
+
+Step 8
+
+Hardware and
+software
+standardization
+
+Develop organization standards and policy on
+acquisition of new hardware and software which
+is aligned with organization IT strategy.
+18
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Benefits and Limitations of
+Systems Integration
+Benefits
+
+Limitations
+
+Increased Revenue and Growth
+
+High Initial Set-up Costs
+
+Leveling the Competitive Environment
+
+Power and Interdepartmental Conflicts
+(due to the sharing of information)
+
+Enhanced Information Visibility
+
+Long-term and Intangible ROI
+(Usually several years)
+
+Increased Standardization
+
+Creativity Limitations (Restricts
+Creativity and Independence)
+
+19
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP and Systems Integration
+◼ Enterprise Resource Planning (ERP) systems are
+
+integrated, multi-module application software
+packages designed to serve and support several
+business functions across an organization.
+◼ ERP systems are typically commercial software
+
+packages that facilitate collection and integration of
+information related to various areas of an
+organization.
+◼ ERP systems enable the organization to standardize
+
+and improve its business processes to implement
+best practices for its industry.
+20
+
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP’s Role in Logical Integration
+◼ ERP systems require organizations to focus on
+
+business process rather than on functions.
+◼ ERP systems come with built-in processes for a
+
+wide variety of common business functions.
+◼ An ERP system implements best practices via
+
+specific built-in steps for processing a customer
+order in terms of:
+ order entry.
+ routing through departments.
+ communication of output to various parties.
+21
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ERP’s Role in Physical Integration
+◼ Before installing the ERP system, an organization
+
+may have to upgrade or install middleware or get rid
+of their legacy system’s hardware and software.
+◼ Integration is also required at the Data level, Client
+
+level, and at the Application level.
+◼ A good ERP implementation improves operational
+
+efficiency with better business processes that focuses
+on organizational goals rather than on individual
+departmental goals.
+◼ Improved efficiency with a paperless flow and
+
+electronic data interchange (EDI) or business-tobusiness (B2B) commerce environment with partners
+22
+
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Implications for Management
+◼ Silos do not work.
+
+ Most organizations lose out in the long-term when information
+
+is not shared in real time across the functional boundaries
+within the company.
+◼ System integration has many hidden benefits.
+ Allows decision making to be cascaded to all departments
+
+ Allows employees at lower-levels to make better decisions
+
+while interacting with clients or partners.
+◼ System integration has many challenges.
+ Replacing old hardware and software
+ Working with IT consultants
+ Human challenges, such as impact on IT staff, department
+
+heads losing control of data, and rumors of layoffs
+23
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Implications for Management (Cont’d
+◼ Systems integration raises many new ethical
+
+issues.
+ Possibility of some employees exploiting information
+
+for personal advantage and illegal access of
+information.
+◼ Remedies can consist of:
+ Develop policies on ethical usage of information.
+
+ Install proper security software and hardware (like
+
+firewalls).
+ Allocate resources for training and education on
+accessing information.
+24
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Summary
+◼ Functional silos categorize an organization’s
+
+tasks and activities into groups to improve
+efficiency and responsibility of work in the
+organization.
+◼ Silos can improve productivity, but they often
+
+lead employees to achieve departmental goals
+rather than overall organizational goals.
+◼ IS over the years have been divided horizontally
+
+by functions and vertically by hierarchical levels.
+◼ IS architecture has evolved from centralized
+
+mainframe architecture to personal computers
+with distributed or client–server architecture.
+25
+
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Summary (Cont’d)
+◼
+
+In order for systems integration to be successful, organizations
+have to focus both on the human or logical level and on the
+physical or systems level.
+
+◼
+
+ERP systems thus make the process of systems
+integration easier, but they are expensive and often require
+organizations to start from scratch.
+
+◼
+
+System integration involves the whole organization, requiring top
+management support and resources for a long-term period.
+Management must be ready to face the human and ethical
+challenges in a systems integration project.
+26
+ФИНКИ
+
+Copyright © 2012
+Pearson Education,
+Inc. Publishing as
+Prentice Hall
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Common integration methods
+
+ФИНКИ
+
+27
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Point-to-Point Integration
+◼ Technically, point-to-point integration is
+
+not a system integration but rather a
+simple connection. The functions of these
+connections are quite limited as it is best
+used for linking one system or software to
+another. As more systems get introduced
+and more connections are made, it can
+become unmanageable quickly. Therefore,
+this integration method is ideal for
+integrating two software to create one
+business function.
+ФИНКИ
+
+28
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Star Integration
+◼
+
+Star, or spaghetti, integration is a large collection of simple
+connections, such as point-to-point integrations. As more
+systems are joined, the larger the star becomes, with more
+junction points and connector lines.
+
+◼
+
+When this integration method interconnects each software
+with smaller subsystems, the formation can appear like a
+star polyhedron at its most complex state. However, if
+software developers were to make a physical diagram of
+this solution, it would roughly resemble the shape of
+spaghetti, hence its nickname.
+
+ФИНКИ
+
+29
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+◼
+
+The multiple main and sub connections tend to get
+confusing and difficult to trace using the star integration
+method. So, while this solution provides more
+functionality than the point-to-point tactic, it requires
+extensive integration management and maintenance.
+
+◼
+
+The ideal use for star integration is for businesses who
+segment their systems. For example, a law firm may
+have separate software for tracking client payments,
+running website analytics, and managing customer
+resources. This method could integrate data from each
+system so that the HR department can view it on one
+platform
+ФИНКИ
+
+30
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Vertical Integration
+◼
+
+Vertical integration is different from other methods
+because of its structure and how it links systems. Each
+subsystem is connected to others with similar functions,
+which creates a cylindrical, or "silo," structure with simple
+processes at the bottom, gradually progressing to complex
+processes.
+
+◼
+
+This linear model usually only handles a few systems with
+like functions, as adding a new feature requires building
+another silo of connections. The more separate
+compounds of information are produced, the more difficult
+it becomes for data management.
+ФИНКИ
+
+31
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+◼
+
+Therefore, the vertical integration method is excellent for businesses that need
+systems linked to provide one function. For example, a retailer can link their POS
+system, which tracks sales, with another process that generates invoices to
+streamline transactions.
+This type of integration would create a silo whose sole purpose is to handle
+purchases and payments. The user could also link inventory control systems to this
+connection, as it handles similar functions to sync stock data and gain access to
+real-time quantities.
+
+◼
+•
+
+•
+•
+•
+•
+
+Advantages:
+Efficient supply chain management
+Enhanced supplier-distributer communication
+Low operating costs
+Enhanced competitive edge
+Better control of functions
+ФИНКИ
+
+32
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Horizontal Integration
+◼
+
+Horizontal data integration, also known as enterprise service
+bus (ESB), can connect several subsystems to one leading
+software without dealing with interconnections. In other
+words, this eliminates the links between the various
+subsystems and focuses on individually connecting them to
+the central server to simplify a rather complex integration.
+
+◼
+
+So, if there are six software programs, there will only be six
+total connections from the processes to the primary system.
+This allows the user to access all electronic data on one
+comprehensive platform regardless of their individual
+functions. This easy set-up also saves businesses time and
+resources needed for software development.
+ФИНКИ
+
+33
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+◼ Horizontal integration software is usually found
+
+in the medical field where all systems need to be
+connected, so health care workers have access
+to patient information, test results, and other
+relevant data.
+◼ Advantages :
+ Enhanced operational efficiency
+ Increased scalability
+ Flexibility with business continuity
+ Ability to expand to other technology
+ Versatile communication
+ФИНКИ
+
+34
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Types of System Integration
+◼ Pros vs. Cons of Each Method
+
+ФИНКИ
+
+35
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+API
+◼ The most common integration process is
+
+the Application Programming Interface
+(API).
+◼ By establishing these interconnections
+using common code language, systems
+can transmit data seamlessly throughout
+solutions.
+
+ФИНКИ
+
+36
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Advantages
+◼ Flexibility - By using product code
+
+language, the API method can handle
+most data variations.
+◼ Smooth Operations - The links between
+the systems allow providers to handle
+individual connections without disturbing
+third-party software.
+◼ High Availability - As the most common
+integration strategy, API is available for
+almost every integration project.
+ФИНКИ
+
+37
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Disadvantages
+◼ Supplier Dependability - Suppliers are
+
+responsible for establishing an API,
+making the partnering business dependent
+on their schedule for data access.
+◼ Code Intensive - While being code-based
+makes APIs more functional, programming
+the coding is time-intensive and can be
+overwhelming.
+
+ФИНКИ
+
+38
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Webhooks
+◼ Also known as HTTP callbacks, webhooks
+
+also link applications but are not codebased. Instead, webhooks are eventbased, which requires programming
+modules within each subsystem that are
+triggered by third-party services.
+Management is only alerted when a
+specific event occurs, or change is made.
+
+ФИНКИ
+
+39
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Advantages
+◼ Real-time Data - By not using a request-
+
+based method, management can access
+real-time data at any time.
+◼ Automation - Since information is updated
+whenever an event occurs, businesses do
+not have to schedule data collection times
+within the integrator.
+
+ФИНКИ
+
+40
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Disadvantages
+◼ Limited Data Control - HTTP callbacks rely
+
+on the systems to recognize an event for
+data to transfer, whereas, APIs allow
+users to alter or create data without
+triggering the software.
+
+ФИНКИ
+
+41
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+ISC
+◼
+
+Integration Services Components (ISC)
+are not code-based but instead live on a
+server to connect with local management
+tools. This allows the system integrator to
+access data without importing large files.
+
+ФИНКИ
+
+42
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Advantages
+◼ Increased Functionality - As long as the
+
+business has cloud-access to data within
+the web service, ISC can connect and
+integrate systems.
+
+ФИНКИ
+
+43
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Disadvantages
+◼ Extensive Database Knowledge
+
+Necessary - In order to correctly set-up
+ISCs, the user must have a vast
+knowledge of local servers and databases.
+◼ Requires Exclusive Application Access Many times, businesses do not have backend access to applications, making it
+impossible for the ISC system to integrate.
+
+ФИНКИ
+
+44
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Orchestration
+◼ Orchestration systems are the most
+
+automated integrators available, handling
+the scheduling of tasks between several
+solutions. This method aims to consolidate
+repeated processes to enhance production
+and information flow. By automating
+multiple software and processes together,
+users can connect with any service to
+access data.
+ФИНКИ
+
+45
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Advantages
+◼ Complete Automation - Full automation
+
+across all platforms streamlines data
+sharing and enhances operation
+transparency.
+◼ Manage Several Solutions Orchestrations allows users to manage all
+involved systems simultaneously.
+
+ФИНКИ
+
+46
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Disadvantages
+◼ Code-Intensive - Much like APIs, this
+
+method requires extensive knowledge of
+coding for software development.
+◼ Work-Intensive - Implementing
+orchestration is very complicated due to
+the integration of systems' schedules,
+requiring additional employees and time to
+manage every detail.
+
+ФИНКИ
+
+47
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Steps for Integrating Systems
+
+ФИНКИ
+
+48
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Outline Business Needs
+◼
+
+When determining what integration method would create the best
+management software for a business, the owner must consider the
+company's current and future needs.
+
+◼
+
+While it may seem quicker and more cost-efficient to only implement
+components needed at the time, it may create an issue in the future.
+As an organization grows, it is vital that the integration solution can
+accommodate its scalability. If the system is incapable of building,
+the business must spend more time and capital developing more
+robust system software.
+
+◼
+
+Therefore, an outline of all potential needs should be drafted and
+given to the desired IT company to conduct further analysis.
+
+ФИНКИ
+
+49
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Analyze Requirements
+◼
+
+From the list of business needs, IT managers will
+determine what integration processes are ideal for
+operational efficiency and user-friendliness. An
+experienced IT company can streamline communication
+between the business and software development team
+as well as collaborate design ideas from both parties.
+
+◼
+
+Business management should be prepared to make
+compromises with the developers, as their company may
+need more functionality than initially planned. However,
+adequately preparing for the future can save the
+business capital in the long run.
+ФИНКИ
+
+50
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Design Software Solution
+◼
+
+Once the analysis is complete, the developers will begin
+constructing a base that can withstand all software and
+subsystems. If the foundation is too weak, the business
+can face multiple issues, including inflexibility, reduced
+productivity, and lagging.
+
+◼
+
+Therefore, detailed blueprints are created, which
+contains the key components, all systems information,
+and the implementation process. Designing a successful
+system integrator will promote productivity and
+streamline data sharing, so it is important not to rush this
+step.
+ФИНКИ
+
+51
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Start Software Development
+◼ Perhaps the most prolonged phase in the entire
+
+process, developing the integration solution,
+works off of the blueprint to create the physical
+software. If the design is adequate, the
+integrator should be able to efficiently transfer
+information from the desired systems without
+losing any data.
+◼ Depending on the size of the foundation and the
+
+number of connected processes, developing an
+integration service can take a long time
+ФИНКИ
+
+52
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Implement the Integration
+System
+◼
+
+After the system is completed, engineers test and quality check its
+functions to ensure that there are no bugs or technical issues. If they
+experience errors, the integrator is fixed by developers and returned
+to the engineers for another round of tests.
+
+◼
+
+Once the software passes quality standards, it can be implemented
+by the business for immediate use. Although the system is designed
+and explicitly altered for an organization's needs, it may take
+additional time for employees to get comfortable navigating it.
+
+◼
+
+Once the integrated system is in place, it is up to the business to
+improve operations by ensuring all employees are utilizing its
+functions. To optimize functionality results, owners should train staff
+on how the management system works and how it will increase
+service speed and efficiency.
+ФИНКИ
+
+53
+
+ФАКУЛТЕТ ЗА ИНФОРМАТИЧКИ НАУКИ
+И КОМПЈУТЕРСКО ИНЖЕНЕРСТВО
+
+Perform Routine Maintenance
+◼
+
+Implementing an integrator that specifically caters to a business's
+needs and existing software gives the company an edge over the
+competition. Other organizations that invested in an all-in-one
+solution do not have the detailed insight or flexibility that integration
+systems offer.
+
+◼
+
+Integration services promote business expansion and can grow
+alongside operations as long as proper maintenance is performed to
+ensure processes are functioning correctly.
+
+◼
+
+Therefore, if an issue arises, management can simply reach out to
+the IT team or developer to modify the solution. New functions can
+even be added if the business decides to implement additional
+software
+
+ФИНКИ
+
+54
+
+

@@ -4,8 +4,10 @@ from deck import (
     CARD_SOURCE_META,
     DeckState,
     build_explanation,
+    card_question_keys,
     format_correct_choices,
     get_card_source_meta,
+    get_card_source_reference_text,
     load_cards,
     save_cards,
     shuffle_card_bank,
@@ -69,6 +71,67 @@ def test_get_card_source_meta_returns_none_for_unknown_source():
     assert get_card_source_meta({"question": "Q1", "source": "unknown"}) is None
 
 
+def test_card_question_keys_includes_aliases_without_duplicates():
+    assert card_question_keys({
+        "question": "Q1",
+        "aliases": ["Q0", "Q1", "  Q2  ", ""],
+    }) == ["Q1", "Q0", "Q2"]
+
+
+def test_get_card_source_reference_text_uses_pdf_label():
+    assert get_card_source_reference_text({"question": "Q1", "source": "pdf_questions"}) == "PDF прашањата"
+
+
+def test_get_card_source_reference_text_uses_notebook_lm_label():
+    assert get_card_source_reference_text({"question": "Q1", "source": "notebook_lm"}) == "Notebook LM прашањата"
+
+
+def test_get_card_source_reference_text_uses_discord_label():
+    assert get_card_source_reference_text({"question": "Q1", "source": "discord"}) == "Discord прашањата"
+
+
+def test_build_explanation_references_pdf_source_when_missing_explanation():
+    card = {
+        "question": "Што претставува Q1?",
+        "choices": ["A) Прв одговор", "B) Втор одговор"],
+        "correct": [0],
+        "type": "single",
+        "source": "pdf_questions",
+    }
+
+    explanation = build_explanation(card)
+
+    assert "PDF прашањата" in explanation
+
+
+def test_build_explanation_references_notebook_lm_source_when_missing_explanation():
+    card = {
+        "question": "Што претставува Q1?",
+        "choices": ["A) Прв одговор", "B) Втор одговор"],
+        "correct": [0],
+        "type": "single",
+        "source": "notebook_lm",
+    }
+
+    explanation = build_explanation(card)
+
+    assert "Notebook LM прашањата" in explanation
+
+
+def test_build_explanation_references_discord_source_when_missing_explanation():
+    card = {
+        "question": "Што претставува Q1?",
+        "choices": ["A) Прв одговор", "B) Втор одговор"],
+        "correct": [0],
+        "type": "single",
+        "source": "discord",
+    }
+
+    explanation = build_explanation(card)
+
+    assert "Discord прашањата" in explanation
+
+
 def test_shuffle_card_choices_updates_correct_indexes():
     rng = __import__("random").Random(7)
     card = {
@@ -118,6 +181,25 @@ def test_sync_cards_to_bank_uses_reference_card_versions():
         {"question": "Q1", "choices": ["B", "A"], "correct": [1], "type": "single"},
         {"question": "Q3", "choices": ["M"], "correct": [0], "type": "single"},
     ]
+
+
+def test_sync_cards_to_bank_matches_aliases():
+    reference = [
+        {
+            "question": "Ново прашање",
+            "aliases": ["Старо прашање"],
+            "choices": ["A", "B"],
+            "correct": [1],
+            "type": "single",
+        },
+    ]
+    cards_to_sync = [
+        {"question": "Старо прашање", "choices": ["X", "Y"], "correct": [0], "type": "single"},
+    ]
+
+    synced = sync_cards_to_bank(reference, cards_to_sync)
+
+    assert synced == [reference[0]]
 
 
 # ── DeckState ─────────────────────────────────────────────────────────────────

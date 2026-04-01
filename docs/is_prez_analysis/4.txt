@@ -1,0 +1,502 @@
+Enterprise data models;
+Data/Information Architectures
+and Data Integration
+
+Integrated Systems 2024/2025
+
+“Traditional" Data Model
+
+• Vision: Provide a single primary store of data for
+core business applications such as accounting
+(general ledger, accounts payable, accounts
+receivable, payroll, etc.), finance, personnel,
+procurement, and others. One application might
+write a new record into the database that would
+then be used by another application.
+
+*Simon, Alan (2014). Enterprise Business Intelligence and Data Management || The Rebirth of Enterprise
+Data Management.
+
+What happens with integration?
+• What usually happens in all
+organizations and enterprises is
+fragmentation of data
+• The result is not having a single
+truth data for all departments!
+
+Enterprise Data Models
+• Definition: Enterprise Data Model is an integrated view of the data produced and consumed across an entire
+organization. EDM is the foundation of all other kinds of data systems, which can be implemented in the
+organization.
+• Pros:
+• Integrated view of the data across the organization.
+• Independent of how the data is stored, processed or accessed
+• Independent of the system or the applications that the organization uses
+• It is a single integrated definition of the data for the organization, and it incorporates the industry
+perspective.
+• It provides framework for supporting planning, building and implementation of data systems.
+• EDM is mandatory for data integration.
+• Cons:
+• EDM, if not planned and done properly, becomes stale before product reaches production?
+
+Distributed
+Database
+Management
+Systems
+
+Data
+warehouses
+and read
+only access
+DBs
+
+The objectives of any EDM
+Organization-wise:
+1. Eliminating chaos and bringing order to data, reporting, and analytics
+2. Building a foundation that best supports other emerging technologies and new or enhanced
+applications
+3. Converting slogans about the “goodness” of data from trite sayings to reality
+4. Ensuring that whatever approach your roadmap does specify is appropriately aligned with your
+organization’s structure and culture
+Data-wise:
+1. Identify data quality issues, outliers and errors
+2. Identify data strategy gaps and plan solutions
+
+3. Identify relationship and dependencies between data sets
+
+Modern challenges for EDM
+• Data volumes are exploding, and even if organizations can apply data warehousing appliances
+and Big Data technologies and architecture to deal with the data volumes, meaningful progress
+will be hard to come by without an accompanying well-formulated EDM roadmap.
+• Why we actually need them?
+• Data quality
+• Data ownership
+• Data System Extensibility
+• Data Integration
+• Strategic Systems Planning
+
+Types of Data
+Models
+•
+
+West, Matthew (2011). Developing High Quality
+Data Models || Some Types and Uses of Data Models
+
+Why Is Data Modeling the Building Block of
+Enterprise Data Management?
+DM mitigates complexity and
+increases collaboration and
+literacy across a broad range of
+data stakeholders.
+
+DM builds higher quality data
+sources with the appropriate
+structural veracity.
+• DM delivers design task standardization
+to improve business alignment and
+simplify integration.
+
+*https://erwin.com/blog/enterprise-data-management-and-data-governance/
+
+DM uncovers the connections
+between disparate data
+elements.
+
+DM captures and shares how
+the business describes and
+uses data.
+
+• The DM process enables the creation
+and integration of business and
+semantic metadata to augment and
+accelerate data governance and
+intelligence efforts.
+
+• DM delivers design task automation
+and enforcement to ensure data
+integrity.
+
+DM builds a more agile and
+governable data architecture.
+
+DM governs the design and
+deployment of data across the
+enterprise.
+
+• The DM process manages the design
+and maintenance lifecycle for data
+sources.
+
+• DM documents, standardizes and aligns
+any type of data no matter where it
+lives.
+
+The benefit of EDMs
+• Modeling becomes the point of true collaboration within an organization because it delivers a
+visual source of truth for everyone to follow – data management and business professionals – to
+conform to governance requirements.
+• Information is readily available within intuitive business glossaries, accessible to user roles
+according to parameters set by the business. The metadata repository behind these glossaries,
+populated by information stored in data models, serves up the key terms that are understandable
+and meaningful to every party in the enterprise.
+
+• The stage, then, is equally set for improved data intelligence, because stakeholders now can use,
+understand and trust relevant data to enhance decision-making across the enterprise.
+
+Levels of EDM
+• Subject Area Model
+• The data is broken into subject areas, divided as Revenue, Operation,
+and Support. Each of those areas is defined with transactional,
+foundational, and informational data.
+
+• Conceptual Model:
+• Based on the main business practices of the organization, major
+business concepts are being identified and linked to each of the
+defined areas in level one.
+
+• Conceptual Entity Model,
+• The identified concepts are recognized as important to the business
+entity, looking at company needs, understanding of business terms,
+defining additional details, and recognizing the relationship between
+the concepts.
+
+Data Model VS Data Architecture
+• Data modelling focuses on the representation of the data while data
+architecture is concerned with what tools and platforms to use for
+storing and analysing it.
+• Data modelling is all about the accuracy of data while data architecture
+is about the infrastructure housing that data.
+• Data modelling is concerned with the reliability of the data, while data
+architecture is concerned with keeping the data safe.
+• A data model is an attempted representation of reality, while data
+architecture is a framework of systems and logistics.
+• A data model represents a limited set of business concepts and how
+they relate to one another. Data architecture covers the data
+infrastructure of the entire organization.
+
+Data VS Information Architecture
+• Data architecture is intended for development of systems that
+interpret and store data
+• Information architecture refers to the design of systems intended
+for input, storage and analysis of meaningful information.
+• When we say “Data” we refer to a set of facts that are usually raw
+and uncategorized
+• When we say “Information” we have already put several pieces of
+data in a meaningful way.
+
+Data Architecture
+A data architecture should set data
+standards for all its data systems as
+a vision or a model of the eventual
+interactions between those data
+systems.
+
+Data integration, for example, should be
+dependent upon data architecture
+standards since data integration requires
+data interactions between two or more
+data systems.
+
+A data architecture, in part, describes
+the data structures used by
+a business and
+its computer applications software.
+
+Data architectures address data in
+storage, data in use and data in motion;
+descriptions of data stores, data groups
+and data items; and mappings of those
+data artifacts to data qualities,
+applications, locations etc.
+
+Data
+architecture
+processes
+
+• Conceptual - represents all business entities.
+• Logical - represents the logic of how entities
+are related.
+• Physical - the realization of the data
+mechanisms for a specific type of functionality.
+When designing data architecture, the primary
+goal is to identify any data entity, or any real or
+abstracted thing about which an organization or
+individual wishes to store data.
+
+Information architecture
+• Information Architecture is the design and organisation of content, pages and data into a structure that aids users understanding of
+a system.
+• Definitions:
+• The structural design of shared information environments.
+• The art and science of organizing and labelling web sites, intranets, online communities, and software to support findability
+and usability.
+• An emerging community of practice focused on bringing principles of design and architecture to the digital landscape.
+• The combination of organization, labelling, search and navigation systems within websites and intranets.
+• Extracting required parameters/data of Engineering Designs in the process of creating a knowledge-base linking different systems
+and standards.
+• A blueprint and navigational aid to the content of information-rich systems.
+• A subset of data architecture where usable data (a.k.a. information) is constructed in and designed or arranged in a fashion most
+useful or empirically holistic to the users of this data.
+• The practice of organizing the information / content / functionality of a web site so that it presents the best user experience it can,
+with information and services being easily usable and findable (as applied to web design and development).
+• The conceptual framework surrounding information, providing context, awareness of location and sustainable structure.
+
+Information architecture components
+• Organization systems are the categories in which we place information,
+such as author names and titles or shoe size, fabric and color.
+• Labeling systems are the ways we represent information, such as the level of
+terminology considered appropriate for the target audience. For example,
+should articles use the terms "optometrist" and "ophthalmologist," or is "eye
+doctor" more appropriate?
+• Navigation systems are the way we move from one piece of information to
+another when that information is presented to us. On this page, for instance,
+you could use the Next button to get to the next page, or you could begin
+exploring something new at any time using the tabs like Adventure and Tech
+at the top of the page.
+• Searching systems are the way we search for information, such as entering
+words in a search engine or scanning for terms in a numbered list. For
+example, in the search box on this page, you could type multiple words to
+narrow the results and get closer to the topics you want to read about.
+
+The 8 principles of Information
+Architecture Design
+The principle of
+objects: Content should be
+treated as a living, breathing
+thing. It has lifecycles,
+behaviors, and attributes.
+
+The principle of front
+doors: Assume that at least
+50% of users will use a
+different entry point than
+the home page.
+
+The principle of
+choices: Less is more. Keep
+the number of choices to a
+minimum.
+
+The principle of
+disclosure:Show a preview
+of information that will help
+users understand what kind
+of information is hidden if
+they dig deeper.
+
+The principle of
+exemplars: Show examples
+of content when describing
+the content of the
+categories.
+
+The principle of multiple
+classifications: Offer users
+several different
+classification schemes to
+browse the site’s content.
+
+The principle of focused
+navigation: Keep navigation
+simple and never mix
+different things.
+
+The principle of
+growth: Assume that the
+content on the website will
+grow. Make sure the website
+is scalable.
+
+https://careerfoundry.com/en/blog/ux-design/a-beginners-guide-to-information-architecture/
+
+Value of Information Architectures
+
+Models for content
+organization
+
+• For web sites but other applications also follow same
+principles:
+• Single page (personal web sites, focused web sites)
+• Flat (agencies, business sites)
+• Index (similar to flat, portfolios, ecomerce sites)
+• Daisy (Moodle)
+• Strict hierarchy (Moodle)
+• Multidimensional hierarchy (Wikipedia)
+
+Enterprise Information Architecture (EIA)
+• It links technical, application and data architecture with the strategic plan of the enterprise.
+• A well-documented architecture is a logical organization of information pertaining to the
+following corporate-level, enterprise-wide elements:
+• Strategic goals, objectives, and strategies
+• Business rules and measures
+• Information requirements
+• Application systems
+• Relationships between applications and data elements
+• Technology infrastructure
+
+Information architectures and Big Data
+• The primary characteristics of Big Data (Volume, Velocity, and Variety) are a challenge to existing
+architectures and the systems ability to effectively, efficiently and economically process data to
+achieve operational efficiencies.
+• Information Architecture provides the methods and tools for organizing, labelling, building
+relationships (through associations), and describing (through metadata) the unstructured
+content adding this source to the overall pool of Big Data.
+• In addition, information architecture enables Big Data to rapidly explore and analyse any
+combination of structured, semi-structured and unstructured sources.
+• Big Data requires information architecture to exploit relationships and synergies between the
+data. This infrastructure enables organizations to make decisions utilizing the full spectrum of
+their big data sources.
+
+Big data architecture
+• Big data architecture refers to
+the logical and physical structure
+that dictates how high volumes
+of data are ingested, processed,
+stored, managed, and accessed.
+
+Data Integration
+
+• Transform structured and unstructured data from
+different sources into a trusted, unified view available to
+any system.
+
+• Integration begins with the ingestion process, and
+includes steps such as cleansing, ETL mapping, and
+transformation.
+• There is no universal approach to data integration.
+However, data integration solutions typically involve a
+few common elements, including a network of data
+sources, a master server, and clients accessing data
+from the master server.
+
+Why we need data integration?
+• Improves collaboration and unification of systems within an organization
+• Saves time and boosts efficiency
+• Reduces errors
+• Delivers more valuable information
+• Example:
+• Without unified data, a single report typically involves logging into multiple accounts, on
+multiple sites, accessing data within native apps, copying over the data, reformatting, and
+cleansing, all before analysis can happen. Conducting all these operations as efficiently as
+possible highlights the importance of data integration.
+
+https://www.omnisci.com/technical-glossary/data-integration
+
+Data integration in modern business
+• There is no one size fits all.
+• Data Lakes
+• Data Warehouses
+• Data lakes and data warehouses are both widely used for storing big data, but they are not
+interchangeable terms. A data lake is a vast pool of raw data, the purpose for which is not yet
+defined. A data warehouse is a repository for structured, filtered data that has already been
+processed for a specific purpose.
+
+https://www.talend.com/resources/data-lake-vs-data-warehouse/#:~:text=Data%20lakes%20and%20data%20warehouses,processed%20for%20a%20specific%20purpose.
+
+Data Lake VS
+Data
+Warehouse
+
+Data Lake
+
+Data Warehouse
+
+Type of data
+
+Unstructured and structured data
+from various company data
+sources
+
+Historical data that has been
+structured to fit a relational
+database schema
+
+Purpose
+
+Cost-effective big data storage
+
+Analytics for business decisions
+
+Users
+
+Data scientists and engineers
+
+Data analysts and business
+analysts
+
+Tasks
+
+Storing data and big data
+analytics, like deep learning and
+real-time analytics
+
+Typically read-only queries for
+aggregating and summarizing
+data
+
+Size
+
+Stores all data that might be
+used—can take up petabytes!
+
+Only stores data relevant to
+analysis
+
+Data Lake
+
+• A Data Lake is a storage repository that can store a
+large amount of structured, semi-structured, and
+unstructured data. It is a place to store every type of
+data in its native format with no fixed limits on account
+size or file. It offers a large amount of data quantity for
+increased analytical performance and native
+integration.
+• Data Lake is like a large container which is very similar
+to real lake and rivers. Just like in a lake, you have
+multiple tributaries coming in; similarly, a data lake has
+structured data, unstructured data, machine to
+machine, logs flowing through in real-time.
+
+https://www.guru99.com/data-lake-vs-data-warehouse.html
+
+Data Lake
+• A data lake can add a lot of value to your organization if you:
+• Work with Big Data and need to handle volume, velocity or a variety of
+data.
+• Have a data science role or machine learning/AI where you need to do a
+broader exploration of data that may not yet have a known analytical
+value.
+• Value speed over accuracy (meaning you prioritize the ability to analyze
+data quickly over a more formal IT extract, transform and load process).
+
+Data Warehouse
+
+Data Extraction
+
+Data Cleaning
+
+Data
+Transformation
+
+Data Loading
+and Refreshing
+
+Data warehouse
+• The data warehouse is generally more beneficial for organizations
+because it allows them to:
+• Provide the single source of truth that businesses expect in most cases.
+• Ensure you have a quality, analytical data model that lends itself to slicing
+and dicing the data.
+• Guarantee that you have accurate data when users are doing a self-service
+scenario off that model.
+
+Combining
+everything
+
+• AWS eco system and Azure eco system
+
+Traditional (Old) VS Modern architectures
+
+Questions?
+
+

@@ -1,22 +1,25 @@
 # Study Flashcards
 
-## Open From Terminal
+## Qt Desktop App
 
 ```bash
-cd /Users/filipmicevski/Desktop/ucenje
+cd /Users/filipmicevski/Desktop/mozokce
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+python3 qt_app.py
+```
+
+## Legacy CustomTkinter App
+
+```bash
+cd /Users/filipmicevski/Desktop/mozokce
+source venv/bin/activate
 python3 app.py
 ```
 
-## If You Do Not Have Python
+## Notes
 
-Install Python 3 first, then reopen Terminal and run the commands above.
-
-Check if it is installed:
-
-```bash
-python3 --version
-pip3 --version
-```
+- `qt_app.py` is the new PySide6 desktop UI.
+- `app.py` remains as the older CustomTkinter version.
+- Both versions use the same subject folders and JSON progress files.

@@ -1906,7 +1906,7 @@ class FlashcardApp(ctk.CTk):
             print(f"Warning: could not update wrong card bank: {e}", file=sys.stderr)
 
         mastered_status = f"Прескокнато ажурирање на совладани"
-        if self._deck_mode == "main" and answered == total and total:
+        if self._deck_mode == "main" and answered:
             mastered_status = f"Ажурирано {self.mastered_cards_path}"
             try:
                 update_mastered_cards(
@@ -1921,7 +1921,7 @@ class FlashcardApp(ctk.CTk):
                 print(f"Warning: could not update mastered card bank: {e}", file=sys.stderr)
 
         completed_status = "Прескокнато ажурирање на готови"
-        if self._deck_mode == "mastered" and answered == total and total:
+        if self._deck_mode == "mastered" and answered:
             completed_status = f"Ажурирано {self.completed_cards_path}"
             try:
                 update_completed_cards(

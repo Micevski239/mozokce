@@ -326,7 +326,7 @@ class FlashcardApp(ctk.CTk):
         actions = ctk.CTkFrame(self.subjects_frame, fg_color="transparent")
         actions.pack(pady=(0, 24))
         ctk.CTkButton(
-            actions, text="Ресетирај го сиот напредок", width=200,
+            actions, text="Ресетирај СИТЕ предмети", width=220,
             fg_color="#7f1d1d", hover_color="#991b1b",
             command=self._reset_all_progress
         ).pack()
@@ -659,6 +659,11 @@ class FlashcardApp(ctk.CTk):
             tools_btns, text="Ресетирај совладани", width=170,
             fg_color="#7c3aed", hover_color="#6d28d9",
             command=self._reset_mastered_to_main
+        ).pack(side="left", padx=(0, 8))
+        ctk.CTkButton(
+            tools_btns, text="Ресетирај прогрес", width=170,
+            fg_color="#7f1d1d", hover_color="#991b1b",
+            command=self._reset_subject_progress
         ).pack(side="left", padx=(0, 8))
         ctk.CTkButton(
             tools_btns, text="Tainted", width=130,
@@ -1024,26 +1029,70 @@ class FlashcardApp(ctk.CTk):
                 subjects.append(name)
         return subjects
 
-    def _reset_all_progress(self):
-        confirmed = ctk.CTkInputDialog(
-            text="Ова ќе го избрише сиот напредок (сесии, грешки, совладани карти) за сите предмети.\nВнеси 'РЕСЕТ' за да потврдиш:",
-            title="Ресетирај напредок"
-        ).get_input()
-        if confirmed != "РЕСЕТ":
-            return
-        progress_files = [
+    def _progress_files(self):
+        return [
             "sessions.json", "wrong_cards.json",
             "mastered_cards.json", "mastery_progress.json", "tainted.json",
             "completed_cards.json", "completed_progress.json",
             "wrong_strikes.json", "redemption_strikes.json", "flagged_cards.json",
         ]
+
+    def _reset_all_progress(self):
+        confirmed = ctk.CTkInputDialog(
+            text=(
+                "ОПАСНО: Ова ќе го избрише прогресот за СИТЕ предмети.\n"
+                "Внеси 'РЕСЕТ-СИТЕ' за да потврдиш:"
+            ),
+            title="Ресетирај напредок"
+        ).get_input()
+        if confirmed != "РЕСЕТ-СИТЕ":
+            return
         for subject in self._available_subjects():
             subject_dir = os.path.join(self.subjects_base_path, subject)
-            for fname in progress_files:
+            for fname in self._progress_files():
                 fpath = os.path.join(subject_dir, fname)
                 if os.path.exists(fpath):
                     os.remove(fpath)
         self._show_subjects()
+
+    def _reset_subject_progress_for_name(self, subject_name):
+        subject_name = str(subject_name or "").strip()
+        if not subject_name:
+            return
+        subject_dir = os.path.join(self.subjects_base_path, subject_name)
+        if not os.path.isdir(subject_dir):
+            return
+
+        confirmed = ctk.CTkInputDialog(
+            text=(
+                f"Ова ќе го избрише прогресот само за предметот '{subject_name}' "
+                "(сесии, погрешни, совладани, готови, strikes).\n"
+                f"Внеси точно: {subject_name}"
+            ),
+            title="Ресетирај прогрес за предмет"
+        ).get_input()
+        if str(confirmed or "").strip() != subject_name:
+            return
+
+        for fname in self._progress_files():
+            fpath = os.path.join(subject_dir, fname)
+            if os.path.exists(fpath):
+                os.remove(fpath)
+
+        if self.subject_name == subject_name:
+            self._clear_main_session_state_persisted()
+            self._reload_review_counts()
+            self._load_main_deck()
+            if self._last_screen != "subjects":
+                self._show_sessions("home")
+
+        if self._last_screen == "subjects":
+            self._refresh_subjects_ui()
+
+    def _reset_subject_progress(self):
+        if not self.subject_name:
+            return
+        self._reset_subject_progress_for_name(self.subject_name)
 
     def _rename_subject(self, subject_name):
         new_name = ctk.CTkInputDialog(
@@ -1104,6 +1153,11 @@ class FlashcardApp(ctk.CTk):
                 top, text="Преименувај", width=110,
                 fg_color="#334155", hover_color="#475569",
                 command=lambda subject_name=subject: self._rename_subject(subject_name)
+            ).pack(side="right", padx=(0, 6))
+            ctk.CTkButton(
+                top, text="Ресет прогрес", width=120,
+                fg_color="#7f1d1d", hover_color="#991b1b",
+                command=lambda subject_name=subject: self._reset_subject_progress_for_name(subject_name)
             ).pack(side="right", padx=(0, 6))
 
             meta = (

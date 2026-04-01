@@ -1115,6 +1115,7 @@ class FlashcardApp(ctk.CTk):
             ).pack(anchor="w", padx=16, pady=(0, 14))
 
     def _show_subjects(self):
+        self._capture_main_session_state()
         self._close_new_session_dialog()
         self._last_screen = "subjects"
         self._refresh_subjects_ui()
@@ -1169,6 +1170,7 @@ class FlashcardApp(ctk.CTk):
         self._maybe_show_tutorial("summary")
 
     def _show_sessions(self, back_target=None):
+        self._capture_main_session_state()
         self._close_new_session_dialog()
         self._sessions_back_target = back_target or self._last_screen
         self._refresh_sessions_ui()

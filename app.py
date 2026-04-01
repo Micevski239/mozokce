@@ -176,6 +176,8 @@ class FlashcardApp(ctk.CTk):
         self._choice_uniform_height = None
         self._new_session_dialog = None
         self._main_session_state = None
+        self._resume_states = {}
+        self.protocol("WM_DELETE_WINDOW", self._on_app_close)
 
         self._prefs_path = os.path.join(self.base_path, "prefs.json")
         self._dismissed_tutorials = set()
@@ -197,18 +199,53 @@ class FlashcardApp(ctk.CTk):
                 with open(self._prefs_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 self._dismissed_tutorials = set(data.get("dismissed_tutorials", []))
+                resume_states = data.get("resume_states", {})
+                self._resume_states = resume_states if isinstance(resume_states, dict) else {}
             except (json.JSONDecodeError, OSError):
                 self._dismissed_tutorials = set()
+                self._resume_states = {}
 
     def _save_prefs(self):
         try:
             with open(self._prefs_path, "w", encoding="utf-8") as f:
                 json.dump(
-                    {"dismissed_tutorials": sorted(self._dismissed_tutorials)},
+                    {
+                        "dismissed_tutorials": sorted(self._dismissed_tutorials),
+                        "resume_states": self._resume_states,
+                    },
                     f, ensure_ascii=False, indent=2
                 )
         except OSError:
             pass
+
+    def _subject_resume_key(self):
+        return str(self.subject_name or "").strip()
+
+    def _save_main_session_state_to_prefs(self):
+        key = self._subject_resume_key()
+        if not key:
+            return
+        if self._main_session_state:
+            self._resume_states[key] = self._main_session_state
+        else:
+            self._resume_states.pop(key, None)
+        self._save_prefs()
+
+    def _load_main_session_state_from_prefs(self):
+        key = self._subject_resume_key()
+        if not key:
+            return None
+        state = self._resume_states.get(key)
+        return state if isinstance(state, dict) else None
+
+    def _clear_main_session_state_persisted(self):
+        self._main_session_state = None
+        self._save_main_session_state_to_prefs()
+
+    def _on_app_close(self):
+        self._capture_main_session_state()
+        self._save_prefs()
+        self.destroy()
 
     def _maybe_show_tutorial(self, screen_name):
         if screen_name in self._dismissed_tutorials:
@@ -1087,7 +1124,7 @@ class FlashcardApp(ctk.CTk):
 
     def _choose_subject(self, subject_name):
         self._set_subject_paths(subject_name)
-        self._load_main_deck()
+        self._main_session_state = self._load_main_session_state_from_prefs()
         self._show_sessions("home")
 
     def _start_main_session(self):
@@ -1339,6 +1376,7 @@ class FlashcardApp(ctk.CTk):
         if self._error or not self.deck.total:
             return
         if self._deck_mode == "main":
+            self._clear_main_session_state_persisted()
             self._load_main_deck()
         elif self._deck_mode == "wrong_set":
             self._load_wrong_deck()
@@ -1400,7 +1438,7 @@ class FlashcardApp(ctk.CTk):
             self._capture_main_session_state()
             self._load_completed_deck()
         else:
-            self._main_session_state = None
+            self._clear_main_session_state_persisted()
             self._load_main_deck()
         self._show_quiz()
 
@@ -1525,7 +1563,7 @@ class FlashcardApp(ctk.CTk):
             strikes.pop(question, None)
             save_wrong_strikes(strikes, self.wrong_strikes_path)
         self._reload_review_counts()
-        self._main_session_state = None
+        self._clear_main_session_state_persisted()
         self.deck.remove_question(question)
         self._missed_cards = [
             missed for missed in self._missed_cards
@@ -1566,7 +1604,8 @@ class FlashcardApp(ctk.CTk):
     def _toggle_shuffle(self):
         if self._error or not self.deck.total:
             return
-        self._main_session_state = None
+        if self._deck_mode == "main":
+            self._clear_main_session_state_persisted()
         self.deck.shuffle(bool(self.shuffle_var.get()))
         self._session_saved = False
         self._missed_cards = []
@@ -1600,7 +1639,6 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
-        self._main_session_state = None
 
     def _load_wrong_deck(self):
         cards = load_wrong_cards(self.wrong_cards_path)
@@ -1706,11 +1744,13 @@ class FlashcardApp(ctk.CTk):
             "current_question": current_question,
             "results_by_question": results_by_question,
         }
+        self._save_main_session_state_to_prefs()
 
     def _restore_main_session_state(self):
-        state = self._main_session_state
+        state = self._main_session_state or self._load_main_session_state_from_prefs()
         if not state:
             return False
+        self._main_session_state = state
 
         cards, error = load_cards(self.cards_path)
         if error:
@@ -1738,7 +1778,7 @@ class FlashcardApp(ctk.CTk):
             self._session_saved = False
             self._missed_cards = []
             self._streak_reset_questions = set()
-            self._main_session_state = None
+            self._clear_main_session_state_persisted()
             return True
 
         by_question = {}
@@ -1782,6 +1822,7 @@ class FlashcardApp(ctk.CTk):
             if question in results_by_question:
                 restored_results[idx] = bool(results_by_question[question])
         self.deck._results = restored_results
+        self._save_main_session_state_to_prefs()
         return True
 
     def _reset_mastered_to_main(self):
@@ -1805,6 +1846,7 @@ class FlashcardApp(ctk.CTk):
         clear_mastered_state(self.mastered_cards_path, self.mastery_progress_path)
         clear_completed_state(self.completed_cards_path, self.completed_progress_path)
         self._reload_review_counts()
+        self._clear_main_session_state_persisted()
         self._load_main_deck()
         self._show_quiz()
 
@@ -1912,6 +1954,8 @@ class FlashcardApp(ctk.CTk):
             )
 
         self._session_saved = session_saved
+        if session_saved and self._deck_mode == "main":
+            self._clear_main_session_state_persisted()
         self._reload_review_counts()
         self._refresh_deck_buttons()
 

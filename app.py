@@ -6,7 +6,6 @@ from deck import (
     DeckState,
     build_explanation,
     format_correct_choices,
-    get_card_source_meta,
     load_cards,
     save_cards,
     shuffle_card_bank,
@@ -22,6 +21,7 @@ from sessions import (
     load_mastered_cards,
     load_mastery_progress,
     load_sessions,
+    load_flagged_cards,
     load_tainted_questions,
     load_wrong_cards,
     save_tainted_questions,
@@ -36,6 +36,7 @@ from sessions import (
     summarize_sessions,
     sync_tainted_with_wrong_cards,
     tainted_question_set,
+    toggle_flagged_card,
     update_mastered_cards,
 )
 
@@ -57,6 +58,7 @@ MODE_LABELS = {
     "missed": "Пропуштени од последната сесија",
     "wrong_set": "Погрешни за повторување",
     "mastered": "Совладани за повторување",
+    "flagged": "Означени за повторување",
 }
 
 TUTORIAL_TEXTS = {
@@ -122,12 +124,12 @@ class FlashcardApp(ctk.CTk):
         self.bind("<Configure>", self._handle_resize)
 
         self.base_path = os.path.dirname(os.path.abspath(__file__))
-        self.subjects_root = os.path.join(self.base_path, "subjects")
         self.subject_name = None
         self.subject_dir = None
         self.cards_path = ""
         self.sessions_path = ""
         self.wrong_cards_path = ""
+        self.flagged_cards_path = ""
         self.mastered_cards_path = ""
         self.mastery_progress_path = ""
         self.tainted_path = ""
@@ -150,15 +152,16 @@ class FlashcardApp(ctk.CTk):
         self._tainted_back_target = "quiz"
         self._wrong_count = 0
         self._mastered_count = 0
+        self._flagged_count = 0
         self._resize_after_id = None
         self._last_question_wraplength = None
         self._last_choice_wraplength = None
         self._new_session_dialog = None
+        self._main_session_state = None
 
         self._prefs_path = os.path.join(self.base_path, "prefs.json")
         self._dismissed_tutorials = set()
         self._load_prefs()
-        self._ensure_subjects_root()
 
         self._build_subjects_ui()
         self._build_quiz_ui()
@@ -257,7 +260,7 @@ class FlashcardApp(ctk.CTk):
         ).pack(pady=(36, 6))
         ctk.CTkLabel(
             self.subjects_frame,
-            text="Секој предмет е папка во subjects/ со свои карти, сесии и сетови за повторување.",
+            text="Секој предмет е папка со свои карти, сесии и сетови за повторување.",
             font=ctk.CTkFont(size=12),
             text_color="#94a3b8",
         ).pack()
@@ -306,34 +309,57 @@ class FlashcardApp(ctk.CTk):
 
         # Row 2: Deck actions
         actions_row = ctk.CTkFrame(header, fg_color="transparent")
-        actions_row.pack(anchor="e", pady=(4, 0))
+        actions_row.pack(fill="x", pady=(4, 0))
+        actions_left = ctk.CTkFrame(actions_row, fg_color="transparent")
+        actions_left.pack(side="left")
+        self.back_to_main_btn = ctk.CTkButton(
+            actions_left, text="Главен сет", width=110,
+            fg_color="#475569", hover_color="#64748b",
+            command=self._return_to_main_set
+        )
+        self.back_to_main_btn.pack(side="left", padx=3)
+
+        actions_right = ctk.CTkFrame(actions_row, fg_color="transparent")
+        actions_right.pack(side="right")
         self.wrong_set_btn = ctk.CTkButton(
-            actions_row, text="Погрешни", width=100,
+            actions_right, text="Погрешни", width=100,
             fg_color="#0f766e", hover_color="#115e59",
             command=self._start_wrong_set
         )
         self.wrong_set_btn.pack(side="left", padx=3)
         self.mastered_set_btn = ctk.CTkButton(
-            actions_row, text="Совладани", width=100,
+            actions_right, text="Совладани", width=100,
             fg_color="#1d4ed8", hover_color="#1e40af",
             command=self._start_mastered_set
         )
         self.mastered_set_btn.pack(side="left", padx=3)
+        self.flagged_set_btn = ctk.CTkButton(
+            actions_right, text="Означени", width=100,
+            fg_color="#7c2d12", hover_color="#9a3412",
+            command=self._start_flagged_set
+        )
+        self.flagged_set_btn.pack(side="left", padx=3)
         ctk.CTkButton(
-            actions_row, text="Ресетирај совладани", width=150,
+            actions_right, text="Ресетирај совладани", width=150,
             fg_color="#7c3aed", hover_color="#6d28d9",
             command=self._reset_mastered_to_main
         ).pack(side="left", padx=3)
-        ctk.CTkButton(actions_row, text="Нова сесија", width=95,
+        ctk.CTkButton(actions_right, text="Нова сесија", width=95,
                       fg_color="#2563eb", hover_color="#1d4ed8",
                       command=self._new_session).pack(side="left", padx=3)
-        ctk.CTkButton(actions_row, text="Почни одново", width=95,
+        ctk.CTkButton(actions_right, text="Почни одново", width=95,
                       fg_color="#334155", hover_color="#475569",
                       command=self._restart_current_session).pack(side="left", padx=3)
-        ctk.CTkButton(actions_row, text="Избриши", width=70,
+        self.toggle_flag_btn = ctk.CTkButton(
+            actions_right, text="Означи", width=95,
+            fg_color="#92400e", hover_color="#b45309",
+            command=self._toggle_current_flag
+        )
+        self.toggle_flag_btn.pack(side="left", padx=3)
+        ctk.CTkButton(actions_right, text="Избриши", width=70,
                       fg_color="#991b1b", hover_color="#b91c1c",
                       command=self._delete_current_question).pack(side="left", padx=3)
-        ctk.CTkButton(actions_row, text="Заврши", width=70,
+        ctk.CTkButton(actions_right, text="Заврши", width=70,
                       fg_color="#7c2d12", hover_color="#9a3412",
                       command=self._finish_session).pack(side="left", padx=3)
 
@@ -347,21 +373,11 @@ class FlashcardApp(ctk.CTk):
 
         self.question_frame = ctk.CTkFrame(self.quiz_frame, corner_radius=10)
         self.question_frame.pack(fill="x", padx=20, pady=(0, 10))
-        self.question_source_chip = ctk.CTkFrame(
-            self.question_frame, corner_radius=999, fg_color="#0f766e"
-        )
-        self.question_source_label = ctk.CTkLabel(
-            self.question_source_chip,
-            text="",
-            font=ctk.CTkFont(size=11, weight="bold"),
-            text_color="#ccfbf1",
-        )
-        self.question_source_label.pack(padx=12, pady=5)
         self.question_label = ctk.CTkLabel(
             self.question_frame, text="",
             font=ctk.CTkFont(size=16), wraplength=1100, justify="center"
         )
-        self.question_label.pack(fill="x", padx=20, pady=(20, 20))
+        self.question_label.pack(fill="x", padx=20, pady=20)
 
         self.choices_frame = ctk.CTkFrame(self.quiz_frame, fg_color="transparent")
         self.choices_frame.pack(fill="x", padx=20)
@@ -448,6 +464,12 @@ class FlashcardApp(ctk.CTk):
             command=self._start_mastered_set
         )
         self.summary_mastered_btn.pack(side="left", padx=8)
+        self.summary_flagged_btn = ctk.CTkButton(
+            btn_row, text="Означени", width=140,
+            fg_color="#7c2d12", hover_color="#9a3412",
+            command=self._start_flagged_set
+        )
+        self.summary_flagged_btn.pack(side="left", padx=8)
         ctk.CTkButton(
             btn_row, text="Ресетирај совладани", width=160,
             fg_color="#7c3aed", hover_color="#6d28d9",
@@ -498,6 +520,12 @@ class FlashcardApp(ctk.CTk):
             command=self._start_mastered_set
         )
         self.home_mastered_btn.pack(side="left")
+        self.home_flagged_btn = ctk.CTkButton(
+            sets_btns, text="Означени", width=180,
+            fg_color="#7c2d12", hover_color="#9a3412",
+            command=self._start_flagged_set
+        )
+        self.home_flagged_btn.pack(side="left", padx=(8, 0))
 
         # ── Stats row ─────────────────────────────────────────────────────────
         stats_row = ctk.CTkFrame(self.sessions_frame, fg_color="transparent")
@@ -849,21 +877,14 @@ class FlashcardApp(ctk.CTk):
         self.tainted_frame.pack_forget()
         self.guide_frame.pack_forget()
 
-    def _ensure_subjects_root(self):
-        os.makedirs(self.subjects_root, exist_ok=True)
-
-    def _subject_path(self, subject_name):
-        if not subject_name:
-            return None
-        return os.path.join(self.subjects_root, subject_name)
-
     def _set_subject_paths(self, subject_name):
         self.subject_name = subject_name
-        self.subject_dir = self._subject_path(subject_name)
+        self.subject_dir = os.path.join(self.base_path, subject_name) if subject_name else None
         if not self.subject_dir:
             self.cards_path = ""
             self.sessions_path = ""
             self.wrong_cards_path = ""
+            self.flagged_cards_path = ""
             self.mastered_cards_path = ""
             self.mastery_progress_path = ""
             self.tainted_path = ""
@@ -871,11 +892,13 @@ class FlashcardApp(ctk.CTk):
             self.redemption_strikes_path = ""
             self._wrong_count = 0
             self._mastered_count = 0
+            self._flagged_count = 0
             return
 
         self.cards_path = os.path.join(self.subject_dir, "cards.json")
         self.sessions_path = os.path.join(self.subject_dir, "sessions.json")
         self.wrong_cards_path = os.path.join(self.subject_dir, "wrong_cards.json")
+        self.flagged_cards_path = os.path.join(self.subject_dir, "flagged_cards.json")
         self.mastered_cards_path = os.path.join(self.subject_dir, "mastered_cards.json")
         self.mastery_progress_path = os.path.join(self.subject_dir, "mastery_progress.json")
         self.tainted_path = os.path.join(self.subject_dir, "tainted.json")
@@ -886,10 +909,9 @@ class FlashcardApp(ctk.CTk):
         self._reload_review_counts()
 
     def _available_subjects(self):
-        self._ensure_subjects_root()
         subjects = []
-        for name in sorted(os.listdir(self.subjects_root)):
-            full_path = os.path.join(self.subjects_root, name)
+        for name in sorted(os.listdir(self.base_path)):
+            full_path = os.path.join(self.base_path, name)
             if not os.path.isdir(full_path) or name.startswith("."):
                 continue
             if os.path.exists(os.path.join(full_path, "cards.json")):
@@ -906,10 +928,10 @@ class FlashcardApp(ctk.CTk):
         progress_files = [
             "sessions.json", "wrong_cards.json",
             "mastered_cards.json", "mastery_progress.json", "tainted.json",
-            "wrong_strikes.json", "redemption_strikes.json",
+            "wrong_strikes.json", "redemption_strikes.json", "flagged_cards.json",
         ]
         for subject in self._available_subjects():
-            subject_dir = self._subject_path(subject)
+            subject_dir = os.path.join(self.base_path, subject)
             for fname in progress_files:
                 fpath = os.path.join(subject_dir, fname)
                 if os.path.exists(fpath):
@@ -924,8 +946,8 @@ class FlashcardApp(ctk.CTk):
         if not new_name or not new_name.strip() or new_name.strip() == subject_name:
             return
         new_name = new_name.strip()
-        old_path = self._subject_path(subject_name)
-        new_path = self._subject_path(new_name)
+        old_path = os.path.join(self.base_path, subject_name)
+        new_path = os.path.join(self.base_path, new_name)
         if os.path.exists(new_path):
             ctk.CTkInputDialog(
                 text=f"Папката '{new_name}' веќе постои. Избери друго име.",
@@ -943,17 +965,18 @@ class FlashcardApp(ctk.CTk):
         if not subjects:
             ctk.CTkLabel(
                 self.subjects_scroll,
-                text="Нема најдени предмети.\nСоздај папка во subjects/ со cards.json за да започнеш.",
+                text="Нема најдени предмети.\nСоздај папка со cards.json за да започнеш.",
                 text_color="#94a3b8",
                 justify="center",
             ).pack(pady=40)
             return
 
         for subject in subjects:
-            subject_dir = self._subject_path(subject)
+            subject_dir = os.path.join(self.base_path, subject)
             cards, _ = load_cards(os.path.join(subject_dir, "cards.json"))
             sessions = load_sessions(os.path.join(subject_dir, "sessions.json"))
             wrong_cards = load_wrong_cards(os.path.join(subject_dir, "wrong_cards.json"))
+            flagged_cards = load_flagged_cards(os.path.join(subject_dir, "flagged_cards.json"))
             mastered_cards = load_mastered_cards(os.path.join(subject_dir, "mastered_cards.json"))
             tainted_cards = tainted_question_set(os.path.join(subject_dir, "tainted.json"))
 
@@ -978,6 +1001,7 @@ class FlashcardApp(ctk.CTk):
             meta = (
                 f'{len(cards)} карти   {len(sessions)} сесии   '
                 f'Погрешни: {len(wrong_cards)}   '
+                f'Означени: {len(flagged_cards)}   '
                 f'Совладани: {sum(1 for item in mastered_cards if item.get("mastered"))}   '
                 f'Tainted: {len(tainted_cards)}'
             )
@@ -999,7 +1023,8 @@ class FlashcardApp(ctk.CTk):
         self._show_sessions("home")
 
     def _start_main_session(self):
-        self._load_main_deck()
+        if not self._restore_main_session_state():
+            self._load_main_deck()
         self._show_quiz()
 
     def _show_quiz(self):
@@ -1010,6 +1035,9 @@ class FlashcardApp(ctk.CTk):
         self._refresh_deck_buttons()
         self._update_quiz_ui()
         self._maybe_show_tutorial("quiz")
+
+    def _return_to_main_set(self):
+        self._start_main_session()
 
     def _show_summary(self):
         self._save_session_if_needed()
@@ -1055,12 +1083,14 @@ class FlashcardApp(ctk.CTk):
         if not self.subject_name:
             self._wrong_count = 0
             self._mastered_count = 0
+            self._flagged_count = 0
             return
         self._wrong_count = len(load_wrong_cards(self.wrong_cards_path))
         self._mastered_count = sum(
             1 for card in load_mastered_cards(self.mastered_cards_path)
             if card.get("mastered")
         )
+        self._flagged_count = len(load_flagged_cards(self.flagged_cards_path))
 
     def _delete_session(self, index):
         delete_session_at(index, self.sessions_path)
@@ -1082,13 +1112,16 @@ class FlashcardApp(ctk.CTk):
         if self._deck_mode == "main" and self._mastered_hidden_count:
             mode_text += f" • {self._mastered_hidden_count} скриени од главното"
         self.mode_label.configure(text=mode_text)
+        self.back_to_main_btn.configure(
+            state="disabled" if self._deck_mode == "main" else "normal"
+        )
 
         for w in self.action_frame.winfo_children():
             w.pack_forget()
 
         if self._error:
             self.question_label.configure(text=self._error)
-            self.question_source_chip.pack_forget()
+            self.toggle_flag_btn.configure(state="disabled", text="Означи")
             for btn in self.choice_btns:
                 btn.pack_forget()
             self.hint_label.configure(text="")
@@ -1096,7 +1129,7 @@ class FlashcardApp(ctk.CTk):
 
         if not self.deck.total:
             self.question_label.configure(text=self._empty_message)
-            self.question_source_chip.pack_forget()
+            self.toggle_flag_btn.configure(state="disabled", text="Означи")
             for btn in self.choice_btns:
                 btn.pack_forget()
             self.hint_label.configure(text="")
@@ -1106,24 +1139,8 @@ class FlashcardApp(ctk.CTk):
         self.counter_label.configure(
             text=f"Картичка {self.deck.current_position} од {self.deck.total}")
         self.progress.set(self.deck.current_position / self.deck.total)
-        source_meta = get_card_source_meta(card)
-        if source_meta:
-            self.question_source_chip.configure(fg_color=source_meta["fg_color"])
-            self.question_source_label.configure(
-                text=source_meta["label"],
-                text_color=source_meta["text_color"],
-            )
-            self.question_source_chip.pack(
-                anchor="w",
-                padx=20,
-                pady=(16, 0),
-                before=self.question_label,
-            )
-            self.question_label.pack_configure(pady=(12, 20))
-        else:
-            self.question_source_chip.pack_forget()
-            self.question_label.pack_configure(pady=(20, 20))
         self.question_label.configure(text=card["question"])
+        self._update_current_flag_button(card)
         self._configure_question_layout()
 
         choices = card.get("choices", [])
@@ -1244,6 +1261,8 @@ class FlashcardApp(ctk.CTk):
             self._load_main_deck()
         elif self._deck_mode == "wrong_set":
             self._load_wrong_deck()
+        elif self._deck_mode == "flagged":
+            self._load_flagged_deck()
         elif self._deck_mode == "mastered":
             self._load_mastered_deck()
         else:
@@ -1288,10 +1307,16 @@ class FlashcardApp(ctk.CTk):
     def _start_new_session_mode(self, mode):
         self._close_new_session_dialog()
         if mode == "wrong_set":
+            self._capture_main_session_state()
             self._load_wrong_deck()
+        elif mode == "flagged":
+            self._capture_main_session_state()
+            self._load_flagged_deck()
         elif mode == "mastered":
+            self._capture_main_session_state()
             self._load_mastered_deck()
         else:
+            self._main_session_state = None
             self._load_main_deck()
         self._show_quiz()
 
@@ -1306,7 +1331,7 @@ class FlashcardApp(ctk.CTk):
 
         dialog = ctk.CTkToplevel(self)
         dialog.title("Нова сесија")
-        dialog.geometry("420x260")
+        dialog.geometry("420x320")
         dialog.resizable(False, False)
         dialog.transient(self)
         dialog.grab_set()
@@ -1342,6 +1367,11 @@ class FlashcardApp(ctk.CTk):
             actions, text=f"Погрешни ({self._wrong_count})", height=42,
             fg_color="#0f766e", hover_color="#115e59",
             command=lambda: self._start_new_session_mode("wrong_set")
+        ).pack(fill="x", pady=6)
+        ctk.CTkButton(
+            actions, text=f"Означени ({self._flagged_count})", height=42,
+            fg_color="#7c2d12", hover_color="#9a3412",
+            command=lambda: self._start_new_session_mode("flagged")
         ).pack(fill="x", pady=6)
         ctk.CTkButton(
             actions, text=f"Совладани ({self._mastered_count})", height=42,
@@ -1395,6 +1425,7 @@ class FlashcardApp(ctk.CTk):
 
         self._delete_from_file(self.cards_path, question)
         self._delete_from_file(self.wrong_cards_path, question)
+        self._delete_from_file(self.flagged_cards_path, question)
         self._delete_from_file(self.mastered_cards_path, question)
         self._delete_from_file(self.mastery_progress_path, question)
         self._delete_from_file(self.tainted_path, question)
@@ -1403,6 +1434,7 @@ class FlashcardApp(ctk.CTk):
             strikes.pop(question, None)
             save_wrong_strikes(strikes, self.wrong_strikes_path)
         self._reload_review_counts()
+        self._main_session_state = None
         self.deck.remove_question(question)
         self._missed_cards = [
             missed for missed in self._missed_cards
@@ -1427,6 +1459,8 @@ class FlashcardApp(ctk.CTk):
                 self._load_main_deck()
             elif self._deck_mode == "wrong_set":
                 self._load_wrong_deck()
+            elif self._deck_mode == "flagged":
+                self._load_flagged_deck()
             elif self._deck_mode == "mastered":
                 self._load_mastered_deck()
             else:
@@ -1438,6 +1472,7 @@ class FlashcardApp(ctk.CTk):
     def _toggle_shuffle(self):
         if self._error or not self.deck.total:
             return
+        self._main_session_state = None
         self.deck.shuffle(bool(self.shuffle_var.get()))
         self._session_saved = False
         self._missed_cards = []
@@ -1466,11 +1501,11 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._main_session_state = None
 
     def _load_wrong_deck(self):
         cards = load_wrong_cards(self.wrong_cards_path)
-        main_cards, _ = load_cards(self.cards_path)
-        self.deck = DeckState(sync_cards_to_bank(main_cards, cards))
+        self.deck = DeckState(cards)
         self._error = None
         self._mastered_hidden_count = 0
         self._empty_message = "Погрешните се празни.\nНемаш нерешени пропуштени прашања."
@@ -1482,7 +1517,26 @@ class FlashcardApp(ctk.CTk):
         self._streak_reset_questions = set()
 
     def _start_wrong_set(self):
+        self._capture_main_session_state()
         self._load_wrong_deck()
+        self._show_quiz()
+
+    def _load_flagged_deck(self):
+        cards = load_flagged_cards(self.flagged_cards_path)
+        self.deck = DeckState(cards)
+        self._error = None
+        self._mastered_hidden_count = 0
+        self._empty_message = "Означените се празни.\nНемаш означени прашања за повторување."
+        self._deck_mode = "flagged"
+        if self.shuffle_var.get() and self.deck.total:
+            self.deck.shuffle(True)
+        self._session_saved = False
+        self._missed_cards = []
+        self._streak_reset_questions = set()
+
+    def _start_flagged_set(self):
+        self._capture_main_session_state()
+        self._load_flagged_deck()
         self._show_quiz()
 
     def _load_mastered_deck(self):
@@ -1490,8 +1544,7 @@ class FlashcardApp(ctk.CTk):
             card for card in load_mastered_cards(self.mastered_cards_path)
             if card.get("mastered")
         ]
-        main_cards, _ = load_cards(self.cards_path)
-        self.deck = DeckState(sync_cards_to_bank(main_cards, cards))
+        self.deck = DeckState(cards)
         self._error = None
         self._mastered_hidden_count = 0
         self._empty_message = (
@@ -1505,8 +1558,108 @@ class FlashcardApp(ctk.CTk):
         self._streak_reset_questions = set()
 
     def _start_mastered_set(self):
+        self._capture_main_session_state()
         self._load_mastered_deck()
         self._show_quiz()
+
+    def _capture_main_session_state(self):
+        if self._deck_mode != "main" or self._error or not self.deck.total:
+            return
+
+        order_questions = []
+        for original_index in self.deck.order:
+            card = self.deck.original[original_index]
+            order_questions.append(str(card.get("question", "")).strip())
+
+        current_question = str(self.deck.current_card().get("question", "")).strip()
+        results_by_question = {}
+        for order_pos, is_correct in self.deck._results.items():
+            if 0 <= order_pos < len(self.deck.order):
+                original_index = self.deck.order[order_pos]
+                question = str(self.deck.original[original_index].get("question", "")).strip()
+                if question:
+                    results_by_question[question] = bool(is_correct)
+
+        self._main_session_state = {
+            "order_questions": order_questions,
+            "current_question": current_question,
+            "results_by_question": results_by_question,
+        }
+
+    def _restore_main_session_state(self):
+        state = self._main_session_state
+        if not state:
+            return False
+
+        cards, error = load_cards(self.cards_path)
+        if error:
+            return False
+
+        hidden_questions = (
+            mastered_question_set(self.mastered_cards_path)
+            | tainted_question_set(self.tainted_path)
+        )
+        visible_cards = [card for card in cards if card.get("question") not in hidden_questions]
+        self._mastered_hidden_count = len(cards) - len(visible_cards)
+        self._error = None
+        if cards and not visible_cards:
+            self._empty_message = (
+                "Главното шпил е празно.\nСите прашања се преселени во Совладани или Погрешни."
+            )
+        else:
+            self._empty_message = "Нема карти.\nПрашај го Claude да додаде прашања!"
+
+        if not visible_cards:
+            self.deck = DeckState([])
+            self._deck_mode = "main"
+            self._session_saved = False
+            self._missed_cards = []
+            self._streak_reset_questions = set()
+            self._main_session_state = None
+            return True
+
+        by_question = {}
+        for card in visible_cards:
+            question = str(card.get("question", "")).strip()
+            if question and question not in by_question:
+                by_question[question] = card
+
+        ordered_cards = []
+        used = set()
+        for question in state.get("order_questions", []):
+            card = by_question.get(question)
+            if card is None or question in used:
+                continue
+            ordered_cards.append(card)
+            used.add(question)
+        for card in visible_cards:
+            question = str(card.get("question", "")).strip()
+            if question in used:
+                continue
+            ordered_cards.append(card)
+            used.add(question)
+
+        self.deck = DeckState(ordered_cards)
+        self._deck_mode = "main"
+        self._session_saved = False
+        self._missed_cards = []
+        self._streak_reset_questions = set()
+
+        current_question = state.get("current_question", "")
+        if current_question:
+            for idx, card in enumerate(self.deck.original):
+                if str(card.get("question", "")).strip() == current_question:
+                    self.deck.index = idx
+                    break
+
+        results_by_question = state.get("results_by_question", {})
+        restored_results = {}
+        for idx, card in enumerate(self.deck.original):
+            question = str(card.get("question", "")).strip()
+            if question in results_by_question:
+                restored_results[idx] = bool(results_by_question[question])
+        self.deck._results = restored_results
+        return True
 
     def _reset_mastered_to_main(self):
         if not self.subject_name:
@@ -1625,6 +1778,7 @@ class FlashcardApp(ctk.CTk):
     def _refresh_sessions_ui(self):
         sessions = load_sessions(self.sessions_path)
         wrong_cards = load_wrong_cards(self.wrong_cards_path)
+        flagged_cards = load_flagged_cards(self.flagged_cards_path)
         mastered_cards = load_mastered_cards(self.mastered_cards_path)
         summary = summarize_sessions(sessions)
         self.sessions_subject_label.configure(text=self.subject_name or "")
@@ -1635,8 +1789,10 @@ class FlashcardApp(ctk.CTk):
         self.sessions_wrong_label.configure(text=str(len(wrong_cards)))
         self.sessions_mastered_label.configure(text=str(len(mastered_cards)))
         wrong_state = "normal" if wrong_cards else "disabled"
+        flagged_state = "normal" if flagged_cards else "disabled"
         mastered_state = "normal" if any(c.get("mastered") for c in mastered_cards) else "disabled"
         self.home_wrong_btn.configure(state=wrong_state)
+        self.home_flagged_btn.configure(state=flagged_state)
         self.home_mastered_btn.configure(state=mastered_state)
         self._refresh_deck_buttons()
 
@@ -1706,6 +1862,36 @@ class FlashcardApp(ctk.CTk):
         self.explanation_label.configure(text=build_explanation(card))
         self.feedback_frame.pack(fill="x", padx=20, pady=(10, 0))
 
+    def _flagged_question_set(self):
+        return {
+            str(card.get("question", "")).strip()
+            for card in load_flagged_cards(self.flagged_cards_path)
+            if str(card.get("question", "")).strip()
+        }
+
+    def _update_current_flag_button(self, card=None):
+        card = card or self.deck.current_card()
+        if not card:
+            self.toggle_flag_btn.configure(state="disabled", text="Означи")
+            return
+        question = str(card.get("question", "")).strip()
+        is_flagged = question in self._flagged_question_set()
+        self.toggle_flag_btn.configure(
+            state="normal",
+            text="Тргни ознака" if is_flagged else "Означи"
+        )
+
+    def _toggle_current_flag(self):
+        if self._error or not self.deck.total:
+            return
+        card = self.deck.current_card()
+        if not card:
+            return
+        toggle_flagged_card(card, self.flagged_cards_path)
+        self._reload_review_counts()
+        self._refresh_deck_buttons()
+        self._update_current_flag_button(card)
+
     def _choice_wraplength(self):
         width = self.winfo_width() or self.winfo_screenwidth()
         return max(320, min(width - 260, 1100))
@@ -1753,6 +1939,7 @@ class FlashcardApp(ctk.CTk):
     def _refresh_deck_buttons(self):
         button_groups = {
             f"Погрешни ({self._wrong_count})": ("wrong_set_btn", "summary_wrong_btn", "sessions_wrong_btn"),
+            f"Означени ({self._flagged_count})": ("flagged_set_btn", "summary_flagged_btn", "sessions_flagged_btn"),
             f"Совладани ({self._mastered_count})": ("mastered_set_btn", "summary_mastered_btn", "sessions_mastered_btn"),
         }
 
@@ -1761,6 +1948,23 @@ class FlashcardApp(ctk.CTk):
                 btn = getattr(self, btn_name, None)
                 if btn is not None:
                     btn.configure(text=text)
+
+        availability = {
+            "wrong": self._wrong_count > 0,
+            "flagged": self._flagged_count > 0,
+            "mastered": self._mastered_count > 0,
+        }
+        state_groups = {
+            "wrong": ("wrong_set_btn", "summary_wrong_btn", "home_wrong_btn"),
+            "flagged": ("flagged_set_btn", "summary_flagged_btn", "home_flagged_btn"),
+            "mastered": ("mastered_set_btn", "summary_mastered_btn", "home_mastered_btn"),
+        }
+        for key, names in state_groups.items():
+            state = "normal" if availability[key] else "disabled"
+            for btn_name in names:
+                btn = getattr(self, btn_name, None)
+                if btn is not None:
+                    btn.configure(state=state)
 
     def _exit_fullscreen(self, _event=None):
         self.attributes("-fullscreen", False)

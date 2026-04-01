@@ -7,6 +7,7 @@ from sessions import (
     clear_mastered_state,
     delete_session_at,
     load_sessions,
+    load_flagged_cards,
     load_mastered_cards,
     load_mastery_progress,
     load_tainted_questions,
@@ -16,6 +17,7 @@ from sessions import (
     save_session,
     save_tainted_questions,
     sync_tainted_with_wrong_cards,
+    toggle_flagged_card,
     tainted_question_set,
     update_mastered_cards,
     summarize_sessions,
@@ -109,6 +111,32 @@ def test_summarize_sessions_empty_defaults():
 
 def test_load_wrong_cards_missing_file_returns_empty():
     assert load_wrong_cards("missing_wrong_cards.json") == []
+
+
+def test_toggle_flagged_card_adds_and_removes_question(tmp_path):
+    flagged_path = tmp_path / "flagged_cards.json"
+    card = {"question": "Q1", "choices": ["A"], "correct": [0], "type": "single"}
+
+    added = toggle_flagged_card(card, str(flagged_path))
+    assert added is True
+    assert load_flagged_cards(str(flagged_path)) == [card]
+
+    removed = toggle_flagged_card(card, str(flagged_path))
+    assert removed is False
+    assert load_flagged_cards(str(flagged_path)) == []
+
+
+def test_toggle_flagged_card_deduplicates_by_question(tmp_path):
+    flagged_path = tmp_path / "flagged_cards.json"
+    first = {"question": "Q1", "choices": ["A"], "correct": [0], "type": "single"}
+    second = {"question": "Q1", "choices": ["X", "Y"], "correct": [1], "type": "single"}
+
+    toggle_flagged_card(first, str(flagged_path))
+    toggle_flagged_card(first, str(flagged_path))  # remove
+    toggle_flagged_card(second, str(flagged_path))  # add newer version
+
+    flagged = load_flagged_cards(str(flagged_path))
+    assert flagged == [second]
 
 
 def test_merge_wrong_cards_deduplicates_by_question(tmp_path):

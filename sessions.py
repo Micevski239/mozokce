@@ -83,6 +83,42 @@ def save_wrong_cards(cards, path="wrong_cards.json"):
     _write_json(path, cards)
 
 
+def load_flagged_cards(path="flagged_cards.json"):
+    return _load_json_list(path)
+
+
+def save_flagged_cards(cards, path="flagged_cards.json"):
+    cleaned = _normalize_card_items(cards)
+    deduped = []
+    seen = set()
+    for card in cleaned:
+        question = card.get("question")
+        if question in seen:
+            continue
+        seen.add(question)
+        deduped.append(card)
+    _write_json(path, deduped)
+
+
+def toggle_flagged_card(card, path="flagged_cards.json"):
+    question = str((card or {}).get("question", "")).strip()
+    if not question:
+        return False
+
+    existing = load_flagged_cards(path)
+    remaining = [
+        item for item in existing
+        if str(item.get("question", "")).strip() != question
+    ]
+    if len(remaining) != len(existing):
+        save_flagged_cards(remaining, path)
+        return False
+
+    updated = remaining + [card]
+    save_flagged_cards(updated, path)
+    return True
+
+
 def _tainted_path(path):
     wrong_path = Path(path)
     return str(wrong_path.with_name("tainted.json"))

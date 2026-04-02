@@ -1023,7 +1023,7 @@ class FlashcardApp(ctk.CTk):
         self.tainted_path = os.path.join(self.subject_dir, "tainted.json")
         self.wrong_strikes_path = os.path.join(self.subject_dir, "wrong_strikes.json")
         self.redemption_strikes_path = os.path.join(self.subject_dir, "redemption_strikes.json")
-        if not load_sessions(self.sessions_path):
+        if not load_sessions(self.sessions_path) and not os.path.exists(self.mastered_cards_path) and not os.path.exists(self.completed_cards_path):
             clear_mastered_state(self.mastered_cards_path, self.mastery_progress_path)
             clear_completed_state(self.completed_cards_path, self.completed_progress_path)
         self._reload_review_counts()
@@ -1298,7 +1298,8 @@ class FlashcardApp(ctk.CTk):
         if self._error:
             self.question_label.configure(text=self._error)
             self.toggle_flag_btn.configure(state="disabled", text=FLAG_ICON)
-            self.question_source_chip.pack_forget()
+            if hasattr(self, "question_source_chip"):
+                self.question_source_chip.pack_forget()
             self._choice_uniform_height = None
             for btn in self.choice_btns:
                 btn.pack_forget()
@@ -1308,7 +1309,8 @@ class FlashcardApp(ctk.CTk):
         if not self.deck.total:
             self.question_label.configure(text=self._empty_message)
             self.toggle_flag_btn.configure(state="disabled", text=FLAG_ICON)
-            self.question_source_chip.pack_forget()
+            if hasattr(self, "question_source_chip"):
+                self.question_source_chip.pack_forget()
             self._choice_uniform_height = None
             for btn in self.choice_btns:
                 btn.pack_forget()
@@ -1428,6 +1430,7 @@ class FlashcardApp(ctk.CTk):
                 count = redemption.get(question, 0) + 1
                 redemption[question] = count
                 save_redemption_strikes(redemption, self.redemption_strikes_path)
+                self._live_cleared_from_wrong.add(question)
                 if count >= 2:
                     clear_wrong_cards([card], self.wrong_cards_path)
                     clear_tainted_questions([card], self.tainted_path)
@@ -1436,7 +1439,6 @@ class FlashcardApp(ctk.CTk):
                     save_wrong_strikes(strikes, self.wrong_strikes_path)
                     del redemption[question]
                     save_redemption_strikes(redemption, self.redemption_strikes_path)
-                    self._live_cleared_from_wrong.add(question)
             else:
                 clear_wrong_cards([card], self.wrong_cards_path)
                 self._live_cleared_from_wrong.add(question)
@@ -1479,9 +1481,29 @@ class FlashcardApp(ctk.CTk):
             self._undo_mastery_increment(question)
             self._reload_review_counts()
             self._refresh_deck_buttons()
-        elif prev_answer and not prev_answer["is_correct"]:
+        elif prev_answer and prev_answer["is_correct"] and self._deck_mode == "wrong_set":
+            self._live_cleared_from_wrong.discard(question)
+            merge_wrong_cards([card], self.wrong_cards_path)
+            redemption = load_redemption_strikes(self.redemption_strikes_path)
+            if question not in redemption:
+                redemption[question] = 0
+                save_redemption_strikes(redemption, self.redemption_strikes_path)
+            self._reload_review_counts()
+            self._refresh_deck_buttons()
+        elif prev_answer and not prev_answer["is_correct"] and self._deck_mode in ("main", "wrong_set"):
             clear_wrong_cards([card], self.wrong_cards_path)
             self._streak_reset_questions.discard(question)
+            strikes = load_wrong_strikes(self.wrong_strikes_path)
+            if question in strikes:
+                new_count = strikes[question] - 1
+                if new_count <= 0:
+                    del strikes[question]
+                else:
+                    strikes[question] = new_count
+                save_wrong_strikes(strikes, self.wrong_strikes_path)
+            tainted = load_tainted_questions(self.tainted_path)
+            if question in tainted:
+                save_tainted_questions([q for q in tainted if q != question], self.tainted_path)
             self._reload_review_counts()
             self._refresh_deck_buttons()
         self._answered = False
@@ -1612,6 +1634,10 @@ class FlashcardApp(ctk.CTk):
         else:
             self._load_main_deck()
         self._session_saved = False
+        self._missed_cards = []
+        self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
         self._show_quiz()
 
     def _new_session(self):
@@ -1983,7 +2009,10 @@ class FlashcardApp(ctk.CTk):
             | completed_question_set(self.completed_cards_path)
             | tainted_question_set(self.tainted_path)
         )
-        visible_cards = [card for card in cards if card.get("question") not in hidden_questions]
+        visible_cards = [
+            card for card in cards
+            if not any(key in hidden_questions for key in card_question_keys(card))
+        ]
         self._mastered_hidden_count = len(cards) - len(visible_cards)
         self._error = None
         if cards and not visible_cards:

@@ -690,21 +690,6 @@
     "source": "presentation_ai"
   },
   {
-    "question": "Кои се Modern Data Architecture карактеристики?",
-    "choices": [
-      "On-premise инфраструктура со фиксни ресурси и централизирано управување.",
-      "За строго структурирани табеларни податоци во SQL бази на сервери.",
-      "Cloud-native, скалабилни pipelines, seamless интеграција и real-time поддршка.",
-      "Batch processing, периодично освежување и scheduled задачи без real-time."
-    ],
-    "correct": [
-      2
-    ],
-    "type": "single",
-    "explanation": "Зошто: Modern Data Architectures се карактеризираат со: Cloud-native (elastic scaling, висока достапност), Scalable data pipelines (real-time streaming), Seamless data integration (API интерфејси), Real-time data enablement, Decoupled и extensible (loosely coupled).\nЗа испит: Modern DA = cloud-native, scalable, seamless, real-time, decoupled.",
-    "source": "presentation_ai"
-  },
-  {
     "question": "Кои се придобивките од интеграцијата на податоци?",
     "choices": [
       "Поголем капацитет за складирање на историски и аналитички податоци.",
@@ -2596,21 +2581,6 @@
     "material_source": "pdf_questions"
   },
   {
-    "question": "Која е максималната оцена што студент може да ја добие на овој курс доколку НЕ изработи проект?",
-    "choices": [
-      "7.",
-      "8.",
-      "10.",
-      "6."
-    ],
-    "correct": [
-      1
-    ],
-    "type": "single",
-    "source": "notebook_lm",
-    "material_source": "pdf_questions"
-  },
-  {
     "question": "Колку повеќе системот е модуларен, има повеќе можности за дистрибуција и точки за екстензибилност, но и поголема сложеност при пристап до податоци. Дали тоа ги влошува перформансите?",
     "choices": [
       "Точно, ова тврдење важи тука.",
@@ -3008,23 +2978,6 @@
       0
     ],
     "type": "single",
-    "source": "discord"
-  },
-  {
-    "question": "Кои се предностите на пристапот со data warehouse за интеграција на податоци?",
-    "choices": [
-      "Овозможува брзи и сигурни запишувања и трансакции.",
-      "Информациите се копираат во складот.",
-      "Овозможува високи перформанси на прашања.",
-      "Служи како backup за оперативните бази.",
-      "Не пречи на локалната обработка кај изворите."
-    ],
-    "correct": [
-      1,
-      2,
-      4
-    ],
-    "type": "multiple",
     "source": "discord"
   },
   {

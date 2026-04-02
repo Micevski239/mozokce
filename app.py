@@ -37,6 +37,8 @@ from sessions import (
     record_wrong_strike,
     save_redemption_strikes,
     save_wrong_strikes,
+    save_mastered_cards,
+    save_mastery_progress,
     save_session,
     summarize_sessions,
     sync_tainted_with_wrong_cards,
@@ -162,6 +164,8 @@ class FlashcardApp(ctk.CTk):
         self._answered = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
         self._session_saved = False
         self._last_screen = "quiz"
         self._sessions_back_target = "quiz"
@@ -445,6 +449,11 @@ class FlashcardApp(ctk.CTk):
         self.change_answer_btn = ctk.CTkButton(
             self.action_frame, text="Промени одговор",
             width=170, command=self._change_answer
+        )
+        self.prev_btn = ctk.CTkButton(
+            self.action_frame, text="← Претходно",
+            width=140, fg_color="#374151", hover_color="#4b5563",
+            command=self._prev_card,
         )
         self.next_btn = ctk.CTkButton(self.action_frame, text="Следен →",
                                       width=130, command=self._next_card)
@@ -1341,7 +1350,8 @@ class FlashcardApp(ctk.CTk):
         hint = ("еден избор — кликни одговор" if card_type == "single"
                 else "повеќе избори — избери ги сите точни, потоа Поднеси")
         self.hint_label.configure(text=hint)
-        self._set_action_buttons()
+        has_prev = self.deck.current_position > 1
+        self._set_action_buttons(show_prev=has_prev)
 
     def _select_choice(self, idx):
         if self._answered:
@@ -1360,10 +1370,11 @@ class FlashcardApp(ctk.CTk):
                 self._selected.add(idx)
                 self.choice_btns[idx].configure(fg_color=CLR_SELECTED)
 
+            has_prev = self.deck.current_position > 1
             if self._selected:
-                self._set_action_buttons(show_submit=True)
+                self._set_action_buttons(show_submit=True, show_prev=has_prev)
             else:
-                self._set_action_buttons()
+                self._set_action_buttons(show_prev=has_prev)
 
     def _submit(self):
         if not self._answered and self._selected:
@@ -1376,8 +1387,9 @@ class FlashcardApp(ctk.CTk):
         is_correct = self._selected == correct_set
 
         self.deck.mark(is_correct)
+        question = str(card.get("question", "")).strip()
+        self._session_card_answers[question] = {"is_correct": is_correct, "selected": set(self._selected)}
         if not is_correct:
-            question = str(card.get("question", "")).strip()
             progress = {
                 r.get("question"): int(r.get("streak", 0))
                 for r in load_mastery_progress(self.mastered_cards_path, self.mastery_progress_path)
@@ -1400,6 +1412,36 @@ class FlashcardApp(ctk.CTk):
             self._delete_from_file(self.mastery_progress_path, question)
             self._reload_review_counts()
             self._refresh_deck_buttons()
+        elif self._deck_mode == "main":
+            update_mastered_cards(
+                [card], [],
+                self.mastered_cards_path,
+                self.mastery_progress_path,
+                tainted_path=self.tainted_path,
+            )
+            self._reload_review_counts()
+            self._refresh_deck_buttons()
+        elif self._deck_mode == "wrong_set":
+            tainted = tainted_question_set(self.tainted_path)
+            if question in tainted:
+                redemption = load_redemption_strikes(self.redemption_strikes_path)
+                count = redemption.get(question, 0) + 1
+                redemption[question] = count
+                save_redemption_strikes(redemption, self.redemption_strikes_path)
+                if count >= 2:
+                    clear_wrong_cards([card], self.wrong_cards_path)
+                    clear_tainted_questions([card], self.tainted_path)
+                    strikes = load_wrong_strikes(self.wrong_strikes_path)
+                    strikes.pop(question, None)
+                    save_wrong_strikes(strikes, self.wrong_strikes_path)
+                    del redemption[question]
+                    save_redemption_strikes(redemption, self.redemption_strikes_path)
+                    self._live_cleared_from_wrong.add(question)
+            else:
+                clear_wrong_cards([card], self.wrong_cards_path)
+                self._live_cleared_from_wrong.add(question)
+            self._reload_review_counts()
+            self._refresh_deck_buttons()
 
         choices = card.get("choices", [])
         for i, btn in enumerate(self.choice_btns):
@@ -1415,9 +1457,8 @@ class FlashcardApp(ctk.CTk):
                 btn.configure(fg_color=CLR_FADED, text_color=TXT_FADED,
                               state="disabled")
 
-        for w in self.action_frame.winfo_children():
-            w.pack_forget()
-        self._set_action_buttons(show_change=True, show_next=True)
+        has_prev = self.deck.current_position > 1
+        self._set_action_buttons(show_change=True, show_next=True, show_prev=has_prev)
         self.hint_label.configure(text="")
         self._show_feedback(is_correct, card)
 
@@ -1431,10 +1472,21 @@ class FlashcardApp(ctk.CTk):
     def _change_answer(self):
         if self._error or not self.deck.total or not self._answered:
             return
+        card = self.deck.current_card()
+        question = str(card.get("question", "")).strip()
+        prev_answer = self._session_card_answers.pop(question, None)
+        if prev_answer and prev_answer["is_correct"] and self._deck_mode == "main":
+            self._undo_mastery_increment(question)
+            self._reload_review_counts()
+            self._refresh_deck_buttons()
+        elif prev_answer and not prev_answer["is_correct"]:
+            clear_wrong_cards([card], self.wrong_cards_path)
+            self._streak_reset_questions.discard(question)
+            self._reload_review_counts()
+            self._refresh_deck_buttons()
         self._answered = False
         self._selected = set()
         self._hide_feedback()
-        card = self.deck.current_card()
         for i, btn in enumerate(self.choice_btns):
             if i >= len(card.get("choices", [])):
                 continue
@@ -1447,17 +1499,81 @@ class FlashcardApp(ctk.CTk):
         hint = ("еден избор — кликни одговор" if card_type == "single"
                 else "повеќе избори — избери ги сите точни, потоа Поднеси")
         self.hint_label.configure(text=hint)
-        self._set_action_buttons()
+        has_prev = self.deck.current_position > 1
+        self._set_action_buttons(show_prev=has_prev)
 
-    def _set_action_buttons(self, show_submit=False, show_change=False, show_next=False):
+    def _set_action_buttons(self, show_submit=False, show_change=False, show_next=False, show_prev=False):
         for w in self.action_frame.winfo_children():
             w.pack_forget()
+        if show_prev:
+            self.prev_btn.pack(side="left", padx=6)
         if show_submit:
             self.submit_btn.pack(side="left", padx=6)
         if show_change:
             self.change_answer_btn.pack(side="left", padx=6)
         if show_next:
             self.next_btn.pack(side="left", padx=6)
+
+    def _undo_mastery_increment(self, question):
+        progress = load_mastery_progress(self.mastered_cards_path, self.mastery_progress_path)
+        updated = []
+        for record in progress:
+            if record.get("question") == question:
+                new_streak = int(record.get("streak", 1)) - 1
+                if new_streak > 0:
+                    record["streak"] = new_streak
+                    record["mastered"] = new_streak >= MASTERED_THRESHOLD
+                    updated.append(record)
+            else:
+                updated.append(record)
+        save_mastery_progress(updated, self.mastered_cards_path, self.mastery_progress_path)
+        mastered = [r for r in updated if r.get("mastered")]
+        save_mastered_cards(mastered, self.mastered_cards_path)
+
+    def _prev_card(self):
+        if self._error or not self.deck.total or self.deck.current_position <= 1:
+            return
+        self.deck.prev()
+        card = self.deck.current_card()
+        question = str(card.get("question", "")).strip()
+        prev_answer = self._session_card_answers.get(question)
+        if prev_answer:
+            self._answered = True
+            self._selected = prev_answer["selected"]
+            correct_set = set(card.get("correct", []))
+            choices = card.get("choices", [])
+            self.counter_label.configure(
+                text=f"Картичка {self.deck.current_position} од {self.deck.total}")
+            self.progress.set(self.deck.current_position / self.deck.total)
+            self.question_label.configure(text=card["question"])
+            self._update_current_flag_button(card)
+            self._configure_question_layout()
+            self._ensure_choice_buttons(len(choices))
+            button_texts = []
+            for i, btn in enumerate(self.choice_btns):
+                if i < len(choices):
+                    label = LETTERS[i] if i < len(LETTERS) else str(i + 1)
+                    btn.configure(text=f"  {label})   {choices[i]}")
+                    if i in correct_set:
+                        btn.configure(fg_color=CLR_CORRECT, text_color=TXT_CORRECT, state="disabled")
+                    elif i in self._selected:
+                        btn.configure(fg_color=CLR_WRONG, text_color=TXT_WRONG, state="disabled")
+                    else:
+                        btn.configure(fg_color=CLR_FADED, text_color=TXT_FADED, state="disabled")
+                    button_texts.append(btn.cget("text"))
+                    btn.pack(fill="x", pady=3)
+                else:
+                    btn.pack_forget()
+            self._refresh_choice_uniform_height(button_texts)
+            for btn in self.choice_btns:
+                if btn.winfo_manager():
+                    self._configure_choice_layout(btn)
+            has_prev = self.deck.current_position > 1
+            self._set_action_buttons(show_change=True, show_next=True, show_prev=has_prev)
+            self.hint_label.configure(text="")
+            self._show_feedback(prev_answer["is_correct"], card)
+        else:
+            self._update_quiz_ui()
 
     def _finish_session(self):
         if self._error or not self.deck.total:
@@ -1481,6 +1597,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
         self._show_quiz()
 
     def _retry_missed(self):
@@ -1702,6 +1820,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
         self._show_quiz()
 
     def _load_main_deck(self):
@@ -1731,6 +1851,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
 
     def _load_wrong_deck(self):
         cards = load_wrong_cards(self.wrong_cards_path)
@@ -1744,6 +1866,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
 
     def _start_wrong_set(self):
         self._capture_main_session_state()
@@ -1762,6 +1886,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
 
     def _start_flagged_set(self):
         self._capture_main_session_state()
@@ -1787,6 +1913,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
 
     def _start_mastered_set(self):
         self._capture_main_session_state()
@@ -1807,6 +1935,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
 
     def _start_completed_set(self):
         self._capture_main_session_state()
@@ -1899,6 +2029,8 @@ class FlashcardApp(ctk.CTk):
         self._session_saved = False
         self._missed_cards = []
         self._streak_reset_questions = set()
+        self._session_card_answers = {}
+        self._live_cleared_from_wrong = set()
 
         current_question = state.get("current_question", "")
         if current_question:
@@ -1963,7 +2095,11 @@ class FlashcardApp(ctk.CTk):
                 redemption = load_redemption_strikes(self.redemption_strikes_path)
                 redeemed = []
                 keep_in_wrong = set()
-                for card in correct_cards:
+                pending_cards = [
+                    c for c in correct_cards
+                    if str(c.get("question", "")).strip() not in self._live_cleared_from_wrong
+                ]
+                for card in pending_cards:
                     q = str(card.get("question", "")).strip()
                     if q in tainted:
                         count = redemption.get(q, 0) + 1
@@ -1974,7 +2110,7 @@ class FlashcardApp(ctk.CTk):
                         else:
                             keep_in_wrong.add(q)
                 save_redemption_strikes(redemption, self.redemption_strikes_path)
-                clearable = [c for c in correct_cards
+                clearable = [c for c in pending_cards
                              if str(c.get("question", "")).strip() not in keep_in_wrong]
                 clear_wrong_cards(clearable, self.wrong_cards_path)
                 if redeemed:
@@ -1983,7 +2119,8 @@ class FlashcardApp(ctk.CTk):
                     for card in redeemed:
                         strikes.pop(str(card.get("question", "")).strip(), None)
                     save_wrong_strikes(strikes, self.wrong_strikes_path)
-                wrong_status = f"Вратени {len(clearable)} картички во Главен сет"
+                total_cleared = len(clearable) + len(self._live_cleared_from_wrong)
+                wrong_status = f"Вратени {total_cleared} картички во Главен сет"
             else:
                 wrong_set_cards = [
                     c for c in self._missed_cards
@@ -2000,7 +2137,7 @@ class FlashcardApp(ctk.CTk):
             mastered_status = f"Ажурирано {self.mastered_cards_path}"
             try:
                 update_mastered_cards(
-                    correct_cards,
+                    [],
                     self._missed_cards,
                     self.mastered_cards_path,
                     self.mastery_progress_path,

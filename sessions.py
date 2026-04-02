@@ -337,9 +337,10 @@ def update_mastered_cards(
         if question in tainted_questions:
             continue
         record = records.get(question, {})
+        existing_streak = int(record.get("streak", 0))
         record.update(card)
         record["question"] = question
-        record["streak"] = int(record.get("streak", 0)) + 1
+        record["streak"] = existing_streak + 1
         record["mastered"] = record["streak"] >= threshold
         records[question] = record
 
@@ -402,9 +403,10 @@ def update_completed_cards(
         if question in wrong_by_question:
             continue
         record = records.get(question, {})
+        existing_streak = int(record.get("streak", 0))
         record.update(card)
         record["question"] = question
-        record["streak"] = int(record.get("streak", 0)) + 1
+        record["streak"] = existing_streak + 1
         record["completed"] = record["streak"] >= threshold
         records[question] = record
 

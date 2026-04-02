@@ -66,6 +66,8 @@ from sessions import (
     record_wrong_strike,
     save_redemption_strikes,
     save_session,
+    save_mastered_cards,
+    save_mastery_progress,
     save_tainted_questions,
     save_wrong_strikes,
     summarize_sessions,
@@ -113,6 +115,20 @@ MODE_LABELS = {
     "completed": "Готови",
     "flagged": "Означени",
 }
+
+
+def _mk_card_ordinal(value):
+    last_two = value % 100
+    if 11 <= last_two <= 14:
+        return f"{value} точни"
+    last = value % 10
+    if last == 1:
+        return f"{value} точен"
+    return f"{value} точни"
+
+
+def _mk_remaining_text(remaining):
+    return f"уште {_mk_card_ordinal(remaining)}"
 GUIDE_SECTIONS = [
     (
         "Предмети",
@@ -562,6 +578,7 @@ class FlashcardQtApp(QMainWindow):
         self._session_saved = False
         self._last_screen = "subjects"
         self._wrong_count = 0
+        self._main_count = 0
         self._mastered_count = 0
         self._completed_count = 0
         self._flagged_count = 0
@@ -838,6 +855,11 @@ class FlashcardQtApp(QMainWindow):
         set_button_role(self.back_to_main_btn, "ghost")
         self.back_to_main_btn.clicked.connect(self._return_to_main_set)
         row2.addWidget(self.back_to_main_btn)
+        self.completed_to_mastered_btn = QPushButton("Готови → Совладани")
+        set_button_role(self.completed_to_mastered_btn, "ghost")
+        self.completed_to_mastered_btn.clicked.connect(self._move_completed_to_mastered)
+        self.completed_to_mastered_btn.hide()
+        row2.addWidget(self.completed_to_mastered_btn)
         row2.addStretch(1)
         self.new_session_btn = QPushButton("Нова сесија")
         set_button_role(self.new_session_btn, "primary")
@@ -871,6 +893,10 @@ class FlashcardQtApp(QMainWindow):
         self.question_label = make_label("", "QuestionText", word_wrap=True)
         self.question_label.setAlignment(Qt.AlignCenter)
         question_layout.addWidget(self.question_label)
+        self.progress_status_label = make_label("", "Muted", word_wrap=True)
+        self.progress_status_label.setAlignment(Qt.AlignCenter)
+        self.progress_status_label.hide()
+        question_layout.addWidget(self.progress_status_label)
         quiz_body.addWidget(self.question_card)
 
         self.choices_frame = QWidget()
@@ -1147,18 +1173,35 @@ class FlashcardQtApp(QMainWindow):
     def _reload_review_counts(self):
         if not self.subject_name:
             self._wrong_count = 0
+            self._main_count = 0
             self._mastered_count = 0
             self._completed_count = 0
             self._flagged_count = 0
             self._refresh_sidebar()
             return
         self._wrong_count = len(load_wrong_cards(self.wrong_cards_path))
+        self._main_count = self._current_main_count()
         self._mastered_count = sum(
             1 for card in load_mastered_cards(self.mastered_cards_path) if card.get("mastered")
         )
         self._completed_count = len(load_completed_cards(self.completed_cards_path))
         self._flagged_count = len(load_flagged_cards(self.flagged_cards_path))
         self._refresh_sidebar()
+
+    def _current_main_count(self):
+        if not self.subject_name:
+            return 0
+        cards, error = load_cards(self.cards_path)
+        if error:
+            return 0
+        hidden_questions = (
+            mastered_question_set(self.mastered_cards_path)
+            | completed_question_set(self.completed_cards_path)
+            | tainted_question_set(self.tainted_path)
+        )
+        return sum(
+            1 for card in cards if not any(key in hidden_questions for key in card_question_keys(card))
+        )
 
     def _refresh_subjects_page(self):
         clear_layout(self.subjects_list_layout)
@@ -1425,6 +1468,8 @@ class FlashcardQtApp(QMainWindow):
             mode_text += f" • {self._mastered_hidden_count} скриени"
         self.quiz_mode_chip.setText(mode_text)
         self.back_to_main_btn.setEnabled(self._deck_mode != "main")
+        self.completed_to_mastered_btn.setVisible(self._deck_mode == "completed")
+        self.completed_to_mastered_btn.setEnabled(self._completed_count > 0)
         self.submit_btn.hide()
         self.next_btn.hide()
 
@@ -1433,6 +1478,7 @@ class FlashcardQtApp(QMainWindow):
 
         if self._error:
             self.question_label.setText(self._error)
+            self.progress_status_label.hide()
             self.question_source_chip.hide()
             self.counter_label.setText("")
             self.progress.setValue(0)
@@ -1443,6 +1489,7 @@ class FlashcardQtApp(QMainWindow):
 
         if not self.deck.total:
             self.question_label.setText(self._empty_message)
+            self.progress_status_label.hide()
             self.question_source_chip.hide()
             self.counter_label.setText("")
             self.progress.setValue(0)
@@ -1456,6 +1503,7 @@ class FlashcardQtApp(QMainWindow):
         progress_pct = round((self.deck.current_position / self.deck.total) * 100)
         self.progress.setValue(progress_pct)
         self.question_label.setText(card["question"])
+        self._set_progress_status(card)
         self._set_source_chip(card)
         self._update_current_flag_button(card)
         self.flag_action.setEnabled(True)
@@ -1476,6 +1524,78 @@ class FlashcardQtApp(QMainWindow):
         else:
             hint = "Повеќе избори. Избери ги сите точни и потоа притисни Поднеси."
         self.hint_label.setText(hint)
+
+    def _progress_maps(self):
+        mastery_map = {
+            str(record.get("question", "")).strip(): int(record.get("streak", 0))
+            for record in load_mastery_progress(self.mastered_cards_path, self.mastery_progress_path)
+            if str(record.get("question", "")).strip()
+        }
+        completed_map = {
+            str(record.get("question", "")).strip(): int(record.get("streak", 0))
+            for record in load_completed_progress(self.completed_cards_path, self.completed_progress_path)
+            if str(record.get("question", "")).strip()
+        }
+        return mastery_map, completed_map
+
+    def _build_progress_status(self, card, answer_result=None, projected_mastery=None, projected_completed=None):
+        question = str(card.get("question", "")).strip()
+        if not question:
+            return ""
+
+        mastery_map, completed_map = self._progress_maps()
+        mastery_streak = mastery_map.get(question, 0)
+        completed_streak = completed_map.get(question, 0)
+
+        if projected_mastery is not None:
+            mastery_streak = projected_mastery
+        if projected_completed is not None:
+            completed_streak = projected_completed
+
+        if self._deck_mode == "main":
+            remaining = max(0, MASTERED_THRESHOLD - mastery_streak)
+            if answer_result is True and mastery_streak >= MASTERED_THRESHOLD:
+                return f"Streak за Совладани: {mastery_streak}/{MASTERED_THRESHOLD}. Оди во Совладани."
+            if answer_result is False:
+                return f"Streak за Совладани: 0/{MASTERED_THRESHOLD}. Погрешен одговор, {_mk_remaining_text(MASTERED_THRESHOLD)} до Совладани."
+            return f"Streak за Совладани: {mastery_streak}/{MASTERED_THRESHOLD}. {_mk_remaining_text(remaining)} до Совладани."
+
+        if self._deck_mode == "mastered":
+            if answer_result is False:
+                return (
+                    f"Готови progress: 0/{COMPLETED_THRESHOLD}. Погрешен одговор, картичката се враќа во Главен сет."
+                )
+            remaining = max(0, COMPLETED_THRESHOLD - completed_streak)
+            if completed_streak >= COMPLETED_THRESHOLD:
+                return f"Готови progress: {completed_streak}/{COMPLETED_THRESHOLD}. Оди во Готови."
+            return (
+                f"Готови progress: {completed_streak}/{COMPLETED_THRESHOLD}. "
+                f"{_mk_remaining_text(remaining)} до Готови. Погрешен одговор ја враќа во Главен сет."
+            )
+
+        if self._deck_mode == "completed":
+            return "Ова прашање е во Готови. Користи „Готови → Совладани“ ако сакаш да го вратиш."
+
+        if self._deck_mode == "wrong_set":
+            return "Ова прашање е во Погрешни. Точен одговор го враќа назад според тековната состојба."
+
+        if self._deck_mode == "flagged":
+            return "Означено прашање. Review без промена на mastery streak."
+
+        return ""
+
+    def _set_progress_status(self, card, answer_result=None, projected_mastery=None, projected_completed=None):
+        text = self._build_progress_status(
+            card,
+            answer_result=answer_result,
+            projected_mastery=projected_mastery,
+            projected_completed=projected_completed,
+        )
+        if text:
+            self.progress_status_label.setText(text)
+            self.progress_status_label.show()
+        else:
+            self.progress_status_label.hide()
 
     def _select_choice(self, idx):
         if self._answered:
@@ -1510,10 +1630,11 @@ class FlashcardQtApp(QMainWindow):
         card = self.deck.current_card()
         correct_set = set(card.get("correct", []))
         is_correct = self._selected == correct_set
+        question = str(card.get("question", "")).strip()
+        before_mastery, before_completed = self._progress_maps()
 
         self.deck.mark(is_correct)
         if not is_correct:
-            question = str(card.get("question", "")).strip()
             progress = {
                 record.get("question"): int(record.get("streak", 0))
                 for record in load_mastery_progress(self.mastered_cards_path, self.mastery_progress_path)
@@ -1534,8 +1655,35 @@ class FlashcardQtApp(QMainWindow):
                     save_tainted_questions(existing + [question], self.tainted_path)
             self._delete_from_file(self.mastered_cards_path, question)
             self._delete_from_file(self.mastery_progress_path, question)
+            if self._deck_mode == "mastered":
+                update_completed_cards(
+                    [],
+                    [card],
+                    self.completed_cards_path,
+                    self.completed_progress_path,
+                    mastered_path=self.mastered_cards_path,
+                    mastered_progress_path=self.mastery_progress_path,
+                )
             self._reload_review_counts()
             self._refresh_deck_buttons()
+        elif self._deck_mode == "mastered":
+            update_completed_cards(
+                [card],
+                [],
+                self.completed_cards_path,
+                self.completed_progress_path,
+                mastered_path=self.mastered_cards_path,
+                mastered_progress_path=self.mastery_progress_path,
+            )
+            self._reload_review_counts()
+            self._refresh_deck_buttons()
+
+        projected_mastery = None
+        projected_completed = None
+        if self._deck_mode == "main" and is_correct:
+            projected_mastery = before_mastery.get(question, 0) + 1
+        elif self._deck_mode == "mastered" and is_correct:
+            projected_completed = before_completed.get(question, 0) + 1
 
         for option in self.answer_options:
             option.set_locked(True)
@@ -1549,6 +1697,12 @@ class FlashcardQtApp(QMainWindow):
         self.submit_btn.hide()
         self.next_btn.show()
         self.hint_label.setText("")
+        self._set_progress_status(
+            card,
+            answer_result=is_correct,
+            projected_mastery=projected_mastery,
+            projected_completed=projected_completed,
+        )
         self._show_feedback(is_correct, card)
 
     def _show_feedback(self, is_correct, card):
@@ -1972,6 +2126,51 @@ class FlashcardQtApp(QMainWindow):
         self._refresh_dashboard()
         self.show_quiz()
 
+    def _move_completed_to_mastered(self):
+        if not self.subject_name:
+            self.show_subjects()
+            return
+
+        completed_cards = load_completed_cards(self.completed_cards_path)
+        if not completed_cards:
+            return
+
+        records = {
+            str(record.get("question", "")).strip(): record
+            for record in load_mastery_progress(self.mastered_cards_path, self.mastery_progress_path)
+            if str(record.get("question", "")).strip()
+        }
+        for card in completed_cards:
+            question = str(card.get("question", "")).strip()
+            if not question:
+                continue
+            record = dict(card)
+            record.pop("completed", None)
+            record["question"] = question
+            record["streak"] = max(MASTERED_THRESHOLD, int(record.get("streak", 0)))
+            record["mastered"] = True
+            records[question] = record
+
+        updated_progress = sorted(
+            records.values(),
+            key=lambda record: (-int(record.get("streak", 0)), record.get("question", "")),
+        )
+        save_mastery_progress(updated_progress, self.mastered_cards_path, self.mastery_progress_path)
+        save_mastered_cards(
+            [
+                {**record, "mastered": True}
+                for record in updated_progress
+                if int(record.get("streak", 0)) >= MASTERED_THRESHOLD
+            ],
+            self.mastered_cards_path,
+        )
+        clear_completed_state(self.completed_cards_path, self.completed_progress_path)
+        self._reload_review_counts()
+        self._load_mastered_deck()
+        self._refresh_subjects_page()
+        self._refresh_dashboard()
+        self.show_quiz()
+
     # ── Summary / persistence ───────────────────────────────────────────
 
     def _save_session_if_needed(self):
@@ -2042,18 +2241,7 @@ class FlashcardQtApp(QMainWindow):
 
         completed_status = "Прескокнато ажурирање на готови"
         if self._deck_mode == "mastered" and answered:
-            try:
-                update_completed_cards(
-                    correct_cards,
-                    self._missed_cards,
-                    self.completed_cards_path,
-                    self.completed_progress_path,
-                    mastered_path=self.mastered_cards_path,
-                    mastered_progress_path=self.mastery_progress_path,
-                )
-                completed_status = "Ажурирани готови"
-            except Exception:
-                completed_status = "Не може да се ажурира completed_cards.json"
+            completed_status = "Веќе ажурирано при одговарање"
 
         session_saved = False
         try:
@@ -2157,6 +2345,7 @@ class FlashcardQtApp(QMainWindow):
 
     def _refresh_deck_buttons(self):
         button_groups = {
+            f"Главен сет ({self._main_count})": (self.dashboard_main_btn, self.back_to_main_btn),
             f"Погрешни ({self._wrong_count})": (self.wrong_set_btn, self.summary_wrong_btn, self.home_wrong_btn),
             f"Означени ({self._flagged_count})": (self.flagged_set_btn, self.summary_flagged_btn, self.home_flagged_btn),
             f"Совладани ({self._mastered_count})": (self.mastered_set_btn, self.summary_mastered_btn, self.home_mastered_btn),

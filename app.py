@@ -23,6 +23,7 @@ from sessions import (
     clear_wrong_cards,
     delete_session_at,
     load_completed_cards,
+    load_completed_progress,
     load_mastered_cards,
     load_mastery_progress,
     load_sessions,
@@ -72,6 +73,20 @@ MODE_LABELS = {
     "completed": "Готови",
     "flagged": "Означени за повторување",
 }
+
+
+def _mk_card_ordinal(value):
+    last_two = value % 100
+    if 11 <= last_two <= 14:
+        return f"{value} точни"
+    last = value % 10
+    if last == 1:
+        return f"{value} точен"
+    return f"{value} точни"
+
+
+def _mk_remaining_text(remaining):
+    return f"уште {_mk_card_ordinal(remaining)}"
 
 TUTORIAL_TEXTS = {
     "subjects": (
@@ -171,6 +186,7 @@ class FlashcardApp(ctk.CTk):
         self._sessions_back_target = "quiz"
         self._tainted_back_target = "quiz"
         self._wrong_count = 0
+        self._main_count = 0
         self._mastered_count = 0
         self._completed_count = 0
         self._flagged_count = 0
@@ -411,6 +427,11 @@ class FlashcardApp(ctk.CTk):
             command=self._return_to_main_set
         )
         self.back_to_main_btn.pack(side="left", padx=3)
+        self.completed_to_mastered_btn = ctk.CTkButton(
+            actions_left, text="Готови → Совладани", width=165,
+            fg_color="#475569", hover_color="#64748b",
+            command=self._move_completed_to_mastered
+        )
 
         actions_right = ctk.CTkFrame(actions_row, fg_color="transparent")
         actions_right.grid(row=0, column=1, sticky="e")
@@ -436,6 +457,14 @@ class FlashcardApp(ctk.CTk):
             font=ctk.CTkFont(size=16), wraplength=1100, justify="center"
         )
         self.question_label.pack(fill="x", padx=20, pady=20)
+        self.progress_status_label = ctk.CTkLabel(
+            self.question_frame, text="",
+            font=ctk.CTkFont(size=12),
+            text_color="#94a3b8",
+            wraplength=1100,
+            justify="center"
+        )
+        self.progress_status_label.pack(fill="x", padx=20, pady=(0, 16))
 
         self.choices_frame = ctk.CTkFrame(self.quiz_frame, fg_color="transparent")
         self.choices_frame.pack(fill="x", padx=20)
@@ -604,10 +633,11 @@ class FlashcardApp(ctk.CTk):
         ).pack(anchor="w", padx=16, pady=(12, 6))
         sets_btns = ctk.CTkFrame(sets_card, fg_color="transparent")
         sets_btns.pack(padx=12, pady=(0, 14), fill="x")
-        ctk.CTkButton(
+        self.home_main_btn = ctk.CTkButton(
             sets_btns, text="Главен сет", width=180,
             command=self._start_main_session
-        ).pack(side="left", padx=(0, 8))
+        )
+        self.home_main_btn.pack(side="left", padx=(0, 8))
         self.home_wrong_btn = ctk.CTkButton(
             sets_btns, text="Погрешни", width=180,
             fg_color="#0f766e", hover_color="#115e59",
@@ -1256,17 +1286,97 @@ class FlashcardApp(ctk.CTk):
     def _reload_review_counts(self):
         if not self.subject_name:
             self._wrong_count = 0
+            self._main_count = 0
             self._mastered_count = 0
             self._completed_count = 0
             self._flagged_count = 0
             return
         self._wrong_count = len(load_wrong_cards(self.wrong_cards_path))
+        self._main_count = self._current_main_count()
         self._mastered_count = sum(
             1 for card in load_mastered_cards(self.mastered_cards_path)
             if card.get("mastered")
         )
         self._completed_count = len(load_completed_cards(self.completed_cards_path))
         self._flagged_count = len(load_flagged_cards(self.flagged_cards_path))
+
+    def _current_main_count(self):
+        if not self.subject_name:
+            return 0
+        cards, error = load_cards(self.cards_path)
+        if error:
+            return 0
+        hidden_questions = (
+            mastered_question_set(self.mastered_cards_path)
+            | completed_question_set(self.completed_cards_path)
+            | tainted_question_set(self.tainted_path)
+        )
+        return sum(
+            1 for card in cards
+            if not any(key in hidden_questions for key in card_question_keys(card))
+        )
+
+    def _progress_maps(self):
+        mastery_map = {
+            str(record.get("question", "")).strip(): int(record.get("streak", 0))
+            for record in load_mastery_progress(self.mastered_cards_path, self.mastery_progress_path)
+            if str(record.get("question", "")).strip()
+        }
+        completed_map = {
+            str(record.get("question", "")).strip(): int(record.get("streak", 0))
+            for record in load_completed_progress(self.completed_cards_path, self.completed_progress_path)
+            if str(record.get("question", "")).strip()
+        }
+        return mastery_map, completed_map
+
+    def _build_progress_status(self, card, answer_result=None):
+        question = str(card.get("question", "")).strip()
+        if not question:
+            return ""
+
+        mastery_map, completed_map = self._progress_maps()
+        mastery_streak = mastery_map.get(question, 0)
+        completed_streak = completed_map.get(question, 0)
+
+        if self._deck_mode == "main":
+            remaining = max(0, MASTERED_THRESHOLD - mastery_streak)
+            if answer_result is True and mastery_streak >= MASTERED_THRESHOLD:
+                return f"Streak за Совладани: {mastery_streak}/{MASTERED_THRESHOLD}. Оди во Совладани."
+            if answer_result is False:
+                return f"Streak за Совладани: 0/{MASTERED_THRESHOLD}. Погрешен одговор, {_mk_remaining_text(MASTERED_THRESHOLD)} до Совладани."
+            return f"Streak за Совладани: {mastery_streak}/{MASTERED_THRESHOLD}. {_mk_remaining_text(remaining)} до Совладани."
+
+        if self._deck_mode == "mastered":
+            if answer_result is False:
+                return (
+                    f"Готови progress: 0/{COMPLETED_THRESHOLD}. Погрешен одговор, картичката се враќа во Главен сет."
+                )
+            remaining = max(0, COMPLETED_THRESHOLD - completed_streak)
+            if completed_streak >= COMPLETED_THRESHOLD:
+                return f"Готови progress: {completed_streak}/{COMPLETED_THRESHOLD}. Оди во Готови."
+            return (
+                f"Готови progress: {completed_streak}/{COMPLETED_THRESHOLD}. "
+                f"{_mk_remaining_text(remaining)} до Готови. Погрешен одговор ја враќа во Главен сет."
+            )
+
+        if self._deck_mode == "completed":
+            return "Ова прашање е во Готови. Користи „Готови → Совладани“ ако сакаш да го вратиш."
+
+        if self._deck_mode == "wrong_set":
+            return "Ова прашање е во Погрешни. Точен одговор го враќа назад според тековната состојба."
+
+        if self._deck_mode == "flagged":
+            return "Означено прашање. Review без промена на mastery streak."
+
+        return ""
+
+    def _set_progress_status(self, card, answer_result=None):
+        text = self._build_progress_status(card, answer_result=answer_result)
+        if text:
+            self.progress_status_label.configure(text=text)
+            self.progress_status_label.pack(fill="x", padx=20, pady=(0, 16))
+        else:
+            self.progress_status_label.pack_forget()
 
     def _delete_session(self, index):
         delete_session_at(index, self.sessions_path)
@@ -1291,12 +1401,17 @@ class FlashcardApp(ctk.CTk):
         self.back_to_main_btn.configure(
             state="disabled" if self._deck_mode == "main" else "normal"
         )
+        if self._deck_mode == "completed":
+            self.completed_to_mastered_btn.pack(side="left", padx=3)
+        else:
+            self.completed_to_mastered_btn.pack_forget()
 
         for w in self.action_frame.winfo_children():
             w.pack_forget()
 
         if self._error:
             self.question_label.configure(text=self._error)
+            self.progress_status_label.pack_forget()
             self.toggle_flag_btn.configure(state="disabled", text=FLAG_ICON)
             if hasattr(self, "question_source_chip"):
                 self.question_source_chip.pack_forget()
@@ -1308,6 +1423,7 @@ class FlashcardApp(ctk.CTk):
 
         if not self.deck.total:
             self.question_label.configure(text=self._empty_message)
+            self.progress_status_label.pack_forget()
             self.toggle_flag_btn.configure(state="disabled", text=FLAG_ICON)
             if hasattr(self, "question_source_chip"):
                 self.question_source_chip.pack_forget()
@@ -1322,6 +1438,7 @@ class FlashcardApp(ctk.CTk):
             text=f"Картичка {self.deck.current_position} од {self.deck.total}")
         self.progress.set(self.deck.current_position / self.deck.total)
         self.question_label.configure(text=card["question"])
+        self._set_progress_status(card)
         self._update_current_flag_button(card)
         self._configure_question_layout()
 
@@ -1412,6 +1529,15 @@ class FlashcardApp(ctk.CTk):
                     save_tainted_questions(existing + [question], self.tainted_path)
             self._delete_from_file(self.mastered_cards_path, question)
             self._delete_from_file(self.mastery_progress_path, question)
+            if self._deck_mode == "mastered":
+                update_completed_cards(
+                    [],
+                    [card],
+                    self.completed_cards_path,
+                    self.completed_progress_path,
+                    mastered_path=self.mastered_cards_path,
+                    mastered_progress_path=self.mastery_progress_path,
+                )
             self._reload_review_counts()
             self._refresh_deck_buttons()
         elif self._deck_mode == "main":
@@ -1420,6 +1546,17 @@ class FlashcardApp(ctk.CTk):
                 self.mastered_cards_path,
                 self.mastery_progress_path,
                 tainted_path=self.tainted_path,
+            )
+            self._reload_review_counts()
+            self._refresh_deck_buttons()
+        elif self._deck_mode == "mastered":
+            update_completed_cards(
+                [card],
+                [],
+                self.completed_cards_path,
+                self.completed_progress_path,
+                mastered_path=self.mastered_cards_path,
+                mastered_progress_path=self.mastery_progress_path,
             )
             self._reload_review_counts()
             self._refresh_deck_buttons()
@@ -1462,6 +1599,7 @@ class FlashcardApp(ctk.CTk):
         has_prev = self.deck.current_position > 1
         self._set_action_buttons(show_change=True, show_next=True, show_prev=has_prev)
         self.hint_label.configure(text="")
+        self._set_progress_status(card, answer_result=is_correct)
         self._show_feedback(is_correct, card)
 
     def _next_card(self):
@@ -1521,6 +1659,7 @@ class FlashcardApp(ctk.CTk):
         hint = ("еден избор — кликни одговор" if card_type == "single"
                 else "повеќе избори — избери ги сите точни, потоа Поднеси")
         self.hint_label.configure(text=hint)
+        self._set_progress_status(card)
         has_prev = self.deck.current_position > 1
         self._set_action_buttons(show_prev=has_prev)
 
@@ -1593,6 +1732,7 @@ class FlashcardApp(ctk.CTk):
             has_prev = self.deck.current_position > 1
             self._set_action_buttons(show_change=True, show_next=True, show_prev=has_prev)
             self.hint_label.configure(text="")
+            self._set_progress_status(card, answer_result=prev_answer["is_correct"])
             self._show_feedback(prev_answer["is_correct"], card)
         else:
             self._update_quiz_ui()
@@ -2103,6 +2243,49 @@ class FlashcardApp(ctk.CTk):
         self._load_main_deck()
         self._show_quiz()
 
+    def _move_completed_to_mastered(self):
+        if not self.subject_name:
+            self._show_subjects()
+            return
+
+        completed_cards = load_completed_cards(self.completed_cards_path)
+        if not completed_cards:
+            return
+
+        records = {
+            str(record.get("question", "")).strip(): record
+            for record in load_mastery_progress(self.mastered_cards_path, self.mastery_progress_path)
+            if str(record.get("question", "")).strip()
+        }
+        for card in completed_cards:
+            question = str(card.get("question", "")).strip()
+            if not question:
+                continue
+            record = dict(card)
+            record.pop("completed", None)
+            record["question"] = question
+            record["streak"] = max(MASTERED_THRESHOLD, int(record.get("streak", 0)))
+            record["mastered"] = True
+            records[question] = record
+
+        updated_progress = sorted(
+            records.values(),
+            key=lambda record: (-int(record.get("streak", 0)), record.get("question", "")),
+        )
+        save_mastery_progress(updated_progress, self.mastered_cards_path, self.mastery_progress_path)
+        save_mastered_cards(
+            [
+                {**record, "mastered": True}
+                for record in updated_progress
+                if int(record.get("streak", 0)) >= MASTERED_THRESHOLD
+            ],
+            self.mastered_cards_path,
+        )
+        clear_completed_state(self.completed_cards_path, self.completed_progress_path)
+        self._reload_review_counts()
+        self._load_mastered_deck()
+        self._show_quiz()
+
     def _save_session_if_needed(self):
         correct, answered = self.deck.session_score()
         total = self.deck.total
@@ -2178,19 +2361,7 @@ class FlashcardApp(ctk.CTk):
 
         completed_status = "Прескокнато ажурирање на готови"
         if self._deck_mode == "mastered" and answered:
-            completed_status = f"Ажурирано {self.completed_cards_path}"
-            try:
-                update_completed_cards(
-                    correct_cards,
-                    self._missed_cards,
-                    self.completed_cards_path,
-                    self.completed_progress_path,
-                    mastered_path=self.mastered_cards_path,
-                    mastered_progress_path=self.mastery_progress_path,
-                )
-            except Exception as e:
-                completed_status = f"Не може да се ажурира {self.completed_cards_path}"
-                print(f"Warning: could not update completed card bank: {e}", file=sys.stderr)
+            completed_status = "Веќе ажурирано при одговарање"
 
         session_saved = False
         try:
@@ -2362,6 +2533,7 @@ class FlashcardApp(ctk.CTk):
             return
         self._last_question_wraplength = wraplength
         self.question_label.configure(wraplength=wraplength)
+        self.progress_status_label.configure(wraplength=wraplength)
         self.explanation_label.configure(wraplength=wraplength)
 
     def _configure_choice_layout(self, btn):
@@ -2415,6 +2587,7 @@ class FlashcardApp(ctk.CTk):
 
     def _refresh_deck_buttons(self):
         button_groups = {
+            f"Главен сет ({self._main_count})": ("home_main_btn", "back_to_main_btn"),
             f"Погрешни ({self._wrong_count})": ("wrong_set_btn", "summary_wrong_btn", "sessions_wrong_btn"),
             f"Означени ({self._flagged_count})": ("flagged_set_btn", "summary_flagged_btn", "sessions_flagged_btn"),
             f"Совладани ({self._mastered_count})": ("mastered_set_btn", "summary_mastered_btn", "sessions_mastered_btn"),

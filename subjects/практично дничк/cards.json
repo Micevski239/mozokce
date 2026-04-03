@@ -1,0 +1,1402 @@
+[
+  {
+    "question": "(urls) Сакаш URL што прима integer ID параметар. Кој pattern е точен?",
+    "choices": [
+      "path('items/<pk:int>/', view, name='item_detail')",
+      "path('items/{int:pk}/', view, name='item_detail')",
+      "path('items/<int:pk>/', view, name='item_detail')",
+      "path('items/(int:pk)/', view, name='item_detail')"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Django path converters се пишуваат како `<int:name>` во path string."
+  },
+  {
+    "question": "(admin) Како најосновно го правиш моделот видлив во Django admin?",
+    "choices": [
+      "Да додадеш path('admin/', ...) во models.py",
+      "admin.site.register(MyModel) во admin.py",
+      "Да додадеш Bootstrap CDN во base.html за да се појави",
+      "Да додадеш __str__ метод и admin автоматски ќе го најде"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Моделот мора да се регистрира за да се појави во admin."
+  },
+  {
+    "question": "(admin) Сакаш да групираш полиња во секции во admin form. Кој механизам се користи?",
+    "choices": [
+      "list_filter = ((title, {'fields': (...)}), ...)",
+      "readonly_fields = ((title, {'fields': (...)}), ...)",
+      "search_fields = ((title, {'fields': (...)}), ...)",
+      "fieldsets = ((title, {'fields': (...)}), ...)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`fieldsets` овозможува секции со наслови и групирани полиња."
+  },
+  {
+    "question": "(views) Имаш object-level дозволи (може да уредува само свои). Каде е најважно да се провери тоа?",
+    "choices": [
+      "Во __str__ методот, затоа што таму се прикажува објектот",
+      "Само во template со if услов, затоа што тоа е доволно",
+      "Само во JavaScript, затоа што корисникот е во browser",
+      "Во view/queryset, пред да се дозволи edit/delete"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Безбедносните проверки мора да се серверски. UI проверки не се доволни."
+  },
+  {
+    "question": "(admin) Кој атрибут контролира кои колони се прикажуваат во changelist табелата?",
+    "choices": [
+      "list_display = [...]",
+      "columns_displayed = [...]",
+      "form_control = [...]",
+      "table_columns = [...]"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`list_display` ги дефинира колоните во list view во admin."
+  },
+  {
+    "question": "(models) Сакаш поле да е текст, но да се валидира дека содржи само цифри (на пр. код со водечки нули). Кој пристап е најчист?",
+    "choices": [
+      "JSONField затоа што кодот е структура и не е обичен текст",
+      "FloatField затоа што може да има повеќе цифри",
+      "IntegerField па водечките нули да се додаваат во template",
+      "CharField + RegexValidator (или custom validator)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Кога форматот е важен, чувај како текст и валидирај со validator."
+  },
+  {
+    "question": "(urls) Ако користиш class-based view, како ја регистрираш во urlpatterns?",
+    "choices": [
+      "path('x/', MyView.render(), name='x')",
+      "path('x/', MyView(), name='x')",
+      "path('x/', MyView.view(), name='x')",
+      "path('x/', MyView.as_view(), name='x')"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "CBV се користи преку `as_view()`."
+  },
+  {
+    "question": "(views) Формата не е валидна. Кој е најстандардниот начин да ги прикажеш errors?",
+    "choices": [
+      "Да ја вратиш истата form instance во template за да се рендерираат errors",
+      "Да ги испечатиш errors во конзола и да вратиш HttpResponse('error')",
+      "Да ја фрлиш form и да креираш нова празна форма без грешки",
+      "Да направиш redirect без form, па errors ќе се појават автоматски"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Само истата instance ја има валидираната состојба и errors за прикажување."
+  },
+  {
+    "question": "(admin) Сакаш custom action во admin list (на пр. mark as active). Кој механизам е најсоодветен?",
+    "choices": [
+      "templates = ['mark_active.html'] за да се активира автоматски",
+      "actions = ['mark_active'] и дефинирана метода/функција",
+      "middlewares = ['mark_active'] за да се активира на request",
+      "signals = ['mark_active'] за да се активира на save"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Admin actions се дефинираат како функции и се додаваат во `actions`."
+  },
+  {
+    "question": "(html) Кој tag мора да го ставиш во POST форма за да не добиеш 403 CSRF error?",
+    "choices": [
+      "{% csrf_token %}",
+      "{% csrf_protect %}",
+      "{% csrfmiddlewaretoken %}",
+      "{% token_csrf %}"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "CSRF middleware очекува `{% csrf_token %}` во POST форми."
+  },
+  {
+    "question": "(views) Имаш M:N релација и сакаш да оптимизираш пристап до неа. Кој метод е соодветен?",
+    "choices": [
+      "prefetch_related('m2m_field') за M:N и reverse релации",
+      "select_related('m2m_field') затоа што работи за сите релации",
+      "annotate('m2m_field') за да се претвори во FK",
+      "aggregate('m2m_field') за да врати листа од објекти"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "M:N и reverse FK се решаваат со prefetch_related, не со select_related."
+  },
+  {
+    "question": "(models) Кој опис најточно ја објаснува разликата меѓу blank и null за CharField?",
+    "choices": [
+      "blank важи само за база, null важи само за форми и ModelForm",
+      "blank и null се исто, само различен синтаксен шеќер во Django",
+      "blank е за валидација на форми, null е за тоа дали базата дозволува NULL",
+      "blank е за уникатност, null е за индекс за побрзо пребарување"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`blank=True` дозволува празно во форми. `null=True` дозволува NULL во база. За CharField често се избегнува null=True."
+  },
+  {
+    "question": "(views) По успешен POST, зошто е добра пракса да правиш redirect наместо повторно render?",
+    "choices": [
+      "За да се избегне CSRF валидацијата при refresh и да нема 403",
+      "За да избегнеш повторен submit при refresh (Post/Redirect/Get)",
+      "За да се избегне кеширање на CSS/JS и да се вчитаат свежи ресурси",
+      "За да се избегне повторно извршување на миграции по submit (ORM)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "PRG pattern спречува дуплирање записи кога корисник ќе refresh-ира после POST."
+  },
+  {
+    "question": "(urls) Сакаш одделен URLconf за API v1. Кој е најчист пристап?",
+    "choices": [
+      "path('api/v1/', models.ApiConfig)",
+      "path('api/v1/', include('api.urls'))",
+      "path('api/v1/', settings.API_URLS)",
+      "path('api/v1/', api.urls, name='api')"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "API рути најчесто се во посебен urls.py и се вклучуваат со include под префикс."
+  },
+  {
+    "question": "(models) Сакаш да гарантираш дека комбинација од две полиња е уникатна (на пр. code + date). Кој механизам е најточен?",
+    "choices": [
+      "Да ставиш unique=True на едното поле и да очекуваш комбинацијата да е уникатна",
+      "Да ставиш db_index=True на двете полиња и да очекуваш uniqueness во база",
+      "Да ставиш UniqueConstraint (или unique_together) во constraints за комбинацијата",
+      "Да ставиш blank=False на двете полиња и да очекуваш да нема дупликати"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Уникатност се гарантира со constraint на ниво база, не со индекси или blank/null."
+  },
+  {
+    "question": "(views) Имаш рута `detail/<int:pk>/`, а правиш `redirect('detail')` без pk. Зошто добиваш NoReverseMatch?",
+    "choices": [
+      "Затоа што detail.html недостига во templates и reverse не може да продолжи",
+      "Затоа што csrf_token недостига и reverse ја блокира рутата при redirect",
+      "Затоа што reverse за 'detail' бара pk аргумент, а ти не го даваш",
+      "Затоа што ModelForm нема Meta класа, па redirect не знае каде да оди"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Ако URL pattern има параметар (pk), reverse/redirect мора да ги добие тие аргументи; инаку се добива NoReverseMatch."
+  },
+  {
+    "question": "(urls) Ако ја смениш URL патеката, но name остане ист, што најчесто ќе се случи со `{% url %}` линковите?",
+    "choices": [
+      "Ќе побараат миграција, бидејќи URL патеката се чува во база како schema",
+      "Ќе се кешираат и нема да се променат додека не се рестартира серверот",
+      "Ќе престанат да работат, бидејќи reverse користи path string, не name",
+      "Ќе продолжат да работат, бидејќи reverse користи name, не path string"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Reverse/URL tags се базираат на name; path string може да се менува без да се менуваат template-и."
+  },
+  {
+    "question": "(admin) Сакаш да спречиш edit (change) на записи, но да дозволиш view. Кој метод најдиректно контролира edit?",
+    "choices": [
+      "has_add_permission(self, request)",
+      "has_view_permission(self, request, obj=None)",
+      "has_change_permission(self, request, obj=None)",
+      "has_module_permission(self, request)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Edit дозволата е во `has_change_permission`."
+  },
+  {
+    "question": "(urls) Имаш рута со параметар (на пр. detail/<int:pk>/). Како најчесто правиш redirect по name?",
+    "choices": [
+      "redirect('detail') и Django ќе најде pk од сесија",
+      "redirect('detail', id=request.user) затоа што user е ист како pk",
+      "redirect('/detail/') затоа што pk не е важен за reverse",
+      "redirect('detail', pk=obj.pk) или redirect('detail', obj.pk)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Ако URL бара параметри, мора да ги дадеш при reverse/redirect."
+  },
+  {
+    "question": "(html) Сакаш да прикажеш грешки за поле (на пр. name). Кој е најдиректен начин?",
+    "choices": [
+      "{{ model.errors }} затоа што моделот валидира во template",
+      "{{ form.name.errors }} близу до input полето",
+      "{{ form.errors_json }} во <head> делот на страната",
+      "{{ request.errors }} затоа што request ги чува грешките"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Field errors се на формата; се прикажуваат преку `form.field.errors`."
+  },
+  {
+    "question": "(views) Форма со upload ти враќа празно request.FILES. Кое е најчестото објаснување?",
+    "choices": [
+      "Недостига enctype='multipart/form-data' во HTML form",
+      "Недостига {% extends %} во template па form не се праќа",
+      "Недостига __str__ метод на моделот што се upload-ира",
+      "Недостига name=... на path() во urls.py за тој view"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Без multipart enctype, browser-от не праќа фајлови како дел од request и FILES останува празно."
+  },
+  {
+    "question": "(html) Како се итерира низ листа items во Django template?",
+    "choices": [
+      "{% loop item of items %}",
+      "{% foreach item in items %}",
+      "{% for item in items %}",
+      "{% for items in item %}"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Django template loop синтакса е `{% for x in y %}`."
+  },
+  {
+    "question": "(urls) Сакаш да избегнеш конфликт на имиња меѓу две апликации со исто име на рута. Кој механизам е најточен?",
+    "choices": [
+      "forms.Meta.fields за да се избегне конфликт на рути",
+      "settings.APP_LABEL за да се изолираат имиња на рути",
+      "models.Meta.verbose_name за да се изолираат имиња на рути",
+      "app_name и namespace со include(), па користиш 'app:route'"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Namespace овозможува `{% url 'app:route' %}` без конфликт."
+  },
+  {
+    "question": "(html) Сакаш зелено Bootstrap копче. Кој класен пар е најдиректен?",
+    "choices": [
+      "btn btn-primary",
+      "btn btn-dark",
+      "btn btn-success",
+      "btn btn-warning"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`btn-success` е зелениот variant во Bootstrap."
+  },
+  {
+    "question": "(html) Кој wrapper најчесто се користи за responsive layout во Bootstrap?",
+    "choices": [
+      "<div class='fixed'> ... </div>",
+      "<div class='absolute'> ... </div>",
+      "<div class='grid-12'> ... </div>",
+      "<div class='container'> ... </div>"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`container` дава responsive max-width и padding. `container-fluid` е full-width."
+  },
+  {
+    "question": "(html) Сакаш да прикажеш датум во формат YYYY-MM-DD. Кој филтер е најсоодветен?",
+    "choices": [
+      "{{ obj.date|strftime:'Y-m-d' }}",
+      "{{ obj.date|datetime:'Y-m-d' }}",
+      "{{ obj.date|format:'Y-m-d' }}",
+      "{{ obj.date|date:'Y-m-d' }}"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Django има `date` template filter со формат string."
+  },
+  {
+    "question": "(html) Сакаш условно да прикажеш дел ако листата е празна. Кој tag е точен?",
+    "choices": [
+      "{% if items %} ... {% empty %} ... {% endif %}",
+      "{% if items %} ... {% else %} ... {% endif %}",
+      "{% if items %} ... {% otherwise %} ... {% endif %}",
+      "{% if items %} ... {% elif items %} ... {% endif %}"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "`if/else/endif` е основниот conditional механизам во Django templates."
+  },
+  {
+    "question": "(urls) Каде е најсоодветно место за `admin.site.urls`?",
+    "choices": [
+      "Во models.py затоа што admin е поврзан со модели",
+      "Во templates/base.html затоа што таму има навигација",
+      "Во settings.py затоа што INSTALLED_APPS го контролира",
+      "Во project urls.py под 'admin/' префикс"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Admin URL-ите се дел од проектниот URLconf."
+  },
+  {
+    "question": "(admin) Сакаш да криеш поле (owner) од admin form затоа што го сетираш автоматски. Кој атрибут е најчест?",
+    "choices": [
+      "list_filter = ['owner']",
+      "exclude = ['owner']",
+      "search_fields = ['owner']",
+      "ordering = ['owner']"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Exclude го отстранува полето од формата."
+  },
+  {
+    "question": "(views) Сакаш да филтрираш по поле на поврзан модел (FK). Кој синтакс е точен?",
+    "choices": [
+      "Item.objects.filter(category->active=True)",
+      "Item.objects.filter(category__active=True)",
+      "Item.objects.filter(category.active=True)",
+      "Item.objects.filter(category[active]=True)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Django ORM користи double underscore за traversing релации."
+  },
+  {
+    "question": "(html) Како во template пристапуваш до јавниот URL на ImageField?",
+    "choices": [
+      "{{ obj.image.url }}",
+      "{{ obj.image.path_url }}",
+      "{{ obj.image.href }}",
+      "{{ obj.image.src }}"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "File/Image полињата имаат `.url` за јавниот URL (кога постои фајл)."
+  },
+  {
+    "question": "(admin) Сакаш различен редослед на записи во admin changelist. Кој атрибут е најдиректен?",
+    "choices": [
+      "search_fields = ['-created_at']",
+      "readonly_fields = ['-created_at']",
+      "list_display = ['-created_at']",
+      "ordering = ['-created_at']"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`ordering` контролира default ordering за admin листата."
+  },
+  {
+    "question": "(models) Сакаш да креираш профил модел кој е 1:1 со User. Кој field е најсоодветен?",
+    "choices": [
+      "ForeignKey(User, on_delete=models.CASCADE) (може повеќе профили по user)",
+      "OneToOneField(User, on_delete=models.CASCADE) (точно еден профил по user)",
+      "ManyToManyField(User, blank=True) (многу профили кон многу корисници)",
+      "CharField(max_length=150) + lookup по username (не е релација)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "За профил 1:1 со User се користи OneToOneField, бидејќи секој корисник има најмногу еден профил."
+  },
+  {
+    "question": "(admin) Сакаш да уредуваш поврзани записи директно во parent страницата. Што се користи?",
+    "choices": [
+      "Inline (StackedInline/TabularInline) во ModelAdmin",
+      "middleware за да се пресретне admin request",
+      "signals.post_save за да се појават автоматски",
+      "template tag во base.html за да се рендерираат записи"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Inline-ите дозволуваат nested форми за поврзани модели преку FK."
+  },
+  {
+    "question": "(views) Кога иницијализираш ModelForm со File/Image поле, кои аргументи се најточни?",
+    "choices": [
+      "MyForm(data=request.FILES, files=request.POST)",
+      "MyForm(data=request.body, files=None)",
+      "MyForm(data=request.GET, files=request.POST)",
+      "MyForm(data=request.POST, files=request.FILES)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "POST data оди во `data`, а upload фајлови во `files`."
+  },
+  {
+    "question": "(admin) Сакаш автоматски да поставиш owner=request.user при зачувување во admin. Кој метод најчесто се override-нува?",
+    "choices": [
+      "has_add_permission(self, request) (контролира Add дозвола)",
+      "get_queryset(self, request) (контролира кои записи се гледаат)",
+      "formfield_for_foreignkey(self, db_field, request, **kwargs) (FK widget)",
+      "save_model(self, request, obj, form, change) (сетира owner пред save)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`save_model` дозволува да се дополни obj пред да се запише."
+  },
+  {
+    "question": "(urls) Сакаш slug параметар (текст со цртички). Кој converter е најсоодветен?",
+    "choices": [
+      "<path:slug>",
+      "<slug:slug>",
+      "<str:slug>",
+      "<int:slug>"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "`slug` converter е наменет за slug вредности."
+  },
+  {
+    "question": "(html) Која е најточната разлика меѓу `{{ form }}` и `{{ form.as_p }}`?",
+    "choices": [
+      "form е исто како as_p, само што as_p враќа JSON наместо HTML",
+      "as_p ги рендерира полињата во <p>, а form користи default HTML rendering",
+      "as_p важи само за ModelForm, а form важи само за Form (различен API)",
+      "form е за GET, а as_p е за POST и зависи од HTTP методот на барањето"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "`as_p` е конкретен метод за рендерирање; `{{ form }}` го користи default output."
+  },
+  {
+    "question": "(admin) Сакаш inline да биде во табеларен приказ (компактно). Кој inline тип е точен?",
+    "choices": [
+      "admin.SimpleListFilter",
+      "admin.ModelAdmin",
+      "admin.StackedInline",
+      "admin.TabularInline"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`TabularInline` е табеларен приказ; `StackedInline` е блок приказ."
+  },
+  {
+    "question": "(html) Кој tag се користи за наследување layout од base template?",
+    "choices": [
+      "{% inherit 'base.html' %}",
+      "{% import 'base.html' %}",
+      "{% extends 'base.html' %}",
+      "{% include 'base.html' %}"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`extends` е за inheritance; `include` е само за вметнување делови."
+  },
+  {
+    "question": "(urls) Каде обично се дефинираат рути специфични за една апликација?",
+    "choices": [
+      "Во app/urls.py, па се вклучуваат со include()",
+      "Во models.py, затоа што моделите ги знаат своите URL",
+      "Во templates, затоа што HTML навигацијата е доволна",
+      "Само во project/urls.py, затоа што app urls не се дозволени"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Практика е секоја app да има свој urls.py и проектот да прави include."
+  },
+  {
+    "question": "(urls) Која е најчестата причина `{% url 'name' %}` да фрли NoReverseMatch?",
+    "choices": [
+      "Bootstrap не е вчитан па template tag не работи",
+      "CSRF токенот не е вметнат па reverse не успева",
+      "ModelForm нема Meta па reverse не знае што да прави",
+      "Погрешно name или недостасуваат аргументи што ги бара рутата"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "NoReverseMatch најчесто е поради невалидно име или недадени параметри."
+  },
+  {
+    "question": "(urls) Сакаш параметар што може да содржи и '/' (под-патека). Кој converter се користи?",
+    "choices": [
+      "<path:subpath>",
+      "<uuid:subpath>",
+      "<slug:subpath>",
+      "<str:subpath>"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`path` converter match-ира и '/', па може да фати повеќе сегменти."
+  },
+  {
+    "question": "(views) Сакаш flash порака за успех по креирање. Кој е најстандардниот чекор?",
+    "choices": [
+      "messages.success(request, '...') и потоа redirect",
+      "return HttpResponse('success') без template и без redirect",
+      "print('success') во server log и корисникот ќе го види",
+      "да го ставиш текстот во settings.py и да се рендерира автоматски"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Messages framework е за кратки user-facing пораки; типично се комбинира со redirect."
+  },
+  {
+    "question": "(views) Имаш ModelForm каде owner не е во формата. Кој редослед е најточен за да го сетираш?",
+    "choices": [
+      "form.owner = request.user; obj = form.save(); (owner не се запишува на obj)",
+      "obj = form.save(); obj.owner = request.user; (без второ save, не се запишува)",
+      "obj = form.save(commit=False); obj.owner = request.user; obj.save()",
+      "obj = form.save(commit=False); obj.save(); (owner останува празно)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Commit=False дава instance без save, па можеш да го пополниш owner пред да запишеш."
+  },
+  {
+    "question": "(models) Сакаш upload-натите слики за модел Food да одат во папка 'foods/'. Каде најсоодветно го задаваш тоа?",
+    "choices": [
+      "Во settings.py: MEDIA_URL='foods/' (ја менува URL патеката, не upload folder)",
+      "Во urls.py: static(MEDIA_URL, document_root=MEDIA_ROOT) (само serving во dev)",
+      "Во template: <img src='...'> (само приказ, не место на upload)",
+      "Во моделот: ImageField(upload_to='foods/') (го задава upload folder)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Папката за upload се дефинира со `upload_to` на field, не со MEDIA_URL или со template патеки."
+  },
+  {
+    "question": "(admin) Сакаш slug поле да се пополнува автоматски од name во admin. Кој атрибут е точен?",
+    "choices": [
+      "prepopulated_fields = {'slug': ('name',)}",
+      "slug_fields = {'slug': 'name'}",
+      "populate_slug = ('slug', 'name')",
+      "prefill_fields = {'slug': ['name']}"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`prepopulated_fields` го пополнува slug динамички според други полиња."
+  },
+  {
+    "question": "(models) Сакаш reverse пристап од User до неговите записи (на пр. user.items.all()). Кој параметар го именува reverse relation?",
+    "choices": [
+      "db_index на ForeignKey",
+      "primary_key на ForeignKey",
+      "related_name на ForeignKey",
+      "verbose_name на ForeignKey"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`related_name` дефинира како ќе се вика reverse relation-от од поврзаниот модел."
+  },
+  {
+    "question": "(urls) Кои import-и најчесто се потребни за `static(settings.MEDIA_URL, ...)`?",
+    "choices": [
+      "from django.urls import settings; from django.static import static",
+      "from django.conf import settings; from django.conf.urls.static import static",
+      "from django.settings import conf; from django.urls.static import static",
+      "from django.conf.urls import settings; from django.conf.static import static"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Овие два import-и се стандарден пат за static helper и settings."
+  },
+  {
+    "question": "(models) Имаш поле за број што не смее да биде негативен (на пр. max_passengers). Кој field е најсоодветен?",
+    "choices": [
+      "IntegerField (а негативните да ги проверуваш во template)",
+      "CharField (за полесно внесување и валидација во view)",
+      "FloatField (за да можеш да имаш и децимали за патници)",
+      "PositiveIntegerField (за да забрани негативни вредности)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`PositiveIntegerField` е наменет за не-негативни цели броеви и ја опишува намерата подобро од IntegerField."
+  },
+  {
+    "question": "(models) Сакаш цена со 2 децимали да се чува директно во база. Кој field е најсоодветен?",
+    "choices": [
+      "FloatField (може да даде заокружувања при одредени операции и суми)",
+      "IntegerField (центи), па во приказ рачно делиш со 100 (друг модел)",
+      "DecimalField(max_digits=..., decimal_places=2) (точно за валута)",
+      "CharField (текст), па во код рачно парсираш и валидираш"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "За валута со децимали, најтипичен и прецизен избор е DecimalField со `decimal_places=2`."
+  },
+  {
+    "question": "(html) Во template loop, како го добиваш бројот на итерацијата (1,2,3...)?",
+    "choices": [
+      "{{ index.counter }}",
+      "{{ counter.forloop }}",
+      "{{ forloop.counter }}",
+      "{{ loop.index }}"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Django има `forloop.counter` (1-based) и `forloop.counter0` (0-based)."
+  },
+  {
+    "question": "(urls) За едноставни рути, кој API е најчитлив?",
+    "choices": [
+      "path() со конвертори (str/int/slug/path)",
+      "url() од Django 1.x затоа што е понов API",
+      "re_path() со regex за секоја рута",
+      "raw_path() со SQL-like синтакса"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Во модерни Django верзии, `path()` е најчитлив за повеќето рути."
+  },
+  {
+    "question": "(views) Сакаш да спречиш анонимни корисници да пристапат до view. Кој е најчист пристап?",
+    "choices": [
+      "if request.user.is_authenticated: ... else: redirect('login') (рачно решение)",
+      "print() логирање на пристап, но без да блокира view (не е заштита)",
+      "@login_required или LoginRequiredMixin (стандардно и чисто решение)",
+      "Сокриј линк во HTML, но без серверска проверка (несигурно решение)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Автентикацијата мора да се контролира серверски. `login_required` е стандарден и јасен механизам."
+  },
+  {
+    "question": "(urls) Сакаш да ги групираш рути на апликација и да ги вклучиш во проектот. Кој пристап е точен?",
+    "choices": [
+      "path('blog/', require('blog.urls'))",
+      "path('blog/', include('blog.urls'))",
+      "path('blog/', blog.urls())",
+      "path('blog/', import('blog.urls'))"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "`include()` вклучува друг URLconf под префикс."
+  },
+  {
+    "question": "(html) Сакаш линк до именувана рута во template. Кој tag е точен?",
+    "choices": [
+      "<a href=\"{% path 'home' %}\">Home</a>",
+      "<a href=\"{% route 'home' %}\">Home</a>",
+      "<a href=\"{% url 'home' %}\">Home</a>",
+      "<a href=\"{% link 'home' %}\">Home</a>"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`{% url %}` прави reverse по name и е стандарден за линкови."
+  },
+  {
+    "question": "(views) Во листа view имаш N+1 queries поради FK пристап во template. Кој е најточен fix?",
+    "choices": [
+      "Да користиш prefetch_related('fk_field') и да очекуваш JOIN како за ForeignKey",
+      "Да користиш values() и да вратиш dict, па template да не прави FK пристап",
+      "Да користиш select_related('fk_field') за JOIN и да избегнеш N+1",
+      "Да користиш raw SQL затоа што ORM не може да се оптимизира за FK"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`select_related` прави JOIN и ги повлекува FK објектите во истиот query."
+  },
+  {
+    "question": "(urls) Сакаш root URL ('/') да оди на home view. Кој path е точен?",
+    "choices": [
+      "path('/', home, name='home')",
+      "path('root/', home, name='home')",
+      "path('', home, name='home')",
+      "path('*', home, name='home')"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Празен string значи root на тој URLconf."
+  },
+  {
+    "question": "(models) Сакаш поле (на пр. status) да биде ограничено на фиксна листа вредности. Кој е најстандарден пристап?",
+    "choices": [
+      "Да валидираш рачно во view и да чуваш статус во TextField како произволен текст",
+      "Да чуваш статус во JSONField и да проверуваш вредност во template",
+      "Да моделираш Status како посебен модел и да користиш ManyToMany за статуси",
+      "Да користиш choices/TextChoices на полето за вградена валидација"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`choices` дава валидација, dropdown во admin и јасен домен за дозволени вредности."
+  },
+  {
+    "question": "(models) Сакаш да оптимизираш филтрирање по поле што често се пребарува (на пр. code). Кој чекор е најдиректен?",
+    "choices": [
+      "Да го смениш полето во TextField за побрзо пребарување",
+      "Да го прикажеш полето со |lower филтер за да се пребарува полесно",
+      "Да го преместиш полето во друга табела без ForeignKey",
+      "Да додадеш db_index=True или Index во Meta.indexes"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Индексите се наменети за побрзи филтри и пребарувања во база."
+  },
+  {
+    "question": "(views) Во CBV CreateView сакаш да сетираш owner=request.user. Каде најчесто се прави тоа?",
+    "choices": [
+      "Во urls.py со додавање owner параметар во path",
+      "Во get_context_data(), затоа што се повикува секогаш",
+      "Во form_valid(), пред да се повика super()",
+      "Во template со hidden input поле за owner"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Во CBV, `form_valid` е точка каде се дополнува self.object пред save."
+  },
+  {
+    "question": "(models) Сакаш автоматски да се пополни timestamp кога објектот се креира, и потоа да не се менува. Што е најточно?",
+    "choices": [
+      "DateTimeField(auto_now_add=True) за timestamp само при креирање",
+      "DateTimeField(auto_now=True) за timestamp при секое save",
+      "DateField(blank=True) и рачно внесување во форма (не е автоматски)",
+      "CharField(default='now') и рачно парсирање во Python (несигурно)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`auto_now_add` се сетира само при креирање. `auto_now` се ажурира при секое save."
+  },
+  {
+    "question": "(urls) Имаш 'items/<int:id>/' и 'items/new/'. Што е најважно за да не се match-ира 'new' како int?",
+    "choices": [
+      "Django секогаш ја избира подолгата рута без разлика на редослед",
+      "Django секогаш ја избира рутата со name='new' ако постои",
+      "Django ќе ги повика двете view функции за истиот request",
+      "Редослед: 'new/' да стои пред параметризираната рута во urlpatterns"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "URL resolver проверува по ред. Специфичните рути треба да се пред параметризираните."
+  },
+  {
+    "question": "(urls) Сакаш да reverse-ираш рута во redirect или template. Кој дел е најбитен да постои?",
+    "choices": [
+      "verbose_name='...' за admin",
+      "title='...' за HTML title",
+      "label='...' за Bootstrap",
+      "name='...' на рутата"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Reverse работи преку `name`."
+  },
+  {
+    "question": "(models) Имаш модел со сопственик (User). Кој е најсигурен начин да се постави сопственикот при креирање преку форма?",
+    "choices": [
+      "Полето да е hidden input со user_id и да се зачува како што е пратено",
+      "Полето да е во формата, а корисникот да може да избере сопственик",
+      "Полето да се земе од GET параметар (?user=...) и да се запише во база",
+      "Полето да не е во формата, а да се сетира серверски од request.user"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Сопственоста не смее да доаѓа од клиент. Најбезбедно е серверот да ја постави од најавениот корисник."
+  },
+  {
+    "question": "(models) Сакаш да спречиш бришење на родител запис ако има зависни записи. Кој on_delete е најсоодветен?",
+    "choices": [
+      "CASCADE (ги брише и зависните записи автоматски)",
+      "DO_NOTHING (оставa неконзистентни редови ако базата не блокира)",
+      "SET_NULL (го прави FK NULL и остава зависни записи)",
+      "PROTECT (блокира бришење ако има поврзани записи)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`PROTECT` спречува бришење кога постојат зависни записи и е добар избор кога сакаш референтен интегритет."
+  },
+  {
+    "question": "(views) Сакаш да прикажеш само записи на најавениот корисник. Кој филтер е најчист?",
+    "choices": [
+      "Model.objects.filter(user_id=request.user)",
+      "Model.objects.filter(user__id=request.user.username)",
+      "Model.objects.filter(request.user in user)",
+      "Model.objects.filter(user=request.user)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Филтрирањето по FK најчесто се прави со `user=request.user` (или user_id=request.user.id)."
+  },
+  {
+    "question": "(urls) Што најчесто значи ако заборавиш trailing slash во path (на пр. 'items' наместо 'items/')?",
+    "choices": [
+      "Базата ќе направи migration затоа што URL се смени",
+      "Може да добиеш 404 или redirect според APPEND_SLASH конфигурација",
+      "Django ќе го игнорира pattern-от и ќе користи admin",
+      "Django автоматски ќе креира нов template за таа рута"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Trailing slash влијае на match. Со APPEND_SLASH Django понекогаш redirect-ира."
+  },
+  {
+    "question": "(models) Сакаш default сортирање за модел (на пр. најнови први). Каде најчесто се дефинира?",
+    "choices": [
+      "Во urls.py преку редоследот на path() (не влијае на ORM ordering)",
+      "Во forms.py преку ModelForm.Meta fields редослед (не сортира queryset)",
+      "Во __str__ преку текстот што го враќа (не го менува редоследот)",
+      "Во моделот: class Meta со ordering = [...] (default ordering за queryset)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Default ordering за моделот се дефинира во `class Meta: ordering = [...]` и важи за queryset-и."
+  },
+  {
+    "question": "(models) Сакаш ForeignKey да стане NULL при бришење на поврзаниот објект. Кој пар конфигурации е точен?",
+    "choices": [
+      "on_delete=CASCADE и null=True на ForeignKey полето",
+      "on_delete=SET_NULL и blank=True на ForeignKey полето",
+      "on_delete=SET_NULL и null=True на ForeignKey полето",
+      "on_delete=PROTECT и null=True на ForeignKey полето"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "SET_NULL бара полето да дозволува NULL во база; инаку нема каде да се сетира вредноста."
+  },
+  {
+    "question": "(views) Сакаш да дозволиш само POST барања за delete акција. Кој decorator е најсоодветен?",
+    "choices": [
+      "@require_POST од django.views.decorators.http",
+      "@csrf_exempt за да не проверува методи",
+      "@login_required затоа што автоматски прави POST",
+      "@admin.site.register затоа што е за admin actions"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`require_POST` враќа 405 ако методот не е POST и е чисто HTTP ограничување."
+  },
+  {
+    "question": "(html) Во base template, каде се вметнува содржината од child templates?",
+    "choices": [
+      "{% content block %}{% endcontent %}",
+      "{% slot content %}{% endslot %}",
+      "{% block content %}{% endblock %}",
+      "{% yield content %}{% endyield %}"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Django користи block/endblock за дефинирање места за child содржина."
+  },
+  {
+    "question": "(html) За upload на фајл преку форма, кој атрибут е задолжителен во <form>?",
+    "choices": [
+      "enctype='application/xml'",
+      "enctype='multipart/form-data'",
+      "enctype='text/plain'",
+      "enctype='application/json'"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Без multipart enctype, request.FILES ќе биде празно."
+  },
+  {
+    "question": "(admin) Имаш ManyToMany поле и сакаш dual-list UI (add/remove). Кој атрибут се користи?",
+    "choices": [
+      "readonly_fields = ['tags'] (го прави поле read-only, не dual-list UI)",
+      "list_filter = ['tags'] (додава sidebar филтер, не selection widget)",
+      "filter_horizontal = ['tags'] (или filter_vertical за dual-list widget)",
+      "search_fields = ['tags'] (пребарување, не dual-list selection UI)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`filter_horizontal/vertical` дава подобар UI за M2M полиња."
+  },
+  {
+    "question": "(html) Имаш Django messages и сакаш да ги прикажеш на сите страници. Каде најчесто се става loop-от?",
+    "choices": [
+      "Во models.py во Meta.messages листата",
+      "Во settings.py со MESSAGES = [...] константа",
+      "Во urls.py со path('messages/', ...)",
+      "Во base.html со `{% for message in messages %}`"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Base template е добро место за глобални flash пораки."
+  },
+  {
+    "question": "(urls) Во development сакаш да ги сервираш media upload-натите фајлови. Кој додаток е стандарден?",
+    "choices": [
+      "] + static(settings.MEDIA_URL, document_root=settings.STATIC_URL)",
+      "] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)",
+      "] + static(settings.MEDIA_ROOT, document_root=settings.MEDIA_URL)",
+      "] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "MEDIA_URL се мапира кон MEDIA_ROOT за dev serving на upload-нати фајлови."
+  },
+  {
+    "question": "(views) Кој е најправилен начин да вратиш 404 ако објект не постои?",
+    "choices": [
+      "Model.objects.get(pk=pk) + try/except DoesNotExist за да вратиш Http404 рачно",
+      "return None и да провериш во template дали постои (не е вистински 404)",
+      "print('not found') и да вратиш празен HttpResponse (не е 404 одговор)",
+      "get_object_or_404(Model, pk=pk) за автоматски Http404 при недостиг"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`get_object_or_404` е стандарден helper што враќа Http404 ако нема резултат."
+  },
+  {
+    "question": "(admin) Сакаш да прикажеш computed метод како колона во admin листа. Што е најточно?",
+    "choices": [
+      "Да ставиш метод во search_fields и да очекуваш да се појави како колона",
+      "Да ставиш метод во list_filter и да очекуваш да се појави како колона",
+      "Да ставиш метод во exclude и да очекуваш да се прикажува во list view",
+      "Да ставиш метод во list_display и да му дадеш short_description за наслов"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`list_display` може да содржи методи/својства; `short_description` дава наслов."
+  },
+  {
+    "question": "(views) Кога градиш context за template, кој облик е најчесто користен?",
+    "choices": [
+      "листa без имиња (на пр. [qs, form]) и template ќе погоди",
+      "JSON string во context па template да парсира во runtime",
+      "dict со именувани клучеви (на пр. {'items': qs, 'form': form})",
+      "set од објекти затоа што сетот не дозволува дупликати"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Template-ите работат со именувани променливи; context најчесто е dict."
+  },
+  {
+    "question": "(models) Кое тврдење е најточно за `blank=True` на ForeignKey поле?",
+    "choices": [
+      "blank=True дозволува празно во форма, но не прави NULL ако null=False",
+      "blank=True автоматски прави NULL во база, дури и ако null=False",
+      "blank=True го прави полето unique и спречува дупликати во FK врската",
+      "blank=True го менува on_delete во SET_NULL без да менуваш модел"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`blank` е за форма/валидација. За база NULL треба `null=True`."
+  },
+  {
+    "question": "(admin) Сакаш корисник да гледа/менува само свои записи во admin list. Кој е најдиректен серверски пристап?",
+    "choices": [
+      "Смени __str__ да враќа само свои записи (не влијае на queryset)",
+      "Сокриј туѓи записи со CSS во admin (UI трик, не безбедност)",
+      "Override get_queryset и филтрирај по obj.user == request.user (серверски)",
+      "Користи само templates наместо admin за да нема туѓи записи (заобикол)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`get_queryset` е серверска контрола и спречува да се појават туѓи записи."
+  },
+  {
+    "question": "(admin) Сакаш да забраниш delete за модел за сите корисници. Кој метод го контролира тоа?",
+    "choices": [
+      "has_view_permission(self, request, obj=None)",
+      "has_delete_permission(self, request, obj=None)",
+      "has_module_permission(self, request)",
+      "has_add_permission(self, request)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Delete дозволата се контролира преку `has_delete_permission`."
+  },
+  {
+    "question": "(models) Сакаш `__str__` да биде корисен во admin листи. Кој е најдобар принцип?",
+    "choices": [
+      "Краток и читлив опис од 1-2 клучни полиња",
+      "Да враќа цела JSON репрезентација за максимални детали",
+      "Да враќа HTML со тагови за подобар стил во admin",
+      "Да враќа празен стринг за да биде побрз"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`__str__` се прикажува на многу места и треба да е краток и јасен."
+  },
+  {
+    "question": "(views) Сакаш да спречиш корисник да внесе туѓ owner преку POST. Кој чекор е клучен?",
+    "choices": [
+      "Да го скриеш owner полето со CSS (display:none) во HTML",
+      "Да го довериш owner на JavaScript пред да се направи submit",
+      "Да не го земаш owner од POST, туку да го сетираш од request.user",
+      "Да го праќаш owner како GET параметар за да е поочигледно"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Клиентски вредности се лесно изменливи. Сопственоста мора да се контролира серверски."
+  },
+  {
+    "question": "(models) Сакаш ImageField да биде опционално (може да е празно). Кој сет на опции е најтипичен?",
+    "choices": [
+      "blank=False, null=False (задолжително поле и во форма и во база)",
+      "unique=True (спречува дупликати, но не го прави полето опционално)",
+      "blank=True, null=True (опционално поле и во форма и во база)",
+      "default='' (полнeње со празна вредност, но не е најчисто решение)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "За да е опционално и во форма и во база, типично се користи `blank=True` и `null=True`."
+  },
+  {
+    "question": "(models) Имаш Boolean поле и сакаш да биде само True/False, без NULL. Кој избор е најточен?",
+    "choices": [
+      "CharField со 'true'/'false' за да нема трета состојба",
+      "IntegerField со 0/1 затоа што BooleanField секогаш дозволува NULL",
+      "BooleanField со null=True за да може да биде празно",
+      "BooleanField без null=True (и по потреба default=...)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "NULL додава трета состојба. Ако ти треба двојна логика, избегнувај null=True."
+  },
+  {
+    "question": "(admin) Сакаш sidebar филтер по Boolean поле. Кој атрибут се користи?",
+    "choices": [
+      "readonly_fields = ['active']",
+      "search_fields = ['active']",
+      "list_filter = ['active']",
+      "list_display = ['active']"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "`list_filter` додава филтри во sidebar."
+  },
+  {
+    "question": "(admin) Сакаш autocomplete widget за ForeignKey поле во admin. Кој атрибут е најтипичен?",
+    "choices": [
+      "autocomplete_fields = ['manufacturer']",
+      "ordering = ['manufacturer']",
+      "list_filter = ['manufacturer']",
+      "search_fields = ['manufacturer']"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "`autocomplete_fields` додава autocomplete UI за FK/M2M полиња."
+  },
+  {
+    "question": "(html) Во Bootstrap grid, што значи `col-3`?",
+    "choices": [
+      "Колоната секогаш содржи 3 елементи, независно од ширината на екранот",
+      "Колоната секогаш има фиксна ширина од 3px, без responsive однесување",
+      "Колоната се прикажува само на 3 breakpoint-и, а на други е скриена",
+      "Колоната зема 3 од 12 grid единици во редот (3/12 ширина на breakpoint)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Bootstrap grid работи во 12 колони; `col-3` значи 3 од 12."
+  },
+  {
+    "question": "(admin) Сакаш поле да се гледа, но да не може да се менува во admin form. Кој атрибут е точен?",
+    "choices": [
+      "exclude = ['user']",
+      "disabled_fields = ['user']",
+      "readonly_fields = ['user']",
+      "hidden_fields = ['user']"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Readonly полиња се прикажуваат, но не се уредуваат. `exclude` ги крие целосно."
+  },
+  {
+    "question": "(models) Сакаш M:N врска меѓу два модели, но и дополнително поле (на пр. quantity). Кој пристап е најточен?",
+    "choices": [
+      "ForeignKey кон трета табела, но без да се чуваат дополнителни полиња",
+      "OneToOneField меѓу моделите, а quantity да се чува на родителот",
+      "Посебен спојен модел со 2 ForeignKey и дополнителни полиња (through модел)",
+      "ManyToManyField без through, а quantity да биде поле на едниот модел"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Кога M:N има дополнителни атрибути, се моделира со спојен (through) модел."
+  },
+  {
+    "question": "(html) Што прави `{{ form.as_p }}` во template?",
+    "choices": [
+      "Ги рендерира form полињата како <table> со редови",
+      "Ги рендерира form полињата како JSON за да се парсира",
+      "Ги рендерира form полињата без labels и errors",
+      "Ги рендерира form полињата завиткани во <p> елементи"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "`as_p` е вграден helper за p-базирано рендерирање."
+  },
+  {
+    "question": "(admin) Сакаш пребарување по поле (на пр. name) во admin. Кој атрибут е точен?",
+    "choices": [
+      "find_fields = ['name']",
+      "lookup_fields = ['name']",
+      "search_fields = ['name']",
+      "search_by = ['name']"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Admin пребарувањето се конфигурира со `search_fields`."
+  },
+  {
+    "question": "(html) Како Django templates по default се однесуваат кон HTML во текст (XSS заштита)?",
+    "choices": [
+      "Автоматски escape-ираат, освен ако експлицитно не користиш |safe",
+      "Автоматски ги бришат сите HTML тагови при зачувување во база",
+      "Секогаш го означуваат текстот како safe и не escape-ираат ништо",
+      "Автоматски додаваат CSP header без никаква конфигурација"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Default е auto-escape за да се намали XSS ризик. `|safe` го исклучува тоа."
+  },
+  {
+    "question": "(views) Сакаш да ажурираш поле на queryset без да повикуваш save() на секој објект. Кој метод е најсоодветен?",
+    "choices": [
+      "for obj in queryset: obj.field=value; obj.save() (вика save на секој објект)",
+      "queryset.update(field=value) (прави SQL UPDATE директно, без save())",
+      "queryset.save(field=value) (save не постои на queryset и нема ефект)",
+      "queryset.commit(field=value) (commit не постои на queryset и ќе падне)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "`update()` прави SQL UPDATE директно и е поефикасен за масовни промени."
+  },
+  {
+    "question": "(admin) Сакаш само superuser да може да додава записи. Кој метод е најсоодветен за тоа?",
+    "choices": [
+      "save_model и да прави raise Exception за други",
+      "has_add_permission и да враќа request.user.is_superuser",
+      "get_queryset и да враќа празен queryset за други",
+      "has_change_permission и да враќа request.user.is_superuser"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Add дозволата е најчисто да се контролира со `has_add_permission`."
+  },
+  {
+    "question": "(html) Како се користи static tag за CSS фајл во Django template?",
+    "choices": [
+      "{% load media %} и потоа <link href=\"{% media 'css/app.css' %}\">",
+      "{% load static %} и потоа <link href=\"{% static 'css/app.css' %}\">",
+      "{% import static %} и потоа {{ static('css/app.css') }}",
+      "{% include static %} и потоа {% include 'css/app.css' %}"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Static ресурси се вчитуваат преку `{% load static %}` и `{% static %}`."
+  },
+  {
+    "question": "(urls) Сакаш рута што прима UUID. Кој converter е точен?",
+    "choices": [
+      "<uuid:uid>",
+      "<id:uid>",
+      "<guid:uid>",
+      "<str:uuid>"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Django има вграден uuid converter."
+  },
+  {
+    "question": "(views) Во function-based view со форма, кој е најстандардниот pattern за GET vs POST?",
+    "choices": [
+      "GET: render форма; POST: validate/save и redirect назад (PRG pattern)",
+      "GET: зачувај објект; POST: прикажи template без форма и без валидација",
+      "POST: render празна форма; GET: валидирај и зачувај внесени податоци",
+      "GET и POST: секогаш redirect без render, за да нема state во UI"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Ова е најчест и најбезбеден pattern: GET за приказ, POST за обработка, па redirect за да нема дупли submit."
+  },
+  {
+    "question": "(views) Сакаш да додадеш Bootstrap класа form-control на сите полиња во форма. Каде е најлогично?",
+    "choices": [
+      "Во models.py преку додавање db_index=True на секое поле",
+      "Во Form.__init__ преку field.widget.attrs['class'] = 'form-control'",
+      "Во urls.py со додавање префикс 'bootstrap/' на сите рути",
+      "Во settings.py со INSTALLED_APPS=['bootstrap'] и тоа ќе се среди"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "CSS класи се поставуваат на widget/HTML ниво. Формата е природното место за тоа."
+  }
+]

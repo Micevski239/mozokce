@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <img src="../../media/banner2.png" alt="banner" class="img-fluid" style="width: 100%">
+    <h1 class="text-center fw-bold my-4">Add new Instructor</h1>
+
+    <div class="d-flex justify-content-center align-items-center">
+        <form method="post" enctype="multipart/form-data" style="width: 1000px">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-primary rounded-1 form-control" type="submit">Submit Now</button>
+        </form>
+    </div>
+
+{% endblock %}

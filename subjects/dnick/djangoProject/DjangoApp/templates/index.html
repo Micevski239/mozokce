@@ -1,0 +1,96 @@
+{%  extends "base.html" %}
+
+{% block content %}
+<div class="">
+    <img src="../../media/courses-banner.png" alt="banner" class="img-fluid m-0" style="width: 100%">
+    <p class="m-4">Showing <b>6</b> Results</p>
+
+    <div class="container">
+        <div class="row">
+            {% for course in courses %}
+                <div class="col-4 ">
+                    <div class="card my-3" style="width: 20rem;">
+                      <img src="../../media/{{ course.image }}" class="card-img-top" alt="...">
+                      <div class="card-body">
+                          <div class="my-3">
+                              <img src="../../media/{{ course.instructor.image }}" alt="" class="img-fluid d-inline rounded-5">
+                              <p class="d-inline mx-2" style="margin-top: -20px">{{ course.instructor.name }} {{ course.instructor.last_name }}</p>
+                          </div>
+                        <h5 class="card-title">{{ course.name }}</h5>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+{##}
+{#            <div class="col-4">#}
+{#                <div class="card" style="width: 20rem;">#}
+{#                  <img src="../../media/course-02.jpg" class="card-img-top" alt="...">#}
+{#                  <div class="card-body">#}
+{#                      <p>#}
+{#                          <img src="../../media/instructor-1.jpeg" alt="" class="img-fluid d-inline">#}
+{#                          <p class="d-inline" style="margin-top: -20px">Nancy Phipps</p>#}
+{#                      </p>#}
+{#                    <h5 class="card-title">Master Native English Class This Speaking Skills</h5>#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="col-4">#}
+{#                <div class="card" style="width: 20rem;">#}
+{#                  <img src="../../media/course-03.jpg" class="card-img-top" alt="...">#}
+{#                  <div class="card-body">#}
+{#                      <p>#}
+{#                          <img src="../../media/instructor-3.jpeg" alt="" class="img-fluid d-inline">#}
+{#                          <p class="d-inline" style="margin-top: -20px">Nancy Phipps</p>#}
+{#                      </p>#}
+{#                    <h5 class="card-title">Master Native English Class This Speaking Skills</h5>#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#            <div class="col-4 my-4">#}
+{#                <div class="card" style="width: 20rem;">#}
+{#                  <img src="../../media/course-04.jpg" class="card-img-top" alt="...">#}
+{#                  <div class="card-body">#}
+{#                      <p>#}
+{#                          <img src="../../media/instructor-3.jpeg" alt="" class="img-fluid d-inline">#}
+{#                          <p class="d-inline" style="margin-top: -20px">Nancy Phipps</p>#}
+{#                      </p>#}
+{#                    <h5 class="card-title">Master Native English Class This Speaking Skills</h5>#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="col-4  my-4">#}
+{#                <div class="card" style="width: 20rem;">#}
+{#                  <img src="../../media/course-05.jpg" class="card-img-top" alt="...">#}
+{#                  <div class="card-body">#}
+{#                      <p>#}
+{#                          <img src="../../media/instructor-1.jpeg" alt="" class="img-fluid d-inline">#}
+{#                          <p class="d-inline" style="margin-top: -20px">Nancy Phipps</p>#}
+{#                      </p>#}
+{#                    <h5 class="card-title">Master Native English Class This Speaking Skills</h5>#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{#            <div class="col-4  my-4">#}
+{#                <div class="card" style="width: 20rem;">#}
+{#                  <img src="../../media/course-06.jpg" class="card-img-top" alt="...">#}
+{#                  <div class="card-body">#}
+{#                      <p>#}
+{#                          <img src="../../media/instructor-2.jpg" alt="" class="img-fluid d-inline">#}
+{#                          <p class="d-inline" style="margin-top: -20px">Nancy Phipps</p>#}
+{#                      </p>#}
+{#                    <h5 class="card-title">Master Native English Class This Speaking Skills</h5>#}
+{#                  </div>#}
+{#                </div>#}
+{#            </div>#}
+
+        </div>
+    </div>
+</div>
+{% endblock %}

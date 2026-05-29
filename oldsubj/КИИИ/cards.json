@@ -1,0 +1,710 @@
+[
+  {
+    "question": "Која команда се користи за да се покрене интерактивен Docker контејнер?",
+    "choices": [
+      "docker run -i -t ubuntu /bin/bash",
+      "docker start --interactive --tty ubuntu /bin/bash --login-shell",
+      "docker exec -it ubuntu bash --initialize-env",
+      "docker launch ubuntu --pseudo-terminal --stdin-mode"
+    ],
+    "correct": [0],
+    "type": "single",
+    "explanation": "Зошто: Флаговите -i (интерактивен) и -t (псевдо-терминал) се комбинираат за интерактивна сесија со контејнер.\nЗа испит: docker run -i -t ubuntu /bin/bash е стандардната форма за стартување на интерактивен контејнер."
+  },
+  {
+    "question": "Која команда ги прикажува СИТЕ контејнери, вклучувајќи ги и запрените?",
+    "choices": [
+      "docker ps",
+      "docker list --all",
+      "docker ps -a",
+      "docker containers show"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker ps без аргументи прикажува само активни контејнери. Флагот -a ги прикажува сите.\nЗа испит: docker ps -a е задолжителна команда за листање на сите контејнери (активни и запрени)."
+  },
+  {
+    "question": "Со која команда се именува контејнер при стартување?",
+    "choices": [
+      "docker run --tag myname --image ubuntu --interactive",
+      "docker run --name myname ubuntu",
+      "docker name myname --assign ubuntu --create-new",
+      "docker run -n myname --container ubuntu --detach"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Флагот --name им овозможува на корисниците да доделат сопствено ime на контејнерот наместо автоматски генерирано.\nЗа испит: docker run --name <ime> е начинот за именување на контејнер при креирање."
+  },
+  {
+    "question": "Која команда се користи за да се прикачите на постоечки активен контејнер?",
+    "choices": [
+      "docker connect",
+      "docker enter",
+      "docker attach",
+      "docker join"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker attach го поврзува локалниот стандарден влез/излез со тековниот процес во контејнерот.\nЗа испит: docker attach <ime_ili_ID> се користи за повторно поврзување со работен контејнер."
+  },
+  {
+    "question": "Со која команда се читаат логовите на контејнерот daemon_dave?",
+    "choices": [
+      "docker output daemon_dave",
+      "docker log show daemon_dave",
+      "docker logs daemon_dave",
+      "docker print --stdout --stderr --tail daemon_dave"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker logs ги зема сите записи (stdout/stderr) произведени од процесот внатре во контејнерот.\nЗа испит: docker logs <kontejner> е основната команда за дебагирање."
+  },
+  {
+    "question": "Која команда извршува задача во позадина во веќе работечки контејнер?",
+    "choices": [
+      "docker run -d daemon_dave touch /file",
+      "docker exec -d daemon_dave touch /file",
+      "docker attach --background daemon_dave touch /etc/new_config_file --no-block",
+      "docker task --detach daemon_dave touch /file"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: docker exec -d извршува команда во позадина (-d = detached) во постоечки контејнер без блокирање.\nЗа испит: docker exec -d <kontejner> <komanda> за позадинска задача во работечки контејнер."
+  },
+  {
+    "question": "Која команда ги листа сите локални Docker слики?",
+    "choices": [
+      "docker images",
+      "docker list images",
+      "docker show --images",
+      "docker image ls --all"
+    ],
+    "correct": [0],
+    "type": "single",
+    "explanation": "Зошто: docker images е основната команда за преглед на сите локално складирани слики.\nЗа испит: docker images прикажува IMAGE ID, TAG, SIZE и датум на создавање."
+  },
+  {
+    "question": "Со која команда се зема конкретна верзија на Ubuntu слика?",
+    "choices": [
+      "docker get ubuntu version 18.04",
+      "docker fetch ubuntu:18.04",
+      "docker pull ubuntu:18.04",
+      "docker download ubuntu --tag=18.04"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker pull ја зема сликата од Docker Hub или друг registry. Тагот после : ја специфицира верзијата.\nЗа испит: docker pull <slika>:<tag> е стандардниот начин за превземање конкретни верзии."
+  },
+  {
+    "question": "Која команда пребарува слики на Docker Hub?",
+    "choices": [
+      "docker search puppet",
+      "docker find puppet",
+      "docker hub search puppet",
+      "docker lookup puppet"
+    ],
+    "correct": [0],
+    "type": "single",
+    "explanation": "Зошто: docker search бара во Docker Hub registryто и ги прикажува достапните јавни слики.\nЗа испит: docker search <term> за наоѓање слики без да се отвора веб-прелистувач."
+  },
+  {
+    "question": "Со која команда се гради Docker слика со ознака (tag)?",
+    "choices": [
+      "docker build --label jamtur01/static_web .",
+      "docker make -t jamtur01/static_web .",
+      "docker build -t=\"jamtur01/static_web\" .",
+      "docker create -name jamtur01/static_web ."
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker build -t дефинира name:tag за новата слика. Точката (.) е контекстот (тековниот директориум со Dockerfile).\nЗа испит: docker build -t=\"<korisnik>/<ime>:<tag>\" . е стандардна форма за градење слики."
+  },
+  {
+    "question": "Со која команда се брише Docker слика?",
+    "choices": [
+      "docker delete jamtur01/static_web",
+      "docker image remove jamtur01/static_web",
+      "docker rmi jamtur01/static_web",
+      "docker rm --image jamtur01/static_web"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker rmi (remove image) ја брише локалната слика. docker rm е за контејнери, docker rmi е за слики.\nЗа испит: docker rmi <slika> за бришење слики, docker rm <kontejner> за бришење контејнери."
+  },
+  {
+    "question": "Со која команда се бришат СИТЕ контејнери одеднаш?",
+    "choices": [
+      "docker rm --all --force",
+      "docker remove -f $(docker ps -a -q)",
+      "docker rm -f `docker ps -a -q`",
+      "docker clean --all-containers --include-running"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker ps -a -q ги враќа само ID-ата на сите контејнери, кои потоа се проследуваат на docker rm -f.\nЗа испит: Комбинацијата со backtick за вгнездување на команди е честа техника за bulk-бришење."
+  },
+  {
+    "question": "Кој Dockerfile инструкција ја дефинира базната слика?",
+    "choices": [
+      "BASE",
+      "IMAGE",
+      "FROM",
+      "SOURCE"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: FROM мора да биде прва инструкција во Dockerfile и ја одредува базната слика врз која се гради.\nЗа испит: FROM <slika>:<tag> е задолжителна прва линија на секој Dockerfile."
+  },
+  {
+    "question": "Кој Dockerfile инструкција извршува команди при градење на сликата?",
+    "choices": [
+      "EXEC",
+      "CMD",
+      "RUN",
+      "BUILD"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: RUN извршува shell команди за време на build процесот и создава нови слоеви. CMD се извршува при стартување на контејнерот.\nЗа испит: RUN за build-time, CMD за runtime."
+  },
+  {
+    "question": "Кој Dockerfile инструкција документира на кои портови слуша контејнерот?",
+    "choices": [
+      "OPEN",
+      "PORT",
+      "PUBLISH",
+      "EXPOSE"
+    ],
+    "correct": [3],
+    "type": "single",
+    "explanation": "Зошто: EXPOSE ги документира портовите но не ги отвора автоматски. За реално отворање треба -p при docker run.\nЗа испит: EXPOSE <port> е документациска инструкција, реалното publish е со -p при docker run."
+  },
+  {
+    "question": "Кој Dockerfile инструкција додава метадата (автор, верзија) на сликата?",
+    "choices": [
+      "INFO",
+      "LABEL",
+      "META",
+      "TAG"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: LABEL додава key-value парови со метадата на сликата (автор, верзија, опис итн.).\nЗа испит: LABEL е замена за застарената MAINTAINER инструкција."
+  },
+  {
+    "question": "Во која година беше пуштен Docker Compose V1 (docker-compose)?",
+    "choices": [
+      "2016",
+      "2012",
+      "2014",
+      "2018"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Docker Compose V1 беше пуштен во 2014 година со командата docker-compose (со цртичка).\nЗа испит: V1 (2014) = docker-compose, V2 (2020) = docker compose (без цртичка)."
+  },
+  {
+    "question": "Која е разликата помеѓу Docker Compose V1 и V2?",
+    "choices": [
+      "V2 поддржува само Linux, V1 поддржува сите платформи вклучувајќи Windows и macOS",
+      "V1 користи docker-compose, V2 користи docker compose без цртичка",
+      "V2 нема поддршка за volumes и networks, само за services",
+      "V1 е интегриран во Docker CLI, V2 треба посебна инсталација"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: V2 е drop-in замена за V1 со иста функционалност, но е интегрирана директно во docker CLI (без посебна инсталација).\nЗа испит: V2 пуштен 2020, замена за V1 - истата docker-compose.yml синтакса, само командата е различна."
+  },
+  {
+    "question": "Која команда ги стартува сервисите дефинирани во docker-compose.yml?",
+    "choices": [
+      "docker-compose start",
+      "docker-compose run",
+      "docker-compose up",
+      "docker-compose launch"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker-compose up ги гради (ако нема слики) и стартува сите сервиси. docker-compose start само ги стартува постоечки контејнери.\nЗа испит: docker-compose up е главната команда, -d за detached режим."
+  },
+  {
+    "question": "Која команда ги прикажува работечките контејнери на Docker Compose?",
+    "choices": [
+      "docker-compose list",
+      "docker-compose ps",
+      "docker-compose status",
+      "docker-compose show"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: docker-compose ps го прикажува статусот само на контејнерите дефинирани во тековниот compose проект.\nЗа испит: docker-compose ps за compose-специфични контејнери, docker ps за сите контејнери."
+  },
+  {
+    "question": "Која команда ги запира Docker Compose сервисите?",
+    "choices": [
+      "docker-compose halt",
+      "docker-compose kill",
+      "docker-compose stop",
+      "docker-compose pause"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker-compose stop ги запира контејнерите без да ги брише. docker-compose rm ги брише запрените контејнери.\nЗа испит: stop = запирање, rm = бришење, down = stop + rm + мрежи."
+  },
+  {
+    "question": "Кои се главните делови на docker-compose.yml датотека?",
+    "choices": [
+      "services, networks, volumes",
+      "containers, images, ports, environment, labels",
+      "build, run, deploy, test",
+      "apps, configs, secrets, variables"
+    ],
+    "correct": [0],
+    "type": "single",
+    "explanation": "Зошто: docker-compose.yml се состои од services (апликациски компоненти), networks (мрежна конфигурација) и volumes (постојани складишта).\nЗа испит: services е задолжителна секција, networks и volumes се опционални."
+  },
+  {
+    "question": "Кои алатки спаѓаат во Docker оркестрација освен Docker Compose?",
+    "choices": [
+      "Vagrant, VirtualBox, VMware, HyperV, QEMU",
+      "Jenkins, Travis CI, CircleCI, GitLab CI, GitHub Actions",
+      "Consul, Swarm, Kubernetes, Apache Mesos",
+      "Ansible, Puppet, Chef, Salt, Terraform"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Docker оркестрацијата управува со повеќе контејнери на повеќе хостови. Consul, Swarm, Kubernetes и Mesos се оркестрациски алатки.\nЗа испит: Kubernetes е најпопуларна оркестрациска платформа, Swarm е нативна Docker оркестрација."
+  },
+  {
+    "question": "Jenkins е?",
+    "choices": [
+      "Систем за управување со релационо-базирани бази на податоци со поддршка за SQL",
+      "Open-source автоматизациски сервер",
+      "Docker registry за складирање и дистрибуција на приватни слики",
+      "Верзионен систем за управување со изворен код базиран на Git"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Jenkins е open-source автоматизациски сервер кој помага во автоматизација на изградба, тестирање и деплојирање на апликации.\nЗа испит: Jenkins = open-source CI/CD алатка со веб-базиран UI и богата екосистема на плагини."
+  },
+  {
+    "question": "На кој порт е достапен Jenkins по стандард?",
+    "choices": [
+      "3000",
+      "8080",
+      "443",
+      "5000"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Jenkins стандардно слуша на порт 8080 при инсталација преку Docker (порт 8080:8080 во compose).\nЗа испит: Jenkins = localhost:8080, стандардниот веб UI порт."
+  },
+  {
+    "question": "Каде се наоѓа почетната лозинка за Jenkins при прва инсталација?",
+    "choices": [
+      "Во /etc/jenkins/initialAdminPassword датотека на хост системот",
+      "Во логовите на контејнерот",
+      "Се праќа автоматски на регистрираниот email адреса на администраторот",
+      "Рачно се генерира и поставува при инсталација преку веб wizard"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Почетната администраторска лозинка се прикажува во Docker логовите при прво стартување на Jenkins контејнерот.\nЗа испит: docker logs <jenkins_kontejner> за добивање на initial admin password."
+  },
+  {
+    "question": "Кој Docker концепт се користи за Jenkins за да може да стартува Docker контејнери?",
+    "choices": [
+      "Docker Volumes за споделување на Docker socket",
+      "Docker Networks со bridge режим за изолација",
+      "Docker-in-Docker (dind)",
+      "Docker Registry за локално кешување на слики"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Docker-in-Docker (dind) овозможува Jenkins (кој самиот работи во контејнер) да може да стартува и управува со Docker контејнери.\nЗа испит: dind = Docker-in-Docker, потребно за Jenkins CI/CD пipelinesи кои градат Docker слики."
+  },
+  {
+    "question": "Кои Jenkins плагини се споменати во материјалите?",
+    "choices": [
+      "Blue Ocean, Dashboard View, Git Parameter, GitHub, GitLab",
+      "Maven Plugin, Gradle Plugin, NPM Build, Python Runner, Ruby Gems",
+      "JIRA Integration, Confluence Publisher, Bitbucket Connector, Trello Board",
+      "AWS CodeDeploy, Azure Pipelines, GCP Build, Terraform Provisioner"
+    ],
+    "correct": [0],
+    "type": "single",
+    "explanation": "Зошто: Овие плагини се клучни за Jenkins: Blue Ocean е современ UI, Git Parameter за параметрирани builds, GitHub/GitLab за интеграција.\nЗа испит: Blue Ocean е нов UI за Jenkins pipeline визуализација."
+  },
+  {
+    "question": "Каде се сместуваат GitHub Actions workflow датотеките?",
+    "choices": [
+      "Во .actions/ директориумот во корените на проектот",
+      "Во .github/workflows/ директориумот",
+      "Во корените на репото со .yml екстензија",
+      "Во ci/ директориумот по конвенција"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: GitHub Actions автоматски ги детектира .yml/.yaml датотеките во .github/workflows/ директориумот.\nЗа испит: .github/workflows/<ime>.yml е задолжителната патека за GitHub Actions workflows."
+  },
+  {
+    "question": "Со кој клучен збор се дефинираат тригерите во GitHub Actions?",
+    "choices": [
+      "trigger:",
+      "on:",
+      "event:",
+      "when:"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: GitHub Actions користи on: клучен збор за дефинирање на triggers. on: push е најчестиот trigger.\nЗа испит: on: [push, pull_request] за повеќе triggers во иста workflow датотека."
+  },
+  {
+    "question": "Каде се наоѓа GitLab CI/CD конфигурациската датотека?",
+    "choices": [
+      "Во .gitlab/ директориумот со произволно ime",
+      "Во ci/ директориумот именувана gitlab.yml",
+      "Во корените на репото (.gitlab-ci.yml)",
+      "Во .github/workflows/ истото место како GitHub Actions"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: GitLab автоматски ја детектира .gitlab-ci.yml датотеката во root директориумот на репото.\nЗа испит: .gitlab-ci.yml (точно ова ime) во root = GitLab CI/CD конфигурација."
+  },
+  {
+    "question": "Каква е хиерархијата на GitLab CI/CD?",
+    "choices": [
+      "Jobs → Stages → Pipelines",
+      "Workflows → Actions → Steps",
+      "Pipelines → Stages → Jobs",
+      "Tasks → Runners → Executors → Pipelines"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Pipeline содржи повеќе Stages (фази), а секоја Stage содржи повеќе Jobs (задачи) кои се извршуваат паралелно.\nЗа испит: Pipeline > Stage > Job е GitLab CI/CD хиерархијата."
+  },
+  {
+    "question": "Кој е GitLab агентот кој ги извршува CI/CD задачите?",
+    "choices": [
+      "GitLab Worker",
+      "GitLab Agent",
+      "GitLab Runner",
+      "GitLab Executor"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: GitLab Runner е апликацијата-агент која прима и извршува CI/CD jobs. Може да се хостира сам (self-hosted) или на GitLab.\nЗа испит: GitLab Runner = агентот за извршување на jobs, аналогно на GitHub Actions runner."
+  },
+  {
+    "question": "Каде се складираат чувствителни податоци (лозинки, API клучеви) во GitHub Actions?",
+    "choices": [
+      "Директно во .yml датотеките со base64 енкодирање",
+      "Во GitHub Secrets",
+      "Во README.md со маскирање на вредностите",
+      "Во .env датотеки кои се commit-уваат во репото"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: GitHub Secrets е безбедно складиште за sensitive податоци кои се инјектираат како environment variables во workflow.\nЗа испит: GitHub Secrets (GitHub) и Hidden Variables (GitLab) се механизмите за безбедно управување со credentials."
+  },
+  {
+    "question": "Дефиниција за Continuous Integration (CI)?",
+    "choices": [
+      "Автоматско деплојирање на апликации директно на продукциски сервер без тестирање",
+      "Рачно прегледување и тестирање на код од страна на QA тимот пред секој release",
+      "Практика за редовно спојување на промени во главната гранка со автоматски build и тест",
+      "Управување со Docker контејнери и нивно оркестрирање во кластер"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: CI значи дека програмерите ги интегрираат промените почесто (неколку пати дневно), а секоја интеграција се верификува автоматски.\nЗа испит: CI = честа интеграција + автоматски build + автоматски тест."
+  },
+  {
+    "question": "Разлика помеѓу Continuous Delivery и Continuous Deployment?",
+    "choices": [
+      "Нема разлика, двата термина се синоними и се користат наизменично",
+      "Delivery = автоматски деплој на продукција без интервенција, Deployment = рачен",
+      "Delivery = рачно одобрување за продукција, Deployment = целосно автоматски",
+      "Delivery е само за cloud апликации, Deployment е само за on-premise решенија"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Continuous Delivery го подготвува кодот за деплој (но треба рачно одобрување), Continuous Deployment е целосно автоматизиран деплој без човечка интервенција.\nЗа испит: CD = Delivery (рачно одобрување) или Deployment (целосно автоматски)."
+  },
+  {
+    "question": "Во Git, со која команда се прегледуваат разликите помеѓу commits?",
+    "choices": [
+      "git show",
+      "git log --changes",
+      "git diff",
+      "git compare"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: git diff прикажува конкретни линиски разлики помеѓу работната копија и staging area или меѓу два commits.\nЗа испит: git diff за работни промени, git diff HEAD~1 HEAD за разлики помеѓу commits."
+  },
+  {
+    "question": "Со која команда се создава нова Git гранка и веднаш се менува на неа?",
+    "choices": [
+      "git branch new && git switch new",
+      "git checkout -b new",
+      "git create -b new",
+      "git new branch new"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: git checkout -b создава нова гранка и сменува на неа во еден чекор. Еквивалент: git switch -c.\nЗа испит: git checkout -b <ime> е кратката форма наместо два посебни команди."
+  },
+  {
+    "question": "Со која Git команда се снимаат staged промени?",
+    "choices": [
+      "git save -m 'порака'",
+      "git push -m 'порака'",
+      "git commit -m 'порака'",
+      "git store -m 'порака'"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: git commit ги снима staged промените во локалното Git историско.\nЗа испит: git add за staging, git commit за снимање, git push за испраќање до remote."
+  },
+  {
+    "question": "Кои се трите состојби на датотека во Git?",
+    "choices": [
+      "New, Changed, Deleted",
+      "Modified, Staged, Committed",
+      "Local, Remote, Synced",
+      "Draft, Review, Merged"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Git има тројна состојба: Modified (изменета но не staged), Staged (подготвена за commit), Committed (снимена во базата).\nЗа испит: Трите области: Working Directory → Staging Area → Repository."
+  },
+  {
+    "question": "Со која команда се поврзува локалното репо со remote?",
+    "choices": [
+      "git link origin <url>",
+      "git connect <url>",
+      "git remote add origin <url>",
+      "git set-remote <url>"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: git remote add додава нова remote врска. 'origin' е конвенционалното ime за главниот remote.\nЗа испит: git remote add origin <url> е стандардниот начин за поврзување со GitHub/GitLab."
+  },
+  {
+    "question": "Со која команда се клонира постоечко Git репо?",
+    "choices": [
+      "git copy <url>",
+      "git download <url>",
+      "git clone <url>",
+      "git fetch --init <url>"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: git clone создава локална копија на целото репо вклучувајќи ја сета историја.\nЗа испит: git clone <url> е почетната команда за работа со постоечко remote репо."
+  },
+  {
+    "question": "Кој параметар во docker-compose.yml го дефинира port mapping?",
+    "choices": [
+      "open:",
+      "expose:",
+      "ports:",
+      "publish:"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: ports: секцијата во docker-compose.yml го дефинира port mapping во формат host:container.\nЗа испит: ports: - '8080:80' значи host порт 8080 → container порт 80."
+  },
+  {
+    "question": "Кои оркестрациски алатки покрај Kubernetes беа споменати во материјалите?",
+    "choices": [
+      "Ansible, Chef, Puppet, Salt, CFEngine",
+      "Consul, Swarm, Fleet, Apache Mesos, Helios, Centurion",
+      "Jenkins, CircleCI, Travis CI, TeamCity, Bamboo",
+      "Vagrant, VirtualBox, Hyper-V, QEMU, KVM"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Постојат многу оркестрациски алатки покрај Kubernetes: Consul (service discovery), Swarm (Docker native), Mesos (Apache), Helios и Centurion.\nЗа испит: Kubernetes е стандардот, но Swarm е вграден во Docker, Mesos е за поголеми скали."
+  },
+  {
+    "question": "GitHub Actions community actions marketplace каде се наоѓа?",
+    "choices": [
+      "marketplace.docker.com",
+      "github.com/marketplace",
+      "actions.github.io",
+      "hub.github.com/actions"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: GitHub Marketplace содржи илјадници готови actions создадени од заедницата кои може директно да се користат во workflows.\nЗа испит: uses: actions/checkout@v3 е пример за користење на community action."
+  },
+  {
+    "question": "Во docker-compose.yml, кој параметар дефинира постојани складишта?",
+    "choices": [
+      "storage:",
+      "data:",
+      "volumes:",
+      "persist:"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: volumes: дефинира Docker volumes за постојано складирање на податоци кои преживуваат рестартирање на контејнерот.\nЗа испит: volumes: е клучен за бази на податоци и апликации кои треба постојаност."
+  },
+  {
+    "question": "Која е базната слика за Jenkins во официјалниот Docker Compose пример?",
+    "choices": [
+      "jenkins:latest",
+      "jenkins/jenkins:2.440.2-jdk17",
+      "official/jenkins:stable-lts",
+      "hub.docker.com/jenkins:lts"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Официјалната Jenkins слика со Blue Ocean е jenkins/jenkins со специфична верзија и JDK верзија.\nЗа испит: jenkins/jenkins:<verzija>-jdk<verzija> е формата на официјалните Jenkins слики."
+  },
+  {
+    "question": "Со која команда се инспектираат деталните информации за контејнер?",
+    "choices": [
+      "docker info daemon_alice",
+      "docker details daemon_alice",
+      "docker inspect daemon_alice",
+      "docker show --full daemon_alice"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker inspect враќа детален JSON со сите метаподатоци за контејнерот (мрежа, mount-ови, environment итн.).\nЗа испит: docker inspect <kontejner_ili_slika> за целосни технички детали."
+  },
+  {
+    "question": "Во GitHub Actions, кој клучен збор дефинира чекорите во job?",
+    "choices": [
+      "tasks:",
+      "actions:",
+      "commands:",
+      "steps:"
+    ],
+    "correct": [3],
+    "type": "single",
+    "explanation": "Зошто: steps: е листа на чекори кои се извршуваат секвенцијално во рамките на job. Секој step може да биде uses: (action) или run: (shell команда).\nЗа испит: jobs → steps → uses/run е хиерархијата на GitHub Actions."
+  },
+  {
+    "question": "Кои типови на тригери поддржува GitHub Actions?",
+    "choices": [
+      "Само push настани на main гранката",
+      "push, pull_request, schedule, workflow_dispatch и многу повеќе",
+      "Само pull_request настани при merge",
+      "Само рачни тригери преку веб интерфејс"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: GitHub Actions поддржува разновидни triggers: push, pull_request, schedule (cron), workflow_dispatch (рачно), issues итн.\nЗа испит: on: може да содржи листа на повеќе настани за флексибилни workflows."
+  },
+  {
+    "question": "Со која команда се запираат Docker Compose сервиси И се бришат контејнерите и мрежите?",
+    "choices": [
+      "docker-compose stop --remove",
+      "docker-compose kill",
+      "docker-compose down",
+      "docker-compose clean"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: docker-compose down запира и брише контејнери, мрежи. docker-compose stop само ги запира.\nЗа испит: down = stop + rm + мрежи; stop = само запирање без бришење."
+  },
+  {
+    "question": "Кои се предностите на Docker контејнеризацијата?",
+    "choices": [
+      "Побавно стартување но поголема безбедност отколку виртуелни машини",
+      "Изолација, преносивост, конзистентност",
+      "Потребна е специфична хардверска поддршка за CPU виртуализација",
+      "Работи само на Linux оперативни системи без поддршка за Windows"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Docker обезбедува изолирани контејнери кои работат конзистентно во различни средини (dev, staging, prod).\nЗа испит: 'Works on my machine' проблемот е решен со контејнеризација."
+  },
+  {
+    "question": "Каков е форматот за port mapping во docker-compose.yml?",
+    "choices": [
+      "container:host",
+      "host->container",
+      "host:container",
+      "external:internal"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Форматот е host_port:container_port, на пример '8080:80' значи хостот слуша на 8080 и го проследува на контејнерскиот порт 80.\nЗа испит: Запомни: прво host, потоа container — '3000:3000' за исти портови."
+  },
+  {
+    "question": "GitLab CI/CD Hidden Variables еквивалент во GitHub Actions е?",
+    "choices": [
+      "GitHub Tokens",
+      "GitHub Secrets",
+      "GitHub Variables",
+      "GitHub Configs"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: И двете платформи имаат механизми за безбедно складирање на sensitive вредности: GitLab = Hidden/Protected Variables, GitHub = Secrets.\nЗа испит: secrets.MY_TOKEN во GitHub Actions, $MY_VARIABLE во GitLab CI/CD."
+  },
+  {
+    "question": "Кои се Jenkins поддржани начини за инсталација?",
+    "choices": [
+      "Само преку официјален Docker контејнер",
+      "Само на Linux базирани оперативни системи",
+      "Преку Docker, WAR датотека или нативна инсталација",
+      "Само на cloud платформи (AWS, Azure, GCP)"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Jenkins е мулти-платформски и може да се инсталира на различни начини: Docker (препорачано), JAR/WAR, пакет менаџери.\nЗа испит: Docker е препорачаниот начин за модерна Jenkins инсталација."
+  },
+  {
+    "question": "Кои портови ги користи Jenkins во docker-compose конфигурацијата?",
+    "choices": [
+      "3000 и 8080",
+      "8080 и 50000",
+      "80 и 443",
+      "8080 и 9090"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Jenkins користи 8080 за веб UI и 50000 за комуникација со Jenkins агенти (JNLP протокол).\nЗа испит: 8080:8080 (UI) и 50000:50000 (агенти) се стандардните Jenkins портови."
+  },
+  {
+    "question": "Кој Jenkins порт е наменет за комуникација со агенти?",
+    "choices": [
+      "8080",
+      "443",
+      "50000",
+      "9090"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: Портот 50000 се користи за JNLP протоколот за поврзување на Jenkins агенти со главниот сервер.\nЗа испит: 8080 = веб UI, 50000 = агент комуникација."
+  },
+  {
+    "question": "Кој е стандардниот формат на GitHub Actions workflow датотеки?",
+    "choices": [
+      "JSON",
+      "XML",
+      "YAML (.yml)",
+      "TOML"
+    ],
+    "correct": [2],
+    "type": "single",
+    "explanation": "Зошто: GitHub Actions workflows се пишуваат во YAML формат (.yml или .yaml) поради неговата читливост.\nЗа испит: .yml датотеките во .github/workflows/ се автоматски детектирани од GitHub."
+  },
+  {
+    "question": "Кој е стандардниот Git workflow за работа со feature branches?",
+    "choices": [
+      "Commit директно на main, потоа revert ако нешто не работи",
+      "Создај гранка → работи → push → pull request → merge",
+      "Fork → clone → commit → push до fork → pull request",
+      "Работи локално → squash сите commits → force push на main"
+    ],
+    "correct": [1],
+    "type": "single",
+    "explanation": "Зошто: Feature branch workflow изолира промените, овозможува code review преку pull request пред merge во main.\nЗа испит: Branch → commit → PR → review → merge е стандардниот тимски Git workflow."
+  }
+]

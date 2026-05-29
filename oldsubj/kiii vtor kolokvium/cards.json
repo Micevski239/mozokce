@@ -1,0 +1,1080 @@
+[
+  {
+    "question": "Која компонента на Control Plane ги чува сите конфигурации и состојба на кластерот?",
+    "choices": [
+      "etcd ги чува сите конфигурации",
+      "kube-scheduler ги планира pod-ови",
+      "kube-apiserver го процесира API",
+      "controller-manager за контролери"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: etcd е дистрибуирана клуч-вредност база во која Kubernetes ја чува целата конфигурација и состојба на кластерот.\nЗа испит: etcd = state store на кластерот."
+  },
+  {
+    "question": "Која компонента на Control Plane одлучува на кој работен јазол ќе биде поставен Pod?",
+    "choices": [
+      "kube-apiserver ги прима барањата",
+      "etcd ги зачувува распоредите само",
+      "controller-manager следи состојба",
+      "kube-scheduler го избира node-от"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: kube-scheduler е задолжен за избор на работен јазол за секој нов Pod, врз основа на ресурси, ограничувања и политики.\nЗа испит: Scheduler = одлучува каде да се постави Pod."
+  },
+  {
+    "question": "Кој е главниот влезен point за сите REST API повици во Kubernetes?",
+    "choices": [
+      "kube-apiserver ги прима сите барања",
+      "kube-scheduler планира поставување",
+      "etcd зачувува конфигурации само",
+      "kubelet го извршува нареденото"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: kube-apiserver е главниот влезен point за сите REST API повици. Ги верификува, процесира барањата и ја ажурира состојбата во etcd.\nЗа испит: kube-apiserver = главен API влез."
+  },
+  {
+    "question": "Која компонента ја следи состојбата и се грижи кластерот да биде во посакувана состојба?",
+    "choices": [
+      "etcd ги зачувува сите промени",
+      "kube-scheduler ги планира pod-ови",
+      "kube-apiserver ги прима барањата",
+      "kube-controller-manager управува"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: kube-controller-manager управува со разни контролери кои ја следат состојбата на кластерот и се обидуваат да ја доведат до посакуваната состојба.\nЗа испит: controller-manager = следи и коригира состојба."
+  },
+  {
+    "question": "Колку главни јазли се минимум потребни за висока достапност во Kubernetes?",
+    "choices": [
+      "Три главни јазли за etcd кворум",
+      "Само еден главен јазол е доволен",
+      "Само два главни јазли за резерва",
+      "Пет главни јазли за висок HA"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Минимум три главни јазли се потребни за да се постигне кворум во etcd кластерот. Со три јазли, кластерот може да преживее загуба на еден јазол.\nЗа испит: Висока достапност = минимум 3 главни јазли за etcd кворум."
+  },
+  {
+    "question": "Која е основната работна единица во Kubernetes?",
+    "choices": [
+      "Pod е основната работна единица",
+      "Service е мрежна апстракција",
+      "Deployment управува реплики само",
+      "Namespace организира ресурси само"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Pod е основната и најмала работна единица во Kubernetes. Содржи еден или повеќе контејнери кои споделуваат мрежа и складирање.\nЗа испит: Pod = основна работна единица во K8S."
+  },
+  {
+    "question": "Зошто се Pods immutable (непроменливи) во Kubernetes?",
+    "choices": [
+      "Заштедува меморија на нодовите",
+      "Го забрзува мрежниот сообраќај",
+      "Дозволува менување на конфигурации",
+      "Поедноставува контролорска логика"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Pods се immutable затоа што тоа ја поедноставува логиката на контролерите и обезбедува посигурен систем. Наместо промена, Pod се брише и нов се креира.\nЗа испит: Pod immutability = поедноставена контролорска логика."
+  },
+  {
+    "question": "Кој компонент на работен јазол го следи API серверот и ги извршува задачите?",
+    "choices": [
+      "kube-proxy управува со мрежата",
+      "container runtime влече слики",
+      "etcd ги зачувува состојбите",
+      "kubelet ги извршува задачите"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Kubelet е агент кој работи на секој работен јазол. Го следи API серверот за нови задачи, ги извршува и известува за состојбата на pod-овите.\nЗа испит: Kubelet = агент на работен јазол, извршува задачи."
+  },
+  {
+    "question": "Кој компонент на работен јазол управува со мрежното рутирање на сообраќај?",
+    "choices": [
+      "kube-proxy рутира мрежен сообраќај",
+      "kubelet ги следи pod задачите",
+      "containerd влече контејнер слики",
+      "etcd ги зачувува мрежни правила"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: kube-proxy управува со мрежното поврзување на секој јазол, користи iptables и IPVS за рутирање на сообраќај меѓу Pod-ови и Services.\nЗа испит: kube-proxy = мрежно рутирање на работен јазол."
+  },
+  {
+    "question": "Кој container runtime е препорачан во современ Kubernetes?",
+    "choices": [
+      "Docker Desktop за production употреба",
+      "Podman за Kubernetes интеграција",
+      "Kubelet за контејнер управување",
+      "containerd за лесна контејнеризација"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: containerd е поедноставена и лесна алтернатива на Docker, директно поддржана во Kubernetes преку CRI интерфејсот.\nЗа испит: containerd = препорачан container runtime во K8S."
+  },
+  {
+    "question": "Кои Container Runtime Engines ги поддржува Kubernetes?",
+    "choices": [
+      "containerd и CRI-O се поддржани",
+      "Docker, Podman и VirtualBox само",
+      "VMware, Hyper-V и Xen само",
+      "kubelet, etcd и API Server само"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: Kubernetes поддржува containerd и CRI-O преку CRI интерфејсот. Docker беше поддржан но е отстранет во K8S 1.24.\nЗа испит: containerd и CRI-O = поддржани container runtimes."
+  },
+  {
+    "question": "Кој шаблон со повеќе контејнери се користи за логирање и надгледување на главниот контејнер?",
+    "choices": [
+      "Ambassador проксира надворешни сервиси",
+      "Init container иницијализира ресурси",
+      "Adapter ги конвертира излезни податоци",
+      "Sidecar му помага на главниот контејнер"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Sidecar pattern користи помошен контејнер за логирање, надгледување или безбедност, работи заедно со главниот контејнер.\nЗа испит: Sidecar = помошен контејнер за логирање и надгледување."
+  },
+  {
+    "question": "Кој шаблон со повеќе контејнери се користи за прокси или портал до надворешни сервиси?",
+    "choices": [
+      "Ambassador посредува надворешни сервиси",
+      "Sidecar ги надгледува внатрешни процеси",
+      "Adapter ги претвора излезни податоци",
+      "Init container ги поставува зависности"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Ambassador pattern користи прокси контејнер кој посредува комуникација со надворешни сервиси.\nЗа испит: Ambassador = прокси контејнер до надворешни сервиси."
+  },
+  {
+    "question": "Кој шаблон со повеќе контејнери претвора податоци меѓу апликацијата и надворешни системи?",
+    "choices": [
+      "Sidecar pattern за помошни задачи",
+      "Ambassador pattern за надворешен пристап",
+      "Init container за иницијализација само",
+      "Adapter pattern конвертира податоци"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Adapter pattern користи контејнер кој ги претвора (конвертира) излезните или влезните податоци меѓу апликацијата и надворешни системи.\nЗа испит: Adapter = конвертира податоци меѓу системи."
+  },
+  {
+    "question": "Кој container се извршува прв и завршува пред да стартуваат главните контејнери во Pod?",
+    "choices": [
+      "Sidecar container за помошни задачи",
+      "Ambassador container за надворешни",
+      "Adapter container за конверзија",
+      "Init container за иницијализација"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Init containers се специјални контејнери кои се извршуваат и завршуваат пред да почнат главните контејнери во Pod-от.\nЗа испит: Init container = се извршува прв, пред главните."
+  },
+  {
+    "question": "Во кој Namespace се наоѓаат системските компоненти на Kubernetes?",
+    "choices": [
+      "default за корисни апликации само",
+      "kube-public за јавни ресурси само",
+      "kube-node-lease за сигнали за живост",
+      "kube-system за системски компоненти"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: kube-system е namespace кој ги содржи системските компоненти на Kubernetes, вклучувајќи kube-apiserver, etcd, scheduler и сл.\nЗа испит: kube-system = системски namespace на K8S."
+  },
+  {
+    "question": "Кој Namespace е читлив за сите корисници, вклучувајќи неавтентицирани?",
+    "choices": [
+      "kube-public е јавно читлив namespace",
+      "default за основни ресурси само",
+      "kube-system за системски сервиси",
+      "kube-node-lease за следење nodes"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: kube-public е namespace кој е читлив за сите корисници, вклучувајќи неавтентицирани. Содржи јавно достапни ресурси.\nЗа испит: kube-public = јавно читлив namespace."
+  },
+  {
+    "question": "Кој Namespace се користи за следење на сигнали за живост меѓу главните и работните јазли?",
+    "choices": [
+      "kube-public за јавни ресурси само",
+      "kube-system за системски сервиси",
+      "default за корисни апликации само",
+      "kube-node-lease за сигнали за живост"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: kube-node-lease содржи Lease објекти за секој јазол и се користи за следење на сигнали за живост на јазлите.\nЗа испит: kube-node-lease = следење сигнали за живост."
+  },
+  {
+    "question": "Која е главната цел на Namespace во Kubernetes?",
+    "choices": [
+      "Ги складира податоците на pod-ови само",
+      "Управува со мрежното рутирање само",
+      "Ги зачувува контејнер сликите само",
+      "Логички ги дели ресурсите во K8S"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Namespace логички ги дели ресурсите на кластерот за различни тимови, проекти или средини (dev/staging/prod).\nЗа испит: Namespace = логичка поделба на кластер ресурси."
+  },
+  {
+    "question": "Кој Kubernetes объект обезбедува самолекување, скалирање и постепени ажурирања за Pod-овите?",
+    "choices": [
+      "StatefulSet за stateful апликации",
+      "DaemonSet за секој node по еднаш",
+      "Service за мрежен пристап само",
+      "Deployment за управување реплики"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Deployment управува со ReplicaSets и обезбедува самолекување, скалирање, постепени ажурирања и враќања.\nЗа испит: Deployment = самолекување, скалирање, постепени ажурирања."
+  },
+  {
+    "question": "Кој Kubernetes объект гарантира дека бараниот број на Pod реплики е секогаш активен?",
+    "choices": [
+      "StatefulSet за stateful pods само",
+      "DaemonSet за системски pod-ови",
+      "Namespace организира ресурси само",
+      "ReplicaSet одржува број реплики"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: ReplicaSet е Kubernetes объект кој гарантира дека бараниот број на реплики е секогаш активен во кластерот.\nЗа испит: ReplicaSet = одржува константен број pod реплики."
+  },
+  {
+    "question": "Која е default стратегија за ажурирање на Deployment во Kubernetes?",
+    "choices": [
+      "RollingUpdate постепено менува pods",
+      "Recreate ги брише сите pod-ови прво",
+      "BlueGreen целосно ги менува верзии",
+      "Canary постепено пушта нов сообраќај"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: RollingUpdate е default стратегија. Постепено ги заменува старите pod-ови со нови, обезбедувајќи ажурирање без прекин.\nЗа испит: Default update strategy = RollingUpdate (без прекин)."
+  },
+  {
+    "question": "Со која команда се враќа Deployment на претходна верзија во Kubernetes?",
+    "choices": [
+      "kubectl rollout undo deployment",
+      "kubectl scale deployment back",
+      "kubectl revert deployment latest",
+      "kubectl apply previous manifest"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: kubectl rollout undo го враќа Deployment на претходната ревизија. Kubernetes чува историја на ревизии за враќање.\nЗа испит: Враќање = kubectl rollout undo deployment."
+  },
+  {
+    "question": "Која е разликата меѓу враќање и rollout со вратен commit?",
+    "choices": [
+      "Враќањето е побавно од rollout секогаш",
+      "Нема разлика помеѓу двата пристапи",
+      "Враќањето само ги брише pod-ови само",
+      "Rollout со commit прави нова ревизија"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Враќањето ја враќа претходната ревизија без нов код. Rollout со вратен commit е нова ревизија (нова изведба) со вратен код.\nЗа испит: Враќање = нема нов код; rollout со commit = нова ревизија."
+  },
+  {
+    "question": "Кој е процесот во кој Kubernetes ја доведува реалната до посакуваната состојба?",
+    "choices": [
+      "Reconciliation ги усогласува состојби",
+      "Provisioning ги подготвува ресурси",
+      "Scaling ги прилагодува репликите",
+      "Scheduling ги распоредува pod-ови"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Reconciliation е процесот со кој Kubernetes контролерите ја споредуваат реалната (observed) со посакуваната (desired) состојба и ги коригираат разликите.\nЗа испит: Reconciliation = усогласување observed vs desired state."
+  },
+  {
+    "question": "Кој тип на Service во Kubernetes е достапен само внатре во кластерот?",
+    "choices": [
+      "ClusterIP е само внатрешен сервис",
+      "NodePort ги експонира портите надворешно",
+      "LoadBalancer користи надворешен балансер",
+      "ExternalName мапира на надворешен DNS"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: ClusterIP е default тип на Service. Добива стабилна внатрешна IP адреса и е достапен само внатре во кластерот.\nЗа испит: ClusterIP = само внатрешен Service тип."
+  },
+  {
+    "question": "Кој тип на Service го експонира Pod-от преку порта на секој работен јазол?",
+    "choices": [
+      "NodePort ги отвора порти на nodes",
+      "ClusterIP за внатрешен пристап само",
+      "LoadBalancer преку cloud балансер",
+      "ExternalName преку надворешен DNS"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: NodePort отвора иста порта на секој работен јазол во кластерот, овозможувајќи надворешен пристап. Не е препорачан за production.\nЗа испит: NodePort = надворешен пристап преку порта на секој јазол."
+  },
+  {
+    "question": "Кој тип на Service создава надворешен IP преку cloud провајдер?",
+    "choices": [
+      "LoadBalancer со external IP адреса",
+      "NodePort за директна порта на node",
+      "ClusterIP за внатрешен пристап само",
+      "ExternalName за DNS пренасочување"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: LoadBalancer интегрира со cloud провајдер за да креира надворешен балансер со јавна IP адреса, пренасочувајќи сообраќај кон pod-овите.\nЗа испит: LoadBalancer = надворешен IP преку cloud провајдер."
+  },
+  {
+    "question": "Зошто се користат EndpointSlices наместо Endpoints во Kubernetes?",
+    "choices": [
+      "Подобри перформанси со многу pods",
+      "Побрзо пристапување до pod логови",
+      "Полесна инсталација на Services само",
+      "Зголемена безбедност на мрежата"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: EndpointSlices ги групираат IP адресите во мали объекти наместо еден голем Endpoint. Ова дава подобри перформанси кај Services со многу Pod-ови.\nЗа испит: EndpointSlices = оптимизирани мрежни информации за скалабилност."
+  },
+  {
+    "question": "Кој Kubernetes ресурс овозможува HTTP/HTTPS рутирање до Services по патека или hostname?",
+    "choices": [
+      "Ingress рутира надворешен сообраќај",
+      "ConfigMap ги чува конфигурациите само",
+      "Service балансира внатрешни барања само",
+      "NetworkPolicy ги ограничува конекции"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Ingress е Kubernetes ресурс кој управува со надворешен HTTP/HTTPS пристап до Services, поддржува path-based и host-based рутирање и SSL.\nЗа испит: Ingress = HTTP/HTTPS рутирање до Services."
+  },
+  {
+    "question": "Кои се двата основни типа на рутирање кои ги поддржува Ingress?",
+    "choices": [
+      "Path-based и host-based рутирање",
+      "DNS рутирање и IP рутирање само",
+      "TCP рутирање и UDP рутирање само",
+      "ClusterIP и NodePort рутирање само"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Ingress поддржува path-based рутирање (localhost/app1) и host-based рутирање (app1.example.com).\nЗа испит: Ingress = path-based и host-based рутирање."
+  },
+  {
+    "question": "Кој е форматот на DNS адреса за Service во Kubernetes кластерот?",
+    "choices": [
+      "service-name.cluster.local.dns",
+      "namespace.service-name.kubernetes",
+      "service.namespace.svc.cluster.local",
+      "cluster.namespace.service.internal"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Форматот за Service DNS е: <service>.<namespace>.svc.<cluster-domain>. Пример: my-svc.default.svc.cluster.local\nЗа испит: Service DNS = svc-name.namespace.svc.cluster.local."
+  },
+  {
+    "question": "Кој Kubernetes объект претставува мап до надворешен storage asset?",
+    "choices": [
+      "ConfigMap ги чува конфигурациите само",
+      "PersistentVolume е мап до storage само",
+      "StorageClass дефинира типот storage",
+      "Secret ги чува тајните вредности само"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: PersistentVolume (PV) е Kubernetes ресурс кој претставува мап (pointer) до надворешен storage asset, независен од животниот циклус на Pod-от.\nЗа испит: PV = мап до надворешен storage, независен од Pod."
+  },
+  {
+    "question": "Кој Kubernetes объект Pod-от го користи за да побара persistent storage?",
+    "choices": [
+      "StorageClass го дефинира видот storage",
+      "PersistentVolume претставува физичко место",
+      "PersistentVolumeClaim го побарува storage",
+      "ConfigMap ги чува конфигурациите само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: PersistentVolumeClaim (PVC) е барање за storage од Pod-от. Тој е 'ticket' кој авторизира Pod да користи PersistentVolume.\nЗа испит: PVC = барање за storage (ticket за PV)."
+  },
+  {
+    "question": "Кој Kubernetes объект го апстрахира видот на storage и овозможува dynamic provisioning?",
+    "choices": [
+      "PersistentVolume е физичкото место само",
+      "PersistentVolumeClaim е барање storage",
+      "StorageClass апстрахира тип storage",
+      "ConfigMap ги чува поставките само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: StorageClass апстрахира различни типови на storage (SSD, HDD) и овозможува dynamic provisioning на PV кога се создава PVC.\nЗа испит: StorageClass = апстракција на storage тип + dynamic provisioning."
+  },
+  {
+    "question": "Кој е default ReclaimPolicy за PersistentVolume во Kubernetes?",
+    "choices": [
+      "Retain го зачувува PV по бришење",
+      "Recycle го ресетира PV за повторно",
+      "Delete го брише PV кога PVC се брише",
+      "Archive го архивира PV по употреба"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Delete е default ReclaimPolicy. Кога PVC се брише, автоматски се брише и поврзаниот PV заедно со физичкиот storage.\nЗа испит: Default ReclaimPolicy = Delete (PV се брише кога PVC се брише)."
+  },
+  {
+    "question": "Кога би користеле ReclaimPolicy Retain наместо Delete?",
+    "choices": [
+      "Кога сакаме побрзо реиспользување storage",
+      "Кога сакаме да ги задржиме податоците",
+      "Кога кластерот нема доволно капацитет",
+      "Кога имаме еден Pod во namespace"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Retain се користи кога сакаме да ги задржиме податоците по бришење на PVC - на пример за бекап, анализи или миграција.\nЗа испит: Retain = задржи PV по бришење PVC (за бекап/миграција)."
+  },
+  {
+    "question": "Кој access mode дозволува само еден Pod да чита и пишува во PersistentVolume?",
+    "choices": [
+      "ReadWriteMany за повеќе pod-ови",
+      "ReadOnlyMany само за читање повеќе",
+      "ReadWriteOnce за само еден pod",
+      "ReadWriteAll за сите pod-ови само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: ReadWriteOnce (RWO) дозволува само еден Pod да чита и пишува во volume истовремено. Типично за block devices.\nЗа испит: RWO = само еден Pod read-write."
+  },
+  {
+    "question": "Кога се користи ReadWriteMany access mode за PersistentVolume?",
+    "choices": [
+      "Кога само еден Pod треба storage само",
+      "Кога повеќе Pods треба Read-Write",
+      "Кога PV треба да биде read-only само",
+      "Кога storage треба да биде привремен"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: ReadWriteMany (RWM) се користи кога повеќе Pod-ови мора истовремено да читаат и пишуваат во истиот volume. Пример: NFS, споделени логови.\nЗа испит: RWM = повеќе Pod-ови истовремен read-write (пр. NFS)."
+  },
+  {
+    "question": "За што служи provisioner (CSI plugin) во Kubernetes кластер?",
+    "choices": [
+      "За управување со мрежни политики",
+      "За следење на container log записи",
+      "За дефинирање на RBAC правила само",
+      "За автоматско креирање storage по PVC"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Provisioners (CSI plugins) автоматски создаваат storage кога PVC се креира, без рачно дефинирање PV. Синоним: CSI plugin.\nЗа испит: Provisioner = автоматски create PV кога PVC се креира."
+  },
+  {
+    "question": "Каде типично работат CSI storage provider pod-овите во Kubernetes?",
+    "choices": [
+      "default namespace за апликации само",
+      "kube-public за јавни ресурси само",
+      "kube-system namespace за системи",
+      "kube-node-lease за node трансфер"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: CSI storage provider pod-овите типично работат во kube-system namespace, заедно со другите системски компоненти.\nЗа испит: CSI provider pods = kube-system namespace."
+  },
+  {
+    "question": "Кој е основниот Kubernetes объект за чување нечувствителна конфигурација надвор од Pod?",
+    "choices": [
+      "Secret за чување тајни вредности само",
+      "ConfigMap за нечувствителна конфиг",
+      "PersistentVolume за трајно складирање",
+      "Ingress за надворешно рутирање само"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: ConfigMap е Kubernetes объект кој чува нечувствителна конфигурација (config files, hostnames, ports) надвор од Pod-от и ја инјектира при runtime.\nЗа испит: ConfigMap = нечувствителна конфигурација надвор од Pod."
+  },
+  {
+    "question": "На кои три начини може ConfigMap да се инјектира во Pod?",
+    "choices": [
+      "Преку network policy, label и annotation",
+      "Само преку environment variables директно",
+      "Преку env var, startup команда и volume",
+      "Само преку YAML манифест директно"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: ConfigMap може да се инјектира во Pod на три начини: (1) environment variable, (2) startup command argument, (3) file in a volume.\nЗа испит: ConfigMap inject = env var / startup cmd / volume file."
+  },
+  {
+    "question": "Кое е ограничувањето при инјектирање на ConfigMap преку environment variables?",
+    "choices": [
+      "Environment variables не поддржуваат Unicode",
+      "ConfigMap не може да содржи повеќе клучеви",
+      "Промените во ConfigMap не се рефлектираат",
+      "Environment variables се ограничени на 1KB"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: ConfigMap инјектиран преку environment variables е статичен. Промените во ConfigMap не се рефлектираат во веќе работечки Pod.\nЗа испит: ConfigMap преку env var = статично, нема живо ажурирање."
+  },
+  {
+    "question": "Кој начин на инјектирање ConfigMap овозможува живо ажурирање без рестарт на Pod?",
+    "choices": [
+      "Преку startup command argument само",
+      "Преку environment variables во Pod",
+      "Преку volume mount во контејнерот",
+      "Преку labels и annotations само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: ConfigMap инјектиран преку volume mount се прикажува како фајлови во контејнерот. Промените се рефлектираат во активниот Pod без рестарт.\nЗа испит: ConfigMap преку volume = живо ажурирање без рестарт."
+  },
+  {
+    "question": "Кој Kubernetes объект се користи за чување чувствителни информации (лозинки, токени)?",
+    "choices": [
+      "Secret за чувствителни вредности",
+      "ConfigMap за сите конфигурации",
+      "Annotation за метадата на ресурси",
+      "Label за категоризирање ресурси"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: Kubernetes Secret се користи за чување чувствителни информации: лозинки, токени, SSH клучеви, API credentials.\nЗа испит: Secret = чувствителни информации (passwords, tokens, keys)."
+  },
+  {
+    "question": "Кое енкодирање го користат Kubernetes Secrets за чување вредностите?",
+    "choices": [
+      "AES-256 енкрипција за вредности",
+      "base64 енкодирање (не енкрипција)",
+      "SHA-256 хашување за безбедност",
+      "RSA-2048 асиметрична енкрипција"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Kubernetes Secrets се base64 енкодирани, но тоа НЕ е енкрипција – лесно може да се декодира. Без дополнителна конфигурација, Secrets се ранливи.\nЗа испит: Secret = base64 (не енкрипција), лесно декодирање."
+  },
+  {
+    "question": "Каде се зачувуваат Kubernetes Secrets во кластерот?",
+    "choices": [
+      "Во контејнерот на Pod-от директно",
+      "Во ConfigMap базата на податоци",
+      "Во etcd без енкрипција по default",
+      "Во засебна база во kube-system само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Secrets се зачувуваат во etcd. Без дополнителна конфигурација, тие се неенкриптирани во etcd. Може да се конфигурира encryption-at-rest.\nЗа испит: Secrets = зачувани во etcd, default неенкриптирани."
+  },
+  {
+    "question": "Која е максималната дозволена големина на еден Kubernetes Secret?",
+    "choices": [
+      "512KiB е максималната дозволена",
+      "1MiB е максималната дозволена",
+      "10MiB е максималната дозволена",
+      "100MiB е максималната дозволена"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Максималната дозволена големина на еден Kubernetes Secret е 1MiB (1 mebibyte).\nЗа испит: Max Secret size = 1MiB."
+  },
+  {
+    "question": "Кога се брише Secret-от од работниот јазол во Kubernetes?",
+    "choices": [
+      "Кога ќе истече TTL на Secret-от",
+      "Кога Pod-от кој го користи се брише",
+      "Кога кластерот се рестартира само",
+      "Кога се надгради Kubernetes верзијата"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Secret-от се пренесува до работниот јазол само кога Pod го побарува, и се брише од јазолот кога Pod-от се брише.\nЗа испит: Secret се брише од јазолот кога Pod-от кој го користи се брише."
+  },
+  {
+    "question": "Кој Kubernetes объект се користи за хостирање на stateful апликации со стабилни имиња?",
+    "choices": [
+      "Deployment за stateless апликации само",
+      "DaemonSet за секој node по еднаш",
+      "StatefulSet за stateful апликации",
+      "ReplicaSet за едноставни реплики само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: StatefulSet е специјален K8S объект за stateful апликации. Обезбедува предвидливи имиња на Pod-ови, стабилни hostnames и стабилни volumes.\nЗа испит: StatefulSet = stateful apps со стабилни имиња и volumes."
+  },
+  {
+    "question": "Кој е форматот на именување на Pod-ови во StatefulSet?",
+    "choices": [
+      "pod-random-string-hash формат само",
+      "namespace-podname-uuid формат само",
+      "statefulset-name-N (N е редоспоред)",
+      "deployment-name-replicaset-hash"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: StatefulSet именува Pod-ови по конвенција <StatefulSetName>-<Integer>, каде Integer е zero-based ordinal. Пример: kafka-0, kafka-1, kafka-2.\nЗа испит: StatefulSet Pod naming = <name>-0, <name>-1, <name>-2..."
+  },
+  {
+    "question": "Кој тип на Service се користи за пристап до StatefulSet Pod-ови со predictable DNS?",
+    "choices": [
+      "ClusterIP за внатрешен балансиран пристап",
+      "NodePort за надворешен пристап само",
+      "LoadBalancer за cloud балансер само",
+      "Headless Service со clusterIP: None"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Headless Service (clusterIP: None) со StatefulSet создава predictable DNS entries за секој Pod. Не балансира, директно именува Pod-ови.\nЗа испит: StatefulSet + Headless Service = predictable DNS per Pod."
+  },
+  {
+    "question": "Кога StatefulSet се scale down, што се случува со PVC на исклучениот Pod?",
+    "choices": [
+      "PVC се брише веднаш автоматски",
+      "PVC останува за идно scale-up",
+      "PVC се пренесува на следниот Pod",
+      "PVC се архивира во kube-system"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Кога StatefulSet се scale down, Pod-от се брише но PVC останува. При следниот scale-up, новиот Pod се поврзува со истиот PVC.\nЗа испит: StatefulSet scale-down = Pod се брише, PVC останува."
+  },
+  {
+    "question": "Која е default вредност на podManagementPolicy за StatefulSet?",
+    "choices": [
+      "Parallel ги создава сите истовремено",
+      "OrderedReady ги создава еден по еден",
+      "Sequential ги уредува по приоритет",
+      "RollingUpdate ги ажурира постепено"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Default podManagementPolicy е OrderedReady. Pod-овите се создаваат еден по еден (0, па 1, па 2...) и секој чека претходниот да биде Ready.\nЗа испит: Default StatefulSet policy = OrderedReady (еден по еден)."
+  },
+  {
+    "question": "Кој Kubernetes объект служи за авторизација на ниво на еден Namespace?",
+    "choices": [
+      "ClusterRole за целокупен кластер",
+      "ServiceAccount за Pod идентитет",
+      "Role за namespace ниво авторизација",
+      "RoleBinding за поврзување корисник"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Role е Kubernetes RBAC объект кој дефинира дозволи внатре во еден Namespace. ClusterRole се применува на ниво на целиот кластер.\nЗа испит: Role = namespace-level authorization."
+  },
+  {
+    "question": "Кој Kubernetes объект доделува дозволи на ниво на целиот кластер (меѓу именски простори)?",
+    "choices": [
+      "ClusterRole за целен кластер пристап",
+      "Role за еден namespace ограничено",
+      "ServiceAccount за Pod идентитет само",
+      "RoleBinding за поврзување корисник"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "explanation": "Зошто: ClusterRole дефинира дозволи кои важат на ниво на целиот кластер, независно од Namespace.\nЗа испит: ClusterRole = дозволи на ниво на кластер (меѓу именски простори)."
+  },
+  {
+    "question": "Која проверка на здравје открива дали Pod е жив и треба ли да се рестартира?",
+    "choices": [
+      "Readiness probe за подготвеност само",
+      "Liveness probe дали Pod е жив уште",
+      "Startup probe за почетна проверка",
+      "Network probe за мрежна достапност"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Liveness probe проверува дали контејнерот е жив и функционален. Ако не одговори, Kubernetes го рестартира контејнерот.\nЗа испит: Liveness probe = дали Pod е жив (рестарт ако не)."
+  },
+  {
+    "question": "Која проверка на здравје открива дали Pod е подготвен да прима сообраќај?",
+    "choices": [
+      "Liveness probe за проверка животност",
+      "Readiness probe за подготвеност сообраќај",
+      "Startup probe за почетна иницијализација",
+      "Health probe за општа достапност само"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Readiness probe проверува дали контејнерот е подготвен да прима сообраќај. Додека не е Ready, Service не пренасочува сообраќај кон него.\nЗа испит: Readiness probe = подготвен за сообраќај (Service routing)."
+  },
+  {
+    "question": "Кој е пакет менаџерот за Kubernetes кој користи Charts?",
+    "choices": [
+      "kubectl за управување ресурси само",
+      "Helm за пакет менаџирање Charts",
+      "Kustomize за конфигурација само",
+      "Argo за GitOps deployments само"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Helm е пакет менаџер за Kubernetes кој овозможува инсталирање, надградба, бришење и верзионирање на апликации преку Charts.\nЗа испит: Helm = пакет менаџер за Kubernetes, користи Charts."
+  },
+  {
+    "question": "Која е основната работна единица на Helm?",
+    "choices": [
+      "Pod е основна единица работа само",
+      "Release е инстанца на апликација",
+      "Repository е централна библиотека",
+      "Chart е Helm пакет апликација"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Chart е основниот пакет во Helm. Содржи сите Kubernetes манифести, template-и и вредности потребни за инсталирање на апликација.\nЗа испит: Helm Chart = пакет со K8S манифести и конфигурација."
+  },
+  {
+    "question": "Кој беше Tiller во Helm верзија 2?",
+    "choices": [
+      "Tiller беше CLI алатка на Helm v2",
+      "Tiller беше серверска страна Helm v2",
+      "Tiller беше пакет тип во Helm v2",
+      "Tiller беше plugin за kubectl само"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Tiller беше серверска компонента на Helm v2 која управуваше со инсталации на Charts во Kubernetes. Во Helm v3, Tiller е отстранет.\nЗа испит: Tiller = серверска страна Helm v2 (отстранет во v3)."
+  },
+  {
+    "question": "Кои операции може да се извршат со Helm?",
+    "choices": [
+      "Само install и uninstall операции",
+      "Install, upgrade, rollback и test",
+      "Само deploy и delete операции",
+      "Само читање на YAML манифести"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: Helm поддржува: install, upgrade (update), rollback, test и uninstall на Kubernetes апликации преку Charts.\nЗа испит: Helm = install, upgrade, rollback, test, uninstall."
+  },
+  {
+    "question": "Кои се познати алатки за мониторирање на Kubernetes системи?",
+    "choices": [
+      "OpenStack, VMware и Ansible само",
+      "Prometheus, Nagios и Sensu само",
+      "MySQL, Redis и PostgreSQL само",
+      "Nginx, HAProxy и Traefik само"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: Познати monitoring stack-ови за Kubernetes вклучуваат Prometheus (metrics), Nagios и Sensu (инфраструктурен мониторинг).\nЗа испит: Monitoring tools = Prometheus, Nagios, Sensu."
+  },
+  {
+    "question": "Кои информации ги добиваме преку мониторирање на Kubernetes системот?",
+    "choices": [
+      "Само мрежна брзина и пропусност",
+      "Само бројот на активни корисници",
+      "Перформанси, здравје и безбедност",
+      "Само CPU и RAM употреба само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: Мониторирањето собира метрики и логови за: перформанси на системот, состојба/здравје на системот и безбедносни аспекти.\nЗа испит: Monitoring = перформанси + здравје + безбедност."
+  },
+  {
+    "question": "Кој пристап во Kubernetes директно извршува CLI команди чекор по чекор?",
+    "choices": [
+      "Declarative со YAML манифести само",
+      "Automated со CI/CD pipelines само",
+      "Imperative со директни CLI команди",
+      "GitOps со git-базирани промени"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Imperative пристап значи директно извршување на CLI команди (kubectl create, kubectl delete, kubectl scale). Брз но не чува долгорочна состојба.\nЗа испит: Imperative = директни CLI команди (kubectl create/delete/scale)."
+  },
+  {
+    "question": "Кој пристап дефинира посакувана состојба во YAML манифест и Kubernetes ја одржува?",
+    "choices": [
+      "Imperative пристап со CLI команди",
+      "Manual пристап со рачна промена",
+      "Scripted пристап со shell scripts",
+      "Declarative пристап со YAML манифест"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: Declarative пристап дефинира посакувана состојба во YAML манифест и Kubernetes автоматски ја одржува. Подобар за автоматизација и контрола на верзии.\nЗа испит: Declarative = YAML манифест, K8S одржува desired state."
+  },
+  {
+    "question": "Кој е форматот на клуч-вредност пар кој се додава на Kubernetes ресурс за категоризирање?",
+    "choices": [
+      "Annotation за описни метадата само",
+      "Label е клуч-вредност пар само",
+      "Tag за именување ресурси само",
+      "Selector за одбирање ресурси само"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Label е клуч-вредност пар (пр. app: nginx) кој се додава на Kubernetes ресурси за категоризирање, селектирање и поврзување со други објекти.\nЗа испит: Label = клуч-вредност пар за категоризирање ресурси."
+  },
+  {
+    "question": "Кои Kubernetes инсталери се препорачуваат за локален развоен кластер?",
+    "choices": [
+      "Kubeadm и Kops за production само",
+      "K3S, K3D, Kind и Minikube за dev",
+      "Kubespray и Rancher за enterprise",
+      "Docker Desktop само за Windows"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: За локален развоен кластер: K3S, K3D (K3S во Docker), Kind, MicroK8S, Minikube и Docker Desktop. Kubeadm/Kops/Kubespray се за production.\nЗа испит: Dev installers = K3S, K3D, Kind, MicroK8S, Minikube."
+  },
+  {
+    "question": "Зошто треба да се логира работата на системот и апликациите?",
+    "choices": [
+      "Само за да се забрзаат апликациите",
+      "Само за да се намали употребата CPU",
+      "За пристап, состојба и безбедност",
+      "Само за да се намали употребата RAM"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "multiple",
+    "explanation": "Зошто: Логирањето овозможува: следење кој и кога пристапувал, увид во состојбата на системот и апликациите, и слика за безбедноста.\nЗа испит: Logging = пристап + состојба + безбедност."
+  },
+  {
+    "question": "Кој поим е синоним за CSI (Container Storage Interface) во Kubernetes?",
+    "choices": [
+      "Container Service Instance синоним",
+      "Cluster Storage Interface синоним",
+      "Container Storage Instance синоним",
+      "provisioner е синоним за CSI"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "explanation": "Зошто: CSI (Container Storage Interface) е open-source стандард за поврзување на Kubernetes со storage backend-и. Синоним: provisioner.\nЗа испит: CSI = Container Storage Interface = provisioner."
+  },
+  {
+    "question": "Кој Kubernetes объект претставува Volume врзан за животниот циклус на Pod-от?",
+    "choices": [
+      "PersistentVolume е независен од Pod",
+      "StorageClass го дефинира storage типот",
+      "Volume е врзан за животот на Pod-от",
+      "PersistentVolumeClaim го побарува storage"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Volume е место за чување податоци врзано за животниот циклус на Pod-от. За разлика, PersistentVolume е независен од Pod животниот циклус.\nЗа испит: Volume = привремено (Pod lifetime); PV = трајно (независно)."
+  },
+  {
+    "question": "Со кој kubectl sub-command се следи статусот на постепеното ажурирање на Deployment?",
+    "choices": [
+      "kubectl status deployment watch",
+      "kubectl check deployment rollout",
+      "kubectl rollout status deployment",
+      "kubectl watch deployment rolling"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: kubectl rollout status deployment/<name> го прикажува прогресот на постепеното ажурирање во реално време.\nЗа испит: Следење rollout = kubectl rollout status deployment."
+  },
+  {
+    "question": "Со кој kubectl sub-command се скалира Deployment?",
+    "choices": [
+      "kubectl resize deployment replicas",
+      "kubectl scale deployment replicas",
+      "kubectl update deployment count",
+      "kubectl set deployment replicas"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: kubectl scale deployment <name> --replicas=N го менува бројот на реплики на Deployment.\nЗа испит: Скалирање = kubectl scale deployment --replicas=N."
+  },
+  {
+    "question": "Кои четири основни полиња ги содржи секој YAML манифест во Kubernetes?",
+    "choices": [
+      "name, labels, selector и containers",
+      "apiVersion, kind, metadata и spec",
+      "namespace, replicas, image и ports",
+      "type, version, name и deployment"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Секој Kubernetes YAML манифест мора да содржи: apiVersion, kind, metadata и spec.\nЗа испит: YAML основа = apiVersion + kind + metadata + spec."
+  },
+  {
+    "question": "Кој поим го опишува автоматското замена на паднат Pod со нов во Kubernetes?",
+    "choices": [
+      "Scaling автоматски зголемува реплики",
+      "Самолекување автоматски заменува pods",
+      "Постепено ажурирање го менува pods",
+      "Reconciliation проверува целата состојба"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "explanation": "Зошто: Самолекувањето е способноста на Kubernetes автоматски да замени паднат Pod со нов, одржувајќи го бараниот број на реплики.\nЗа испит: Самолекување = автоматска замена на паднати Pod-ови."
+  },
+  {
+    "question": "Кога Pod-от добива hostname во форматот <sts-name>-<ordinal>.<svc>.<namespace>.svc.cluster.local?",
+    "choices": [
+      "Кога е дел само од обичен Deployment",
+      "Кога е дел од DaemonSet по node само",
+      "Кога е StatefulSet со Headless Service",
+      "Кога е дел само од ReplicaSet само"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "explanation": "Зошто: Hostname во формат <sts-name>-<ordinal>.<svc>.<namespace>.svc.cluster.local се добива кога Pod е дел од StatefulSet со Headless Service.\nЗа испит: StatefulSet DNS = <name>-N.<svc>.<ns>.svc.cluster.local."
+  }
+]

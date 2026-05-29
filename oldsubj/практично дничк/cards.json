@@ -688,13 +688,13 @@
   {
     "question": "(models) Имаш поле за број што не смее да биде негативен (на пр. max_passengers). Кој field е најсоодветен?",
     "choices": [
-      "IntegerField (а негативните да ги проверуваш во template)",
-      "CharField (за полесно внесување и валидација во view)",
-      "FloatField (за да можеш да имаш и децимали за патници)",
-      "PositiveIntegerField (за да забрани негативни вредности)"
+      "models.PositiveIntegerField()",
+      "models.IntegerField()",
+      "models.FloatField()",
+      "models.CharField(max_length=10)"
     ],
     "correct": [
-      3
+      0
     ],
     "type": "single",
     "explanation": "`PositiveIntegerField` е наменет за не-негативни цели броеви и ја опишува намерата подобро од IntegerField."
@@ -702,13 +702,13 @@
   {
     "question": "(models) Сакаш цена со 2 децимали да се чува директно во база. Кој field е најсоодветен?",
     "choices": [
-      "FloatField (може да даде заокружувања при одредени операции и суми)",
-      "IntegerField (центи), па во приказ рачно делиш со 100 (друг модел)",
-      "DecimalField(max_digits=..., decimal_places=2) (точно за валута)",
-      "CharField (текст), па во код рачно парсираш и валидираш"
+      "models.DecimalField(max_digits=10, decimal_places=2)",
+      "models.DecimalField(max_digits=10, decimal_places=0)",
+      "models.FloatField()",
+      "models.IntegerField()"
     ],
     "correct": [
-      2
+      0
     ],
     "type": "single",
     "explanation": "За валута со децимали, најтипичен и прецизен избор е DecimalField со `decimal_places=2`."
@@ -744,13 +744,13 @@
   {
     "question": "(views) Сакаш да спречиш анонимни корисници да пристапат до view. Кој е најчист пристап?",
     "choices": [
-      "if request.user.is_authenticated: ... else: redirect('login') (рачно решение)",
-      "print() логирање на пристап, но без да блокира view (не е заштита)",
-      "@login_required или LoginRequiredMixin (стандардно и чисто решение)",
-      "Сокриј линк во HTML, но без серверска проверка (несигурно решение)"
+      "@login_required или LoginRequiredMixin",
+      "user_passes_test(lambda u: u.is_authenticated)",
+      "permission_required('app.view_model')",
+      "if not request.user.is_authenticated: return redirect('login')"
     ],
     "correct": [
-      2
+      0
     ],
     "type": "single",
     "explanation": "Автентикацијата мора да се контролира серверски. `login_required` е стандарден и јасен механизам."
@@ -856,10 +856,10 @@
   {
     "question": "(models) Сакаш автоматски да се пополни timestamp кога објектот се креира, и потоа да не се менува. Што е најточно?",
     "choices": [
-      "DateTimeField(auto_now_add=True) за timestamp само при креирање",
-      "DateTimeField(auto_now=True) за timestamp при секое save",
-      "DateField(blank=True) и рачно внесување во форма (не е автоматски)",
-      "CharField(default='now') и рачно парсирање во Python (несигурно)"
+      "DateTimeField(auto_now_add=True)",
+      "DateTimeField(auto_now=True)",
+      "DateTimeField(default=timezone.now)",
+      "DateField(auto_now_add=True)"
     ],
     "correct": [
       0
@@ -912,10 +912,10 @@
   {
     "question": "(models) Сакаш да спречиш бришење на родител запис ако има зависни записи. Кој on_delete е најсоодветен?",
     "choices": [
-      "CASCADE (ги брише и зависните записи автоматски)",
-      "DO_NOTHING (оставa неконзистентни редови ако базата не блокира)",
-      "SET_NULL (го прави FK NULL и остава зависни записи)",
-      "PROTECT (блокира бришење ако има поврзани записи)"
+      "on_delete=models.CASCADE",
+      "on_delete=models.DO_NOTHING",
+      "on_delete=models.SET_NULL",
+      "on_delete=models.PROTECT"
     ],
     "correct": [
       3
@@ -1178,10 +1178,10 @@
   {
     "question": "(models) Сакаш ImageField да биде опционално (може да е празно). Кој сет на опции е најтипичен?",
     "choices": [
-      "blank=False, null=False (задолжително поле и во форма и во база)",
-      "unique=True (спречува дупликати, но не го прави полето опционално)",
-      "blank=True, null=True (опционално поле и во форма и во база)",
-      "default='' (полнeње со празна вредност, но не е најчисто решение)"
+      "blank=False, null=False",
+      "blank=True, null=False",
+      "blank=True, null=True",
+      "blank=False, null=True"
     ],
     "correct": [
       2
@@ -1190,12 +1190,12 @@
     "explanation": "За да е опционално и во форма и во база, типично се користи `blank=True` и `null=True`."
   },
   {
-    "question": "(models) Имаш Boolean поле и сакаш да биде само True/False, без NULL. Кој избор е најточен?",
+    "question": "(models) Имаш Boolean поле и сакаш само True/False (без NULL), и да има default. Кој избор е најточен?",
     "choices": [
-      "CharField со 'true'/'false' за да нема трета состојба",
-      "IntegerField со 0/1 затоа што BooleanField секогаш дозволува NULL",
-      "BooleanField со null=True за да може да биде празно",
-      "BooleanField без null=True (и по потреба default=...)"
+      "models.BooleanField(null=True, default=False)",
+      "models.NullBooleanField()",
+      "models.BooleanField(blank=True)",
+      "models.BooleanField(default=False)"
     ],
     "correct": [
       3

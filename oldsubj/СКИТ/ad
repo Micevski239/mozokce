@@ -1,0 +1,669 @@
+
+## 2. Test Process Maturity Levels
+
+| Ниво | Карактеристика |
+|------|----------------|
+| **Level 0** | Testing = Debugging (не се прави разлика) |
+| **Level 1** | Цел: докажи correctness — проблем: ако нема failures, не знаеш дали е добар или тестовите се лоши |
+| **Level 2** | Testing = негативна активност → adversarial однос меѓу testers и developers |
+| **Level 4** | Testing = ментална дисциплина; тестерите го **мерат и подобруваат** квалитетот |
+
+---
+
+## 3. Verification vs Validation
+
+- **Verification** → "Build the product **right**" (спрема спецификацијата)
+- **Validation** → "Build the **right** product" (спрема корисничките потреби)
+
+### Кога нема спецификација
+- Не може да се верификува — нема формален референтен опис
+- Може да се **explore** и делумно **валидира** спрема кориснички очекувања
+- Решение: разговор со корисници, документирање претпоставки, подобрување на ситуацијата паралелно
+
+---
+
+## 4. Coverage Criteria — Основни поими
+
+### Клучни дефиниции
+- **Coverage Criterion** → правило (или збир правила) дефинирачко **тест requirements** — кажува **ШТО** мора да се покрие
+- **Test Requirement (TR)** → конкретна работа (node, edge, def-use пар) која мора да биде покриена
+- **Coverage Level** = **A / B** (A = задоволени TR; B = вкупни TR)
+
+### Два начини на употреба на criteria
+1. **Директно генерирање** на test values со criterion
+2. **Екстерно генерирање** на tests → мерење дали criterion е задоволен
+
+### Generator vs Recognizer
+- **Generator** → автоматски создава test values за задоволување на criterion
+- **Recognizer** → проверува дали даден test set го задоволува criterion
+
+---
+
+## 5. Graph Coverage
+
+### Control Flow Graph (CFG)
+- Графички модел на **сите можни извршувања** на метода преку control structures
+- **Nodes** = statements или секвенци (basic blocks)
+- **Edges** = transfers of control (if, while, for — не data dependencies)
+- **Basic block** = секвенца од statements без внатрешно branch-ирање (ако прв се изврши, сите се извршуваат)
+- **SESE** (Single-Entry, Single-Exit) → точно по еден N₀ и Nf јазол
+
+### Правила за цртање CFG
+- Повеќе `return` наредби → **посебни (distinct) nodes** за секоја
+- `if-return` → return nodes мора да бидат **distinct**
+
+### Патеки (Paths)
+| Поим | Дефиниција |
+|------|-----------|
+| **Path** | Секвенца од nodes поврзани со edges |
+| **Test path** | Патека од initial до final node (едно целосно извршување) |
+| **Simple path** | Ниту еден node не се повторува (освен евентуално прв = последен за cycle) |
+| **Prime path** | Simple path што не е proper subpath на ниту еден друг simple path (максимален) |
+
+#### Tours (обиколки)
+- **p tours q** → q е subpath (подниза) на p
+- **Tour with detours** → дозволени дополнителни nodes, редоследот на nodes се зачувува
+- **Tour with sidetrips** → секој edge од target subpath мора да се помине во истиот редослед
+
+### Graph Coverage Критериуми
+
+| Критериум | Барање | Subsumes |
+|-----------|--------|---------|
+| **Node Coverage (NC)** | TR = секој reachable node | — |
+| **Edge Coverage (EC)** | TR = секој reachable path со должина до 1 (секој edge) | NC |
+| **Edge-Pair Coverage (EPC)** | TR = секој reachable path со должина до 2 | EC |
+| **Prime Path Coverage (PPC)** | TR = секој prime path | NC, EC (не секогаш EPC) |
+
+> EC е дефиниран со "должина до 1" (не точно 1) за да важи и за графови со само еден node и без edges.
+
+---
+
+## 6. Data Flow Coverage
+
+### Клучни поими
+- **def** → assignment на променлива (запишување вредност)
+- **use** → читање на променлива (употреба на вредноста)
+- **Def-clear path** → по патеката нема нова redefinition на променливата меѓу def и use
+- **DU-path** → def-clear path од def до use
+
+### Критериуми
+
+| Критериум | Барање |
+|-----------|--------|
+| **All-defs coverage** | Од секое def → до **барем едно** use (по def-clear path) |
+| **All-uses coverage** | Од секое def → до **сите** reachable uses (посилен) |
+
+---
+
+## 7. Logic Coverage (Покривање на логика)
+
+### Каде се предикати
+- Во условите на **контролни структури**: `if`, `while`, `for`, итн.
+
+### Поими
+- **Predicate** → целиот Boolean услов
+- **Clause** → атомска Boolean под-изразна (дел од predicate)
+- **Major clause** → клаузулата чија вредност го одредува predicate-от
+- **Minor clauses** → останатите клаузули
+
+### Критериуми (по сила — од слаб кон силен)
+
+| Критериум | Барање |
+|-----------|--------|
+| **Predicate Coverage (PC)** | Целиот predicate true барем еднаш, false барем еднаш |
+| **Clause Coverage (CC)** | Секоја clause true барем еднаш, false барем еднаш |
+| **General Active Clause Coverage (GACC)** | За секоја major clause: по 2 test cases (true/false) кога таа го одредува predicate-от; minor clauses не мора да бидат исти |
+| **Correlated Active Clause Coverage (CACC)** | Major clause го менува predicate-от; minor clauses може да варираат |
+| **Restricted Active Clause Coverage (RACC)** | CACC + minor clauses **мора да бидат исти** во двата test cases |
+| **Combinatorial Coverage (CoC)** | Сите можни комбинации на clause вредности |
+
+> **Кога PC = CC**: кога predicate-от има само **една клауза**  
+> **CoC** е практичен само за мали предикати (≤ 2 клаузули)  
+> **Active clause coverage** е највреден за **поголеми предикати**
+
+---
+
+## 8. Input Space Partitioning (ISP)
+
+### Основни поими
+- **Input domain** = сите можни inputs (честопати бесконечен простор)
+- **Partition** = поделба на domain на блокови; мора да биде:
+  - **Disjoint** (без преклопување)
+  - **Complete** (ги покрива сите inputs)
+- **Characteristic** → димензија/особина за партиционирање
+- **Block** → вредност или опсег во рамките на карактеристика
+
+### Чекори на моделирање на влезниот домен
+1. Идентификација на функции кои може да се тестираат
+2. Наоѓање на сите параметри
+3. Моделирање на влезниот домен
+4. Примена на критериум за тестирање (избор на комбинации на вредности)
+5. Избирање комбинации од блокови за дефинирање влезни податоци
+
+### Interface-based vs Functionality-based
+
+| | Interface-based | Functionality-based |
+|-|----------------|---------------------|
+| Основа | Индивидуални input параметри | Однесување на програмата |
+| Едноставност | Едноставна примена | Потешко за развивање |
+| Откривање | Параметрите се видливи директно | Карактеристиките се откриваат од однесувањето |
+| Автоматизација | Може делумно да се автоматизира | — |
+| Квалитет | — | Резултира со подобри тестови |
+
+### ISP Критериуми (по сила)
+
+| Критериум | Барање | Тестови |
+|-----------|--------|---------|
+| **ECC** (Each Choice Coverage) | Секој block барем еднаш | Мал број |
+| **BCC** (Base Choice Coverage) | Base test + варијации по **1** non-base characteristic | Умерен |
+| **MBCC** (Multiple BCC) | Повеќе base choices → повеќе base tests | Поголем |
+| **ACoC** (All Combinations Coverage) | Сите комбинации на сите blocks | Многу голем |
+
+#### BCC специфики
+- Base test мора да биде **feasible** (base choices компатибилни меѓусебно)
+- Infeasible combinations → **замена со друга non-base choice** (не се бришат)
+- **MBCC** = проширување на BCC со повеќе base choices
+
+---
+
+## 9. Test Levels и V-Model
+
+### V-Model
+```
+Requirements        ←→  Acceptance Testing
+System Design       ←→  System Testing / Integration in the large
+Detailed Design     ←→  Integration Testing in the small
+Code                ←→  Component Testing (Unit Testing)
+```
+
+### Нивоа на тестирање
+
+#### Component Testing (Unit Testing)
+- Најдиректно поврзано со **Code** во V-Model
+- Тестирање на изолирани компоненти
+
+#### Integration Testing in the Small
+- Тестирање на **повеќе компоненти и нивната комуникација**
+- Не е тестирање на еден компонент изолирано
+
+#### Acceptance Testing
+| Вид | Опис |
+|-----|------|
+| **Alpha testing** | Operational testing на **in-house site** (под контрола на developer) |
+| **Beta testing** | Operational testing на **надворешен site** (кај реални/потенцијални корисници) |
+| **Contract acceptance testing** | Тестирање против **договорот и documented agreed changes** (не против подоцнежни желби) |
+
+> И alpha и beta ја имаат **истата цел**: тестирање на стабилен продукт на реалистичен начин со собирање feedback
+
+---
+
+## 10. Integration Стратегии
+
+| Стратегија | Карактеристика |
+|-----------|----------------|
+| **Big-bang** | Сите компоненти одеднаш → тешко лоцирање на faults, повеќе време за поправање |
+| **Incremental** | Постепено додавање на компоненти |
+| **Top-down** | Почнува од главните модули надолу |
+| **Bottom-up** | Почнува од ниско-ниво компоненти нагоре |
+| **Functional** | Организирана по функционалности |
+
+---
+
+## 11. Lifecycle на тестирање
+
+### Maintenance Testing
+- Мора да вклучи: **нов/изменет код + impact analysis** (кои делови се индиректно засегнати)
+- Претежно е **regression testing** (проверка дека промените не расипале постоечкото)
+
+### Кога спецификациите се слаби/недостасуваат
+- Разговор со корисници
+- Документирање на претпоставки
+- Паралелно подобрување на спецификацијата
+
+### Tactical Testing Goals
+- **Date criterion** → тестирање трае додека не се исцрпи буџетот или не дојде ship-date
+
+---
+
+## 12. Model-Based Testing
+
+### Основи
+- Тестовите се изведуваат од **модел** на софтверот (пр. UML дијаграм)
+- **UML activity дијаграми** → за моделирање на workflows и user scenarios → основа за тестови на кориснички сценарија
+
+### Model-Driven Test Design (MDTD) — Чекори по ред
+1. Моделирање според софтверски артефакти
+2. Дефинирање на Test Requirements (TR)
+3. Прочистување на TR
+4. Генерирање на влезни вредности
+5. Креирање на test cases
+6. Креирање на test scripts (автоматизација)
+7. Извршување на тестовите
+8. Набљудување на резултатите
+
+---
+
+## 13. Caller / Callee / Callsite
+
+| Поим | Дефиниција |
+|------|-----------|
+| **Caller** | Софтверска единица која **повикува** друга |
+| **Callee** | Софтверска единица која **е повикана** |
+| **Callsite** | Наредба/јазол каде **се прави повикот** |
+| **Actual parameter** | Променлива/вредност во **caller** (argument) |
+| **Formal parameter** | Параметар дефиниран во **callee** |
+
+### Проблем при CFG на повеќе методи
+- Обединување на CFG-ови создава **недетерминизам при враќање** кон caller
+- CFG бара имплементиран софтвер пред да може да се направи
+
+---
+
+## 14. Test Automation
+
+- Клучна тешкотија: **controllability** (контролирање на системот) и **observability** (набљудување на резултатите)
+- Не е само техничко прашање — потребно е и познавање на oracle проблемот
+
+---
+
+## 15. Syntax-Based Testing (Mutation Testing)
+
+- **Мутант** = програма со мала граматичка промена
+- Цел: тестовите да **убијат** (разликуваат оригинал од мутант) колку е можно повеќе мутанти
+- Syntax-based критериуми се дефинираат со цел **уништување на мутанти**
+
+---
+
+## Брза референца — сите Coverage критериуми
+
+### Graph Coverage
+`NC` ⊆ `EC` ⊆ `EPC` / `NC, EC` ⊆ `PPC`
+
+### Data Flow
+`All-defs` ⊆ `All-uses`
+
+### Logic Coverage
+`PC` / `CC` → `GACC` → `CACC` → `RACC` → `CoC`
+
+### ISP
+`ECC` ⊆ `BCC` / `MBCC` ⊆ `ACoC`
+
+---
+
+## 16. Enterprise Systems — Основи и Архитектура
+
+### Еволуција на пресметувањето
+| Декада | Карактеристика |
+|--------|----------------|
+| **1960-ти** | Мејнфрејм компјутери, централизирано пресметување |
+| **1970-ти** | Дистрибуирани системи, standalone апликации |
+| **1980-ти** | MRP II за производство, personal computers |
+| **1990-ти** | ERP воведен, client/server архитектура |
+| **2000-ти** | Интернет и веб апликации |
+| **2010-ти** | Cloud computing, AI/ML |
+
+### Класична Enterprise-системска архитектура (3 слоја)
+
+```
+[ Presentation Layer ]      ← UI (browser, desktop app)
+[ Application Logic Layer ] ← Business rules, processes
+[ Data Access Layer ]       ← Databases, search, file systems
+```
+
+- **Tiers** = физичка дистрибуција на хардвер
+- **Layers** = логичка сепарација; секој слој комуницира само со соседните (contiguous)
+
+### REST и Микросервиси
+- **REST** → архитектурен стил за веб сервиси (stateless, resource-based)
+- **Microservices** → апликацијата е поделена на мали, независни сервиси
+
+---
+
+## 17. Systems Integration (SI)
+
+### Функционални силоси (Functional Silos)
+
+#### Хоризонтални силоси — POSDCORB (Gulick)
+- **P**lanning
+- **O**rganizing
+- **S**taffing
+- **D**irecting
+- **CO**ordinating
+- **R**eporting
+- **B**udgeting
+
+#### Вертикални силоси
+| Ниво | Опис |
+|------|------|
+| **Strategic** | Долгорочни одлуки, top management |
+| **Tactical** | Среднорочни планови, middle management |
+| **Functional** | Оперативно ниво, day-to-day |
+
+### IS Архитектури
+| Архитектура | Опис |
+|-------------|------|
+| **Централизирана** | Едно централно место, сите ресурси на едно место |
+| **Децентрализирана** | Независни единици, нема централна контрола |
+| **Дистрибуирана** | Ресурси распределени, но логички поврзани |
+
+### 8 чекори во Systems Integration
+1. Категоризација на ресурси
+2. Усогласување со стандарди (compliance/standards)
+3. Поддршка за legacy системи
+4. Middleware алатки
+5. Автентикација и авторизација
+6. Централизирани IT сервиси
+7. Backup / recovery / безбедност
+8. Стандардизација на хардвер и софтвер
+
+### Придобивки и ограничувања на SI
+
+| Придобивки | Ограничувања |
+|------------|-------------|
+| Зголемен приход | Високи почетни трошоци |
+| Израмнување на конкурентска средина | Конфликти меѓу оддели (Power conflicts) |
+| Подобрена видливост на информации | Долгорочен и нематеријален ROI |
+| Зголемена стандардизација | Ограничување на креативноста |
+
+---
+
+## 18. ERP (Enterprise Resource Planning)
+
+### Дефиниција
+- **ERP** = систем кој ги консолидира планирањето, производството, продажбата и HR во **еден** менаџмент систем
+- Ги комбинира сите бази на податоци во **единствена заедничка база**
+- Автоматизира задачи на деловни процеси
+
+### ERP Модули
+- Supply Chain Management
+- Financial Management
+- Manufacturing
+- IoT
+- CRM (Customer Relationship Management)
+- Service Management
+- Sales & Marketing
+- HRM (Human Resource Management)
+- Asset Management
+- Business Intelligence (BI)
+- Big Data Analytics
+- Project Management
+
+### Еволуција: MRP → MRP II → ERP → ERP II
+
+| Систем | Фокус | Опфат |
+|--------|-------|-------|
+| **MRP** | Фабричка материјална залиха | Физички средства |
+| **MRP II** | Планирање на производствени ресурси | Распоред на производство |
+| **ERP** | HR, General Ledger, Assets, Budget, Purchase Order, CRM | Целата организација |
+| **ERP II** | Глобални системи + CRM + SCM + надворешни чинители | Нематеријални средства, партнери |
+
+### Пред и по ERP
+- **Пред ERP**: секој оддел (Finance, HR, Warehouse, Sales) има сопствена изолирана база → силоси, дупликати
+- **По ERP**: единствена заедничка база → сите одделенија комуницираат преку еден систем
+
+### Типови ERP
+
+| Тип | Карактеристика |
+|-----|----------------|
+| **On-Premise** | Хостиран на сервери на компанијата; целосна контрола |
+| **Cloud / SaaS** | Претплата; континуирани ажурирања |
+| **Hybrid** | Комбинација од on-premise и cloud |
+
+### Зошто ERP? (3 главни причини)
+1. **Интегрирање на финансиски податоци** — еден консолидиран поглед на финансиите
+2. **Стандардизирање на процеси во производство** — еден начин за следење на нарачки/залихи
+3. **Стандардизирање на HR информации** — единствен систем за следење на вработени
+
+### Временска рамка
+- **Трансформациони проекти**: 1–3 години
+- **Мал/ограничен обем**: 3–6 месеци
+
+### Вкупни трошоци (TCO)
+- Просечен TCO: **$15M**
+- Просечен трошок по корисник: **$53,320**
+- До прва придобивка: **8 месеци**
+- Медијански заштеди: **$1.6M/годишно**
+
+### Скриени трошоци на ERP
+- Обука (Training)
+- Интеграција и тестирање
+- Конверзија на податоци
+- Анализа на податоци
+- Консултанти
+- Замена на кадар
+- Постојани имплементациски тимови
+- Чекање на ROI
+- Post-ERP депресија
+
+---
+
+## 19. Enterprise Data Models (EDM)
+
+### Традиционален проблем
+- Секоја апликација/оддел има сопствен data model → **интеграциски хаос**
+- Различни интерфејси, различни репрезентации, дупликати и неконзистентни информации
+
+### Дефиниција на EDM
+- **EDM** = интегриран поглед на сите податоци произведени и консумирани во целата организација
+- Задолжителен за data integration
+- Основа за сите останати податочни системи
+
+### DDBMS (Distributed Database Management System)
+- Апстрахира над повеќе хетерогени бази
+- Поддржува и native и heterogeneous database повикувања
+
+### EDW (Enterprise Data Warehouse)
+- Извори: AR, AP, Payroll, GL, HR, Inventory, Manufacturing, Procurement, Sales, Customer Support
+- → Единствен DW → Reports и анализи
+
+### Цели на EDM
+**За организацијата:**
+- Елиминирање на хаос
+- Градење стабилна основа
+- Усогласување со организациската култура
+
+**За податоците:**
+- Решавање проблеми со квалитет на податоци
+- Пополнување стратешки празнини
+- Разбирање врски и зависности
+
+### Нивоа на EDM
+
+| Ниво | Назив | Опис |
+|------|-------|------|
+| **Level 1** | Subject Area Model | Revenue, Operation, Support |
+| **Level 2** | Conceptual Model | Business concepts поврзани со Subject Areas |
+| **Level 3** | Conceptual Entity Model | Концептите како business entities со врски |
+
+### Типови на модели на податоци
+- Conceptual (сите деловни ентитети)
+- Logical (како ентитетите се поврзуваат)
+- Physical (реализација / имплементација)
+
+---
+
+## 20. Data Architecture и Information Architecture
+
+### Data Model vs Data Architecture
+
+| | Data Model | Data Architecture |
+|-|-----------|------------------|
+| Фокус | Репрезентација, точност, веродостојност | Алатки, платформи, инфраструктура, безбедност |
+
+### Data vs Information
+
+| | Data | Information |
+|-|------|-------------|
+| Дефиниција | Сирови, некатегоризирани факти | Неколку парчиња податоци во значаен контекст |
+
+### Information Architecture (IA)
+
+**Компоненти на IA:**
+- Organization systems (организациски системи)
+- Labeling systems (системи за означување)
+- Navigation systems (навигациски системи)
+- Searching systems (системи за пребарување)
+
+**8 Принципи на IA Дизајн:**
+1. **Objects** — содржината е предмет со животен циклус
+2. **Choices** — мали количини значајни опции
+3. **Disclosure** — покажи го само тоа што е потребно
+4. **Exemplars** — примери за прикажување на содржина
+5. **Front Doors** — корисниците влегуваат од различни места
+6. **Multiple Classifications** — различни начини за пристап до истата содржина
+7. **Focused Navigation** — не мешај различни навигациски системи
+8. **Growth** — дизајнирај за раст на содржина
+
+### Data Architecture — Процеси
+1. **Conceptual** — сите деловни ентитети
+2. **Logical** — како ентитетите се поврзуваат
+3. **Physical** — реализација и имплементација
+
+### Data Strategy
+- Разбирање на односот на организацијата кон податоците
+- Започнува со најважните податоци
+- Податоците се сервис за корисниците
+
+### Чинители во Data Architecture
+- Data architect
+- Project manager
+- Solution architect
+- Cloud architect / data center engineer
+- DBA / data engineer
+- Data analyst
+- Data scientists
+
+---
+
+## 21. Data Architecture Frameworks
+
+### TOGAF (The Open Group Architecture Framework)
+
+**ADM Фази:**
+| Фаза | Назив |
+|------|-------|
+| Preliminary | Подготовка |
+| A | Architecture Vision |
+| B | Business Architecture |
+| C | Information Systems Architectures |
+| — C1 | Data Architecture |
+| — C2 | Solutions / Application Architecture |
+| D | Technology Architecture |
+| E | Opportunities and Solutions |
+| F | Migration Planning |
+| G | Implementation Governance |
+| H | Architecture Change Management |
+| + | Requirements Management (централна, тековна) |
+
+#### TOGAF Phase C1 (Data Architecture)
+**Цели:**
+- Дефинирање на главните типови и извори на податоци
+- Не е засегната со логичко/физичко складирање
+
+**Клучни разгледувања:**
+- **Data Management** — управување со податоците
+- **Data Migration** — миграција на податоци
+- **Data Governance** → Structure + Management System + People
+
+**Излези (Outputs):** Data Architecture документација и принципи
+
+### DAMA-DMBOK2
+
+**Зошто DMBOK2?** — потреба за стандарди и практики за data management
+
+**11 Knowledge Areas (центар: Data Governance):**
+1. Data Governance
+2. Data Architecture
+3. Data Modeling & Design
+4. Data Storage & Operations
+5. Data Security
+6. Data Integration & Interoperability
+7. Documents & Content
+8. Reference & Master Data
+9. Data Warehousing & Business Intelligence
+10. Metadata
+11. Data Quality
+
+### Zachman Framework
+- Матрица: кој, што, кога, каде, зошто, како — за различни перспективи (Planner, Owner, Designer, Builder, Implementer, Worker)
+
+---
+
+## 22. Data Warehouses и ETL
+
+### DBMS / OLTP
+- Дизајниран за брзи трансакции (insert/update/delete)
+- Тековни активни податоци
+- SQL, безбедност и интегритет
+
+### Релациски модел
+- Нормализирани табели, ентитети, атрибути, примарни клучеви
+
+### Проблем: Хетерогени информациски извори
+- Различни интерфејси
+- Различни репрезентации
+- Дупликати и неконзистентни информации
+
+### Дефиниција на Data Warehouse (W.H. Inmon, 1992)
+**4 карактеристики:**
+- **Subject-oriented** — организиран по теми/субјекти
+- **Integrated** — интегрирани податоци од различни извори
+- **Time-variant** — историски податоци (snapshot во времето)
+- **Nonvolatile** — само читање, не се брише/менува
+
+> DW е дизајниран за брзо извлекување и анализа на голем волумен (GB, TB) — append-only
+
+### Два пристапи кон DW
+
+| | Query-Driven (Lazy) | Warehousing (Eager) |
+|-|---------------------|---------------------|
+| Начин | On-demand, wrappers | Унапред интегрирани информации |
+| Статус | Не се прифатил во индустријата | Прифатен во индустријата |
+| Предности | — | Брзи queries, конзистентност |
+| Недостатоци | Бавно, сложено | Потребен ETL процес |
+
+### Генеричка Warehouse Архитектура
+```
+[Extractor / Monitor]
+       ↓
+  [Integrator]
+       ↓
+ [Warehouse] ← [Metadata]
+       ↓
+[Query & Analysis]
+```
+
+### DW Архитектури
+
+| Архитектура | Опис |
+|-------------|------|
+| **Single-layer** | Виртуелен DW, секој елемент складиран еднаш |
+| **Two-layer** | Real-time + Derived слој; најчеста во индустријата |
+| **Three-layer** | Real-time → Reconciled → Derived |
+
+### Проблеми во Data Warehousing
+- Warehouse Design
+- Extraction (wrappers, monitors)
+- Integration (cleansing, merging)
+- Warehouse specification & Maintenance
+- Оптимизации
+- Miscellaneous (разни проблеми)
+
+---
+
+## Брза референца — Enterprise & IS Концепти
+
+### Архитектурни нивоа
+`Presentation` → `Application Logic` → `Data Access`
+
+### Еволуција на ERP
+`MRP` → `MRP II` → `ERP` → `ERP II`
+
+### EDM Нивоа
+`Level 1 (Subject Area)` → `Level 2 (Conceptual)` → `Level 3 (Conceptual Entity)`
+
+### DW Пристапи
+`Query-Driven (Lazy)` vs `Warehousing (Eager)` → Индустријата ги прифаќа Eager
+
+### TOGAF Фази
+`Preliminary` → `A` → `B` → `C (C1+C2)` → `D` → `E` → `F` → `G` → `H` + Requirements Management

@@ -14,20 +14,6 @@
     "explanation": "Зошто: Bootstrap се вклучува преку <link> етикета со href атрибут, не преку <script>.\nЗа испит: CDN линк мора да биде комплетна URL, и треба rel='stylesheet'."
   },
   {
-    "question": "Што е содржано во 'bootstrap.bundle.min.js' за разлика од обичниот 'bootstrap.min.js'?",
-    "choices": [
-      "Само JavaScript функции за Bootstrap компоненти",
-      "Комбинација од Bootstrap JS + Popper.js без jQuery",
-      "Комбинација од Bootstrap JS + jQuery",
-      "Само CSS утилити во минифициран формат"
-    ],
-    "correct": [
-      1
-    ],
-    "type": "single",
-    "explanation": "Зошто: 'bundle' верзијата вклучува Popper.js кој е неопходен за tooltips и popovers.\nЗа испит: Popper.js е потребен за позиционирање на елементи, не jQuery."
-  },
-  {
     "question": "Која класа се користи за креирање на основен контејнер во Bootstrap?",
     "choices": [
       "box-container",
@@ -42,20 +28,6 @@
     "explanation": "Зошто: 'container' класа го обезбедува респондивниот максимален распон и центрирање.\nЗа испит: 'container-fluid' е за полна ширина, а 'container' за фиксна ширина."
   },
   {
-    "question": "Во Django шаблонот за 'Repairs', каква класа е користена за навбарот?",
-    "choices": [
-      "header, nav-bar",
-      "navbar, d-flex, justify-content-start, gap-5",
-      "top-navigation, flex-container",
-      "navbar, flex-row, align-items"
-    ],
-    "correct": [
-      1
-    ],
-    "type": "single",
-    "explanation": "Зошто: 'navbar' е Bootstrap класа, додека 'd-flex' и 'justify-content-start' се утилити.\nЗа испит: 'gap-5' во Bootstrap 5 создава простор меѓу flex елементите."
-  },
-  {
     "question": "Какво значење има 'mt-5' класа во Bootstrap?",
     "choices": [
       "Маржа на десната страна - 5 единици",
@@ -68,20 +40,6 @@
     ],
     "type": "single",
     "explanation": "Зошто: 'mt' значи 'margin-top', а број показува нивото на растојание (1-5).\nЗа испит: 'mb' е margin-bottom, 'ml' е margin-left, 'mr' е margin-right."
-  },
-  {
-    "question": "Која Bootstrap класа е користена во формата за 'Submit' копче во примерот?",
-    "choices": [
-      "btn, btn-primary",
-      "button, btn-standard",
-      "btn, btn-success",
-      "submit-btn, btn-blue"
-    ],
-    "correct": [
-      2
-    ],
-    "type": "single",
-    "explanation": "Зошто: 'btn-success' дава зелена боја која е стандардна за успешни акции.\nЗа испит: 'btn-primary' е синяя, 'btn-danger' е црвена, 'btn-warning' е жолта."
   },
   {
     "question": "Што означува класата 'list-group' во Bootstrap?",

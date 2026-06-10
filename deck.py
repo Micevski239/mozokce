@@ -193,8 +193,8 @@ def build_explanation(card):
 
 class DeckState:
     def __init__(self, cards):
-        self.original = list(cards)
-        self.order = list(range(len(cards)))
+        self.original = [shuffle_card_choices(c) for c in cards]
+        self.order = list(range(len(self.original)))
         self.index = 0
         self._shuffle_on = False
         self._results = {}  # index in order -> bool

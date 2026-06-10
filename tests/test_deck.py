@@ -215,14 +215,14 @@ def test_deck_initial_state():
     deck = DeckState(SAMPLE_CARDS)
     assert deck.total == 3
     assert deck.current_position == 1
-    assert deck.current_card() == SAMPLE_CARDS[0]
+    assert deck.current_card()["question"] == SAMPLE_CARDS[0]["question"]
 
 
 def test_deck_next_advances_index():
     deck = DeckState(SAMPLE_CARDS)
     deck.next()
     assert deck.current_position == 2
-    assert deck.current_card() == SAMPLE_CARDS[1]
+    assert deck.current_card()["question"] == SAMPLE_CARDS[1]["question"]
 
 
 def test_deck_next_wraps_at_end():
@@ -260,9 +260,9 @@ def test_deck_shuffle_off_restores_order():
     deck = DeckState(SAMPLE_CARDS)
     deck.shuffle(True)
     deck.shuffle(False)
-    assert deck.current_card() == SAMPLE_CARDS[0]
+    assert deck.current_card()["question"] == SAMPLE_CARDS[0]["question"]
     deck.next()
-    assert deck.current_card() == SAMPLE_CARDS[1]
+    assert deck.current_card()["question"] == SAMPLE_CARDS[1]["question"]
 
 
 def test_deck_empty_returns_none():
@@ -310,8 +310,9 @@ def test_missed_cards_returns_wrong_answers():
     deck.mark(False)  # Q3 wrong
     missed = deck.missed_cards()
     assert len(missed) == 2
-    assert SAMPLE_CARDS[1] in missed
-    assert SAMPLE_CARDS[2] in missed
+    missed_questions = {c["question"] for c in missed}
+    assert SAMPLE_CARDS[1]["question"] in missed_questions
+    assert SAMPLE_CARDS[2]["question"] in missed_questions
 
 
 def test_missed_cards_empty_when_all_correct():
@@ -331,7 +332,7 @@ def test_correct_cards_returns_only_correct_answers():
     deck.next()
     deck.mark(True)   # Q3 correct
     correct_cards = deck.correct_cards()
-    assert correct_cards == [SAMPLE_CARDS[0], SAMPLE_CARDS[2]]
+    assert [c["question"] for c in correct_cards] == ["Q1", "Q3"]
 
 
 def test_restart_resets_scores():
@@ -367,7 +368,7 @@ def test_remove_question_preserves_other_results():
     assert [card["question"] for card in deck.original] == ["Q1", "Q3"]
     assert deck.total == 2
     assert deck.current_card()["question"] == "Q3"
-    assert deck.correct_cards() == [SAMPLE_CARDS[0]]
+    assert [c["question"] for c in deck.correct_cards()] == ["Q1"]
     assert deck.missed_cards() == []
 
 

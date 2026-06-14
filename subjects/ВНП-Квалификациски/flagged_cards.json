@@ -1,0 +1,310 @@
+[
+  {
+    "question": "Conv1D со in_channels=4, out_channels=2, kernel_size=3, stride=1, padding=1 — каква е формата на излезот?",
+    "choices": [
+      "(batch_size, 4, L)",
+      "(batch_size, L, 2)",
+      "(batch_size, 2, L)",
+      "(batch_size, 3, L)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Бројот на out_channels (2) ја одредува втората димензија; со padding=1, kernel=3, stride=1 должината L се зачувува. За испит: Формат на Conv1D излез = (batch, out_channels, L).",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Precision во confusion matrix е дефинирана со формулата:",
+    "choices": [
+      "tp / (tp + fn) — сооднос точно позитивни кон сите вистински позитивни",
+      "tn / (tn + fp) — сооднос точно негативни кон сите предвидени негативни",
+      "(tp + tn) / (tp + tn + fp + fn) — вкупна точност на класификаторот",
+      "tp / (tp + fp) — сооднос точно позитивни кон сите предвидени позитивни"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Precision = tp/(tp+fp) — 'кога велиш позитивно, колку пати се во право?' Recall = tp/(tp+fn) — 'колку вистински позитивни ги фаќаш?' За испит: Precision = чистота на позитивни предвидувања; Recall = покриеност на вистинските позитивни.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Јазол има 10 примероци: 7 од класа A и 3 од класа B. Колку е Classification Error?",
+    "choices": [
+      "0.21",
+      "0.7",
+      "0.3",
+      "0.5"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Classification Error = 1 − max(pᵢ) = 1 − max(0.7, 0.3) = 1 − 0.7 = 0.3. За испит: Classification Error гледа само на мнозинската класа; Gini и Entropy ги земаат сите класи.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Ако треба да се предвидува температурата во пластеник во текот на ноќта, за каков вид машинско учење станува збор?",
+    "choices": [
+      "Откривање недостатоци (Anomaly Detection)",
+      "Регресија (Regression)",
+      "Класификација (Classification)",
+      "Учење со поттикнување (Reinforcement Learning)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Предвидување на континуирана нумеричка вредност (температура) = регресија. За испит: Бројка на излез → регресија; категорија → класификација.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Активациска функција со S-форма и излезен опсег (0, 1) е:",
+    "choices": [
+      "Tanh",
+      "Linear",
+      "ReLU",
+      "Sigmoid"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Sigmoid σ(x)=1/(1+e⁻ˣ) има S-форма и опсег (0,1). За испит: ReLU е max(0,x) без горна граница; tanh има опсег (−1,1); linear е права.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Датасет со 12000 редици и 12 features се обликува за LSTM со lag (прозорец) од 4. Која е формата (shape) на влезот?",
+    "choices": [
+      "(11996, 4, 12)",
+      "(12000, 4, 12)",
+      "(12000, 12, 4)",
+      "(11996, 12, 4)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Со lag=4 се губат првите 4 редици → 12000−4 = 11996 примероци; секој со 4 временски чекори и 12 features → (11996, 4, 12). За испит: Формат = (редици − lag, lag, features).",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "За реченицата 'The government debt problems turned into banking crises as happened in 2009', skip-gram со прозорец 3 за зборот 'banking' е:",
+    "choices": [
+      "into banking crises as",
+      "turned into crises as",
+      "problems turned into crises as happened",
+      "debt problems turned crises happened in"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: 3 збора лево од 'banking' = 'problems turned into', 3 десно = 'crises as happened'. За испит: Центарот ('banking') не влегува во контекстот — само соседните 3+3.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "За реченицата 'It was a bright cold day in April and the clocks were striking', skip-gram со прозорец 3 за зборот 'day' е:",
+    "choices": [
+      "bright cold in April",
+      "a bright cold in April and",
+      "was bright cold April clocks were",
+      "cold day in April"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Прозорец 3 = 3 збора лево + 3 збора десно од 'day': лево 'a bright cold', десно 'in April and'. За испит: Прозорец N значи N контекст зборови од секоја страна на центарот.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Зошто sigmoid и tanh предизвикуваат vanishing gradients при backpropagation?",
+    "choices": [
+      "Нивните изводи се недефинирани во околината на точката x = 0",
+      "Нивните изводи растат експоненцијално со влезната вредност x",
+      "Нивните вредности се негативни за секој негативен влез x",
+      "Изводите им се ≈ 0 во голем дел од доменот, па градиентот исчезнува"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Изводот на sigmoid е максимум 0.25 и е ≈ 0 за |x| > 4-5 (заситени региони); tanh има ист проблем. При множење низ многу слоеви градиентот исчезнува. За испит: Ова е главната мотивација за ReLU кај длабоки мрежи.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Каква е промената кај нумеричките податоци при нормализација (normalization)?",
+    "choices": [
+      "Средната вредност е 0, а варијансата е 1",
+      "Податоците следат нормална дистрибуција",
+      "Вредностите се во опсег помеѓу 0 и 1",
+      "Опсегот останува непроменет како во оригиналниот датасет"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Нормализација (min-max) ги скалира вредностите во опсег [0,1]: x' = (x−min)/(max−min). За испит: Не мешај — стандардизација дава средна 0 и варијанса 1, нормализација дава опсег [0,1].",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Каква е промената кај нумеричките податоци при стандардизација (standardization)?",
+    "choices": [
+      "Податоците се претвораат во категориски вредности",
+      "Средната вредност е 0, а варијансата е 1",
+      "Опсегот станува помеѓу минималниот и максималниот елемент",
+      "Вредностите се скалираат во опсег помеѓу 0 и 1"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Стандардизација: x' = (x−μ)/σ — нова дистрибуција со средна вредност 0 и варијанса 1. За испит: Опсег [0,1] е нормализација; средна 0/варијанса 1 е стандардизација.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Кај K-Fold Cross Validation со k=5 и датасет од 1000 редици, колку редици има секој fold?",
+    "choices": [
+      "1000 редици по fold",
+      "200 редици по fold",
+      "500 редици по fold",
+      "5 редици по fold"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: 1000 редици / 5 folds = 200 редици по fold; во секоја итерација еден fold (200) е тест, останатите 800 се тренинг. За испит: Број редици по fold = вкупно редици / k.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Кои својства ги има излезот на Softmax слојот? (Избери ги сите точни)",
+    "choices": [
+      "Секој излез е помеѓу 0 и 1",
+      "Излезите може да се интерпретираат како веројатности",
+      "Секој излез зависи само од сопствениот влез zᵢ",
+      "Сите излези сумираат на точно 1"
+    ],
+    "correct": [
+      0,
+      1,
+      3
+    ],
+    "type": "multiple",
+    "difficulty": "medium",
+    "explanation": "Зошто: yᵢ = e^zᵢ/Σⱼe^zⱼ дава 0 < yᵢ < 1 и Σyᵢ = 1 — валидна веројатносна дистрибуција. НО именителот ги содржи сите z-вредности, па секој излез зависи од сите влезови — за разлика од одделни сигмоиди. За испит: Токму нормализацијата со заедничкиот именител е разликата од обичен слој.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Колку листови (leaves) може да има дрво за одлука трениран врз 300 примероци?",
+    "choices": [
+      "Најмалку 300, без горна граница",
+      "Точно log₂(300) листови",
+      "Точно 300 листови секогаш",
+      "Најмалку 1, најмногу 300 листови"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Минимум 1 лист (корен без поделба), максимум колку примероци (300) ако секој лист има по една точка. За испит: Бројот листови е меѓу 1 и бројот на тренинг примероци.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Која е формулата за Specificity и што мери?",
+    "choices": [
+      "TN / (TN + FP) — удел точно детектирани негативни",
+      "TP / (TP + FP) — удел точни меѓу предвидените позитивни",
+      "TP / (TP + FN) — удел точно детектирани позитивни",
+      "(TP + TN) / вкупно — целокупна точност"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Specificity = TN/(TN+FP) = true negatives/negatives — колку добро моделот ги препознава вистинските негативни. За испит: Recall/Sensitivity = TP/(TP+FN); Precision = TP/(TP+FP); Specificity = TN/(TN+FP).",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Која е формулата за Recall (Sensitivity)?",
+    "choices": [
+      "TP / (TP + FN)",
+      "TP / (TP + FP)",
+      "(TP + TN) / (TP + TN + FP + FN)",
+      "TN / (TN + FP)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Recall = TP/(TP+FN) — удел на вистинските позитивни што моделот ги фатил. За испит: Recall казнува пропуштени позитивни (FN); Precision казнува лажни аларми (FP).",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Регион има 10 примероци: 6 од класа A и 4 од класа B. Колку е Gini индексот?",
+    "choices": [
+      "0.50",
+      "0.24",
+      "0.52",
+      "0.48"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Gini = 1 − Σpᵢ² = 1 − (0.6² + 0.4²) = 1 − (0.36 + 0.16) = 1 − 0.52 = 0.48. За испит: Gini = 1 − збир на квадрати на пропорциите; максимум 0.5 за бинарен случај при 50/50.",
+    "streak": 2,
+    "mastered": true
+  },
+  {
+    "question": "Формулата на sigmoid активациската функција е:",
+    "choices": [
+      "y = max(0, x)",
+      "y = (eˣ − e⁻ˣ) / (eˣ + e⁻ˣ)",
+      "y = log(1 + eˣ)",
+      "y = 1 / (1 + e⁻ˣ)"
+    ],
+    "correct": [
+      3
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Sigmoid (логистичка) функција: σ(x) = 1/(1+e⁻ˣ), со опсег (0,1). За испит: max(0,x) = ReLU; (eˣ−e⁻ˣ)/(eˣ+e⁻ˣ) = tanh; log(1+eˣ) = softplus — знај ги сите четири формули.",
+    "streak": 2,
+    "mastered": true
+  }
+]

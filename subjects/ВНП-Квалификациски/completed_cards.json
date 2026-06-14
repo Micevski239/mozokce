@@ -1,1 +1,38 @@
-[]
+[
+  {
+    "question": "За реченицата 'The government debt problems turned into banking crises as happened in 2009', skip-gram со прозорец 3 за зборот 'banking' е:",
+    "choices": [
+      "into banking crises as",
+      "turned into crises as",
+      "problems turned into crises as happened",
+      "debt problems turned crises happened in"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: 3 збора лево од 'banking' = 'problems turned into', 3 десно = 'crises as happened'. За испит: Центарот ('banking') не влегува во контекстот — само соседните 3+3.",
+    "streak": 2,
+    "mastered": true,
+    "completed": true
+  },
+  {
+    "question": "Која е формулата за Specificity и што мери?",
+    "choices": [
+      "TN / (TN + FP) — удел точно детектирани негативни",
+      "TP / (TP + FP) — удел точни меѓу предвидените позитивни",
+      "TP / (TP + FN) — удел точно детектирани позитивни",
+      "(TP + TN) / вкупно — целокупна точност"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Specificity = TN/(TN+FP) = true negatives/negatives — колку добро моделот ги препознава вистинските негативни. За испит: Recall/Sensitivity = TP/(TP+FN); Precision = TP/(TP+FP); Specificity = TN/(TN+FP).",
+    "streak": 2,
+    "mastered": true,
+    "completed": true
+  }
+]

@@ -1,0 +1,1146 @@
+[
+  {
+    "question": "Што претставува TP (True Positive) во confusion matrix?",
+    "choices": [
+      "Позитивен примерок точно предвиден како позитивен",
+      "Негативен примерок погрешно предвиден како позитивен",
+      "Позитивен примерок погрешно предвиден како негативен",
+      "Негативен примерок точно предвиден како негативен"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: TP = вистински позитивен што моделот точно го означил како позитивен. За испит: FP = лажен аларм; FN = пропуштен позитивен; TN = точно негативен."
+  },
+  {
+    "question": "Што претставува FP (False Positive) и со кој тип грешка се поврзува?",
+    "choices": [
+      "Пропуштен позитивен примерок; означено како Type II грешка",
+      "Лажен аларм — негативен означен како позитивен; Type I грешка",
+      "Точно негативен примерок; ова воопшто не е грешка",
+      "Точно позитивен примерок; ова воопшто не е грешка"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: FP е негативен примерок погрешно означен како позитивен — лажен аларм = Type I error. За испит: FN (пропуштен позитивен) = Type II error."
+  },
+  {
+    "question": "Што претставува FN (False Negative) и со кој тип грешка се поврзува?",
+    "choices": [
+      "Лажен аларм — негативен означен како позитивен; Type I грешка",
+      "Точно позитивен примерок; ова воопшто не е грешка",
+      "Пропуштен позитивен (означен како негативен); Type II грешка",
+      "Точно негативен примерок; ова воопшто не е грешка"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: FN е позитивен примерок погрешно означен како негативен — пропуштен случај = Type II error. За испит: Кај медицина FN (пропуштена болест) е поопасен од FP."
+  },
+  {
+    "question": "Која е формулата за Accuracy (точност)?",
+    "choices": [
+      "(TP + TN) / (TP + TN + FP + FN)",
+      "TP / (TP + FP) — само позитивните",
+      "TP / (TP + FN) — само позитивните",
+      "TN / (TN + FP) — само негативните"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Accuracy = точни предвидувања / сите = (TP+TN)/вкупно. За испит: Accuracy е заведувачка кај небалансирани класи — затоа гледаш и precision/recall."
+  },
+  {
+    "question": "Која е формулата за Precision?",
+    "choices": [
+      "TP / (TP + FN)",
+      "TP / (TP + FP)",
+      "TN / (TN + FP)",
+      "(TP + TN) / вкупно"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Precision = TP/(TP+FP) — колку од предвидените позитивни се навистина позитивни. За испит: Precision казнува лажни аларми (FP); важна кога FP е скап (пр. спам филтер)."
+  },
+  {
+    "question": "Која е формулата за Recall (Sensitivity / TPR)?",
+    "choices": [
+      "TP / (TP + FN)",
+      "TP / (TP + FP)",
+      "TN / (TN + FP)",
+      "FP / (FP + TN)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Recall = TP/(TP+FN) — колку од вистинските позитивни моделот ги фатил. За испит: Recall казнува пропуштени позитивни (FN); важна кога FN е скап (пр. детекција на болест)."
+  },
+  {
+    "question": "Која е формулата за Specificity (TNR)?",
+    "choices": [
+      "TP / (TP + FN)",
+      "TP / (TP + FP)",
+      "TN / (TN + FP)",
+      "(TP + TN) / вкупно"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Specificity = TN/(TN+FP) — колку од вистинските негативни моделот точно ги препознал. За испит: Specificity е „recall за негативната класа\"."
+  },
+  {
+    "question": "Која е формулата за F1-score?",
+    "choices": [
+      "Обичен аритметички просек на Precision и Recall",
+      "Хармониска средина: 2·(P·R)/(P+R) на Precision и Recall",
+      "Производ на вредностите на Precision и Recall",
+      "Удел точни: (TP + TN) поделено со вкупниот број"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: F1 е хармониска средина на precision и recall: 2PR/(P+R) — балансира меѓу двете. За испит: F1 е низок ако макар едната (P или R) е ниска; не е обичен просек."
+  },
+  {
+    "question": "Која е формулата за False Positive Rate (FPR)?",
+    "choices": [
+      "FP / (FP + TN)",
+      "FP / (FP + TP)",
+      "FN / (FN + TP)",
+      "TN / (TN + FP)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: FPR = FP/(FP+TN) = 1 − Specificity — удел на негативните погрешно означени како позитивни. За испит: ROC кривата е TPR (recall) наспроти FPR."
+  },
+  {
+    "question": "Конфузиона матрица: TP=40, FP=10, FN=20, TN=30. Колку е Precision?",
+    "choices": [
+      "0.80",
+      "0.67",
+      "0.57",
+      "0.50"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Precision = TP/(TP+FP) = 40/(40+10) = 40/50 = 0.80. За испит: Внимавај кој именител — precision дели со предвидените позитивни (TP+FP)."
+  },
+  {
+    "question": "Конфузиона матрица: TP=40, FP=10, FN=20, TN=30. Колку е Recall?",
+    "choices": [
+      "0.80",
+      "0.67",
+      "0.57",
+      "0.50"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Recall = TP/(TP+FN) = 40/(40+20) = 40/60 ≈ 0.67. За испит: Recall дели со сите вистински позитивни (TP+FN)."
+  },
+  {
+    "question": "Precision = 0.8, Recall = 0.67. Приближно колку е F1-score?",
+    "choices": [
+      "0.73",
+      "0.74",
+      "0.54",
+      "0.67"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: F1 = 2·(0.8·0.67)/(0.8+0.67) = 1.072/1.47 ≈ 0.73. За испит: F1 паѓа меѓу precision и recall, поблиску до помалата вредност."
+  },
+  {
+    "question": "Зошто Accuracy е заведувачка кај силно небалансирани класи?",
+    "choices": [
+      "Бидејќи не може да се пресмета без претходно да се знае F1-score",
+      "Бидејќи модел што секогаш ја вика мнозинската класа добива висока точност",
+      "Бидејќи Accuracy секогаш испаѓа помала од Precision во секој случај",
+      "Бидејќи бара точно еднаков број TP и TN за воопшто да функционира"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Ако 95% се класа A, модел што секогаш вика „A\" има 95% точност без да научи ништо. За испит: Кај небалансирани податоци гледаш precision/recall/F1, не само accuracy."
+  },
+  {
+    "question": "Што прикажува ROC кривата?",
+    "choices": [
+      "Precision наспроти Recall за различни прагови",
+      "TPR (recall) наспроти FPR за различни прагови",
+      "Accuracy наспроти бројот на епохи",
+      "Loss наспроти learning rate"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: ROC ги црта True Positive Rate (recall) наспроти False Positive Rate за сите можни прагови. За испит: AUC=0.5 значи случајно погодување; AUC=1 совршен класификатор."
+  },
+  {
+    "question": "Формулата на Sigmoid активациската функција е:",
+    "choices": [
+      "y = max(0, x)",
+      "y = (eˣ − e⁻ˣ) / (eˣ + e⁻ˣ)",
+      "y = 1 / (1 + e⁻ˣ)",
+      "y = log(1 + eˣ)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Sigmoid: σ(x) = 1/(1+e⁻ˣ), опсег (0,1). За испит: max(0,x)=ReLU; (eˣ−e⁻ˣ)/(eˣ+e⁻ˣ)=tanh; log(1+eˣ)=softplus."
+  },
+  {
+    "question": "Формулата на Tanh активациската функција е:",
+    "choices": [
+      "y = (eˣ − e⁻ˣ) / (eˣ + e⁻ˣ), со опсег (−1, 1)",
+      "y = 1 / (1 + e⁻ˣ), со опсег точно (0, 1)",
+      "y = max(0, x), линеарна за позитивни влезови",
+      "y = x · σ(x), self-gated swish активација"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Tanh = (eˣ−e⁻ˣ)/(eˣ+e⁻ˣ), опсег (−1,1) — центрирана околу нула. За испит: Tanh има исти vanishing gradient проблеми како sigmoid."
+  },
+  {
+    "question": "Формулата на ReLU активациската функција е:",
+    "choices": [
+      "y = 1 / (1 + e⁻ˣ)",
+      "y = max(0, x)",
+      "y = max(0, x) + α·min(0, x)",
+      "y = log(1 + eˣ)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: ReLU = max(0, x) — нула за негативни, линеарна за позитивни. За испит: max(0,x)+α·min(0,x) е Leaky ReLU; log(1+eˣ) е softplus."
+  },
+  {
+    "question": "Формулата на Leaky ReLU е:",
+    "choices": [
+      "y = max(0, x) без никаков наклон за негативни",
+      "y = max(0, x) + α·min(0, x), каде α е мал број",
+      "y = 1 / (1 + e⁻ˣ), сквошува во (0, 1)",
+      "y = x · σ(x), self-gated активација"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Leaky ReLU дава мал наклон α за негативни влезови (наместо нула), па изводот е ненулев насекаде. За испит: Решава „dying ReLU\" каде неврони трајно даваат 0."
+  },
+  {
+    "question": "Која активациска функција се користи за повеќекласна класификација во излезниот слој?",
+    "choices": [
+      "Sigmoid",
+      "ReLU",
+      "Softmax",
+      "Tanh"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Softmax претвора излези во веројатносна распределба врз K класи (сите > 0, збир = 1). За испит: Бинарна → sigmoid; повеќекласна → softmax; регресија → linear."
+  },
+  {
+    "question": "Кои својства ги има излезот на Softmax? (Избери ги сите точни)",
+    "choices": [
+      "Секоја вредност е помеѓу 0 и 1",
+      "Сите вредности сумираат на точно 1",
+      "Може да се интерпретира како веројатносна распределба",
+      "Секој излез зависи само од сопствениот влез"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "type": "multiple",
+    "difficulty": "medium",
+    "explanation": "Зошто: Softmax yᵢ = e^zᵢ/Σe^zⱼ дава 0<yᵢ<1, збир 1, веројатности. НО секој излез зависи од СИТЕ влезови преку заедничкиот именител. За испит: Тоа го разликува softmax од одделни сигмоиди."
+  },
+  {
+    "question": "Формулата на Softplus активациската функција е:",
+    "choices": [
+      "y = log(1 + eˣ)",
+      "y = max(0, x)",
+      "y = 1 / (1 + e⁻ˣ)",
+      "y = x · σ(x)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Softplus = log(1+eˣ) — мазна апроксимација на ReLU; нејзиниот извод е токму sigmoid. За испит: Softplus е секаде диференцијабилна, за разлика од ReLU во точката 0."
+  },
+  {
+    "question": "Формулата на Swish активациската функција е:",
+    "choices": [
+      "y = max(0, x)",
+      "y = x · σ(x) = x / (1 + e⁻ˣ)",
+      "y = (eˣ − e⁻ˣ) / (eˣ + e⁻ˣ)",
+      "y = log(1 + eˣ)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Swish = x·σ(x) — self-gated; тежнее да е подобра од ReLU кај подлабоки мрежи. За испит: Swish ја множи влезната вредност со нејзината sigmoid порта."
+  },
+  {
+    "question": "Зошто Sigmoid и Tanh предизвикуваат vanishing gradients?",
+    "choices": [
+      "Изводите им растат експоненцијално со зголемување на x",
+      "Изводите им се ≈ 0 во голем дел од доменот (заситеност)",
+      "Не се воопшто диференцијабилни во точката x = 0",
+      "Даваат негативни вредности дури и за позитивни влезови"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Во заситените региони изводот е блиску 0; при множење низ многу слоеви градиентот исчезнува. За испит: Изводот на sigmoid е максимум 0.25 (во x=0)."
+  },
+  {
+    "question": "Која активациска функција го избегнува vanishing gradient за позитивни влезови?",
+    "choices": [
+      "Sigmoid",
+      "Tanh",
+      "ReLU",
+      "Linear (само за x < 0)"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: ReLU има извод точно 1 за x > 0, па градиентот не се намалува за позитивни активации. За испит: Затоа ReLU е стандард кај длабоки мрежи наспроти sigmoid/tanh."
+  },
+  {
+    "question": "Што се случува ако сите слоеви користат линеарна активациска функција?",
+    "choices": [
+      "Мрежата дава само линеарни одлуки без оглед на длабочината",
+      "Мрежата станува сè поизразна со секој нов додаден слој",
+      "Тренингот станува невозможен поради exploding градиенти",
+      "Мрежата може да апроксимира произволни нелинеарни функции"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Композиција од линеарни функции е пак линеарна — длабочината не додава изразност. За испит: Нелинеарноста (активациите) е она што овозможува сложени граници."
+  },
+  {
+    "question": "Кој е изводот на ReLU функцијата?",
+    "choices": [
+      "1 за x > 0, и 0 за x < 0",
+      "Секогаш 1 без оглед на x",
+      "σ(x)·(1−σ(x))",
+      "1 − tanh²(x)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: ReLU = max(0,x), па изводот е 1 за позитивни и 0 за негативни влезови. За испит: Изводот 0 за x<0 е причината за „dying ReLU\"."
+  },
+  {
+    "question": "Колкав е максималниот извод на sigmoid функцијата и каде?",
+    "choices": [
+      "1, во точката x = 0",
+      "0.25, во точката x = 0",
+      "0.5, во точката x = 1",
+      "Неограничен, за големи x"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: σ'(x) = σ(x)(1−σ(x)), максимум во x=0 каде σ=0.5 → 0.5·0.5 = 0.25. За испит: Малиот максимален извод (0.25) објаснува зошто градиентот брзо исчезнува низ слоевите."
+  },
+  {
+    "question": "Која активациска функција се користи во излезниот слој за РЕГРЕСИЈА?",
+    "choices": [
+      "Sigmoid",
+      "Softmax",
+      "Linear",
+      "ReLU"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Регресијата бара неограничена континуирана вредност, па излезниот слој е линеарен (без сквошување). За испит: Бинарна→sigmoid, повеќекласна→softmax, континуирана→linear."
+  },
+  {
+    "question": "Регион има 10 примероци: 6 од класа A и 4 од класа B. Колку е Gini индексот?",
+    "choices": [
+      "0.48",
+      "0.52",
+      "0.24",
+      "0.50"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Gini = 1 − Σpᵢ² = 1 − (0.6² + 0.4²) = 1 − 0.52 = 0.48. За испит: Gini = 1 − збир на квадрати на пропорциите."
+  },
+  {
+    "question": "Чвор има 8 примероци: 8 од класа A и 0 од класа B. Колку е Gini индексот?",
+    "choices": [
+      "0.0 (чист чвор)",
+      "0.5 (максимална нечистота)",
+      "1.0",
+      "0.25"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Чист чвор (сите од иста класа): Gini = 1 − (1² + 0²) = 0. За испит: Gini = 0 значи целосна чистота; максимум 0.5 за бинарен случај при 50/50."
+  },
+  {
+    "question": "Која е максималната вредност на Gini индексот за бинарна класификација?",
+    "choices": [
+      "1.0 при распределба 50/50",
+      "0.5 при распределба 50/50",
+      "0.25 при распределба 50/50",
+      "Неограничена"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: При 50/50: Gini = 1 − (0.5² + 0.5²) = 1 − 0.5 = 0.5 — максимална нечистота за две класи. За испит: Gini ∈ [0, 0.5] за бинарен случај."
+  },
+  {
+    "question": "Која е формулата за Entropy како мерка за нечистота?",
+    "choices": [
+      "Entropy = 1 − Σpᵢ²",
+      "Entropy = −Σ pᵢ·log₂(pᵢ)",
+      "Entropy = 1 − max(pᵢ)",
+      "Entropy = Σ pᵢ²"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Entropy = −Σpᵢlog₂pᵢ; 0 за чист чвор, 1 за 50/50 (бинарно). За испит: 1−Σpᵢ² е Gini; 1−max(pᵢ) е Classification Error."
+  },
+  {
+    "question": "Чвор со 50/50 распределба на две класи. Колку е Entropy?",
+    "choices": [
+      "0",
+      "0.5",
+      "1",
+      "2"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Entropy = −(0.5·log₂0.5 + 0.5·log₂0.5) = −(0.5·(−1) + 0.5·(−1)) = 1. За испит: Entropy ∈ [0,1] за бинарно; максимум 1 при 50/50."
+  },
+  {
+    "question": "Која е формулата за Classification Error како мерка за нечистота?",
+    "choices": [
+      "1 − max(pᵢ)",
+      "1 − Σpᵢ²",
+      "−Σ pᵢ·log₂(pᵢ)",
+      "Σ pᵢ·log₂(pᵢ)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Classification Error = 1 − max(pᵢ) — само мнозинската класа е важна. За испит: За разлика од Gini/Entropy, не ги зема предвид сите класи, па е помалку чувствителна."
+  },
+  {
+    "question": "Чвор има 10 примероци: 7 од класа A и 3 од класа B. Колку е Classification Error?",
+    "choices": [
+      "0.7",
+      "0.3",
+      "0.21",
+      "0.5"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Classification Error = 1 − max(0.7, 0.3) = 1 − 0.7 = 0.3. За испит: Гледа само на мнозинската класа (0.7), па грешката е 0.3."
+  },
+  {
+    "question": "Што е Information Gain при делење на дрво за одлука?",
+    "choices": [
+      "Бројот на нови чворови создадени по split",
+      "Намалувањето на нечистотата (Entropy) по split",
+      "Длабочината на дрвото по split",
+      "Бројот на примероци во родителскиот чвор"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Information Gain = Entropy(родител) − пондериран просек на Entropy(деца) — колку split ја намалил неизвесноста. За испит: Дрвото го бира split-от со најголем information gain."
+  },
+  {
+    "question": "Како се споредуваат Gini, Entropy и Classification Error по чувствителност?",
+    "choices": [
+      "Classification Error е најчувствителна, Gini/Entropy се груби мерки",
+      "Сите три даваат потполно идентични split-ови во секој можен случај",
+      "Gini и Entropy се почувствителни; Classification Error поедноставна",
+      "Gini работи само за регресија, а Entropy само за класификација"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Gini и Entropy реагираат на промени во распределбата на сите класи; Classification Error гледа само на мнозинството, па е помалку чувствителна. За испит: Изборот влијае на структурата и длабочината на дрвото."
+  },
+  {
+    "question": "Колку листови може да има дрво за одлука трениран врз 300 примероци?",
+    "choices": [
+      "Точно 300 листови секогаш",
+      "Најмалку 1, најмногу 300 листови",
+      "Најмалку 300, без горна граница",
+      "Точно log₂(300) листови"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Минимум 1 лист (без поделба), максимум колку примероци (300) ако секој лист има по една точка. За испит: Број листови ∈ [1, број тренинг примероци]."
+  },
+  {
+    "question": "Што претставува internal (внатрешен) чвор кај дрво за одлука?",
+    "choices": [
+      "Чвор што претставува тест/услов врз атрибут",
+      "Терминален чвор со конечна предвидена класа",
+      "Почетниот чвор без родител",
+      "Чвор што содржи само outliers"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Внатрешен чвор содржи услов за поделба врз некој атрибут и води до подчворови. За испит: Root = почеток; internal = тест; leaf = крајна одлука/класа."
+  },
+  {
+    "question": "Кој параметар во DecisionTreeClassifier() ја менува мерката за split на ентропија?",
+    "choices": [
+      "metric = 'entropy'",
+      "criterion = 'entropy'",
+      "splitter = 'entropy'",
+      "impurity = 'entropy'"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: criterion='entropy' (дифолт 'gini') ја поставува ентропијата/information gain. За испит: splitter контролира best vs random, не gini vs entropy."
+  },
+  {
+    "question": "Која е формулата за нормализација (min-max scaling)?",
+    "choices": [
+      "x' = (x − μ) / σ — z-score стандардизација",
+      "x' = (x − min) / (max − min) — опсег [0,1]",
+      "x' = x / max — просто делење со максимум",
+      "x' = (x − median) / IQR — robust scaling"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Min-max нормализација: x' = (x−min)/(max−min) → опсег [0,1]. За испит: (x−μ)/σ е стандардизација; (x−median)/IQR е robust scaling."
+  },
+  {
+    "question": "Која е формулата за стандардизација (z-score)?",
+    "choices": [
+      "x' = (x − μ) / σ",
+      "x' = (x − min) / (max − min)",
+      "x' = x / σ",
+      "x' = (x − median) / IQR"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Стандардизација: x' = (x−μ)/σ → средна вредност 0, варијанса 1. За испит: Нормализација дава опсег [0,1]; стандардизација дава mean 0 / var 1."
+  },
+  {
+    "question": "Вредност x=20, во колона со min=10, max=50. Колку е нормализираната вредност (min-max)?",
+    "choices": [
+      "0.25",
+      "0.40",
+      "0.20",
+      "0.50"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: x' = (20−10)/(50−10) = 10/40 = 0.25. За испит: Min-max секогаш дава 0 за min и 1 за max вредноста."
+  },
+  {
+    "question": "Вредност x=80, колона со μ=50 и σ=10. Колку е стандардизираната вредност?",
+    "choices": [
+      "3.0",
+      "0.3",
+      "8.0",
+      "30.0"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: z = (80−50)/10 = 30/10 = 3.0 — вредноста е 3 стандардни девијации над просекот. За испит: Позитивен z = над просек; негативен = под просек."
+  },
+  {
+    "question": "Кои модели имаат најголема корист од скалирање на features? (Избери ги сите точни)",
+    "choices": [
+      "KNN и K-Means (distance-based)",
+      "Невронски мрежи",
+      "SVM",
+      "Дрва за одлука и Random Forest"
+    ],
+    "correct": [
+      0,
+      1,
+      2
+    ],
+    "type": "multiple",
+    "difficulty": "hard",
+    "explanation": "Зошто: Distance-based и градиентни модели (KNN, K-Means, NN, SVM) се чувствителни на размер. Дрвата делат по праг на еден атрибут, па скалирањето не ги менува. За испит: Trees не бараат скалирање; distance-based задолжително."
+  },
+  {
+    "question": "Кој метод за скалирање е најотпорен на outliers?",
+    "choices": [
+      "Min-max нормализација со min и max вредности",
+      "Z-score стандардизација со средна и σ",
+      "Robust scaling со median и IQR (интерквартилен)",
+      "Просто делење на секоја вредност со максимумот"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Robust scaling користи median и IQR кои не се влечат од екстремни вредности, за разлика од min/max и mean/σ. За испит: Outliers ги расипуваат min-max и z-score; robust е поотпорен."
+  },
+  {
+    "question": "Кога сензори даваат вредности со многу различни опсези, кој чекор е најважен пред distance-based модел?",
+    "choices": [
+      "Нормализација/скалирање на влезните податоци",
+      "One-hot encoding на сите колони",
+      "Отстранување на сите редици со outliers",
+      "Зголемување на бројот на features"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Без скалирање feature со голем опсег доминира во растојанието. За испит: Нормализација е критична за KNN, K-Means, NN и сите distance-based методи."
+  },
+  {
+    "question": "Кај K-Fold Cross Validation со k=5 и 1000 редици, колку редици има секој fold?",
+    "choices": [
+      "1000 редици",
+      "5 редици",
+      "200 редици",
+      "800 редици"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: 1000/5 = 200 редици по fold. За испит: Број редици по fold = вкупно редици / k."
+  },
+  {
+    "question": "Кај K-Fold со k=5 и 1000 редици, колку редици се тренинг во секоја итерација?",
+    "choices": [
+      "200 редици",
+      "800 редици",
+      "1000 редици",
+      "500 редици"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Еден fold (200) е тест, останатите 4 (800) се тренинг. За испит: Тренинг = (k−1) folds; тест = 1 fold во секоја од k-те итерации."
+  },
+  {
+    "question": "Колку пати се тренира моделот при K-Fold Cross Validation со k фолдови?",
+    "choices": [
+      "Еднаш",
+      "k пати",
+      "k² пати",
+      "Колку редици има датасетот"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Секој fold еднаш е тест, па моделот се тренира k пати и резултатите се просечат. За испит: Затоа CV е поскапа но подобра проценка од еден train-test split."
+  },
+  {
+    "question": "Што е Stratified K-Fold Cross Validation?",
+    "choices": [
+      "Folds што меѓусебно се преклопуваат за да има повеќе податоци",
+      "Folds што ја чуваат истата пропорција на класи како целиот сет",
+      "Folds со различна големина во секоја поединечна итерација",
+      "Само еден фиксен fold за тест без никаква ротација"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Stratified K-Fold осигура секој fold да има иста распределба на класи како оригиналот — важно кај небалансирани податоци. За испит: Stratified спречува fold без примероци од ретка класа."
+  },
+  {
+    "question": "Што е Leave-One-Out Cross Validation (LOOCV)?",
+    "choices": [
+      "K-Fold каде k е еднакво на бројот примероци n",
+      "K-Fold каде k секогаш е фиксирано на 2",
+      "Само еден случаен train-test split без ротација",
+      "Тренирање на моделот без никаков тест сет"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: LOOCV е специјален случај каде секој примерок е свој тест fold (k=n), па моделот се тренира n пати. За испит: LOOCV е најскап но искористува максимум податоци за тренинг."
+  },
+  {
+    "question": "Која е предноста на Cross Validation наспроти еден train-test split?",
+    "choices": [
+      "Секогаш гарантира точност од цели 100% на тестот",
+      "Постабилна проценка — секој примерок еднаш е тест",
+      "Бара драстично помалку пресметки од обичен split",
+      "Воопшто не бара поделба на податоците на делови"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: CV го ротира тест сетот низ сите folds, па проценката не зависи од една среќна/несреќна поделба. За испит: Цената е k-пати повеќе тренирања."
+  },
+  {
+    "question": "Каква димензионалност треба да има влезот кај LSTM мрежа?",
+    "choices": [
+      "1D — само еден рамен вектор од вредности",
+      "2D — матрица од примероци и нивни features",
+      "3D — (примероци, временски чекори, features)",
+      "4D — со повеќе канали слично како слики"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: LSTM очекува 3D: (samples, timesteps, features). За испит: Трите оски се примероци, временски чекори (lag) и features."
+  },
+  {
+    "question": "Датасет со 12000 редици и 12 features, LSTM со lag (прозорец) 4. Која е формата на влезот?",
+    "choices": [
+      "(12000, 12, 4)",
+      "(11996, 4, 12)",
+      "(12000, 4, 12)",
+      "(11996, 12, 4)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Со lag=4 се губат првите 4 редици → 12000−4 = 11996; секој со 4 чекори и 12 features → (11996, 4, 12). За испит: Формат = (редици − lag, lag, features)."
+  },
+  {
+    "question": "Датасет со 5000 редици и 8 features, LSTM со lag 10. Која е формата на влезот?",
+    "choices": [
+      "(4990, 10, 8)",
+      "(5000, 10, 8)",
+      "(4990, 8, 10)",
+      "(5010, 10, 8)"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: 5000 − 10 = 4990 примероци, 10 временски чекори, 8 features → (4990, 10, 8). За испит: Истата формула — (редици − lag, lag, features)."
+  },
+  {
+    "question": "Што претставува lag (прозорец) кај временски серии за LSTM?",
+    "choices": [
+      "Вкупниот број на features присутни во датасетот",
+      "Број претходни чекори искористени за предвидување",
+      "Стапката на учење (learning rate) на самата мрежа",
+      "Вкупниот број епохи потребни за целото тренирање"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Lag = колку претходни чекори (timesteps) гледа моделот за да предвиди — го дефинира прозорецот. За испит: Lag = вториот елемент на LSTM shape; поголем lag = подолга историја."
+  },
+  {
+    "question": "Conv1D со in_channels=4, out_channels=2, kernel_size=3, stride=1, padding=1 — каква е формата на излезот?",
+    "choices": [
+      "(batch, 4, L)",
+      "(batch, 2, L)",
+      "(batch, 3, L)",
+      "(batch, L, 2)"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: out_channels (2) е втората димензија; со padding=1, kernel=3, stride=1 должината L се зачувува. За испит: Формат на Conv1D излез = (batch, out_channels, L)."
+  },
+  {
+    "question": "Конволуциски слој: влезна должина L=10, kernel=3, stride=1, padding=0. Каква е излезната должина?",
+    "choices": [
+      "10",
+      "8",
+      "12",
+      "7"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: L_out = (L_in + 2·pad − kernel)/stride + 1 = (10 + 0 − 3)/1 + 1 = 8. За испит: Без padding должината се намалува за (kernel−1)."
+  },
+  {
+    "question": "Зошто Conv1D со padding=1 и kernel=3, stride=1 ја зачувува должината?",
+    "choices": [
+      "padding=1 додава по 1 елемент од секоја страна и компензира kernel=3",
+      "stride=1 секогаш автоматски ја удвојува должината на излезот",
+      "kernel=3 воопшто не влијае врз должината на излезот",
+      "out_channels=2 ја фиксира должината на конечниот излез"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: L_out = (L + 2·1 − 3)/1 + 1 = L. Padding од (kernel−1)/2 = 1 точно компензира за намалувањето. За испит: 'Same' padding = (kernel−1)/2 ја чува должината при stride=1."
+  },
+  {
+    "question": "Што прави return_sequences=True кај LSTM слој во однос на излезната форма?",
+    "choices": [
+      "Враќа само последниот временски чекор (2D)",
+      "Враќа излез за секој временски чекор (3D)",
+      "Ја преполовува должината на секвенцата",
+      "Го отстранува димензијата на features"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: return_sequences=True го враќа излезот за СЕКОЈ чекор (3D) — потребно за редење повеќе LSTM слоеви; False враќа само последниот (2D). За испит: Меѓу два LSTM слоја првиот мора да има return_sequences=True."
+  },
+  {
+    "question": "За реченицата 'It was a bright cold day in April and the clocks were striking', skip-gram со прозорец 3 за зборот 'day' е:",
+    "choices": [
+      "a bright cold in April and",
+      "was bright cold April clocks were",
+      "bright cold in April",
+      "cold day in April и"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Прозорец 3 = 3 збора лево ('a bright cold') + 3 десно ('in April and'). За испит: Прозорец N значи N контекст зборови од секоја страна на центарот; центарот не влегува."
+  },
+  {
+    "question": "За реченицата 'The government debt problems turned into banking crises as happened in 2009', skip-gram со прозорец 3 за зборот 'banking' е:",
+    "choices": [
+      "turned into crises as",
+      "problems turned into crises as happened",
+      "debt problems turned crises happened in",
+      "into banking crises as"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: 3 лево од 'banking' = 'problems turned into', 3 десно = 'crises as happened'. За испит: Центарот ('banking') не е дел од контекстот — само соседните 3+3."
+  },
+  {
+    "question": "За реченицата 'the quick brown fox jumps', skip-gram со прозорец 2 за зборот 'brown' е:",
+    "choices": [
+      "the quick fox jumps",
+      "quick fox",
+      "the quick brown fox",
+      "quick brown fox jumps"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "hard",
+    "explanation": "Зошто: Прозорец 2 = 2 лево ('the quick') + 2 десно ('fox jumps') = 'the quick fox jumps'. За испит: Прозорец 2 фаќа 2+2 = 4 контекст зборови (ако ги има)."
+  },
+  {
+    "question": "Која е разликата меѓу Skip-Gram и CBOW?",
+    "choices": [
+      "Skip-Gram: center → context; CBOW: context → center",
+      "Skip-Gram: context → center; CBOW: center → context",
+      "Skip-Gram користи softmax; CBOW користи sigmoid",
+      "Skip-Gram е supervised; CBOW е unsupervised"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Skip-Gram од централниот збор ги предвидува околните; CBOW од околните го предвидува централниот. За испит: Skip-Gram обично работи подобро кај ретки зборови."
+  },
+  {
+    "question": "Што е bigram?",
+    "choices": [
+      "Секвенца од 1 збор",
+      "Секвенца од 2 последователни зборови",
+      "Секвенца од 3 последователни зборови",
+      "Збор претставен со 2 вектори"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Bigram = 2 последователни зборови; unigram = 1, trigram = 3. За испит: N-gram = N последователни зборови; помага да се задржи редоследот што BoW го губи."
+  },
+  {
+    "question": "За реченицата 'data science is fun', кои се сите bigrams?",
+    "choices": [
+      "data, science, is, fun",
+      "data science, science is, is fun",
+      "data science is, science is fun",
+      "data science is fun"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Bigrams се сите парови соседни зборови: 'data science', 'science is', 'is fun'. За испит: За n зборови има (n−1) bigrams; тука 4 зборови → 3 bigrams."
+  },
+  {
+    "question": "За реченицата 'data science is fun', кои се сите trigrams?",
+    "choices": [
+      "data science, science is, is fun",
+      "data science is, science is fun",
+      "data, science, is, fun",
+      "data science is fun"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Trigrams се сите тројки соседни зборови: 'data science is', 'science is fun'. За испит: За n зборови има (n−2) trigrams; тука 4 зборови → 2 trigrams."
+  },
+  {
+    "question": "Што користи Word2Vec како основа за креирање embeddings?",
+    "choices": [
+      "N-grams",
+      "Part-of-speech tagging",
+      "Skip-grams",
+      "One-hot embeddings"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Word2Vec учи од контекстот преку skip-grams (или CBOW). За испит: Skip-gram: center → context; токму тоа Word2Vec го оптимизира."
+  },
+  {
+    "question": "Ако треба да се предвидува континуирана вредност (пр. температура), за каков вид машинско учење станува збор?",
+    "choices": [
+      "Класификација",
+      "Регресија",
+      "Кластеризација",
+      "Учење со поттикнување"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Континуиран нумерички излез = регресија. За испит: Бројка → регресија; категорија/класа → класификација."
+  },
+  {
+    "question": "Ако треба да се одреди припадност во една од неколку дискретни групи (со labels), за каков вид станува збор?",
+    "choices": [
+      "Регресија",
+      "Класификација",
+      "Кластеризација",
+      "Откривање недостатоци"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Предвидување дискретна класа од означени податоци = класификација (supervised). За испит: Класификација бара labels; кластеризацијата групира БЕЗ labels."
+  },
+  {
+    "question": "Ако агент избира акции за да максимизира награда, за каков вид машинско учење станува збор?",
+    "choices": [
+      "Регресија на некоја континуирана нумеричка вредност",
+      "Класификација во неколку дискретни означени класи",
+      "Учење со поттикнување (Reinforcement Learning)",
+      "Намалување на димензиите со техника како PCA"
+    ],
+    "correct": [
+      2
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Агент, акции и награди = reinforcement learning. За испит: RL не користи означени податоци туку учи од сигнал за награда."
+  },
+  {
+    "question": "Ако групираш слични објекти БЕЗ однапред дадени labels, за каков вид станува збор?",
+    "choices": [
+      "Supervised класификација",
+      "Unsupervised кластеризација",
+      "Регресија",
+      "Reinforcement learning"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Групирање без labels = кластеризација (unsupervised). За испит: Кластеризација = групи без labels; класификација = класи со labels."
+  },
+  {
+    "question": "Која е разликата меѓу Supervised и Unsupervised учење?",
+    "choices": [
+      "Supervised има labels; Unsupervised нема labels",
+      "Supervised нема labels; Unsupervised има labels",
+      "Supervised е само за слики; Unsupervised само за текст",
+      "Supervised е секогаш побрз од Unsupervised"
+    ],
+    "correct": [
+      0
+    ],
+    "type": "single",
+    "difficulty": "easy",
+    "explanation": "Зошто: Supervised учи од означени (labeled) податоци; unsupervised бара структура во неозначени. За испит: Класификација/регресија = supervised; кластеризација/PCA/autoencoders = unsupervised."
+  },
+  {
+    "question": "Каков вид учење е карактеристичен за Autoencoderите?",
+    "choices": [
+      "Надгледувано (supervised) со целни класи",
+      "Само-надгледувано (self-supervised)",
+      "Со поттикнување (reinforcement)",
+      "Целосно случајно без цел"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Autoencoder учи да го реконструира сопствениот влез (y=x) — целта е изведена од податоците, без надворешни labels = self-supervised. За испит: Autoencoder = self-supervised/unsupervised."
+  },
+  {
+    "question": "Кој вид машинско учење се користи за откривање невообичаени трансакции (измами)?",
+    "choices": [
+      "Линеарна регресија врз сумите на трансакциите",
+      "Откривање недостатоци (Anomaly Detection)",
+      "Кластеризација строго во точно две групи",
+      "Учење со поттикнување базирано на награди"
+    ],
+    "correct": [
+      1
+    ],
+    "type": "single",
+    "difficulty": "medium",
+    "explanation": "Зошто: Идентификување ретки, отстапувачки примероци = anomaly detection. За испит: Аномалиите се ретки и различни од нормалното однесување; често unsupervised/semi-supervised."
+  }
+]

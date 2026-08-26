@@ -17,3 +17,8 @@ mastery_progress.json
 tainted.json
 wrong_strikes.json
 redemption_strikes.json
+
+# Lecture material - not mine to publish
+*.pdf
+.DS_Store
+._*

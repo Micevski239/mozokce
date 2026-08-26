@@ -22,3 +22,8 @@ redemption_strikes.json
 *.pdf
 .DS_Store
 ._*
+
+# Lecture material - not mine to publish
+*.pdf
+.DS_Store
+._*

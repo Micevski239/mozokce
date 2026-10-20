@@ -1,15 +1,13 @@
 .worktrees/
 .superpowers/
 
-# Local Python/runtime files
 .DS_Store
-__pycache__/
-*.pyc
-.pytest_cache/
-venv/
+._*
 
-# Per-user study progress; keep question banks in git, keep sessions local
-prefs.json
+# Lecture material - not mine to publish (правило од пријателот на GitHub; важи и за PDF-овите во data/files)
+*.pdf
+
+# Лични JSON фајлови за напредок од старата desktop апликација (извор за scripts/migrate-legacy.ts)
 sessions.json
 wrong_cards.json
 mastered_cards.json
@@ -18,12 +16,22 @@ tainted.json
 wrong_strikes.json
 redemption_strikes.json
 
-# Lecture material - not mine to publish
-*.pdf
-.DS_Store
-._*
+# Next.js / Node
+/node_modules
+/.next/
+/out/
+/coverage
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+.env*
+!.env.example
+npm-debug.log*
 
-# Lecture material - not mine to publish
-*.pdf
-.DS_Store
-._*
+# Лични податоци на Мозокче (напредок со прашањата, име): секој ги има свои
+.mozokce/
+# Привремени датотеки при запишување (ако апликацијата падне на средина)
+data/**/*.tmp
+
+# Локални архиви (на пр. верзијата со Supabase)
+backup/

@@ -1,25 +1,33 @@
-# Study Flashcards
+# Мозокче
 
-## Qt Desktop App
+Веб апликација за учење за факултет. За секој предмет на едно место се собираат материјалите (PDF, слики, презентации), пораките од Discord и белешките, а предметите со **мозок** имаат преглед како се полага, теми и прашања за вежбање.
+
+Нема најава, база ни Docker, исто како старата desktop апликација:
+
+- **Заедничко (во репото, го добиваш со `git pull`):** мозоците на предметите (`brains/`), списокот на предмети, календарот и материјалите (`data/`). Што ќе додаде еден во апликацијата, другиот го гледа откако првиот ќе направи `git push`, а вториот `git pull`.
+- **Лично (папката `.mozokce/`, не оди на GitHub):** напредокот со прашањата и твоето име. Секој што ќе го симне репото има свој напредок.
+
+> Материјалите (слајдови, Discord чатови) одат на GitHub. Репото мора да е **приватно**, а колегите се додаваат како collaborators.
+
+## Пуштање
+
+Потребно: [Node.js](https://nodejs.org) 20 или понов.
 
 ```bash
-cd /Users/filipmicevski/Desktop/mozokce
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-python3 qt_app.py
+git clone https://github.com/Micevski239/mozokce.git
+cd mozokce
+npm install
+npm run dev -- -p 3100        # отвори http://localhost:3100
 ```
 
-## Legacy CustomTkinter App
+Кога ќе има нов мозок или нови прашања: `git pull`, па освежи ја страницата. Твојот напредок останува.
+
+Ако ја избришеш папката `.mozokce/`, се губи напредокот. За нов компјутер, копирај ја рачно.
+
+## Проверки
 
 ```bash
-cd /Users/filipmicevski/Desktop/mozokce
-source venv/bin/activate
-python3 app.py
+npm test          # unit тестови (ги проверува и сите brain.json)
+npm run typecheck
+npm run lint
 ```
-
-## Notes
-
-- `qt_app.py` is the new PySide6 desktop UI.
-- `app.py` remains as the older CustomTkinter version.
-- Both versions use the same subject folders and JSON progress files.

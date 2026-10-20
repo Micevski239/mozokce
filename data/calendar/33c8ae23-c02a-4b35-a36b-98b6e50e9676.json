@@ -1,0 +1,14 @@
+{
+  "id": "33c8ae23-c02a-4b35-a36b-98b6e50e9676",
+  "subject_id": "ikt",
+  "title": "Предавања",
+  "kind": "lecture",
+  "date": "2026-10-15",
+  "start_time": "10:00",
+  "end_time": "11:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [],
+  "location": "Амфитеатар ФИНКИ (А1)",
+  "notes": "Марјан Гушев · насока 4г-ПИТ-1 · од распоредот на ФИНКИ"
+}

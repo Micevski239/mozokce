@@ -1,0 +1,14 @@
+{
+  "id": "6d4953b7-d5b1-447f-9ee1-33faa7baa2ce",
+  "subject_id": "pvi",
+  "title": "Предавања",
+  "kind": "lecture",
+  "date": "2026-10-13",
+  "start_time": "12:00",
+  "end_time": "13:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [],
+  "location": "315 ТМФ",
+  "notes": "Катарина Тројачанец Динева · насока 4г-ПИТ-1 · од распоредот на ФИНКИ"
+}

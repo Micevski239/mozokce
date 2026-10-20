@@ -1,0 +1,14 @@
+{
+  "id": "bf414fdd-d3d0-4fde-a8c7-3c48796e99a7",
+  "subject_id": "mis",
+  "title": "Предавања",
+  "kind": "lecture",
+  "date": "2026-10-16",
+  "start_time": "12:00",
+  "end_time": "13:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [],
+  "location": "223",
+  "notes": "Ивица Димитровски · насока 4г-ПИТ-1 · од распоредот на ФИНКИ"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "ae18c28b-aa78-4245-beea-58fa9866ece8",
+  "subject_id": "dos",
+  "title": "Предавања",
+  "kind": "lecture",
+  "date": "2026-10-12",
+  "start_time": "11:00",
+  "end_time": "12:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [],
+  "location": "Б1",
+  "notes": "Гоце Арменски · насока 3г-ИЕ · од распоредот на ФИНКИ"
+}

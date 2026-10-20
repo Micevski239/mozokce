@@ -1,0 +1,14 @@
+{
+  "id": "5d1346ba-5bcf-4d16-b942-a6b9451c1744",
+  "subject_id": "dos",
+  "title": "Аудиториски вежби",
+  "kind": "exercise",
+  "date": "2026-10-12",
+  "start_time": "13:00",
+  "end_time": "13:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [],
+  "location": "Б1",
+  "notes": "Демонстратор 4 · насока 3г-ИЕ · од распоредот на ФИНКИ"
+}

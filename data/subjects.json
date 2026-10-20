@@ -1,0 +1,58 @@
+[
+  {
+    "id": "dos",
+    "name": "Дизајн на образовен софтвер",
+    "code": "ДОС",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  },
+  {
+    "id": "ikt",
+    "name": "Иновации во ИКТ",
+    "code": "ИКТ",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  },
+  {
+    "id": "is",
+    "name": "Интегрирани системи",
+    "code": "ИС",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  },
+  {
+    "id": "ke",
+    "name": "Компјутерска етика",
+    "code": "КЕ",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  },
+  {
+    "id": "mis",
+    "name": "Мобилни информациски системи",
+    "code": "МИС",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  },
+  {
+    "id": "advdb",
+    "name": "Напредни бази на податоци",
+    "code": "AdvDB",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  },
+  {
+    "id": "pvi",
+    "name": "Програмирање на видео игри",
+    "code": "ПВИ",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  },
+  {
+    "id": "tp",
+    "name": "Тимски проект",
+    "code": "ТП",
+    "archived": false,
+    "created_at": "2026-10-19T00:00:00.000Z"
+  }
+]

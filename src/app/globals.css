@@ -1,0 +1,477 @@
+@import "tailwindcss";
+
+/* Мозокче: „течно стакло“ дизајн, преземен од Coachfio hub-от.
+   Секој регион е свој заоблен стаклен панел над анимирана „небесна“ позадина.
+   Правила:
+     - Синото е единствениот акцент; успех/грешка се семантички бои, не акцент.
+     - Стакло никогаш врз стакло: работите ВО панел се обични „fill“ плочи.
+     - Hover менува рамка или fill; ништо не скока. */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root {
+  /* ARCTIC (светла) */
+  --ground: #e9eef7;
+  --surface: #f4f8fe;
+  --ink: #10182a;
+  --ink-2: #36445e;
+  --ink-3: #44536f;
+  --line: rgba(22, 40, 72, 0.1);
+  --line-2: rgba(22, 40, 72, 0.18);
+
+  --accent: #2f7df6;
+  --accent-2: #2361c4;
+  --accent-soft: rgba(47, 125, 246, 0.12);
+  --accent-line: rgba(47, 125, 246, 0.42);
+  --acc-glass: color-mix(in oklab, var(--accent) 26%, rgba(255, 255, 255, 0.5));
+  --acc-glass-hover: color-mix(in oklab, var(--accent) 36%, rgba(255, 255, 255, 0.5));
+  --acc-border: rgba(255, 255, 255, 0.65);
+  --acc-ink: #143a7a;
+
+  --success: #10864f;
+  --danger: #c0392f;
+  --warn: #9a6b12;
+  --success-soft: color-mix(in oklab, var(--success) 14%, transparent);
+  --danger-soft: color-mix(in oklab, var(--danger) 12%, transparent);
+  --warn-soft: color-mix(in oklab, var(--warn) 14%, transparent);
+
+  --lq-bg: rgba(247, 251, 255, 0.28);
+  --lq-bg-strong: rgba(244, 248, 254, 0.86);
+  --lq-border: rgba(255, 255, 255, 0.6);
+  --lq-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(255, 255, 255, 0.3),
+    inset 1px 0 0 rgba(255, 255, 255, 0.45), inset -1px 0 0 rgba(255, 255, 255, 0.45),
+    0 18px 48px rgba(24, 44, 86, 0.15);
+  --fill-bg: rgba(250, 253, 255, 0.3);
+  --fill-border: rgba(255, 255, 255, 0.7);
+  --pill-hover: rgba(250, 253, 255, 0.38);
+  --pill-on: rgba(255, 255, 255, 0.46);
+
+  --sky-1: #123a8c;
+  --sky-2: #2f7df6;
+  --sky-3: #67c4e8;
+  --sky-4: #0b1e3f;
+  --sky-o: 0.4;
+  --sky-o-warm: 0.45;
+
+  --r: 26px;
+  --gap: 18px;
+  --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  color-scheme: light;
+}
+
+/* NIGHT (темна): истиот систем, само материјалот и мастилото се менуваат. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #070d1a;
+    --surface: #121b2e;
+    --ink: #f0f5fd;
+    --ink-2: #b3bfd6;
+    --ink-3: #9aaac6;
+    --line: rgba(190, 215, 255, 0.09);
+    --line-2: rgba(190, 215, 255, 0.17);
+    --accent-2: #5c9dff;
+    --acc-glass: color-mix(in oklab, var(--accent) 32%, rgba(7, 13, 26, 0.34));
+    --acc-glass-hover: color-mix(in oklab, var(--accent) 44%, rgba(7, 13, 26, 0.3));
+    --acc-border: rgba(255, 255, 255, 0.3);
+    --acc-ink: #eaf1ff;
+    --success: #2edb8f;
+    --danger: #ff7a7a;
+    --warn: #e8b04b;
+    --lq-bg: rgba(11, 22, 42, 0.64);
+    --lq-bg-strong: rgba(12, 21, 38, 0.94);
+    --lq-border: rgba(190, 215, 255, 0.15);
+    --lq-shadow:
+      inset 0 1px 0 rgba(220, 235, 255, 0.28), inset 0 -1px 0 rgba(220, 235, 255, 0.06),
+      inset 1px 0 0 rgba(220, 235, 255, 0.09), inset -1px 0 0 rgba(220, 235, 255, 0.09),
+      0 18px 48px rgba(2, 8, 22, 0.38);
+    --fill-bg: rgba(20, 33, 58, 0.72);
+    --fill-border: rgba(190, 220, 255, 0.12);
+    --pill-hover: rgba(30, 46, 78, 0.8);
+    --pill-on: rgba(42, 60, 96, 0.86);
+    --sky-o: 0.55;
+    --sky-o-warm: 0.38;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #070d1a;
+  --surface: #121b2e;
+  --ink: #f0f5fd;
+  --ink-2: #b3bfd6;
+  --ink-3: #9aaac6;
+  --line: rgba(190, 215, 255, 0.09);
+  --line-2: rgba(190, 215, 255, 0.17);
+  --accent-2: #5c9dff;
+  --acc-glass: color-mix(in oklab, var(--accent) 32%, rgba(7, 13, 26, 0.34));
+  --acc-glass-hover: color-mix(in oklab, var(--accent) 44%, rgba(7, 13, 26, 0.3));
+  --acc-border: rgba(255, 255, 255, 0.3);
+  --acc-ink: #eaf1ff;
+  --success: #2edb8f;
+  --danger: #ff7a7a;
+  --warn: #e8b04b;
+  --lq-bg: rgba(11, 22, 42, 0.64);
+  --lq-bg-strong: rgba(12, 21, 38, 0.94);
+  --lq-border: rgba(190, 215, 255, 0.15);
+  --lq-shadow:
+    inset 0 1px 0 rgba(220, 235, 255, 0.28), inset 0 -1px 0 rgba(220, 235, 255, 0.06),
+    inset 1px 0 0 rgba(220, 235, 255, 0.09), inset -1px 0 0 rgba(220, 235, 255, 0.09),
+    0 18px 48px rgba(2, 8, 22, 0.38);
+  --fill-bg: rgba(20, 33, 58, 0.72);
+  --fill-border: rgba(190, 220, 255, 0.12);
+  --pill-hover: rgba(30, 46, 78, 0.8);
+  --pill-on: rgba(42, 60, 96, 0.86);
+  --sky-o: 0.55;
+  --sky-o-warm: 0.38;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-soft: var(--accent-soft);
+  --color-acc-ink: var(--acc-ink);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-fill: var(--fill-bg);
+  --font-sans: var(--font-onest);
+  --font-mono: var(--font-jetbrains);
+}
+
+/* Позадината е само на html: body со своја позадина би ја покрил .sky (z-index: -1). */
+html {
+  background: var(--ground);
+}
+body {
+  color: var(--ink);
+  overflow-x: hidden;
+}
+::selection {
+  background: var(--accent-soft);
+}
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* ---- анимирана позадина ------------------------------------------------ */
+.sky {
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  filter: blur(70px);
+  pointer-events: none;
+}
+.sky i {
+  position: absolute;
+  border-radius: 50%;
+  opacity: var(--sky-o);
+}
+.sky i:nth-child(1) {
+  width: 46vw; height: 46vw; left: 4%; top: 2%;
+  background: var(--sky-1);
+  animation: drift1 26s ease-in-out infinite alternate;
+}
+.sky i:nth-child(2) {
+  width: 38vw; height: 38vw; right: 2%; top: 12%;
+  background: var(--sky-2);
+  animation: drift2 32s ease-in-out infinite alternate;
+}
+.sky i:nth-child(3) {
+  width: 42vw; height: 42vw; left: 28%; bottom: -6%;
+  background: var(--sky-3);
+  opacity: var(--sky-o-warm);
+  animation: drift3 38s ease-in-out infinite alternate;
+}
+.sky i:nth-child(4) {
+  width: 30vw; height: 30vw; right: 24%; bottom: 10%;
+  background: var(--sky-4);
+  opacity: calc(var(--sky-o) - 0.13);
+  animation: drift1 44s ease-in-out infinite alternate-reverse;
+}
+@keyframes drift1 { to { transform: translate(9vw, 7vh) scale(1.15); } }
+@keyframes drift2 { to { transform: translate(-8vw, 9vh) scale(0.9); } }
+@keyframes drift3 { to { transform: translate(6vw, -8vh) scale(1.12); } }
+@media (prefers-reduced-motion: reduce) {
+  .sky i { animation: none; }
+}
+
+@layer components {
+  /* Стаклен панел: секој регион на страницата. */
+  .glass {
+    border-radius: var(--r);
+    background: var(--lq-bg);
+    border: 1px solid var(--lq-border);
+    box-shadow: var(--lq-shadow);
+    -webkit-backdrop-filter: blur(28px) saturate(180%);
+    backdrop-filter: blur(28px) saturate(180%);
+  }
+  /* Непроѕирно стакло за модали и мени, каде текстот мора да се чита над сè. */
+  .glass-strong {
+    border-radius: var(--r);
+    background: var(--lq-bg-strong);
+    border: 1px solid var(--lq-border);
+    box-shadow: var(--lq-shadow);
+    -webkit-backdrop-filter: blur(30px) saturate(185%);
+    backdrop-filter: blur(30px) saturate(185%);
+  }
+  /* Плоча внатре во панел (никогаш стакло врз стакло). */
+  .fill {
+    border-radius: 18px;
+    background: var(--fill-bg);
+    border: 1px solid var(--fill-border);
+  }
+  a.fill,
+  button.fill {
+    transition: background-color 0.25s ease, border-color 0.2s ease;
+  }
+  a.fill:hover,
+  button.fill:hover:not(:disabled) {
+    background: var(--pill-hover);
+    border-color: var(--accent-line);
+  }
+
+  /* Мала mono етикета над наслов: „● ПРОДОЛЖИ“. */
+  .kicker {
+    font-family: var(--font-jetbrains);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-family: var(--font-jetbrains);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: var(--fill-bg);
+    border: 1px solid var(--fill-border);
+    white-space: nowrap;
+  }
+  .chip-accent {
+    color: var(--acc-ink);
+    background: var(--acc-glass);
+    border-color: var(--acc-border);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 8px 18px;
+    border-radius: 999px;
+    font-family: var(--font-jetbrains);
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    background: var(--fill-bg);
+    border: 1px solid var(--fill-border);
+    transition: background-color 0.3s var(--spring), border-color 0.2s ease, color 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn:hover:not(:disabled) {
+    background: var(--pill-hover);
+    border-color: var(--accent-line);
+  }
+  .btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+  .btn-primary {
+    color: var(--acc-ink);
+    background: var(--acc-glass);
+    border-color: var(--acc-border);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 8px 24px color-mix(in oklab, var(--accent) 22%, transparent);
+  }
+  .btn-primary:hover:not(:disabled) {
+    background: var(--acc-glass-hover);
+    border-color: var(--acc-border);
+  }
+  .btn-ghost {
+    background: transparent;
+    border-color: transparent;
+    color: var(--ink-2);
+  }
+  .btn-ghost:hover:not(:disabled) {
+    background: var(--pill-hover);
+    border-color: transparent;
+    color: var(--ink);
+  }
+  .btn-danger {
+    color: var(--danger);
+    background: var(--danger-soft);
+    border-color: color-mix(in oklab, var(--danger) 30%, transparent);
+  }
+  .btn-danger:hover:not(:disabled) {
+    background: color-mix(in oklab, var(--danger) 18%, transparent);
+    border-color: var(--danger);
+  }
+  .btn-lg {
+    min-height: 52px;
+    padding: 12px 26px;
+    font-size: 15px;
+  }
+  .btn-icon {
+    min-height: 40px;
+    width: 40px;
+    padding: 0;
+  }
+
+  .input {
+    width: 100%;
+    min-height: 42px;
+    padding: 9px 14px;
+    border-radius: 14px;
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--fill-bg);
+    border: 1px solid var(--fill-border);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .input::placeholder {
+    color: var(--ink-3);
+    opacity: 0.8;
+  }
+  .input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+
+  /* Буква за одговор, како копче на тастатура. */
+  .keycap {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+    font-family: var(--font-jetbrains);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    background: var(--pill-on);
+    border: 1px solid var(--fill-border);
+    box-shadow: inset 0 -2px 0 var(--line);
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    font-family: var(--font-jetbrains);
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-2);
+    transition: background-color 0.3s var(--spring), color 0.2s ease;
+  }
+  .nav-link:hover {
+    color: var(--ink);
+    background: var(--pill-hover);
+  }
+  .nav-link[aria-current="page"] {
+    color: var(--ink);
+    background: var(--pill-on);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  .display {
+    font-family: var(--font-jetbrains);
+    letter-spacing: -0.03em;
+  }
+
+  /* Хоризонтален скрол без видлива лента (јазичиња на телефон). */
+  .scroll-x {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .scroll-x::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Мрежа што сама го бира бројот на колони според ширината (без фиксни breakpoints). */
+  .auto-grid {
+    display: grid;
+    gap: 12px;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--min, 17rem)), 1fr));
+  }
+}
+
+/* Долната навигација на телефон: над безбедниот простор на iPhone. */
+.tabbar {
+  bottom: max(12px, env(safe-area-inset-bottom));
+}
+
+/* Икона на прекинувачот за тема: во светла се нуди „темна“ (месечина), во темна „светла“ (сонце). */
+.theme-to-light {
+  display: none;
+}
+:root[data-theme="dark"] .theme-to-dark {
+  display: none;
+}
+:root[data-theme="dark"] .theme-to-light {
+  display: block;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-to-dark {
+    display: none;
+  }
+  :root:not([data-theme="light"]) .theme-to-light {
+    display: block;
+  }
+}
+
+/* Скелет при вчитување на страница (loading.tsx): плочи во бојата на мастилото, со благ сјај. */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: color-mix(in oklab, var(--ink) 7%, transparent);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, color-mix(in oklab, var(--surface) 55%, transparent), transparent);
+  animation: skeleton-sheen 1.3s ease-in-out infinite;
+}
+@keyframes skeleton-sheen {
+  to {
+    transform: translateX(100%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton::after {
+    animation: none;
+  }
+}

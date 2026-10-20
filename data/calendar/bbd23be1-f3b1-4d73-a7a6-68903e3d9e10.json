@@ -1,0 +1,14 @@
+{
+  "id": "bbd23be1-f3b1-4d73-a7a6-68903e3d9e10",
+  "subject_id": "ke",
+  "title": "Предавања",
+  "kind": "lecture",
+  "date": "2026-10-15",
+  "start_time": "14:00",
+  "end_time": "17:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [],
+  "location": "Амфитеатар ФИНКИ (А1)",
+  "notes": "Катерина Здравкова, Бојан Илијоски · насока 3г-ИЕ · од распоредот на ФИНКИ"
+}

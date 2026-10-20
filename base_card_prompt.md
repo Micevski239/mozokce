@@ -6,7 +6,7 @@ Copy this entire file into Claude.ai. Fill in the **[FILL IN]** section at the b
 
 ## Your Task
 
-Generate a JSON array of flashcard objects for the subject specified below. Output ONLY the raw JSON array — no explanation, no markdown fences, no extra text. The output must be valid JSON that can be pasted directly into `cards.json`.
+Generate a JSON array of flashcard objects for the subject specified below. Output ONLY the raw JSON array — no explanation, no markdown fences, no extra text. The output must be valid JSON that can be pasted directly into the app (deck → „Увези картички“).
 
 ---
 

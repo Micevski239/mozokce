@@ -1,0 +1,14 @@
+{
+  "id": "daac483f-ce49-4715-9b7a-b375887a10b2",
+  "subject_id": "pvi",
+  "title": "Аудиториски вежби",
+  "kind": "exercise",
+  "date": "2026-10-15",
+  "start_time": "17:00",
+  "end_time": "17:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [],
+  "location": "ЛАБ 117",
+  "notes": "Игор Гошев · насока 4г-ПИТ-1 · од распоредот на ФИНКИ"
+}

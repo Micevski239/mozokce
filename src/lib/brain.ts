@@ -49,6 +49,10 @@ export interface AssessmentPart {
   points: number | null;
   /** Минимум процент од поените на делот за да се смета за положен. */
   min_percent: number | null;
+  /** Минимум во поени, кога правилата го даваат така (на пр. „минимум 40 поени“); има предност пред процентот. */
+  min_points?: number | null;
+  /** Бонус: не влегува во вкупниот збир (на пр. дополнителни домашни). */
+  bonus?: boolean;
   summary: string;
   /** Кратки факти: „Каде: ispiti.finki.ukim.mk“, „Презентација: 3 минути по студент“… */
   facts: { label: string; value: string }[];
@@ -63,8 +67,10 @@ export interface AssessmentPart {
 
 export interface Assessment {
   summary: string;
-  /** Вкупно поени и минимум процент за положување на предметот; null ако не знаеме. */
-  total: { points: number; min_percent: number } | null;
+  /** Вкупно поени и минимум за положување (процент и/или поени); null ако не знаеме. */
+  total: { points: number; min_percent: number | null; min_points?: number | null } | null;
+  /** Скала за оценки, на пр. 126–150 → 6; `to: null` = „и повеќе“. */
+  grade_scale?: { from: number; to: number | null; grade: number }[];
   parts: AssessmentPart[];
   /** Потврдено од официјален извор (courses, професор); false = само од колеги. */
   confirmed: boolean;
@@ -243,6 +249,8 @@ export function parseBrain(raw: unknown): Brain {
       name: str(o.name, `${p}.name`),
       points: o.points === null ? null : int(o.points, `${p}.points`, 0, 1000),
       min_percent: o.min_percent === null ? null : int(o.min_percent, `${p}.min_percent`, 0, 100),
+      min_points: o.min_points == null ? null : int(o.min_points, `${p}.min_points`, 0, 1000),
+      bonus: o.bonus === undefined ? false : o.bonus === true,
       summary: str(o.summary, `${p}.summary`),
       facts: facts(o.facts, `${p}.facts`),
       steps: arr(o.steps, `${p}.steps`).map((st, j) => {
@@ -262,11 +270,27 @@ export function parseBrain(raw: unknown): Brain {
   let total: Assessment["total"] = null;
   if (a.total !== null) {
     const t = obj(a.total, "assessment.total");
-    total = { points: int(t.points, "assessment.total.points", 1, 1000), min_percent: int(t.min_percent, "assessment.total.min_percent", 0, 100) };
+    total = {
+      points: int(t.points, "assessment.total.points", 1, 1000),
+      min_percent: t.min_percent == null ? null : int(t.min_percent, "assessment.total.min_percent", 0, 100),
+      min_points: t.min_points == null ? null : int(t.min_points, "assessment.total.min_points", 0, 1000),
+    };
   }
+  const grade_scale =
+    a.grade_scale === undefined
+      ? undefined
+      : arr(a.grade_scale, "assessment.grade_scale").map((g, i) => {
+          const o = obj(g, `assessment.grade_scale[${i}]`);
+          return {
+            from: int(o.from, `assessment.grade_scale[${i}].from`, 0, 1000),
+            to: o.to === null ? null : int(o.to, `assessment.grade_scale[${i}].to`, 0, 1000),
+            grade: int(o.grade, `assessment.grade_scale[${i}].grade`, 5, 10),
+          };
+        });
   const assessment: Assessment = {
     summary: str(a.summary, "assessment.summary"),
     total,
+    grade_scale,
     parts,
     confirmed: a.confirmed,
     note: str(a.note, "assessment.note", { optional: true }),
@@ -343,8 +367,9 @@ export function parseBrain(raw: unknown): Brain {
   };
 }
 
-/** Минимум поени за дел: 30% од 70 → 21. */
-export function minPoints(points: number | null, minPercent: number | null): number | null {
+/** Минимум поени за дел: експлицитниот минимум во поени, или процентот од поените (30% од 70 → 21). */
+export function minPoints(points: number | null, minPercent: number | null, explicit?: number | null): number | null {
+  if (explicit != null) return explicit;
   if (points === null || minPercent === null) return null;
   return Math.ceil((points * minPercent) / 100);
 }

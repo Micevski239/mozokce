@@ -1,0 +1,16 @@
+{
+  "id": "8e3c5a7c-eea7-4791-8563-1cfb4240d193",
+  "subject_id": "pvi",
+  "title": "Аудиториски вежби",
+  "kind": "exercise",
+  "date": "2026-10-20",
+  "start_time": "18:00",
+  "end_time": "18:45",
+  "repeat_weekly": true,
+  "repeat_until": "2027-01-15",
+  "skip_dates": [
+    "2026-11-17"
+  ],
+  "location": "315 ТМФ",
+  "notes": "Игор Гошев · насока 4г-ПИТ-1 · од распоредот на ФИНКИ"
+}

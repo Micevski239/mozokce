@@ -1,0 +1,14 @@
+{
+  "id": "d2a17d3d-7b24-4ac2-a98f-d8e806a8e06c",
+  "subject_id": "ke",
+  "title": "Прв колоквиум",
+  "kind": "kolokvium",
+  "date": "2026-11-20",
+  "start_time": null,
+  "end_time": null,
+  "repeat_weekly": false,
+  "repeat_until": null,
+  "skip_dates": [],
+  "location": null,
+  "notes": "Датум од предлог-распоредот за првите колоквиуми; часот и салата уште не се објавени. Веројатно првиот електронски тест (15 поени), во лабораториите на ФИНКИ."
+}

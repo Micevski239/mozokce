@@ -1,0 +1,16 @@
+{
+  "id": "259c935e-bef9-4b53-93bf-69496a71a45c",
+  "subject_id": "pvi",
+  "kind": "note",
+  "title": "Книга и изворен код на игрите",
+  "body": "Материјалот лани беше според книгата „Making Games with Python & Pygame“ (Al Sweigart): https://inventwithpython.com/pygame/ — скролај надолу, ги има сите поглавја.\n\nКод на игрите од книгата:\n- Star Pusher: http://invpy.com/starpusher.py · нивоа: http://invpy.com/starPusherLevels.txt · слики: http://invpy.com/starPusherImages.zip\n- Wormy: https://inventwithpython.com/wormy.py\n- Tetromino: https://inventwithpython.com/tetrominoforidiots.py\n- Squirrel Eat Squirrel: https://inventwithpython.com/squirrel.py\n\nРешенија од колега на GitHub: https://github.com/Delemangi/PnVI",
+  "storage_path": null,
+  "file_name": null,
+  "mime_type": null,
+  "size_bytes": null,
+  "origin": "other",
+  "source_date": "2026-10-10",
+  "created_by": "ilijaatanasov04",
+  "created_at": "2026-10-30T23:32:17.004129Z",
+  "pinned": false
+}

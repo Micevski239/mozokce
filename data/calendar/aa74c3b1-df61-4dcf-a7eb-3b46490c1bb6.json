@@ -1,0 +1,14 @@
+{
+  "id": "aa74c3b1-df61-4dcf-a7eb-3b46490c1bb6",
+  "subject_id": "pvi",
+  "title": "Прв колоквиум",
+  "kind": "kolokvium",
+  "date": "2026-11-16",
+  "start_time": null,
+  "end_time": null,
+  "repeat_weekly": false,
+  "repeat_until": null,
+  "skip_dates": [],
+  "location": null,
+  "notes": "Датум од предлог-распоредот за првите колоквиуми; часот и салата уште не се објавени."
+}

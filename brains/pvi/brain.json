@@ -1,0 +1,4300 @@
+{
+  "schema_version": 1,
+  "id": "pvi",
+  "subject": {
+    "code": "ПВИ",
+    "name": "Програмирање на видео игри"
+  },
+  "updated": "2026-11-11",
+  "sources": [
+    {
+      "id": "sodrzina",
+      "type": "courses",
+      "title": "Courses: Содржина и правила на предметот 2026/27",
+      "note": "FINKI-2026-2027.PVISE.00.Sodrzina.pdf: оценување, минимуми, скала, услов за потпис, проект и тестови за самоевалуација. Споредено со 2025/26: ново е условот од 70% присуство на лабораториски и литературата (Unity, Godot)."
+    },
+    {
+      "id": "predavanja",
+      "type": "courses",
+      "title": "Courses: слајдови и код за игрите",
+      "note": "Memory Puzzle, Slide Puzzle, Simulate, Wormy, Tetromino и Squirrel Eat Squirrel: слајдови од 2018/19 до 2025/26 и кодот (memorypuzzle.py, SlidePuzzle.py, simulate.py). Игрите се од книгата „Making Games with Python & Pygame“ од Al Sweigart."
+    },
+    {
+      "id": "kniga",
+      "type": "courses",
+      "title": "Книгата „Making Games with Python & Pygame“ и кодот на invpy.com",
+      "note": "Линковите се на courses (starPusher.PNG). За Star Pusher нема слајдови, па белешките се од starpusher.py од книгата."
+    },
+    {
+      "id": "voved-pygame",
+      "type": "courses",
+      "title": "Courses: Вовед во Python и pygame",
+      "note": "PythonPygame.pdf, catanimation.py и drawing.py, објавени на 28.10.2026."
+    },
+    {
+      "id": "game-design",
+      "type": "courses",
+      "title": "Courses: Game design, приказна и ликови (2026/27)",
+      "note": "Ново предавање за 2026/27."
+    },
+    {
+      "id": "aud2",
+      "type": "courses",
+      "title": "Courses: Аудиториски вежби 2, Godot (2026/27)",
+      "note": "„Getting Started with Godot and Building a 2D Scene“, Игор Гошев."
+    },
+    {
+      "id": "godot4",
+      "type": "courses",
+      "title": "Courses: Programming Game Logic and Player Movement (Igor Goshev, 2026/27)",
+      "note": "04-gdscript-player-movement.pdf: GDScript, input, движење, судири, камера, killzone, платформи, непријател со RayCast2D, collision layers и masks."
+    },
+    {
+      "id": "godot5",
+      "type": "courses",
+      "title": "Courses: Collectables, Signals, UI and Menus (Igor Goshev, 2026/27)",
+      "note": "05-collectables-signals-ui-menus.pdf: berry како Area2D, custom signals, HUD, Theme Overrides, главно мени, endzone, пауза и Process Mode, музика."
+    },
+    {
+      "id": "voved",
+      "type": "courses",
+      "title": "Courses: Вовед во предметот (историја на видео игрите)",
+      "note": "Исто во 2025/26 и 2026/27."
+    },
+    {
+      "id": "primeri",
+      "type": "past_exam",
+      "title": "Примери за колоквиумски задачи (courses)",
+      "note": "Судоку и Word Finder со барања, почетен код (sudoku.py, wordFinder.py, collectApples.py) и решение Solved_ApplesCollect.py. Од папката што колега ја споделил на Discord."
+    },
+    {
+      "id": "trap-maze",
+      "type": "past_exam",
+      "title": "Trap Maze: задача со барања и кратки прашања (courses)",
+      "note": "Се совпаѓа со описот на првиот колоквиум 2025 од Discord."
+    },
+    {
+      "id": "selfeval",
+      "type": "past_exam",
+      "title": "Решени тестови за самоевалуација (слики од Moodle, 2021–2024)",
+      "note": "Тестовите за седумте игри. Точните одговори се од повратната информација на Moodle („The correct answer is…“). Тестовите на сликите се на англиски, прашањата се преведени."
+    },
+    {
+      "id": "chat",
+      "type": "discord_chat",
+      "title": "Discord: канал за ПнВИ (2023–2026)",
+      "note": "Искуства од колоквиуми и тестови. Пораки од различни години."
+    },
+    {
+      "id": "claude",
+      "type": "claude",
+      "title": "Дополнето од Claude",
+      "note": "Преводите, прашањата изведени од кодот на игрите и колоквиумските задачи, понудените погрешни одговори каде што сликите ги немаат, објаснувањата и пресметките."
+    }
+  ],
+  "assessment": {
+    "summary": "Тестови за самоевалуација, два парцијални (или еден испит), лабораториски вежби и проект, плус бонус домашни. За положување треба барем 126 од 250 поени, а на парцијалите/испитот барем 40.",
+    "total": {
+      "points": 250,
+      "min_percent": null,
+      "min_points": 126
+    },
+    "grade_scale": [
+      {
+        "from": 126,
+        "to": 150,
+        "grade": 6
+      },
+      {
+        "from": 151,
+        "to": 175,
+        "grade": 7
+      },
+      {
+        "from": 176,
+        "to": 200,
+        "grade": 8
+      },
+      {
+        "from": 201,
+        "to": 225,
+        "grade": 9
+      },
+      {
+        "from": 226,
+        "to": null,
+        "grade": 10
+      }
+    ],
+    "parts": [
+      {
+        "id": "samoevaluacija",
+        "name": "Тестови за самоевалуација",
+        "points": 49,
+        "min_percent": null,
+        "summary": "7 тестови по 7 поени, по еден за секоја реализирана тема, на courses (Moodle).",
+        "facts": [
+          {
+            "label": "Број",
+            "value": "7 × 7 поени"
+          },
+          {
+            "label": "Траење",
+            "value": "10 минути"
+          },
+          {
+            "label": "Обиди",
+            "value": "само еднаш"
+          },
+          {
+            "label": "Рок",
+            "value": "2 недели од поставувањето (или до датумот на активноста)"
+          },
+          {
+            "label": "Прегледува",
+            "value": "автоматски Moodle"
+          }
+        ],
+        "steps": [],
+        "rules": [
+          "Секој тест се решава само еднаш, во рок од две недели од поставувањето. Ако го пропуштиш рокот, ги губиш поените."
+        ],
+        "from_students": [
+          {
+            "text": "Погрешен одговор носи негативни поени: во тестот за Memory Puzzle погрешен одговор дал −0.50 од 2.",
+            "sources": [
+              "selfeval"
+            ]
+          },
+          {
+            "text": "Претходните години имало по еден тест за секоја игра: Memory Puzzle, Slide Puzzle, Simulate, Wormy, Tetromino, Squirrel, Star Pusher.",
+            "sources": [
+              "selfeval"
+            ]
+          },
+          {
+            "text": "Тестовите од 2021–2023 се на англиски. Одговорите што колега ги цитира во 2025 се на македонски, па јазикот веројатно се сменил.",
+            "sources": [
+              "selfeval",
+              "chat"
+            ]
+          },
+          {
+            "text": "Покрај прашањата на заокружување има и прашања што се оценуваат рачно (на пр. „напиши го `L_SHAPE_TEMPLATE`“) и задача за поправка на багирана верзија од invpy.com/buggy.",
+            "sources": [
+              "selfeval"
+            ]
+          }
+        ],
+        "sources": [
+          "sodrzina"
+        ]
+      },
+      {
+        "id": "parcijali",
+        "name": "Парцијални испити (или испит)",
+        "points": 100,
+        "min_percent": null,
+        "min_points": 40,
+        "summary": "Два парцијални по 50 поени, или наместо нив еден испит од 100. Задачи со едноставни игри.",
+        "facts": [
+          {
+            "label": "Прв парцијален",
+            "value": "50 поени"
+          },
+          {
+            "label": "Втор парцијален",
+            "value": "50 поени"
+          },
+          {
+            "label": "Наместо двата",
+            "value": "испит, 100 поени"
+          },
+          {
+            "label": "Форма",
+            "value": "„Задача/и со едноставни игри“"
+          },
+          {
+            "label": "Предаваш",
+            "value": ".py со коментари кај секоја измена + кратко објаснување за секое барање"
+          }
+        ],
+        "steps": [],
+        "rules": [
+          "Потребни се минимум 40 поени за положување. Слајдот не кажува дали тоа е од збирот на двата парцијални (100) или по парцијал."
+        ],
+        "from_students": [
+          {
+            "text": "Колоквиумот: добиваш почетен pygame код и барања за дополнување (45 поени), плус 5 кратки прашања за дадениот код по 1 поен.",
+            "sources": [
+              "chat",
+              "trap-maze"
+            ]
+          },
+          {
+            "text": "2024, прв колоквиум, втор термин: Word Finder. Маргини, зборовите над мрежата, селекција само во дозволените насоки и боење на полињата на најдениот збор.",
+            "sources": [
+              "chat",
+              "primeri"
+            ]
+          },
+          {
+            "text": "2025, прв колоквиум: Trap Maze. Движење со стрелките без излегување од мрежата, стапици видливи првите 4 секунди, старт и цел, бројач на чекори, 3 животи, R за рестарт, ESC за излез.",
+            "sources": [
+              "chat",
+              "trap-maze"
+            ]
+          }
+        ],
+        "sources": [
+          "sodrzina",
+          "primeri"
+        ]
+      },
+      {
+        "id": "lab",
+        "name": "Лабораториски вежби",
+        "points": 50,
+        "min_percent": null,
+        "summary": "Се решаваат во лабораторија секоја недела.",
+        "facts": [
+          {
+            "label": "Кога",
+            "value": "секоја недела"
+          },
+          {
+            "label": "Услов за потпис",
+            "value": "присуство на барем 70%"
+          }
+        ],
+        "steps": [],
+        "rules": [
+          "Без присуство на најмалку 70% од лабораториските вежби нема потпис ни право на испит. Ова е ново за 2026/27; лани немаше услов."
+        ],
+        "from_students": [],
+        "sources": [
+          "sodrzina"
+        ]
+      },
+      {
+        "id": "proekt",
+        "name": "Проектна задача",
+        "points": 51,
+        "min_percent": null,
+        "summary": "Практична игра, договорена со професорката и асистентот.",
+        "facts": [
+          {
+            "label": "Што",
+            "value": "практична реализација на игра"
+          },
+          {
+            "label": "Предавање",
+            "value": "само еднаш, во која било сесија"
+          },
+          {
+            "label": "Може и",
+            "value": "PyWeek, Global Game Jam или слично"
+          }
+        ],
+        "steps": [
+          {
+            "title": "Пријави ја идејата",
+            "detail": "Проектот мора да се пријави и договори со професорката и асистентот.",
+            "when": "пред да почнеш со работа"
+          },
+          {
+            "title": "Изработка",
+            "detail": "Предавањето за game design дава шаблон: опис на една страница, лик и скица на ниво."
+          },
+          {
+            "title": "Предавање",
+            "detail": "Само еднаш.",
+            "when": "во која било сесија"
+          }
+        ],
+        "rules": [
+          "Проектот мора да се пријави пред да почнеш со работа.",
+          "Се предава само еднаш, во која и да е сесија."
+        ],
+        "from_students": [],
+        "sources": [
+          "sodrzina"
+        ]
+      },
+      {
+        "id": "domasni",
+        "name": "Дополнителни домашни",
+        "points": 30,
+        "min_percent": null,
+        "bonus": true,
+        "summary": "Најмногу 2 домашни по 15 поени, бонус над 250.",
+        "facts": [
+          {
+            "label": "Број",
+            "value": "најмногу 2"
+          },
+          {
+            "label": "Поени",
+            "value": "15 по домашна"
+          }
+        ],
+        "steps": [],
+        "rules": [],
+        "from_students": [],
+        "sources": [
+          "sodrzina"
+        ]
+      }
+    ],
+    "confirmed": true,
+    "note": "Минимум е наведен само за парцијалите/испитот (40) и за вкупниот збир (126). За тестовите, лабораториските и проектот нема минимум.",
+    "sources": [
+      "sodrzina"
+    ]
+  },
+  "overview": {
+    "summary": "Програмирање игри во Python со pygame, преку игрите од книгата на Al Sweigart (Memory Puzzle, Slide Puzzle, Simulate, Wormy, Tetromino, Squirrel, Star Pusher), а од 2026/27 и вовед во Godot и game design. Поените се од 7 тестови за самоевалуација (49), два парцијални или испит (100, барем 40), лабораториски (50) и проект (51). За положување треба 126 од 250, а за потпис барем 70% присуство на лабораториските. На колоквиумот добиваш готова pygame игра и ја дополнуваш според барања.",
+    "focus": [
+      {
+        "title": "Колоквиум: дополнување на готова pygame игра",
+        "why": "Парцијалите носат 100 поени и бараат барем 40. Секогаш се бараат маргини околу мрежата, текст на екран наместо `print`, а често и тајмер, животи, рестарт со R и излез со ESC. Вежбај на sudoku.py, wordFinder.py и Trap Maze.",
+        "topic": "kolokvium"
+      },
+      {
+        "title": "Тестовите за самоевалуација: еднаш, 10 минути, со негативни поени",
+        "why": "Носат 49 поени, а ако го пропуштиш рокот од 2 недели, ги губиш. Прашањата се за конкретни функции и константи од кодот, па пред тестот прочитај го кодот на играта."
+      },
+      {
+        "title": "Барем 70% присуство на лабораториските",
+        "why": "Нов услов за потпис во 2026/27. Лабораториските носат и 50 поени."
+      },
+      {
+        "title": "Пријави го проектот навреме",
+        "why": "Носи 51 поен и мора да се договори со професорката и асистентот пред да почнеш. Предавањето за game design дава шаблон за идејата.",
+        "topic": "game-design"
+      },
+      {
+        "title": "Пиксели ↔ полиња во мрежа",
+        "why": "Се појавува во секоја игра (`getBoxAtPixel`, `leftTopCoordsOfBox`) и на секој колоквиум, каде клик во мрежа со маргини мора да даде точно поле.",
+        "topic": "kolokvium"
+      }
+    ],
+    "exam_patterns": [
+      {
+        "text": "Првото барање е речиси секогаш маргини околу мрежата, плус поправка на сè што зависи од нив (цртање и претворање клик во поле).",
+        "sources": [
+          "primeri",
+          "trap-maze"
+        ]
+      },
+      {
+        "text": "Пораки и статус на екранот (`font.render` + `blit`) наместо `print` во терминал.",
+        "sources": [
+          "primeri",
+          "trap-maze"
+        ]
+      },
+      {
+        "text": "Скриена грешка во почетниот код што треба да се поправи: `is_solved` во sudoku.py никогаш не враќа True.",
+        "sources": [
+          "primeri",
+          "claude"
+        ]
+      },
+      {
+        "text": "5 кратки прашања за дадениот код: што враќа функција, почетна состојба, кој тип на настан се користи, ширина на мрежата од константите.",
+        "sources": [
+          "trap-maze",
+          "chat"
+        ]
+      },
+      {
+        "text": "Тестовите за самоевалуација прашуваат за конкретни линии од кодот на играта: што прави функцијата, што се случува ако се смени константа, кој е редоследот на анимацијата.",
+        "sources": [
+          "selfeval"
+        ]
+      },
+      {
+        "text": "Решената вежба simulate (1).py има блокови „BARANJE“: поголем екран, нови копчиња, наслов, тајмер, обратен шаблон. Ист формат како колоквиумот.",
+        "sources": [
+          "predavanja"
+        ]
+      },
+      {
+        "text": "Првиот колоквиум претходните години бил околу средината на ноември (пораките за него се од 19.11.2024 и 18.11.2025).",
+        "sources": [
+          "chat"
+        ]
+      }
+    ],
+    "professor_said": [
+      {
+        "text": "Slide Puzzle, „IMPORTANT!“: `generateNewPuzzle()` ја враќа и листата на случајните потези (`solutionSeq`), а со неа Solve ја решава загатката.",
+        "sources": [
+          "predavanja"
+        ]
+      },
+      {
+        "text": "Tetromino, „!!!“: од ниво 14 `fallFreq` станува негативен, па делот паѓа во секоја итерација и не може побрзо.",
+        "sources": [
+          "predavanja"
+        ]
+      },
+      {
+        "text": "Секое предавање за игра почнува со „Task 1: симни го кодот, Task 2: пушти ја играта“. Кодот треба да го пуштиш и менуваш, не само да го читаш.",
+        "sources": [
+          "predavanja"
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "text": "Тестовите за самоевалуација имаат негативни поени: ако не си сигурен, подобро е да не одговориш.",
+        "sources": [
+          "selfeval"
+        ]
+      },
+      {
+        "text": "Минимумите не се доволни: 40 од парцијалите е далеку од 126. Уште 86 поени мора да дојдат од тестовите, лабораториските и проектот (заедно 150).",
+        "sources": [
+          "sodrzina",
+          "claude"
+        ]
+      },
+      {
+        "text": "Не е јасно дали минимумот од 40 е од збирот на двата парцијални или по парцијал. Прашај на час.",
+        "sources": [
+          "sodrzina"
+        ]
+      },
+      {
+        "text": "Скалата вели „над 226“ за 10, а 9 оди до 225, па точно 226 буквално не е опфатено. Најверојатно е мислено 226 и повеќе.",
+        "sources": [
+          "sodrzina"
+        ]
+      },
+      {
+        "text": "Литературата за 2026/27 е за Unity и Godot, а аудиториските 2 се за Godot, но вежбите и понатаму се со pygame (Вовед во pygame, 28.10.2026). Не е јасно на што ќе бидат колоквиумите.",
+        "sources": [
+          "sodrzina",
+          "aud2",
+          "voved-pygame"
+        ]
+      },
+      {
+        "text": "Wormy: одговорот „не оди во спротивна насока“ звучи исто како точниот „не се врти во самиот себе“, но Moodle го бележи како погрешен.",
+        "sources": [
+          "selfeval"
+        ]
+      },
+      {
+        "text": "Со маргини, клик надвор од мрежата дава негативен индекс (Python тивко го зема последниот ред) или IndexError. Секогаш провери `0 <= red < ROWS and 0 <= kol < COLS`.",
+        "sources": [
+          "primeri",
+          "claude"
+        ]
+      },
+      {
+        "text": "За рестарт со R ресетирај ја целата состојба во една функција `reset_game()`. Решението Solved_ApplesCollect.py не ги враќа кошницата и листите на почеток.",
+        "sources": [
+          "primeri",
+          "claude"
+        ]
+      },
+      {
+        "text": "sudoku.py прифаќа 5–9 на табела 4×4 и дозволува бришење на почетните броеви. Ако се бара поправка на проверката, и ова е дел од неа.",
+        "sources": [
+          "primeri",
+          "claude"
+        ]
+      }
+    ],
+    "rumors": [
+      {
+        "text": "Лани материјалот бил според книгата „Making Games with Python & Pygame“ (сите поглавја се на inventwithpython.com/pygame).",
+        "sources": [
+          "chat"
+        ]
+      }
+    ],
+    "gaps": [
+      "Датумот на вториот парцијален.",
+      "Кои игри и теми ги покрива секој парцијал.",
+      "Дали колоквиумите и тестовите во 2026/27 ќе бидат со pygame или со Godot (лекциите 04 и 05 се за Godot).",
+      "Како се распределени 50-те поени од лабораториските.",
+      "Терминот на лабораториските вежби (го нема во распоредот).",
+      "Кои теми ќе имаат тест за самоевалуација во 2026/27 (лани беа седумте игри).",
+      "Star Pusher нема слајдови на courses; белешките за него се од кодот на книгата."
+    ]
+  },
+  "staff": [
+    {
+      "name": "Катарина Тројачанец Динева",
+      "role": "Предавања (вон. проф.)"
+    },
+    {
+      "name": "Игор Гошев",
+      "role": "Аудиториски вежби (асистент)"
+    }
+  ],
+  "topics": [
+    {
+      "id": "kolokvium",
+      "title": "Колоквиум: дополнување на pygame игра",
+      "importance": 5,
+      "summary": "Добиваш работна игра и 4–5 барања. Првото е речиси секогаш маргини, а потоа текст на екран, поправка на грешка, визуелна промена и нова логика. На крај има кратки прашања за дадениот код.",
+      "key_points": [
+        "Скелет: `pygame.init()`, `set_mode`, `set_caption`, `Clock`, `while True` + `for event in pygame.event.get()`, `QUIT` → `pygame.quit(); sys.exit()`, `display.update()`, `clock.tick(FPS)`.",
+        "Мрежа со маргини: `XMARGIN = (W - COLS*CELL) // 2`; полето (red, kol) се црта на `(XMARGIN + kol*CELL, TOP + red*CELL)`.",
+        "Клик во поле: `kol = (x - XMARGIN) // CELL`, `red = (y - TOP) // CELL`, па провери `0 <= red < ROWS and 0 <= kol < COLS`. Клик надвор се игнорира.",
+        "Статусна лента: променлива `message` што ја поставува логиката, а се црта секоја рамка со `font.render` + `blit` над мрежата. Ниту една порака во терминал.",
+        "Движење по мрежа со стрелките (`KEYDOWN`, `K_LEFT/RIGHT/UP/DOWN`): пресметај ја новата позиција; ако е надвор или е препрека, нема движење и има порака; ако е валидно, `steps += 1`.",
+        "Непрекинато движење додека тастерот е држен: `pygame.key.get_pressed()` секоја рамка, со граници на прозорецот.",
+        "Тајмер: `start = pygame.time.get_ticks()` на почеток и на рестарт; стапиците се цртаат само ако `get_ticks() - start < 4000`. Не користи `wait`/`sleep`, тие ја замрзнуваат играта.",
+        "Животи и состојби (play / won / lost): кога играта не е во тек, нема внес освен R и ESC.",
+        "R = рестарт: ресетирај сè (позиција, животи, потези, листи, тајмер) во една функција `reset_game()`.",
+        "ESC = излез: `KEYDOWN` + `K_ESCAPE` → `pygame.quit(); sys.exit()`.",
+        "Боење полиња според состојба (најдено, стапица, старт, цел): `draw.rect` со боја, па рамка, па текст.",
+        "Подебели линии: `pygame.draw.line(surf, color, start, end, width)`.",
+        "Валидација: судоку проверува ред, колона, под-табела и опсег 1..N; Word Finder: насоката ја одредуваат првите две селектирани полиња и мора да е во `directions`.",
+        "Бришење од листа додека се изминува: итерирај преку копија `lst[:]`.",
+        "Кратки прашања: KEYDOWN наспроти KEYUP, `event.key` / `event.pos`, ширина на мрежа = `COLS * CELL_SIZE`, што враќа функцијата, почетна состојба.",
+        "Предавање: кратко објаснување за секое барање и `.py` со коментар кај секоја измена.",
+        "Судоку (почетен код): 400×400, `CELL_SIZE` 100, клик → `(y // CELL_SIZE, x // CELL_SIZE)`, `is_solved` никогаш не враќа True, се прифаќаат 5–9.",
+        "Word Finder: 600×600, мрежа 10×10, насоки `[(0,1), (1,0), (1,1), (-1,1)]`, Enter со `KEYUP`, најдените букви стануваат мали (`.lower()`).",
+        "Trap Maze (2025): маргини, статус над мрежата, барем 5 стапици видливи 4 секунди, 3 животи, бројач на потези, R и ESC."
+      ],
+      "sources": [
+        "primeri",
+        "trap-maze",
+        "chat",
+        "claude"
+      ]
+    },
+    {
+      "id": "pygame-osnovi",
+      "title": "Вовед во pygame",
+      "importance": 4,
+      "summary": "Прозорец (display Surface), главна јамка, координати, бои, цртање, анимација, текст и звук.",
+      "key_points": [
+        "Главната јамка прави три работи: обработува настани, ја ажурира состојбата, црта на екран.",
+        "`pygame.display.set_mode((400, 300))` го враќа display Surface. Нацртаното се гледа дури по `pygame.display.update()`.",
+        "(0, 0) е горе лево, а Y расте надолу.",
+        "Бои: RGB од 0 до 255; четвртата вредност е alpha (0 = проѕирно, 255 = непроѕирно) и бара Surface од `convert_alpha()`. Вредност надвор од опсегот дава ValueError.",
+        "Цртање: `draw.line(surf, color, start, end, width)`, `draw.circle(surf, color, center, radius, width)` (width 0 = полн), `draw.rect`, `draw.ellipse`, `draw.polygon`, `PixelArray` за пиксели.",
+        "Анимација (catanimation.py): `fill` → нова позиција → `blit` → `update()` → `fpsClock.tick(FPS)`.",
+        "`tick(FPS)` паузира доволно за јамката да не оди побрзо од FPS пати во секунда.",
+        "Текст: `Font` → `render()` → `get_rect()` → позиција (center/topleft) → `blit` → `update()`.",
+        "Звук: `pygame.mixer.Sound('beeps.wav').play()`; музика: `pygame.mixer.music.load(...)` + `play(-1, 0.0)` (−1 = бесконечно)."
+      ],
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "memory-puzzle",
+      "title": "Memory Puzzle",
+      "importance": 4,
+      "summary": "Икони во парови скриени под бели кутии. Се отвораат по две; ако се совпаѓаат, остануваат отворени. Победа кога сите се отворени.",
+      "key_points": [
+        "Константи: 640×480, `BOXSIZE` 40, `GAPSIZE` 10, табла 10×7, `REVEALSPEED` 8. `XMARGIN = int((640 - 10*50) / 2) = 70`.",
+        "`assert (BOARDWIDTH * BOARDHEIGHT) % 2 == 0`: парен број кутии, инаку програмата паѓа веднаш („crash early“).",
+        "Втор assert: бои × форми × 2 ≥ број кутии (7 × 5 × 2 = 70).",
+        "`mainBoard[x][y] = (shape, color)`: листа од колони. `revealedBoxes`: листа од листи со bool.",
+        "`leftTopCoordsOfBox` претвора кутија → пиксели; `getBoxAtPixel` претвора пиксели → кутија со `Rect.collidepoint` и враќа `(None, None)` кога глувчето не е над кутија.",
+        "MOUSEMOTION ја менува позицијата на глувчето, а MOUSEBUTTONUP поставува `mouseClicked = True`.",
+        "Две различни икони: `wait(1000)`, па двете се покриваат. `hasWon` е True кога нема ниту еден False.",
+        "`startGameAnimation`: кутиите се мешаат и се откриваат по 8, секоја игра по различен редослед.",
+        "`tick()` спречува програмата да работи пребрзо.",
+        "Python: tuple не се менува (`a[1] = ...` дава грешка); tuple со еден елемент е `(42,)`; `global`; `if __name__ == '__main__':`."
+      ],
+      "sources": [
+        "predavanja",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "slide-puzzle",
+      "title": "Slide Puzzle",
+      "importance": 4,
+      "summary": "Табла 4×4 со 15 плочки и празно поле. Плочките почнуваат измешани, а играчот ги лизга назад по ред. Копчиња Reset, New Game, Solve.",
+      "key_points": [
+        "`BOARDWIDTH`/`BOARDHEIGHT` како константи: кодот е почитлив и големината се менува на едно место.",
+        "Табла = листа од колони, `BLANK = None`. Победа: `mainBoard == SOLVEDBOARD`.",
+        "`generateNewPuzzle(80)` прави 80 случајни потези и ги враќа: `(board, solutionSeq)`.",
+        "Solve = обратни потези по обратен редослед за `solutionSeq + allMoves`; Reset = само за `allMoves` (потезите на играчот).",
+        "`getRandomMove` го исклучува спротивниот потег од претходниот, за да не го поништи.",
+        "Насоката е на плочката што се лизга: клик десно од празното поле → LEFT. `isValidMove(UP)` е False кога празното е во последниот ред.",
+        "Секоја итерација: провери ја состојбата, ажурирај, прикажи.",
+        "`checkForQuit()`: `event.get(QUIT)`, па KEYUP; настаните што не се Esc се враќаат со `pygame.event.post`.",
+        "`slideAnimation` прави `DISPLAYSURF.copy()` како основа и врз неа ја црта плочката што се движи.",
+        "Забрзување: чувај ги координатите на празното поле наместо да ги бараш секој пат (слајдовите велат дека добивката е занемарлива)."
+      ],
+      "sources": [
+        "predavanja",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "simulate",
+      "title": "Simulate (Simon)",
+      "importance": 4,
+      "summary": "Четири копчиња во боја светнуваат по шаблон што играчот го повторува. Секој круг се додава по една боја на крајот.",
+      "key_points": [
+        "Два режима (`waitingForInput`): програмата го прикажува шаблонот (False) или чека играчот (True).",
+        "`pattern` е листа бои; `currentStep` е индексот на бојата што треба следно да се кликне.",
+        "Тастери (KEYDOWN): Q жолто, W сино, A црвено, S зелено. `XMARGIN = 110`.",
+        "Нов круг: `pattern.append(random.choice(...))` и се прикажува целиот шаблон.",
+        "Timeout: `currentStep != 0 and time.time() - TIMEOUT > lastClickTime`, значи важи дури по првиот клик во кругот. TIMEOUT е 4 s.",
+        "Цел шаблон точно: `changeBackgroundAnimation()`, `score += 1`, `waitingForInput = False`, `currentStep = 0`.",
+        "Светнување: прво нормалната табла, па alpha на светлата боја расте од 0 до 255, па опаѓа. Поголем `animationSpeed` = побрзо.",
+        "`gameOverAnimation`: сите 4 звуци и 3 бели блесоци; повеќе блесоци = повеќе итерации (`range(5)`), alpha секогаш 0–255.",
+        "`FPSCLOCK.tick(1)` = една рамка во секунда, анимацијата е многу бавна.",
+        "simulate (1).py е решена вежба: поголем прозорец, копчиња BROWN (E) и PURPLE (D), наслов, тајмер на екран, шаблонот се внесува обратно."
+      ],
+      "sources": [
+        "predavanja",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "wormy",
+      "title": "Wormy (Snake)",
+      "importance": 4,
+      "summary": "Црв постојано се движи по мрежа и расте кога ќе изеде јаболко. Играта завршува ако удри во раб или во себе.",
+      "key_points": [
+        "640×480, `CELLSIZE` 20, мрежа 32×24; assert дека прозорецот се дели со `CELLSIZE`.",
+        "FPS 15: црвот се поместува една ќелија по рамка, па FPS е брзината на играта.",
+        "`wormCoords`: листа од речници `{'x', 'y'}`; главата е `wormCoords[0]` (`HEAD = 0`).",
+        "Насоката не може да се сврти во спротивната (`direction != RIGHT`…): црвот не се врти во себе.",
+        "Удар: главата излегла од мрежата (x == −1, x == CELLWIDTH…) или е на поле со друг сегмент.",
+        "Јаболко: опашката не се брише (црвот расте); инаку `del wormCoords[-1]`. Нова глава: `insert(0, newHead)`.",
+        "`x + 1` = десно; `y + 1` = долу.",
+        "Почетен екран: оригиналот се ротира секогаш со зголемен агол (`degrees1 += 3`, `degrees2 += 7`), бидејќи ротирана слика расте.",
+        "Game over: `wait(500)` + `checkForKeyPress()`, за случаен притисок да не ја стартува играта пребрзо.",
+        "Резултат: `len(wormCoords) - 3`."
+      ],
+      "sources": [
+        "predavanja",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "tetromino",
+      "title": "Tetromino (Tetris)",
+      "importance": 4,
+      "summary": "Делови од 4 кутии паѓаат во табла 10×20. Полн ред исчезнува. Играта завршува кога нов дел не може да се смести.",
+      "key_points": [
+        "Поими: board, box (едно поле), piece (4 кутии), shape, template (листа ротации 5×5).",
+        "Ротации: S, Z, I по 2; O 1; J, L, T по 4. `(rotation + 1) % len(SHAPES[shape])`; ако е невалидна, се враќа.",
+        "Нов дел: x = 3, y = −2 (над таблата).",
+        "`MOVESIDEWAYSFREQ` и `MOVEDOWNFREQ`: додека тастерот е држен, движењето се повторува.",
+        "`isValidPosition(board, piece, adjX=0, adjY=0)`: adjX/adjY може да се позитивни и негативни.",
+        "SPACE: го наоѓа првото невалидно `adjY` и го спушта делот до дното.",
+        "`removeCompleteLines` почнува од дното и не го намалува y, за повторно да го провери спуштениот ред.",
+        "`level = int(score / 10) + 1`, `fallFreq = 0.27 - level * 0.02`; од ниво 14 е негативно.",
+        "P: таблата се крие (за да нема мамење), музиката запира, па се ресетираат тајмерите.",
+        "Нема `movingUp`: горе е ротација.",
+        "```\nL_SHAPE_TEMPLATE = [['.....',\n                     '...O.',\n                     '.OOO.',\n                     '.....',\n                     '.....'],\n                    ['.....',\n                     '..O..',\n                     '..O..',\n                     '..OO.',\n                     '.....'],\n                    ['.....',\n                     '.....',\n                     '.OOO.',\n                     '.O...',\n                     '.....'],\n                    ['.....',\n                     '.OO..',\n                     '..O..',\n                     '..O..',\n                     '.....']]\n```"
+      ],
+      "sources": [
+        "predavanja",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "squirrel",
+      "title": "Squirrel Eat Squirrel",
+      "importance": 4,
+      "summary": "Верверица во бескраен свет јаде помали верверици и расте, а од поголемите губи живот. Победа на WINSIZE, пораз по 3 удари.",
+      "key_points": [
+        "Објектите се речници; `x`, `y` се world координати на горниот лев агол, а `rect` е во пиксели на екранот.",
+        "`camerax`, `cameray` = горниот лев агол на погледот. Пиксел = world − камера.",
+        "`CAMERASLACK` 90: камерата тргнува дури кога играчот ќе се оддалечи повеќе од 90 px од центарот.",
+        "Active area е 3 × WINWIDTH на 3 × WINHEIGHT; новите објекти се создаваат во неа, но надвор од погледот.",
+        "Бришење од листа во јамка: наназад, `range(len(lst) - 1, -1, -1)`.",
+        "Јаде ако `w * h <= size ** 2`; инаку губи живот и 2 s е неранлив (трепка).",
+        "Скок: `math.sin`, `BOUNCERATE` (поголемо = побавно), `BOUNCEHEIGHT` (поголемо = повисоко).",
+        "`pygame.transform.flip` враќа нова, превртена слика; оригиналот не се менува.",
+        "Шанса за смена на насока: 2% по рамка (`DIRCHANGEFREQ`)."
+      ],
+      "sources": [
+        "predavanja",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "star-pusher",
+      "title": "Star Pusher (Sokoban)",
+      "importance": 3,
+      "summary": "Играчот турка ѕвезди врз целите. Нивото е решено кога секоја цел има ѕвезда. Нивоата се читаат од текстуална датотека.",
+      "key_points": [
+        "Формат на ниво: `#` ѕид, `@` играч, `$` ѕвезда, `.` цел, `+` играч на цел, `*` ѕвезда на цел; `;` коментар.",
+        "`levelObj` ги чува мапата, целите и почетната состојба; `gameStateObj` ги чува играчот, `stepCounter` и ѕвездите.",
+        "`copy.deepcopy(levelObj['startState'])`: почетната состојба останува иста за reset.",
+        "`mapNeedsRedraw`: мапата се црта само кога нешто се сменило; без `= False` секоја рамка се црта и програмата е побавна.",
+        "Камерата (WASD) се движи независно од играчот; стрелките го движат играчот.",
+        "N следно ниво, B претходно, Backspace reset, P смена на лик.",
+        "Ѕвезда не може да се турне во ѕид, друга ѕвезда или надвор од мапата.",
+        "`floodFill` ги означува полињата во внатрешноста на мапата.",
+        "assert во `readLevelsFile`: ако условот е False, Python дава грешка (на пр. ниво без `@`)."
+      ],
+      "sources": [
+        "kniga",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "game-design",
+      "title": "Game design: приказна и ликови",
+      "importance": 3,
+      "summary": "Ново за 2026/27: gameplay loop, механики и правила, приказна, ликови, sprites, дизајн на ниво и minimum viable game.",
+      "key_points": [
+        "Gameplay loop: Action → Feedback → Reward → Repeat.",
+        "Mechanic = што може играчот; Rule = што следува („touching lava ends the game“); Objective = цел; Challenge = што ја отежнува.",
+        "Идеја во една реченица, со една главна механика. „Small and finished is better than big and unfinished.“",
+        "Приказна: Setting, Premise, Conflict, Goal; три чина. „Show, don't tell.“",
+        "Ликови: главен лик, непријатели, NPC. Shape language: round = friendly, sharp = dangerous; препознатлива силуета, 3–5 бои.",
+        "2D користи sprites (X, Y), 3D models/meshes (X, Y, Z) плус камера и светло.",
+        "Ниво: старт, пречки, награди, цел; почни лесно, отежнувај постепено.",
+        "Minimum viable game: едно ниво, движење и скок, нешто за собирање, една опасност, победа и пораз.",
+        "Очекуван резултат: опис на играта на една страница (GDD), лик и скица на ниво."
+      ],
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "godot",
+      "title": "Godot: прва 2D сцена",
+      "importance": 3,
+      "summary": "Ново за 2026/27 (аудиториски 2): што прави game engine, Godot editor, scenes и nodes, статично 2D ниво.",
+      "key_points": [
+        "Engine: рендерирање, внес, физика и судири, звук, сцени, export. Ние ја пишуваме логиката.",
+        "Node е најмалиот блок; Scene е дрво од nodes (`.tscn`); Resource се податоци (текстури, звуци).",
+        "F5 ја стартува главната сцена, F6 тековната.",
+        "CharacterBody2D = играч што се движи со код; StaticBody2D = под и ѕидови; Area2D = детектира влегување (монети, шилци).",
+        "Секое body бара CollisionShape2D за судири.",
+        "Промена во `player.tscn` ги ажурира сите инстанци.",
+        "Pixel art: Default Texture Filter = Nearest."
+      ],
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "godot-movement",
+      "title": "Godot: GDScript и движење на играчот",
+      "importance": 3,
+      "summary": "GDScript како Python-сличен јазик, input actions, брзина и гравитација со `move_and_slide()`, камера, фиксна позадина, killzone, платформи, непријател со RayCast2D и collision layers/masks.",
+      "key_points": [
+        "GDScript: Godot-ов јазик, синтакса слична на Python (индентација и `:`), динамички типизиран, со опционални типови (`var speed: float = 200.0`, `var hp := 100` го одредува типот). `func` наместо `def`, `var` за променливи, `true`/`false` со мали букви. Скрипта почнува со `extends` на типот на node.",
+        "`_ready()` се повикува еднаш кога node влегува во сцената (подготовка). `_process(delta)` секој frame (визуелно, UI). `_physics_process(delta)` на фиксна стапка (60/s) за движење и физика.",
+        "`delta` е времето во секунди од претходниот frame. Множењето со `delta` претвора „по frame“ во „по секунда“: `position.x += 200 * delta` е иста брзина на секој компјутер, а `position.x += 3` не е.",
+        "Input Map (Project Settings): actions како `move_left`, `move_right`, `jump` со повеќе копчиња. `Input.is_action_pressed()` е true додека е притиснато (движење), `Input.is_action_just_pressed()` само во frame на притискање (скок), `Input.get_axis(\"move_left\", \"move_right\")` дава −1, 0 или 1, `Input.get_vector()` за top-down.",
+        "`velocity` е Vector2 (брзина + насока). Во Godot 2D позитивно Y е надолу, па скокот е негативен (`JUMP_VELOCITY = -400.0`). Гравитација: `if not is_on_floor(): velocity += get_gravity() * delta`. `move_and_slide()` веќе користи delta, па velocity не се множи со delta (само гравитацијата, како промена на velocity). Скок само ако `is_on_floor()`.",
+        "Судири: играчот треба `CollisionShape2D`, платформите `StaticBody2D` + `CollisionShape2D`. `is_on_floor()`, `is_on_wall()`, `is_on_ceiling()` кажуваат што е допрено. Ако играчот паѓа низ подот, провери shapes и layers/masks.",
+        "`$ImeNaNode` е кратенка за `get_node(\"ImeNaNode\")`; `@onready var` го зема node откако е спремен; `flip_h` го врти спрајтот лево/десно.",
+        "Camera2D како child на играчот го следи без код. Zoom (на пр. (3, 3)) за pixel art. Position Smoothing го омекнува следењето, а Limit Left/Top/Right/Bottom ги означува рабовите на нивото. Ruler Mode (R) мери пиксели.",
+        "CanvasLayer е посебен слој за цртање што ја игнорира камерата. Layer −1 е позади играта (позадина со TextureRect, Full Rect, Stretch Mode Tile или Keep Aspect Covered), layer 1 е пред играта (UI, score).",
+        "Killzone: Area2D + Timer (Wait Time 0.6, One Shot); `_on_body_entered` стартува timer, `_on_timer_timeout` повикува `get_tree().reload_current_scene()`. За пропаст: CollisionShape2D со WorldBoundaryShape2D (бесконечна линија) под најниската платформа. Мора да се поврзат signals `body_entered` и `timeout`.",
+        "Платформа: AnimatableBody2D + Sprite2D + CollisionShape2D со One Way Collision (играчот може да скокне одоздола и да застане одозгора). Движење: AnimationPlayer со ping-pong и Callback Mode Physics, или во код со Tween (`create_tween().set_loops()`) и `@export` променливи.",
+        "Непријател: Node2D со AnimatedSprite2D (animation `walk`, FPS 10, Loop, Autoplay), Killzone и два RayCast2D (RayCastRight (12, 0), RayCastLeft (−12, 0)). RayCast2D е невидлива линија; `is_colliding()` кажува дали допира тело. При допир на ѕид менува `direction` и `flip_h`, а `position.x += direction * SPEED * delta`.",
+        "Layers и masks: layer = „што сум јас“, mask = „што барам/на што реагирам“. A детектира B само ако mask на A го содржи layer на B. Примери: Tiles/платформи layer 1 World; Player layer 2, mask 1; Killzones layer 3 Hazards, mask 2 (Player); Cherries layer 4 Collectables, mask 2; RayCast само mask 1. Во код: `set_collision_mask_value(2, true)`, `set_collision_layer_value(3, true)` (броевите почнуваат од 1).",
+        "Чести грешки: играчот не се движи (скриптата не е закачена или погрешни имиња на actions), мешање tab и space (indentation error), скок во воздух (нема `is_on_floor()`), killzone не работи (signal не е поврзан или погрешен mask), позадината се движи со камерата (не е во CanvasLayer)."
+      ],
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "godot-signals",
+      "title": "Godot: signals, UI, менија и пауза",
+      "importance": 3,
+      "summary": "Collectable (berry) како Area2D со група, custom signals, score HUD, стилизирање на текст, главно мени, endzone со end menu, пауза со Process Mode и музика.",
+      "key_points": [
+        "Berry: root Area2D (група `collectables` на root, па секоја копија е во неа), Sprite2D, CollisionShape2D (CircleShape2D), скрипта `berry.gd`, зачувана како `scenes/berry.tscn`. Berry-јата се ставаат под Node2D `Collectables` (Ctrl+D за копии).",
+        "Built-in signals (`body_entered`, `pressed`, `timeout`) доаѓаат со node. Custom signal се дефинира во скрипта: `signal collected` или `signal collected(points)` со податок. Правило: „call down, signal up“, т.е. родителите викаат функции на децата, децата праќаат signals нагоре. Berry само објавува „собрано сум“, а score го знае нивото.",
+        "Испрати со `collected.emit()` (или `collected.emit(points)`) пред `queue_free()`. Поврзување во код: `for berry in get_tree().get_nodes_in_group(\"collectables\"): berry.collected.connect(_on_berry_collected)` во `_ready()` на нивото (децата се подготвени пред родителот). Функцијата мора да прима ист број аргументи колку што праќа signal-от.",
+        "Два начина на поврзување: во editor (Node → Signals), добро за еден node, и со `.connect()` во код, добро за многу node и за node создадени во runtime. Користи само еден начин по врска, иначе се поврзува двапати и score расте за 2.",
+        "HUD: CanvasLayer (Layer 1) со Label `ScoreLabel` (се држи фиксно врз екранот). Ажурирање: `score_label.text = \"Berries: %d\" % [score]` (или `\"Berries: \" + str(score)`).",
+        "Стил на текст: Theme Overrides (боја, outline, shadow, голем фонт); прилагоден .ttf (за pixel фонт Antialiasing → None); LabelSettings е ресурс за повторна употреба (`.tres`); Theme на родител Control важи за сите деца; во код `add_theme_color_override`, `add_theme_font_size_override`. Zoom на камерата не влијае на CanvasLayer.",
+        "Главно мени: root Control (Full Rect), VBoxContainer (Center) со StartButton и QuitButton. Контејнерите ги редат децата сами (VBox вертикално, HBox хоризонтално), не може рачно да се преместуваат. Скрипта: `change_scene_to_file(\"res://scenes/level.tscn\")` и `get_tree().quit()`. `grab_focus()` за Enter/стрелки. Set as Main Scene; F5 ја стартува главната сцена, F6 тековната.",
+        "Endzone: Area2D со `signal finished`, `body_entered` → `finished.emit()`; нивото одлучува што следи (end menu + пауза). Затоа е слично на berry: објавува, а некој друг реагира.",
+        "End menu: root CanvasLayer (затоа што Control во Node2D е во светот и камерата се оддалечува од него) → Control (Full Rect) → ColorRect + VBoxContainer со Label и копчиња. Невидливо на почеток (Visible unchecked); `end_menu.visible = true`.",
+        "Пауза: `get_tree().paused = true` ги запира сите node (играч, непријател, платформи, timers, па и копчињата во менито). Решение: EndMenu → Process → Mode → Always (децата наследуваат). Режими: Inherit, Pausable, When Paused, Always, Disabled.",
+        "Restart: прво `get_tree().paused = false`, па `reload_current_scene()`. paused е на SceneTree, не на сцената, па ако не го вратиш на false, новото ниво почнува замрзнато.",
+        "Музика: AudioStreamPlayer (иста јачина насекаде) за музика и UI звуци, AudioStreamPlayer2D (се стишува со растојание) за звуци во светот. Форматите `.ogg`/`.mp3` за музика, `.wav` за кратки ефекти. Volume dB (0 е оригинал). Музиката запира со пауза (Process Mode Inherit); за да свири во end menu: Always. Рестарт на нивото ја започнува песната одново. Контрола: `play()`, `stop()`, `stream_paused`.",
+        "Имињата на layers се разликуваат меѓу лекциите (04: World, Player, Hazards, Collectables; 05: player, ground, enemy, collectables), па важи правилото „mask на A го содржи layer на B“, а не бројот.",
+        "Чести грешки: berry не се собира (`body_entered` не е поврзан или маската нема player), score останува 0 (root на berry не е во група `collectables` или погрешно име), score расте за 2 (двојно поврзување), score се движи со камерата (не е во CanvasLayer), Start не работи (погрешна патека), копчињата на end menu не реагираат (Process Mode не е Always), end menu е видливо од почеток."
+      ],
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "voved",
+      "title": "Вовед: што е игра и историја",
+      "importance": 2,
+      "summary": "Дефиниција за игра и главни моменти од историјата на видео игрите.",
+      "key_points": [
+        "Rollings и Adams: игра е форма на интерактивна забава каде играчите мора да надминат предизвици со акции според однапред дефинирани правила, за да извојуваат победа.",
+        "Играта не е „куп кул карактеристики, ни фенси графика“ (Overmars): одлуки, контрола, цел.",
+        "Tennis for Two (Higginbotham, 1958, осцилоскоп); Spacewar (Russell, 1962, MIT, PDP-1).",
+        "Ralph Baer и Brown Box (1968) → Magnavox; Pong (Bushnell, 1972, Atari).",
+        "Tetris (Пајитнов, 1985); Will Wright: SimCity (1989), The Sims (2000)."
+      ],
+      "sources": [
+        "voved"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "kol01",
+      "topic": "kolokvium",
+      "question": "sudoku.py: колку пиксели е едно поле?\n```\nWINDOW_SIZE = 400\nGRID_SIZE = 4\nCELL_SIZE = WINDOW_SIZE // GRID_SIZE\n```",
+      "options": [
+        "100",
+        "400",
+        "4",
+        "25"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "400 // 4 = 100. Табелата го зафаќа целиот прозорец, затоа првото барање е маргини.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol02",
+      "topic": "kolokvium",
+      "question": "sudoku.py: играчот кликнал на (x, y). Кое поле (ред, колона) се избира?",
+      "options": [
+        "`(x // CELL_SIZE, y // CELL_SIZE)`",
+        "`(x % CELL_SIZE, y % CELL_SIZE)`",
+        "`(y // CELL_SIZE, x // CELL_SIZE)`",
+        "Секогаш (0, 0)"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "`selected = y // CELL_SIZE, x // CELL_SIZE`: y го дава редот, x колоната.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol03",
+      "topic": "kolokvium",
+      "question": "sudoku.py: табелата е целосно и точно пополнета, има избрано поле и се притиска Enter. Што се случува?",
+      "options": [
+        "Се печати „Sudoku Solved!“",
+        "Се печати „invalid0 0“ и `is_solved` враќа False",
+        "Се прикажува порака над табелата",
+        "Играта почнува одново"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`is_solved` ја повикува `is_valid_move(grid, row, col, grid[row][col])`, а таа враќа False на `if num in grid[row]`, бидејќи самиот број веќе е во редот. Затоа барањето вели „поправи ја проверката“.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol04",
+      "topic": "kolokvium",
+      "question": "sudoku.py: може ли да се внесе 7 во табелата 4×4?",
+      "options": [
+        "Не, `is_valid_move` одбива броеви поголеми од 4",
+        "Не, се прифаќаат само K_1–K_4",
+        "Не, програмата паѓа",
+        "Да: се прифаќаат K_1–K_9, а `is_valid_move` не проверува опсег"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "`elif K_1 <= event.key <= K_9:`, а `is_valid_move` проверува само ред, колона и под-табела.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol05",
+      "topic": "kolokvium",
+      "question": "wordFinder.py: кој тип на настан го потврдува зборот со Enter?",
+      "options": [
+        "KEYUP",
+        "KEYDOWN",
+        "MOUSEBUTTONDOWN",
+        "MOUSEBUTTONUP"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`elif event.type == KEYUP:` → `if event.key == K_RETURN:`. Во sudoku.py е KEYDOWN, па внимавај кој код го читаш.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol06",
+      "topic": "kolokvium",
+      "question": "wordFinder.py: во кои насоки се поставуваат зборовите?\n```\ndirections = [(0, 1), (1, 0), (1, 1), (-1, 1)]\n```",
+      "options": [
+        "Во сите 8 насоки",
+        "Само десно и надолу",
+        "Десно, надолу, дијагонално надолу-десно и дијагонално нагоре-десно",
+        "Лево, нагоре и двете леви дијагонали"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Паровите се (ред, колона): (0, 1) десно, (1, 0) надолу, (1, 1) надолу-десно, (−1, 1) нагоре-десно. Истите насоки важат за барањето селекцијата да оди само во дозволена насока.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol07",
+      "topic": "kolokvium",
+      "question": "wordFinder.py: што се случува со буквите на најден збор?",
+      "options": [
+        "Полињата се обојуваат",
+        "Буквите се бришат",
+        "Буквите стануваат мали букви",
+        "Се заменуваат со случајни букви"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "`grid[r][c] = grid[r][c].lower()`. Барањето е тоа да се замени со боење на полињата. Со `.lower()` збор што дели поле со веќе најден збор повеќе не се совпаѓа.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol08",
+      "topic": "kolokvium",
+      "question": "wordFinder.py: можат ли два збора да делат исто поле?",
+      "options": [
+        "Не, дозволени се само празни полиња",
+        "Да, ако полето ја има истата буква",
+        "Да, секогаш, со препишување",
+        "Само ако се во иста насока"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`can_place_word` враќа False само кога полето не е празно и не е истата буква.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol09",
+      "topic": "kolokvium",
+      "question": "collectApples.py: како се движи кошницата?",
+      "options": [
+        "Со MOUSEMOTION",
+        "Со KEYDOWN, по еден чекор на секој притисок",
+        "Со KEYUP",
+        "Додека стрелката е држена, преку `pygame.key.get_pressed()`"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "`keys = pygame.key.get_pressed()` и `if keys[pygame.K_LEFT] and basket['x'] > 0:` во секоја рамка.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol10",
+      "topic": "kolokvium",
+      "question": "collectApples.py: што се случува по 5 испуштени јаболка?",
+      "options": [
+        "Играта автоматски почнува одново",
+        "`running = False`, 3 секунди се гледа „Game Over!“ и резултатот, па програмата завршува",
+        "Се губи живот",
+        "Се чека R"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`if missed >= MAX_MISSED: running = False` (`MAX_MISSED = 5`), потоа `pygame.time.wait(3000)`.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol11",
+      "topic": "kolokvium",
+      "question": "Solved_ApplesCollect.py: кошницата фатила бомба. Што се случува?",
+      "options": [
+        "`missed` се зголемува за 1 и кошницата се стеснува за `BOMB_DAMAGE` (10 px)",
+        "`score` се зголемува за 1",
+        "Играта веднаш завршува",
+        "Бомбата се враќа горе"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`bombs.remove(bomb)`, `missed += 1`, `basket['width'] -= BOMB_DAMAGE`.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol12",
+      "topic": "kolokvium",
+      "question": "Solved_ApplesCollect.py: по Game Over е притиснат R. Што НЕ се враќа на почеток?",
+      "options": [
+        "`score`",
+        "`missed`",
+        "Ширината и позицијата на кошницата и листите `apples` и `bombs`",
+        "`running`"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "При рестарт се извршува само `running = True`, `score = 0`, `missed = 0`. Затоа ресетирај сè во една функција `reset_game()`.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol13",
+      "topic": "kolokvium",
+      "question": "Мрежата е поместена за `XMARGIN` и `YMARGIN`. Како се добива полето од клик на (x, y)?",
+      "options": [
+        "`kol = (x - XMARGIN) // CELL_SIZE`, `red = (y - YMARGIN) // CELL_SIZE`, па провери дали се во мрежата",
+        "`kol = x // CELL_SIZE`, `red = y // CELL_SIZE`",
+        "`kol = (x + XMARGIN) // CELL_SIZE`, `red = (y + YMARGIN) // CELL_SIZE`",
+        "`kol = x % CELL_SIZE`, `red = y % CELL_SIZE`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Маргината се одзема. Клик во маргината дава −1 или број поголем од мрежата: −1 Python тивко го зема како последен ред, па мора да провериш `0 <= red < ROWS and 0 <= kol < COLS`.",
+      "sources": [
+        "claude"
+      ]
+    },
+    {
+      "id": "kol14",
+      "topic": "kolokvium",
+      "question": "Стапиците треба да се гледаат само првите 4 секунди. Кој пристап е точен?",
+      "options": [
+        "`start = pygame.time.get_ticks()` на почеток и на рестарт, а стапиците се цртаат само ако `get_ticks() - start < 4000`",
+        "`pygame.time.wait(4000)` пред цртањето на мрежата",
+        "`clock.tick(4)`",
+        "`time.sleep(4)`, па стапиците се бришат од листата"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`get_ticks()` враќа милисекунди од `pygame.init()`. `wait` и `sleep` ја замрзнуваат целата игра, а `tick(4)` само ја забавува јамката.",
+      "sources": [
+        "trap-maze",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol15",
+      "topic": "kolokvium",
+      "question": "Мрежа со `GRID_COLS = 10` и `CELL_SIZE = 40` во прозорец широк 600 px. Колку е `XMARGIN` за мрежата да е на средина?",
+      "options": [
+        "100",
+        "200",
+        "60",
+        "40"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Ширина на мрежата = 10 × 40 = 400; (600 − 400) // 2 = 100. Слично кратко прашање имало и на Trap Maze („колку пиксели е ширината за GRID_COLS = 10“).",
+      "sources": [
+        "trap-maze",
+        "claude"
+      ]
+    },
+    {
+      "id": "kol16",
+      "topic": "kolokvium",
+      "question": "Каде треба да се прикаже пораката „невалиден потег“ на колоквиумот?",
+      "options": [
+        "На екранот, во статусна лента над мрежата (`font.render` + `blit`)",
+        "Со `print` во терминал",
+        "Во насловот на прозорецот",
+        "Не треба порака, потегот само се игнорира"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Барањата експлицитно бараат пораките да се на екранот, не во терминал (Trap Maze, судоку).",
+      "sources": [
+        "trap-maze",
+        "primeri"
+      ]
+    },
+    {
+      "id": "kol17",
+      "topic": "kolokvium",
+      "question": "Како се цртаат подебели линии меѓу под-табелите 2×2 во судоку?",
+      "options": [
+        "`pygame.draw.line(DISPLAYSURF, BLACK, start, end, 4)` на секое второ поле",
+        "`pygame.draw.rect(DISPLAYSURF, BLACK, rect, 0)`",
+        "Со поголем фонт",
+        "Со поголем прозорец во `set_mode`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Последниот аргумент на `draw.line` е дебелината. Линиите се цртаат на позиции кои се делат со големината на под-табелата (2), по сите обични линии.",
+      "sources": [
+        "primeri",
+        "claude"
+      ]
+    },
+    {
+      "id": "pg01",
+      "topic": "pygame-osnovi",
+      "question": "Кои три работи ги прави главната јамка на играта?",
+      "options": [
+        "Вчитува, црта, излегува",
+        "Обработува настани, ја ажурира состојбата, црта на екран",
+        "init, прозорец, звук",
+        "Чека, црта, повторува"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Handle events → update game state → draw screen.",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "pg02",
+      "topic": "pygame-osnovi",
+      "question": "Што враќа `pygame.display.set_mode((400, 300))`?",
+      "options": [
+        "Rect",
+        "Display Surface на кој се црта",
+        "Clock",
+        "None"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Тоа е прозорецот; рамката и насловната лента не се дел од него.",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "pg03",
+      "topic": "pygame-osnovi",
+      "question": "Нацртано е на `DISPLAYSURF`, но `pygame.display.update()` не е повикан. Што се случува?",
+      "options": [
+        "Се гледа веднаш",
+        "Грешка",
+        "Не се гледа во прозорецот",
+        "Се зачувува во датотека"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Нацртаното се прикажува дури со повик на `pygame.display.update()`. Ова прашање (во македонска форма) е цитирано и од тест во 2025.",
+      "sources": [
+        "voved-pygame",
+        "chat"
+      ]
+    },
+    {
+      "id": "pg04",
+      "topic": "pygame-osnovi",
+      "question": "Каде е точката (0, 0) во прозорецот?",
+      "options": [
+        "Долу лево",
+        "Во центарот",
+        "Горе лево",
+        "Горе десно"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Y расте надолу.",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "pg05",
+      "topic": "pygame-osnovi",
+      "question": "Што значи alpha 0 во бојата `(255, 0, 0, 0)`?",
+      "options": [
+        "Целосно непроѕирна",
+        "Целосно проѕирна",
+        "Најтемна црвена",
+        "Грешка"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "255 = непроѕирно, 0 = проѕирно. За alpha треба Surface од `convert_alpha()`.",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "pg06",
+      "topic": "pygame-osnovi",
+      "question": "Што црта `pygame.draw.ellipse(DISPLAYSURF, RED, (300, 200, 40, 80), 1)`?",
+      "options": [
+        "Полна елипса со центар (300, 200)",
+        "Контура на елипса во правоаголник со горен лев агол (300, 200), широк 40 и висок 80",
+        "Круг со радиус 40",
+        "Елипса 80 × 40"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Tuple-от е (left, top, width, height), а последниот аргумент 1 е дебелината на линијата (0 = полна).",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "pg07",
+      "topic": "pygame-osnovi",
+      "question": "catanimation.py: мачката почнува на `catx = 10` и се враќа кога `catx == 280`. Што се случува ако `catx += 5` се смени во `catx += 7`?",
+      "options": [
+        "Иста патека, само побрзо",
+        "`catx` никогаш не е точно 280, па мачката продолжува надесно и излегува од екранот",
+        "Програмата паѓа",
+        "Мачката стои"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "10 + 7k никогаш не е 280 (270 не се дели со 7), а условот е `==`, не `>=`.",
+      "sources": [
+        "voved-pygame",
+        "claude"
+      ]
+    },
+    {
+      "id": "pg08",
+      "topic": "pygame-osnovi",
+      "question": "Што прави `fpsClock.tick(FPS)`?",
+      "options": [
+        "Го брише екранот",
+        "Паузира доволно за јамката да не оди побрзо од FPS пати во секунда",
+        "Ја ажурира позицијата",
+        "Чека тастер"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Без него играта би работела со различна брзина на различни компјутери.",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "pg09",
+      "topic": "pygame-osnovi",
+      "question": "Кој повик пушта позадинска музика бесконечно?",
+      "options": [
+        "`pygame.mixer.Sound('bg.mp3').play()`",
+        "`pygame.mixer.music.play(-1, 0.0)` по `load`",
+        "`pygame.mixer.music.play(0, -1)`",
+        "`pygame.music.loop()`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Првиот аргумент −1 значи бесконечно повторување, вториот е од која секунда почнува.",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "pg10",
+      "topic": "pygame-osnovi",
+      "question": "Кој метод создава Surface со текст?",
+      "options": [
+        "`get_rect()`",
+        "`Font.render()`",
+        "`blit()`",
+        "`display.update()`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Редослед: Font → render → get_rect → позиција → blit → update.",
+      "sources": [
+        "voved-pygame"
+      ]
+    },
+    {
+      "id": "mp-t1",
+      "topic": "memory-puzzle",
+      "question": "Што прави следнава наредба?\n```\nassert (BOARDWIDTH * BOARDHEIGHT) % 2 == 0\n```",
+      "options": [
+        "Обезбедува ширината и висината на таблата да даваат парен број пиксели. Ако изразот е False, програмата паѓа.",
+        "Обезбедува ширината и висината на таблата да даваат парен број кутии. Ако изразот е False, програмата паѓа.",
+        "Обезбедува ширината и висината на таблата да даваат непарен број кутии. Ако изразот е False, програмата паѓа.",
+        "Обезбедува ширината и висината на таблата да даваат парен број кутии. Ако изразот е False, програмата продолжува."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Секоја икона има пар, па бројот на кутии мора да е парен. assert ја руши програмата веднаш кога условот е False („crash early“).",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "mp-t2",
+      "topic": "memory-puzzle",
+      "question": "Кои се точните димензии на таблата за да има место за сите можни икони од овие бои и форми?\n```\nALLCOLORS = (RED, GREEN, BLUE, YELLOW, ORANGE)\nALLSHAPES = (DONUT, SQUARE, DIAMOND, LINES)\n```",
+      "options": [
+        "4 x 10",
+        "5 x 4",
+        "7 x 10",
+        "4 x 1"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "5 бои × 4 форми = 20 икони, секоја двапати = 40 кутии, т.е. 4 × 10. Честа грешка е 5 × 4: тоа се само иконите, без паровите.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "mp-t3",
+      "topic": "memory-puzzle",
+      "question": "Која е вредноста на `a` по овие две линии?\n```\na = (1, 2, 3, 4)\na[1] = 'VGP'\n```",
+      "options": [
+        "`('VGP', 2, 3, 4)`",
+        "`(1, 'VGP', 3, 4)`",
+        "Се јавува грешка",
+        "`(1, 2, 'VGP', 4)`"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Tuple не може да се менува (immutable): `a[1] = ...` дава TypeError.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "mp-t4",
+      "topic": "memory-puzzle",
+      "question": "Која функција ги враќа координатите на кутијата над која е глувчето?",
+      "options": [
+        "`drawHighlightBox()`",
+        "`mouseClicked()`",
+        "`getBoxAtPixel()`",
+        "`revealBoxesAnimation()`"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Ги прима пиксел координатите на глувчето и враќа (boxx, boxy).",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "mp-t5",
+      "topic": "memory-puzzle",
+      "question": "Методот `tick()` се повикува за да ...",
+      "options": [
+        "спречи програмата да работи пребавно",
+        "спречи програмата да работи пребрзо",
+        "ја ажурира состојбата на играта",
+        "ја смени вредноста на FPS"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`FPSCLOCK.tick(FPS)` паузира колку што треба за јамката да не оди побрзо од FPS пати во секунда.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "mp-t6",
+      "topic": "memory-puzzle",
+      "question": "Што прави оваа функција?\n```\ndef getBoxAtPixel(x, y):\n    for boxx in range(BOARDWIDTH):\n        for boxy in range(BOARDHEIGHT):\n            left, top = leftTopCoordsOfBox(boxx, boxy)\n            boxRect = pygame.Rect(left, top, BOXSIZE, BOXSIZE)\n            if boxRect.collidepoint(x, y):\n                return (boxx, boxy)\n    return (None, None)\n```",
+      "options": [
+        "Претвора пиксел координати во координати на кутија",
+        "Детектира клик со глувчето",
+        "Детектира движење на глувчето",
+        "Претвора координати на кутија во пиксел координати"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Обратното (кутија → пиксели) го прави `leftTopCoordsOfBox`.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "mp-t7",
+      "topic": "memory-puzzle",
+      "question": "Што е точно за почетната анимација?\n```\ndef startGameAnimation(board):\n    # Randomly reveal the boxes 8 at a time.\n    coveredBoxes = generateRevealedBoxesData(False)\n    boxes = []\n    for x in range(BOARDWIDTH):\n        for y in range(BOARDHEIGHT):\n            boxes.append( (x, y) )\n    random.shuffle(boxes)\n    boxGroups = splitIntoGroupsOf(8, boxes)\n\n    drawBoard(board, coveredBoxes)\n    for boxGroup in boxGroups:\n        revealBoxesAnimation(board, boxGroup)\n        coverBoxesAnimation(board, boxGroup)\n```",
+      "options": [
+        "Секоја нова игра има помалку кутии",
+        "Секоја нова игра редоследот на кутиите е ист",
+        "Секоја нова игра редоследот на кутиите е различен",
+        "Секоја нова игра има повеќе кутии"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "`random.shuffle(boxes)` ги меша пред да се поделат во групи од по 8.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "mp02",
+      "topic": "memory-puzzle",
+      "question": "`BOARDWIDTH = 3`, `BOARDHEIGHT = 5`. Што се случува?",
+      "options": [
+        "Една икона останува без пар",
+        "AssertionError веднаш при стартување",
+        "IndexError по првиот клик",
+        "Таблата автоматски се зголемува"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "3 × 5 = 15 е непарен број, па assert-от паѓа веднаш.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp03",
+      "topic": "memory-puzzle",
+      "question": "Колку е `XMARGIN` (прозорец 640, табла 10 кутии, `BOXSIZE` 40, `GAPSIZE` 10)?",
+      "options": [
+        "70",
+        "140",
+        "65",
+        "120"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`int((640 - 10 * (40 + 10)) / 2)` = 70.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp04",
+      "topic": "memory-puzzle",
+      "question": "Што враќа `getBoxAtPixel` кога глувчето не е над кутија?",
+      "options": [
+        "(0, 0)",
+        "(−1, −1)",
+        "(None, None)",
+        "False"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Последната линија на функцијата е `return (None, None)`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp05",
+      "topic": "memory-puzzle",
+      "question": "Што е `mainBoard[x][y]`?",
+      "options": [
+        "int",
+        "tuple (shape, color)",
+        "bool",
+        "Rect"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Таблата е листа од колони, а секое поле е пар (форма, боја). Отвореноста се чува посебно, во `revealedBoxes`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp06",
+      "topic": "memory-puzzle",
+      "question": "Што се случува кога двете отворени икони не се совпаѓаат?",
+      "options": [
+        "Крај на играта",
+        "Пауза од 1000 ms, двете се покриваат и во `revealedBoxes` стануваат False",
+        "Се покрива само втората",
+        "Се отвора трета"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`pygame.time.wait(1000)`, `coverBoxesAnimation`, па `revealedBoxes[...] = False` за двете.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp07",
+      "topic": "memory-puzzle",
+      "question": "Кој настан поставува `mouseClicked = True`?",
+      "options": [
+        "MOUSEMOTION",
+        "MOUSEBUTTONDOWN",
+        "MOUSEBUTTONUP",
+        "KEYUP"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "MOUSEMOTION само ја менува позицијата (`mousex, mousey = event.pos`).",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp08",
+      "topic": "memory-puzzle",
+      "question": "`REVEALSPEED` се менува од 8 во 20. Што се случува?",
+      "options": [
+        "Откривањето и покривањето се побрзи (помалку рамки)",
+        "Се побавни",
+        "Иконите се поголеми",
+        "Програмата паѓа"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Анимацијата оди од 40 до 0 со чекор −REVEALSPEED, па поголем чекор значи помалку рамки.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp09",
+      "topic": "memory-puzzle",
+      "question": "Што враќа `hasWon(revealedBoxes)`?",
+      "options": [
+        "True ако е погоден барем еден пар",
+        "True ако ниту една внатрешна листа не содржи False",
+        "Бројот на парови",
+        "True ако `firstSelection` е None"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Победа е кога сите кутии се отворени.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "mp10",
+      "topic": "memory-puzzle",
+      "question": "Колку најмногу кутии дозволува вториот assert со 7 бои и 5 форми?\n```\nassert len(ALLCOLORS) * len(ALLSHAPES) * 2 >= BOARDWIDTH * BOARDHEIGHT\n```",
+      "options": [
+        "35",
+        "70",
+        "140",
+        "12"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "7 · 5 = 35 различни икони, секоја двапати = 70.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp-t1",
+      "topic": "slide-puzzle",
+      "question": "Дополни: таблата е 4x4 со 15 плочки (нумерирани од 1 до 15, од лево кон десно) и едно празно поле. Плочките ______, а играчот ги лизга додека не се вратат по ред.",
+      "options": [
+        "почнуваат на точните позиции",
+        "почнуваат во обратен редослед",
+        "почнуваат на случајни позиции"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "`generateNewPuzzle` прави случајни потези од решената табла.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sp-t2",
+      "topic": "slide-puzzle",
+      "question": "Која е предноста од ваквото дефинирање на ширината и висината на таблата? (повеќе одговори)\n```\nBOARDWIDTH = 4  # number of columns in the board\nBOARDHEIGHT = 4 # number of rows in the board\n```",
+      "options": [
+        "Играта ќе работи побрзо.",
+        "За да има доволно плочки на таблата.",
+        "Кодот е почитлив.",
+        "Ако сакаме да ги смениме ширината и висината, ги менуваме само овие две линии, а остатокот од програмата се прилагодува."
+      ],
+      "answer": [
+        2,
+        3
+      ],
+      "explanation": "Константите наместо „магични броеви“ го прават кодот почитлив и големината се менува на едно место. Moodle ги прифаќа точно овие два.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sp-t3",
+      "topic": "slide-puzzle",
+      "question": "Како програмата знае дека играчот ја решил загатката?",
+      "options": [
+        "Ја множи тековната табла со решената.",
+        "Ја изминува тековната табла и го проверува редоследот на плочките.",
+        "Ја споредува тековната табла со решената."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "`if mainBoard == SOLVEDBOARD:`",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sp-t4",
+      "topic": "slide-puzzle",
+      "question": "Зошто се чуваат сите потези, и тие на програмата при мешањето и тие на играчот?",
+      "options": [
+        "За да почне во обратен редослед",
+        "За да се измеша таблата",
+        "За да може програмата да ја реши загатката наместо играчот"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Solve ги прави обратните потези по обратен редослед.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sp-t5",
+      "topic": "slide-puzzle",
+      "question": "Кој е минималниот и точен редослед на главните чекори во секое изминување на главната јамка?",
+      "options": [
+        "ажурирај ја состојбата, провери ја состојбата, прикажи ја новата состојба, провери ја состојбата",
+        "провери ја состојбата, ажурирај ја состојбата, прикажи ја новата состојба",
+        "прикажи ја новата состојба, провери ја состојбата"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Провери (дали е решено, настани) → ажурирај → прикажи.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sp-t6",
+      "topic": "slide-puzzle",
+      "question": "Играта може да се забрза ако",
+      "options": [
+        "ги чуваме координатите на празното поле",
+        "не користиме симболички имиња за константите",
+        "ги чуваме координатите на точните позиции на секоја плочка"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Наместо `getBlankPosition` да ја пребарува таблата секој пат. Слајдовите додаваат дека добивката е занемарлива.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sp01",
+      "topic": "slide-puzzle",
+      "question": "Што враќа `generateNewPuzzle(80)`?",
+      "options": [
+        "Само измешана табла",
+        "Tuple (табла, листа од 80-те случајни потези)",
+        "Решени потези",
+        "bool"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`mainBoard, solutionSeq = generateNewPuzzle(80)`. Слајдот тука пишува „IMPORTANT!“.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp02",
+      "topic": "slide-puzzle",
+      "question": "Како копчето Solve ја решава загатката?",
+      "options": [
+        "Со пребарување (BFS)",
+        "Ги прави спротивните потези по обратен редослед за `solutionSeq + allMoves`",
+        "Директно ја вчитува `SOLVEDBOARD`",
+        "Со случајни потези"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "„Being smart by using stupid code“: нема алгоритам за решавање, само враќање назад.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp03",
+      "topic": "slide-puzzle",
+      "question": "Која е разликата меѓу Reset и Solve?",
+      "options": [
+        "Нема разлика",
+        "Reset ги враќа само потезите на играчот (`allMoves`), а Solve и мешањето (`solutionSeq + allMoves`)",
+        "Reset прави нова игра",
+        "Solve само печати „Solved!“"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Reset ја враќа таблата како била по мешањето, Solve до решената.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp04",
+      "topic": "slide-puzzle",
+      "question": "Зошто `getRandomMove` го исклучува спротивниот потег од `lastMove`?",
+      "options": [
+        "За побрза анимација",
+        "За случајниот потег да не го поништи претходниот",
+        "Спротивниот потег е секогаш невалиден",
+        "За меморија"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Инаку мешањето би можело да оди напред-назад и таблата да остане речиси решена.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp05",
+      "topic": "slide-puzzle",
+      "question": "Празното поле е на (1, 1), а играчот кликнува на (2, 1). Која е насоката `slideTo`?",
+      "options": [
+        "RIGHT",
+        "LEFT",
+        "UP",
+        "DOWN"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Насоката е на плочката: таа е десно од празното и се лизга налево (`spotx == blankx + 1 and spoty == blanky`).",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp06",
+      "topic": "slide-puzzle",
+      "question": "Кога `isValidMove(board, UP)` враќа False?",
+      "options": [
+        "Кога празното поле е во горниот ред",
+        "Кога празното поле е во најдолниот ред",
+        "Кога празното поле е во левата колона",
+        "Никогаш"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "UP значи плочката под празното оди горе; ако празното е најдолу, под него нема плочка.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp07",
+      "topic": "slide-puzzle",
+      "question": "Што прави `pygame.event.post(event)` во `checkForQuit()`?",
+      "options": [
+        "Го брише настанот",
+        "Го враќа KEYUP настанот (што не е Esc) во редот, за да се обработи понатаму",
+        "Праќа QUIT",
+        "Создава клик"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`event.get(KEYUP)` ги вади сите KEYUP настани; тие што не се Esc мора да се вратат.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp08",
+      "topic": "slide-puzzle",
+      "question": "Што е еквивалентно на `event.key in (K_LEFT, K_a)`?",
+      "options": [
+        "`event.key == K_LEFT and event.key == K_a`",
+        "`event.key == K_LEFT or event.key == K_a`",
+        "`event.key == (K_LEFT, K_a)`",
+        "`K_LEFT in event.key`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "„Equal To One Of“ трик од слајдовите.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp09",
+      "topic": "slide-puzzle",
+      "question": "Што враќа `getStartingBoard()` за табла 3×3?",
+      "options": [
+        "`[[1, 2, 3], [4, 5, 6], [7, 8, BLANK]]`",
+        "`[[1, 4, 7], [2, 5, 8], [3, 6, BLANK]]`",
+        "`[[BLANK, 1, 2], [3, 4, 5], [6, 7, 8]]`",
+        "Рамна листа од 9 броја"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Таблата е листа од колони: првата колона е 1, 4, 7.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sp10",
+      "topic": "slide-puzzle",
+      "question": "Зошто `slideAnimation` прави `DISPLAYSURF.copy()`?",
+      "options": [
+        "За да ја зачува сликата во датотека",
+        "За основна слика (со празно поле на местото на плочката) врз која секоја рамка се црта поместената плочка",
+        "За поголем FPS",
+        "За Solve"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Секоја рамка: blit на основата, па плочката малку поместена.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim-t1",
+      "topic": "simulate",
+      "question": "Шаблонот е `[RED, GREEN, RED, YELLOW]`, а `currentStep` е 1. Кое копче треба да го кликне играчот за да НЕ изгуби?",
+      "options": [
+        "GREEN",
+        "YELLOW",
+        "RED",
+        "BLUE"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`currentStep` е индекс од 0, па се очекува `pattern[1]` = GREEN; секое друго копче е game over. (Оригиналот на англиски е збунувачки формулиран, точниот одговор е GREEN.)",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sim-t2",
+      "topic": "simulate",
+      "question": "Во кои режими може да биде програмата?",
+      "options": [
+        "почетна анимација и прикажување анимација",
+        "прикажување на шаблонот и game over",
+        "прикажување на шаблонот и чекање играчот да кликне копчиња",
+        "чекање играчот да кликне копчиња и анимација на светнување"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "`waitingForInput` е False додека се прикажува шаблонот и True додека се чека играчот.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sim-t3",
+      "topic": "simulate",
+      "question": "Кој услов во simulate.py проверува дали играчот го пропуштил времето (timeout), по што следи game over?",
+      "options": [
+        "`time.time() - TIMEOUT > lastClickTime`",
+        "`(currentStep != 0 and time.time() - TIMEOUT < lastClickTime)`",
+        "`(currentStep != 0 and time.time() - TIMEOUT > lastClickTime)`",
+        "`(currentStep == 0 and time.time() - TIMEOUT > lastClickTime)`"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Timeout важи дури по првиот клик во кругот (`currentStep != 0`). На Moodle прашањето гласеше „дека играчот НЕ го пропуштил времето“ и ги прифаќаше и b (обратниот услов) и c.",
+      "sources": [
+        "selfeval",
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim-t4",
+      "topic": "simulate",
+      "question": "Кој е точниот редослед при анимацијата на светнување на копче?",
+      "options": [
+        "alpha на светлата боја почнува од 0 и расте до непроѕирно → се црта нормалната табла → alpha опаѓа",
+        "се црта нормалната табла → alpha на светлата боја почнува од 0 и расте до непроѕирно → alpha опаѓа",
+        "се црта нормалната табла → alpha опаѓа до непроѕирно → alpha почнува од 0 и расте",
+        "alpha почнува од 0 и расте до непроѕирно → alpha опаѓа → се црта нормалната табла"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`origSurf = DISPLAYSURF.copy()`, па `for start, end, step in ((0, 255, 1), (255, 0, -1))`.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sim-t5",
+      "topic": "simulate",
+      "question": "За анимацијата на светнување да се гледа многу бавно, кој е точниот код?",
+      "options": [
+        "`FPSCLOCK.tick(FPS)`",
+        "`FPSCLOCK.tick(1)`",
+        "`FPSCLOCK.tick(1000)`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`tick(1)` = најмногу една рамка во секунда.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sim-t6",
+      "topic": "simulate",
+      "question": "Кој е точниот начин за повеќе блесоци во анимацијата за game over?",
+      "options": [
+        "Да се зголеми `animationSpeed`",
+        "```\nfor i in range(3):\n    for start, end, step in ((0, 512, 1), (512, 0, -1)):\n        ...\n```",
+        "Да се зголеми `end`",
+        "```\nfor i in range(5):\n    for start, end, step in ((0, 255, 1), (255, 0, -1)):\n        ...\n```"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "Оригиналот е `range(3)` = 3 блесоци, па повеќе итерации даваат повеќе блесоци. Alpha мора да остане 0–255: 512 дава грешка за невалидна боја.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sim02",
+      "topic": "simulate",
+      "question": "Што чува `currentStep`?",
+      "options": [
+        "Бројот на кругови",
+        "Индексот во `pattern` на бојата што треба следно да се кликне",
+        "Времето на последниот клик",
+        "Резултатот"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "По точен клик `currentStep += 1`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim03",
+      "topic": "simulate",
+      "question": "Кој тастер е за црвеното копче?",
+      "options": [
+        "Q",
+        "W",
+        "A",
+        "S"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Q жолто, W сино, A црвено, S зелено (KEYDOWN), исто како распоредот на копчињата.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim05",
+      "topic": "simulate",
+      "question": "Што се случува кога целиот шаблон е внесен точно?",
+      "options": [
+        "Крај на играта",
+        "`changeBackgroundAnimation()`, `score += 1`, `waitingForInput = False`, `currentStep = 0`",
+        "Само `score += 1`",
+        "`pattern` се празни"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Потоа програмата додава нова боја и го прикажува шаблонот одново.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim06",
+      "topic": "simulate",
+      "question": "Колку бои се додаваат во секој нов круг?",
+      "options": [
+        "Една, на крајот (`append`)",
+        "Две",
+        "Целиот шаблон се генерира одново",
+        "Една, на почетокот"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`pattern.append(random.choice((YELLOW, BLUE, RED, GREEN)))`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim07",
+      "topic": "simulate",
+      "question": "Зошто `flashSurf` се создава со `convert_alpha()`?",
+      "options": [
+        "За брзина",
+        "За да може да се црта со проѕирни бои (alpha)",
+        "За звук",
+        "За ротација"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Без него четвртата вредност на бојата се игнорира.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim08",
+      "topic": "simulate",
+      "question": "`animationSpeed` во `flashButtonAnimation` е 25 наместо 50. Што се случува?",
+      "options": [
+        "Светнувањето е побавно (околу двојно повеќе рамки)",
+        "Побрзо",
+        "Нема светнување",
+        "Звукот е потивок"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`range(0, 255, 25)` има 11 чекори наместо 6. Ова е сменето во решената вежба simulate (1).py.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim09",
+      "topic": "simulate",
+      "question": "Колку е `XMARGIN` (прозорец 640, копчиња 200, празнина 20)?",
+      "options": [
+        "110",
+        "120",
+        "220",
+        "30"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`int((640 - 2*200 - 20) / 2)` = 110.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sim10",
+      "topic": "simulate",
+      "question": "Што прави `gameOverAnimation()`?",
+      "options": [
+        "Ги пушта сите 4 звуци и трипати трепка бело преку екранот",
+        "Покажува текст „Game Over“",
+        "Ја затвора играта",
+        "Ја прави позадината црвена"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Потоа `pattern`, `currentStep` и `score` се ресетираат и играта продолжува.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w-t1",
+      "topic": "wormy",
+      "question": "Што се проверува со овој код?\n```\nelif event.type == KEYDOWN:\n    if (event.key == K_LEFT or event.key == K_a) and direction != RIGHT:\n        direction = LEFT\n    elif (event.key == K_RIGHT or event.key == K_d) and direction != LEFT:\n        direction = RIGHT\n    elif (event.key == K_UP or event.key == K_w) and direction != DOWN:\n        direction = UP\n    elif (event.key == K_DOWN or event.key == K_s) and direction != UP:\n        direction = DOWN\n```",
+      "options": [
+        "Дали настанот е KEYDOWN, дали е притисната стрелка или WASD и дали црвот не оди во спротивна насока",
+        "Дали настанот е KEYDOWN, дали е притисната стрелка или WASD и дали црвот не се врти во самиот себе",
+        "Дали настанот е KEYDOWN, дали е притисната стрелка или WASD и дали црвот удрил во ѕид",
+        "Дали настанот е KEYDOWN, дали е притисната стрелка или WASD и дали црвот изел јаболко"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Условите `direction != RIGHT` итн. го спречуваат вртењето назад во телото. Првиот одговор звучи речиси исто, но Moodle го бележи како погрешен.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "w-t2",
+      "topic": "wormy",
+      "question": "Црвот се удрил ...",
+      "options": [
+        "кога главата излегла од мрежата или кога влегла во поле што веќе го зафаќа друг дел од телото",
+        "кога главата излегла од мрежата или кога црвот се свртел во себе",
+        "само кога главата излегла од мрежата",
+        "кога главата излегла од мрежата или кога црвот изел јаболко"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Двете проверки во `runGame` водат до `return` (game over).",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "w-t3",
+      "topic": "wormy",
+      "question": "Која е целта на првата линија во `showGameOverScreen`?\n```\npygame.time.wait(500)\ncheckForKeyPress() # clear out any key presses in the event queue\nwhile True:\n    if checkForKeyPress():\n        pygame.event.get() # clear event queue\n        return\n```",
+      "options": [
+        "Играчот да го држи тастерот подолго",
+        "Црвот да ја смени позицијата",
+        "Јаболкото да ја смени позицијата",
+        "Играчот случајно да не притисне тастер пребрзо"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "Играчот веројатно уште притиска стрелки кога ќе изгуби; без паузата веднаш би почнала нова игра.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "w-t4",
+      "topic": "wormy",
+      "question": "Во `showStartScreen()`, што значи линијата `degrees1 += 3`?",
+      "options": [
+        "Белиот текст „Wormy!“ се ротира за 3 степени секоја рамка",
+        "Белиот текст „Wormy!“ се ротира за 3 степени секоја секунда",
+        "Зелениот текст „Wormy!“ се ротира за 3 степени секоја рамка",
+        "Зелениот текст „Wormy!“ се ротира за 3 степени секоја секунда"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Белиот текст се ротира за 3°, а зелениот (`degrees2 += 7`) за 7° по рамка.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "w-t5",
+      "topic": "wormy",
+      "question": "Каде ќе се појави „Press a key to play.“?\n```\ndef drawPressKeyMsg():\n    pressKeySurf = BASICFONT.render('Press a key to play.', True, DARKGRAY)\n    pressKeyRect = pressKeySurf.get_rect()\n    pressKeyRect.topleft = (WINDOWWIDTH - 200, WINDOWHEIGHT - 30)\n    DISPLAYSURF.blit(pressKeySurf, pressKeyRect)\n```",
+      "options": [
+        "Горе десно",
+        "Горе лево",
+        "Долу лево",
+        "Долу десно"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "Горниот лев агол на текстот е 200 px од десниот раб и 30 px од долниот.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "w-t6",
+      "topic": "wormy",
+      "question": "`newHead = {'x': wormCoords[HEAD]['x'] + 1, 'y': wormCoords[HEAD]['y']}` значи дека црвот се движи:",
+      "options": [
+        "лево",
+        "горе",
+        "десно",
+        "долу"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "x + 1 = една ќелија надесно; горе би било y − 1.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "w01",
+      "topic": "wormy",
+      "question": "Каде е главата на црвот?",
+      "options": [
+        "`wormCoords[-1]`",
+        "`wormCoords[0]` (`HEAD = 0`)",
+        "`wormCoords[1]`",
+        "Во средината на листата"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Новата глава секогаш се додава на почетокот со `insert(0, ...)`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w02",
+      "topic": "wormy",
+      "question": "Како расте црвот кога ќе изеде јаболко?",
+      "options": [
+        "Добива 3 нови сегменти",
+        "Во тој чекор опашката не се брише, а се додава нова глава",
+        "Се додава сегмент на крајот",
+        "Се зголемува `CELLSIZE`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Инаку секој чекор `del wormCoords[-1]` ја брише опашката.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w03",
+      "topic": "wormy",
+      "question": "`CELLSIZE` се менува во 15. Што се случува?",
+      "options": [
+        "Има повеќе ќелии",
+        "AssertionError, бидејќи 640 не се дели со 15",
+        "Црвот е побрз",
+        "Ништо"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`assert WINDOWWIDTH % CELLSIZE == 0` бара прозорецот да се дели на цели ќелии.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w04",
+      "topic": "wormy",
+      "question": "Колку се `CELLWIDTH` и `CELLHEIGHT`?",
+      "options": [
+        "20 и 20",
+        "32 и 24",
+        "640 и 480",
+        "31 и 23"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "640 / 20 = 32, 480 / 20 = 24; ќелиите се од (0, 0) до (31, 23).",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w06",
+      "topic": "wormy",
+      "question": "Кога главата е надвор од мрежата?",
+      "options": [
+        "x == 0 или y == 0",
+        "x == −1 или x == CELLWIDTH или y == −1 или y == CELLHEIGHT",
+        "x > WINDOWWIDTH",
+        "x == CELLWIDTH − 1"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Ќелиите се од 0 до CELLWIDTH − 1, па −1 и CELLWIDTH се надвор.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w07",
+      "topic": "wormy",
+      "question": "Што прави `wormCoords.insert(0, newHead)`?",
+      "options": [
+        "Додава нова глава на почетокот на листата",
+        "Ја заменува главата",
+        "Додава на крајот",
+        "Брише"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`insert(i, x)` вметнува пред индекс i.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w08",
+      "topic": "wormy",
+      "question": "FPS се менува од 15 во 30. Што се случува?",
+      "options": [
+        "Црвот се движи двојно побрзо",
+        "Само анимацијата е помазна",
+        "Јаболката се појавуваат почесто",
+        "Ништо"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Црвот се поместува една ќелија по рамка, па FPS е брзината на играта.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w09",
+      "topic": "wormy",
+      "question": "Зошто почетниот екран секогаш го ротира оригиналниот текст со зголемен агол, наместо веќе ротираната слика?",
+      "options": [
+        "Поради брзина",
+        "Ротацијата не е совршена и сликата расте секој пат, па на крај се добива `pygame.error: Width or height is too large`",
+        "`rotate` го менува оригиналот",
+        "Агол поголем од 360 не е дозволен"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Само ротации за множители на 90° се без изобличување.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "w10",
+      "topic": "wormy",
+      "question": "Што прикажува `drawScore(len(wormCoords) - 3)`?",
+      "options": [
+        "Должината на црвот",
+        "Бројот на изедени јаболка (почетната должина е 3)",
+        "Нивото",
+        "Времето"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Секое јаболко додава еден сегмент.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t-t1",
+      "topic": "tetromino",
+      "question": "Tetromino завршува кога играчот ќе ги исчисти сите кутии од таблата.",
+      "options": [
+        "Точно",
+        "Неточно"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Играта завршува кога нов дел не може да се смести на врвот (`isValidPosition` е False).",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "t-t2",
+      "topic": "tetromino",
+      "question": "______ е едно пополнето квадратно поле на таблата.",
+      "options": [
+        "таблата (board)",
+        "дел (piece)",
+        "форма (shape)",
+        "кутија (box)"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "Piece е составен од 4 кутии.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "t-t3",
+      "topic": "tetromino",
+      "question": "Што дефинираат овие константи?\n```\nWINDOWWIDTH = 640\nWINDOWHEIGHT = 480\n```",
+      "options": [
+        "Димензии на таблата во пиксели",
+        "Димензии на прозорецот во пиксели",
+        "Димензии на таблата во кутии",
+        "Димензии на прозорецот во кутии"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Таблата е `BOARDWIDTH` × `BOARDHEIGHT` (10 × 20) во кутии.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "t-t4",
+      "topic": "tetromino",
+      "question": "Константите за време при држење тастер овозможуваат последната акција да се повторува без повторно притискање.",
+      "options": [
+        "Точно",
+        "Неточно"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`MOVESIDEWAYSFREQ` и `MOVEDOWNFREQ`: додека тастерот е држен, делот се поместува на секои 0.15 / 0.1 секунди.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "t-t5",
+      "topic": "tetromino",
+      "question": "Тестот бара да го напишеш `L_SHAPE_TEMPLATE`. Која е првата ротација (индекс 0)?",
+      "options": [
+        "```\n.....\n...O.\n.OOO.\n.....\n.....\n```",
+        "```\n.....\n.O...\n.OOO.\n.....\n.....\n```",
+        "```\n.....\n..O..\n.OOO.\n.....\n.....\n```",
+        "```\n.....\n.....\n..OO.\n.OO..\n.....\n```"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Другите се J, T и S. Целиот шаблон (4 ротации) е во темата Tetromino. На тестот ова е прашање со пишување што се оценува рачно.",
+      "sources": [
+        "selfeval",
+        "claude"
+      ]
+    },
+    {
+      "id": "t-t7",
+      "topic": "tetromino",
+      "question": "Опционалниот параметар `adjX` во `isValidPosition()` може да прима",
+      "options": [
+        "само позитивни вредности",
+        "само негативни вредности",
+        "позитивни и негативни вредности",
+        "само +1 и −1"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Негативно = проверка лево, позитивно = десно.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "t-t8",
+      "topic": "tetromino",
+      "question": "Проверката за полни редови и нивното бришење почнува од",
+      "options": [
+        "врвот на таблата",
+        "случајно место",
+        "дното на таблата",
+        "средината на таблата"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "`removeCompleteLines` оди од дното нагоре.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "t01",
+      "topic": "tetromino",
+      "question": "Колку ротации имаат деловите O и I?",
+      "options": [
+        "O = 1, I = 2",
+        "4 и 4",
+        "1 и 4",
+        "2 и 2"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "S, Z, I имаат 2; O 1; J, L, T по 4.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t02",
+      "topic": "tetromino",
+      "question": "Која е почетната позиција на нов дел?",
+      "options": [
+        "x = 3, y = −2",
+        "x = 5, y = 0",
+        "(0, 0)",
+        "x = 3, y = 0"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "x = int(10 / 2) − int(5 / 2) = 3; y = −2, делот почнува над таблата.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t03",
+      "topic": "tetromino",
+      "question": "Резултатот е 25. Колку се `level` и `fallFreq`?",
+      "options": [
+        "Ниво 2, 0.23 s",
+        "Ниво 3, 0.21 s",
+        "Ниво 3, 0.27 s",
+        "Ниво 25, 0"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`level = int(25 / 10) + 1 = 3`; `fallFreq = 0.27 - 3 * 0.02 = 0.21`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t04",
+      "topic": "tetromino",
+      "question": "Што се случува од ниво 14 натаму?",
+      "options": [
+        "Крај на играта",
+        "`fallFreq` е негативен, делот паѓа во секоја итерација и не може да паѓа побрзо",
+        "Нивото се враќа на 1",
+        "Се менува музиката"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "0.27 − 14 · 0.02 = −0.01. Слајдот го означува со „!!!“.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t05",
+      "topic": "tetromino",
+      "question": "Зошто нема `movingUp`?",
+      "options": [
+        "Заборавено е",
+        "Стрелката горе / W е за ротација",
+        "Делот не се движи",
+        "SPACE е за горе"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Q ротира во другата насока.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t06",
+      "topic": "tetromino",
+      "question": "Што прави `(rotation + 1) % len(SHAPES[fallingPiece['shape']])`?",
+      "options": [
+        "Ја поставува ротацијата на 0",
+        "Оди на следната ротација, а по последната се враќа на 0",
+        "Ја намалува",
+        "Случајна ротација"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Модулот ја врти ротацијата во круг.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t07",
+      "topic": "tetromino",
+      "question": "Што се случува ако новата ротација не е валидна?",
+      "options": [
+        "Делот се брише",
+        "Се враќа претходната ротација со `(rotation - 1) % len(...)`",
+        "Game over",
+        "Делот оди горе"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Прво се ротира, па се проверува со `isValidPosition`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t08",
+      "topic": "tetromino",
+      "question": "Зошто `removeCompleteLines` не го намалува y по бришење на ред?",
+      "options": [
+        "Тоа е грешка",
+        "Спуштениот ред сега е на истото y и и тој може да е полн",
+        "Поради брзина",
+        "Поради поените"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Така се бришат и неколку полни редови еден над друг.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "t09",
+      "topic": "tetromino",
+      "question": "Што прави тастерот P?",
+      "options": [
+        "Ротира",
+        "Го крие екранот (да нема мамење), ја запира музиката, покажува „Paused“, а по продолжување ги ресетира тајмерите",
+        "Hard drop",
+        "Нов дел"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Тоа е одговорот и на есејското прашање од тестот: зошто паузата прикажува друг екран.",
+      "sources": [
+        "predavanja",
+        "selfeval"
+      ]
+    },
+    {
+      "id": "t10",
+      "topic": "tetromino",
+      "question": "Како SPACE го спушта делот до дното?",
+      "options": [
+        "`y = BOARDHEIGHT`",
+        "Го наоѓа првото i (од 1) за кое `isValidPosition(adjY=i)` е False и додава i − 1 на y",
+        "Го зголемува FPS",
+        "Поставува `fallFreq = 0`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`for i in range(1, BOARDHEIGHT)`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq-t2",
+      "topic": "squirrel",
+      "question": "Координатите x и y во речникот на секој објект се",
+      "options": [
+        "world координати на горниот десен агол",
+        "пиксел координати на горниот лев агол",
+        "world координати на горниот лев агол",
+        "world координати на долниот лев агол"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Пиксел координатите се во `rect`.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sq-t3",
+      "topic": "squirrel",
+      "question": "Координатите на камерата го следат видливиот дел од светот на играта.",
+      "options": [
+        "Точно",
+        "Неточно"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`camerax`, `cameray` = горниот лев агол на погледот.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sq-t4",
+      "topic": "squirrel",
+      "question": "`camerax` и `cameray` се",
+      "options": [
+        "долниот лев агол на погледот на камерата",
+        "горниот десен агол",
+        "горниот лев агол",
+        "центарот на погледот"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Пиксел = world − камера.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sq-t5",
+      "topic": "squirrel",
+      "question": "Колкава е активната површина (active area)?",
+      "options": [
+        "10 × WINDOWWIDTH, 5 × WINDOWHEIGHT",
+        "4 × WINDOWWIDTH, 4 × WINDOWHEIGHT",
+        "2 × WINDOWWIDTH, 2 × WINDOWHEIGHT",
+        "3 × WINDOWWIDTH, 3 × WINDOWHEIGHT"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "Погледот плус уште еден прозорец од секоја страна; провера во `isOutsideActiveArea`.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "sq01",
+      "topic": "squirrel",
+      "question": "Како се добиваат пиксел координати од world координати?",
+      "options": [
+        "world + камера",
+        "world − камера",
+        "камера − world",
+        "world × 2"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Пример од слајдот: (−384, −84) − (−486, −330) = (102, 246).",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq02",
+      "topic": "squirrel",
+      "question": "Што прави `pygame.transform.flip(L_SQUIR_IMG, True, False)`?",
+      "options": [
+        "Вертикално го превртува оригиналот",
+        "Враќа нова, хоризонтално превртена слика (верверица свртена надесно), а оригиналот не се менува",
+        "Ротира за 180°",
+        "Ја менува `L_SQUIR_IMG`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Првиот bool е хоризонтално, вториот вертикално.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq03",
+      "topic": "squirrel",
+      "question": "Кога играчот ја јаде другата верверица?",
+      "options": [
+        "Кога `width * height <= playerObj['size'] ** 2`",
+        "Кога е побрз",
+        "Секогаш",
+        "Кога е неранлив"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Ако е поголема, играчот губи живот.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq04",
+      "topic": "squirrel",
+      "question": "Зошто бришењето од листа оди наназад, со `range(len(lst) - 1, -1, -1)`?",
+      "options": [
+        "Побрзо е",
+        "При бришење напред индексите се поместуваат и се добива IndexError",
+        "`del` работи само наназад",
+        "За да се избришат сите"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "По бришење, следните елементи се поместуваат за едно место нанапред.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq05",
+      "topic": "squirrel",
+      "question": "Што е `CAMERASLACK = 90`?",
+      "options": [
+        "Брзината на камерата",
+        "Колку пиксели играчот може да се оддалечи од центарот пред камерата да тргне по него",
+        "Големината на active area",
+        "Висината на скокот"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Така камерата не се тресе на секое мало движење.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq06",
+      "topic": "squirrel",
+      "question": "Каде се создаваат нови верверици и трева?",
+      "options": [
+        "Во погледот на камерата",
+        "Во active area, но надвор од погледот на камерата",
+        "На (0, 0)",
+        "Случајно каде било"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "За да не се појават пред очите на играчот.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq07",
+      "topic": "squirrel",
+      "question": "`BOUNCERATE` се менува од 6 во 12. Што се случува?",
+      "options": [
+        "Повисок скок",
+        "Побавен скок (трае повеќе рамки)",
+        "Побрз скок",
+        "Нема скок"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Висината ја одредува `BOUNCEHEIGHT`.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq08",
+      "topic": "squirrel",
+      "question": "Поголема верверица го удира играчот, кој не е неранлив. Што се случува?",
+      "options": [
+        "Веднаш game over",
+        "`health -= 1` и играчот е неранлив 2 s (трепка)",
+        "Играчот се намалува",
+        "Ништо"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "По 3 удари (MAXHEALTH) е game over.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq09",
+      "topic": "squirrel",
+      "question": "Колкава е шансата непријател да ја смени насоката во една рамка?",
+      "options": [
+        "2%",
+        "20%",
+        "50%",
+        "0.2%"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`random.randint(0, 99) < DIRCHANGEFREQ` (2).",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "sq10",
+      "topic": "squirrel",
+      "question": "Зошто `getBounceAmount` користи `float(bounceRate)`?",
+      "options": [
+        "Поради брзина",
+        "Компатибилност со Python 2, каде int / int е целобројно делење",
+        "`sin` бара float",
+        "За поголеми вредности"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Во Python 3 `/` секогаш дава float.",
+      "sources": [
+        "predavanja"
+      ]
+    },
+    {
+      "id": "stp-t1",
+      "topic": "star-pusher",
+      "question": "Што се случува ако се избрише линијата `mapNeedsRedraw = False`?\n```\nif mapNeedsRedraw:\n    mapSurf = drawMap(mapObj, gameStateObj, levelObj['goals'])\n    mapNeedsRedraw = False\n```",
+      "options": [
+        "Програмата ќе се забрза",
+        "Ништо нема да се смени",
+        "Програмата ќе се забави"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Мапата би се цртала одново во секоја рамка.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "stp-t2",
+      "topic": "star-pusher",
+      "question": "Што значи овој код?\n```\nif cameraUp and cameraOffsetY < MAX_CAM_X_PAN:\n    cameraOffsetY += CAM_MOVE_SPEED\nelif cameraDown and cameraOffsetY > -MAX_CAM_X_PAN:\n    cameraOffsetY -= CAM_MOVE_SPEED\nelif cameraLeft and cameraOffsetX < MAX_CAM_Y_PAN:\n    cameraOffsetX += CAM_MOVE_SPEED\nelif cameraRight and cameraOffsetX > -MAX_CAM_Y_PAN:\n    cameraOffsetX -= CAM_MOVE_SPEED\n```",
+      "options": [
+        "Камерата може да се движи вертикално и хоризонтално истовремено",
+        "Камерата не може да се движи вертикално и хоризонтално истовремено",
+        "Камерата се движи заедно со играчот",
+        "Камерата не може да се движи"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Сите четири се во еден `elif` ланец, па во една рамка се извршува само едната гранка. (Во кодот од книгата се два одделни блока, па таму може дијагонално.)",
+      "sources": [
+        "selfeval",
+        "claude"
+      ]
+    },
+    {
+      "id": "stp-t3",
+      "topic": "star-pusher",
+      "question": "Кој е точниот начин да се копира состојбата на играта од `levelObj['startState']`?",
+      "options": [
+        "`gameStateObj = levelObj['startState']`",
+        "`gameStateObj = copy.deepcopy(levelObj['startState'])`",
+        "`gameStateObj = copy(levelObj['startState'])`",
+        "`gameStateObj = decorateMap(levelObj['startState'])`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Обичното доделување би ја менувало почетната состојба, па reset не би работел.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "stp-t4",
+      "topic": "star-pusher",
+      "question": "Мора ли да се смени кодот на `startScreen()` кога ќе се смени сликата на насловот?\n```\ntitleRect = IMAGESDICT['title'].get_rect()\ntopCoord = 50\ntitleRect.top = topCoord\ntitleRect.centerx = HALF_WINWIDTH\ntopCoord += titleRect.height\n```",
+      "options": [
+        "Да",
+        "Не"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`get_rect()` ја чита големината од самата слика, а позицијата се пресметува од неа.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "stp-t5",
+      "topic": "star-pusher",
+      "question": "Камерата во Star Pusher",
+      "options": [
+        "се движи заедно со играчот",
+        "може да се движи независно од играчот",
+        "не може да се движи"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "WASD ја движат камерата, стрелките играчот.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "stp-t6",
+      "topic": "star-pusher",
+      "question": "Кога играчот се движи или турка ѕвезда, не е потребно мапата да се исцрта одново.",
+      "options": [
+        "Точно",
+        "Неточно"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Тогаш се поставува `mapNeedsRedraw = True`.",
+      "sources": [
+        "selfeval"
+      ]
+    },
+    {
+      "id": "stp-t7",
+      "topic": "star-pusher",
+      "question": "Каде се чува позицијата на играчот?",
+      "options": [
+        "Во објектот за нивото (`levelObj`)",
+        "Во објектот за состојбата на играта (`gameStateObj`)",
+        "Во `IMAGESDICT`",
+        "Во `TILEMAPPING`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`gameStateObj = {'player': (x, y), 'stepCounter': 0, 'stars': [...]}`.",
+      "sources": [
+        "selfeval",
+        "claude"
+      ]
+    },
+    {
+      "id": "stp-t8",
+      "topic": "star-pusher",
+      "question": "Каде се чуваат целите (goals)?",
+      "options": [
+        "Во објектот за состојбата на играта (`gameStateObj`)",
+        "Во објектот за нивото (`levelObj`)",
+        "Во `IMAGESDICT`",
+        "Во `PLAYERIMAGES`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Целите не се менуваат во текот на нивото, па се дел од нивото, не од состојбата.",
+      "sources": [
+        "selfeval",
+        "claude"
+      ]
+    },
+    {
+      "id": "stp-t9",
+      "topic": "star-pusher",
+      "question": "Што е точно за овој код?\n```\nassert startx != None and starty != None, 'Level %s (around line %s) in %s is missing a \"@\" or \"+\" to mark the start point.' % (levelNum+1, lineNum, filename)\nassert len(goals) > 0, 'Level %s (around line %s) in %s must have at least one goal.' % (levelNum+1, lineNum, filename)\nassert len(stars) >= len(goals), 'Level %s (around line %s) in %s is impossible to solve. It has %s goals but only %s stars.' % (levelNum+1, lineNum, filename, len(goals), len(stars))\n```",
+      "options": [
+        "Ако некој од условите е False, Python дава грешка и програмата застанува",
+        "Ако некој услов е False, се печати предупредување и нивото се прескокнува",
+        "Условите се проверуваат дури кога играчот ќе го реши нивото",
+        "Пораките се прикажуваат на екранот на играта"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "AssertionError со пораката по запирката; се проверува при читање на датотеката со нивоа.",
+      "sources": [
+        "selfeval",
+        "claude"
+      ]
+    },
+    {
+      "id": "stp01",
+      "topic": "star-pusher",
+      "question": "Што значи `*` во датотеката со нивоа?",
+      "options": [
+        "Ѕид",
+        "Ѕвезда на цел",
+        "Играч на цел",
+        "Декорација"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`$` ѕвезда, `.` цел, `*` ѕвезда на цел.",
+      "sources": [
+        "kniga"
+      ]
+    },
+    {
+      "id": "stp02",
+      "topic": "star-pusher",
+      "question": "Што значи `+` во датотеката со нивоа?",
+      "options": [
+        "Играч на цел",
+        "Ѕвезда",
+        "Агол",
+        "Коментар"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`@` играч, `.` цел, `+` играч на цел.",
+      "sources": [
+        "kniga"
+      ]
+    },
+    {
+      "id": "stp03",
+      "topic": "star-pusher",
+      "question": "Кога `makeMove` враќа False при туркање ѕвезда?",
+      "options": [
+        "Никогаш",
+        "Кога полето зад ѕвездата е ѕид, друга ѕвезда или е надвор од мапата",
+        "Кога ѕвездата е на цел",
+        "Кога `stepCounter > 100`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`isBlocked` ја проверува позицијата две полиња пред играчот. Две ѕвезди во ред не можат да се туркаат.",
+      "sources": [
+        "kniga"
+      ]
+    },
+    {
+      "id": "stp05",
+      "topic": "star-pusher",
+      "question": "Кога е нивото решено?",
+      "options": [
+        "Кога сите ѕвезди се поместени",
+        "Кога секоја цел има ѕвезда",
+        "Кога играчот стигнува до излез",
+        "По 100 чекори"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`isLevelFinished` проверува дали секоја цел е во `stars`.",
+      "sources": [
+        "kniga"
+      ]
+    },
+    {
+      "id": "stp06",
+      "topic": "star-pusher",
+      "question": "Што прави Backspace?",
+      "options": [
+        "Следно ниво",
+        "Претходно ниво",
+        "Го ресетира нивото",
+        "Го менува ликот"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "N следно, B претходно, P лик.",
+      "sources": [
+        "kniga"
+      ]
+    },
+    {
+      "id": "stp07",
+      "topic": "star-pusher",
+      "question": "Што прави `floodFill(mapObjCopy, startx, starty, ' ', 'o')`?",
+      "options": [
+        "Ги брише ѕидовите",
+        "Рекурзивно ги претвора празните полиња достапни од почетната позиција во внатрешен под `o`",
+        "Става дрвја",
+        "Ги наоѓа целите"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Така се разликува подот внатре од просторот надвор од ѕидовите.",
+      "sources": [
+        "kniga"
+      ]
+    },
+    {
+      "id": "stp08",
+      "topic": "star-pusher",
+      "question": "Што следува по решавањето на последното ниво?",
+      "options": [
+        "Играта завршува",
+        "Се враќа на првото ниво",
+        "Останува последното",
+        "Грешка"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`currentLevelIndex` се враќа на 0.",
+      "sources": [
+        "kniga"
+      ]
+    },
+    {
+      "id": "gd01",
+      "topic": "game-design",
+      "question": "Кој е редоследот во gameplay loop?",
+      "options": [
+        "Reward → Action → Feedback → Repeat",
+        "Action → Feedback → Reward → Repeat",
+        "Feedback → Action → Repeat → Reward",
+        "Action → Reward → Feedback → Repeat"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Играчот прави нешто, добива повратна информација и награда, па повторува.",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gd02",
+      "topic": "game-design",
+      "question": "„Touching lava ends the game“ е пример за:",
+      "options": [
+        "Механика",
+        "Правило",
+        "Цел",
+        "Предизвик"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Механика е што може играчот (скок), а правило е што следува.",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gd03",
+      "topic": "game-design",
+      "question": "Shape language кај ликовите:",
+      "options": [
+        "Тркалезно = опасно",
+        "Тркалезно = пријателско, остро = опасно",
+        "Квадратно = брзо",
+        "Формата не е важна"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Од предавањето за game design (2026/27).",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gd04",
+      "topic": "game-design",
+      "question": "Што НЕ е дел од minimum viable game?",
+      "options": [
+        "Едно ниво",
+        "Нешто за собирање",
+        "Online multiplayer",
+        "Начин за победа и пораз"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Online multiplayer и огромни светови се избегнуваат на почеток.",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gd05",
+      "topic": "game-design",
+      "question": "Кој дел од приказната одговара на „што е проблемот?“",
+      "options": [
+        "Setting",
+        "Premise",
+        "Conflict",
+        "Goal"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Setting е каде, Goal е што сака херојот.",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gd06",
+      "topic": "game-design",
+      "question": "Што значи добра силуета на лик?",
+      "options": [
+        "Ликот е препознатлив и кога е целосно исполнет со црно",
+        "Ликот има сенка",
+        "Ликот е 3D модел",
+        "Ликот има 3–5 бои"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од предавањето за game design (2026/27).",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gd07",
+      "topic": "game-design",
+      "question": "2D игрите користат ___, а 3D ___.",
+      "options": [
+        "meshes / sprites",
+        "sprites / models (meshes)",
+        "tiles / voxels",
+        "vectors / pixels"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Од предавањето за game design (2026/27).",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gd08",
+      "topic": "game-design",
+      "question": "Што е NPC?",
+      "options": [
+        "Лик што го контролира играчот",
+        "Лик што не го контролира играчот и дава информации, помага или го украсува светот",
+        "Главниот непријател",
+        "Ниво"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Non-player character.",
+      "sources": [
+        "game-design"
+      ]
+    },
+    {
+      "id": "gdt01",
+      "topic": "godot",
+      "question": "Кој node е за играч што се движи со код?",
+      "options": [
+        "StaticBody2D",
+        "CharacterBody2D",
+        "Area2D",
+        "Sprite2D"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "StaticBody2D е за подови и ѕидови.",
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "gdt02",
+      "topic": "godot",
+      "question": "Кој node детектира кога нешто влегува во него (монети, шилци)?",
+      "options": [
+        "Area2D",
+        "StaticBody2D",
+        "Camera2D",
+        "Node2D"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските вежби 2 (Godot).",
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "gdt03",
+      "topic": "godot",
+      "question": "Во каков формат се зачувува сцена?",
+      "options": [
+        "`.gd`",
+        "`.tscn`",
+        "`.png`",
+        "`.godot`"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "`.gd` е скрипта во GDScript.",
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "gdt04",
+      "topic": "godot",
+      "question": "Што прави F6?",
+      "options": [
+        "Ја стартува главната сцена",
+        "Ја стартува тековната сцена",
+        "Зачувува",
+        "Дуплира node"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "F5 ја стартува главната сцена.",
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "gdt05",
+      "topic": "godot",
+      "question": "Се менува `player.tscn`. Што се случува со инстанците во нивото?",
+      "options": [
+        "Ништо",
+        "Сите се ажурираат",
+        "Само првата",
+        "Се бришат"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Од аудиториските вежби 2 (Godot).",
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "gdt06",
+      "topic": "godot",
+      "question": "Што му треба на едно body за да се судира?",
+      "options": [
+        "Sprite2D",
+        "CollisionShape2D",
+        "Camera2D",
+        "AnimatedSprite2D"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Од аудиториските вежби 2 (Godot).",
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "gdt07",
+      "topic": "godot",
+      "question": "Која поставка спречува pixel art да изгледа заматено?",
+      "options": [
+        "Default Texture Filter = Nearest",
+        "Default Texture Filter = Linear",
+        "Mipmaps",
+        "VSync"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските вежби 2 (Godot).",
+      "sources": [
+        "aud2"
+      ]
+    },
+    {
+      "id": "vov01",
+      "topic": "voved",
+      "question": "Според Rollings и Adams, игра е:",
+      "options": [
+        "Форма на интерактивна забава каде играчите мора да надминат предизвици со акции според однапред дефинирани правила, за да извојуваат победа",
+        "Секој софтвер со графика и звук",
+        "Куп кул карактеристики и фенси графика",
+        "Симулација без правила и цел"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Куп кул карактеристики“ е токму она што Overmars вели дека играта НЕ е.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "vov02",
+      "topic": "voved",
+      "question": "Која игра ја направил Higginbotham во 1958, на осцилоскоп?",
+      "options": [
+        "Tennis for Two",
+        "Spacewar",
+        "Pong",
+        "Space Invaders"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање (историја на игрите).",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "vov03",
+      "topic": "voved",
+      "question": "Spacewar (1962) е направена на:",
+      "options": [
+        "MIT, на PDP-1",
+        "Atari VCS",
+        "Brookhaven, на осцилоскоп",
+        "Nintendo Famicom"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање (историја на игрите).",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "vov04",
+      "topic": "voved",
+      "question": "Pong (1972) е поврзан со:",
+      "options": [
+        "Nolan Bushnell и Atari",
+        "Ralph Baer и Brown Box",
+        "Sid Meier и MicroProse",
+        "id Software"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Ralph Baer ја направил Brown Box (подоцна Magnavox Odyssey), а Magnavox го тужел Atari поради Pong.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "vov05",
+      "topic": "voved",
+      "question": "Кој го создал Tetris (1985)?",
+      "options": [
+        "Алексеј Пајитнов",
+        "Shigeru Miyamoto",
+        "Will Wright",
+        "Nolan Bushnell"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање (историја на игрите).",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "vov06",
+      "topic": "voved",
+      "question": "Will Wright е дизајнер на:",
+      "options": [
+        "SimCity и The Sims",
+        "Donkey Kong",
+        "DOOM",
+        "Pirates!"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Donkey Kong е на Miyamoto, Pirates! на Sid Meier, DOOM на id Software.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "gm01",
+      "topic": "godot-movement",
+      "question": "Што е `delta` во `_process(delta)` и `_physics_process(delta)`?",
+      "options": [
+        "Времето во секунди од претходниот frame",
+        "Бројот на frame во секунда",
+        "Брзината на играчот",
+        "Растојанието до најблискиот ѕид"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Затоа `position.x += 200 * delta` значи 200 пиксели во секунда на секој компјутер.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm02",
+      "topic": "godot-movement",
+      "question": "Која наредба дава иста брзина на движење на брз и на бавен компјутер?",
+      "options": [
+        "`position.x += 200 * delta`",
+        "`position.x += 3`",
+        "`position.x += 200`",
+        "`position.x = delta`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Без множење со delta, движењето зависи од бројот на frame во секунда.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm03",
+      "topic": "godot-movement",
+      "question": "Кога Godot ја повикува `_ready()`?",
+      "options": [
+        "Еднаш, кога node влегува во сцената",
+        "На секој frame",
+        "Секогаш кога играчот ќе се помрдне",
+        "Само кога е притиснат F5"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`_process` е на секој frame, а `_physics_process` на фиксна стапка (60/s).",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm04",
+      "topic": "godot-movement",
+      "question": "Која функција е за движење и физика?",
+      "options": [
+        "`_physics_process(delta)`",
+        "`_ready()`",
+        "`_input_map()`",
+        "`_draw_ui()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Се извршува на фиксна стапка (60 пати во секунда).",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm05",
+      "topic": "godot-movement",
+      "question": "Која функција е точна за скок само во frame на притискање на копчето?",
+      "options": [
+        "`Input.is_action_just_pressed(\"jump\")`",
+        "`Input.is_action_pressed(\"jump\")`",
+        "`Input.get_axis(\"jump\")`",
+        "`Input.is_action_held(\"jump\")`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`is_action_pressed` е true додека копчето е држено, затоа е за движење.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm06",
+      "topic": "godot-movement",
+      "question": "Што враќа `Input.get_axis(\"move_left\", \"move_right\")`?",
+      "options": [
+        "−1, 0 или 1 според тоа што е притиснато",
+        "Само true или false",
+        "Vector2 со две вредности",
+        "Бројот на притиснати копчиња"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`Input.get_vector()` враќа Vector2 за top-down движење.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm07",
+      "topic": "godot-movement",
+      "question": "Зошто `JUMP_VELOCITY` е негативен (`-400.0`)?",
+      "options": [
+        "Во Godot 2D позитивното Y е надолу",
+        "Заради Python синтаксата",
+        "За да се намали брзината",
+        "Затоа што гравитацијата е нула"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Скок нагоре значи намалување на `velocity.y`.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm08",
+      "topic": "godot-movement",
+      "question": "Што важи за `move_and_slide()` и delta?",
+      "options": [
+        "`move_and_slide()` веќе користи delta, па velocity не се множи со delta (само гравитацијата)",
+        "Velocity секогаш се множи со delta",
+        "Delta не се користи во физика",
+        "`move_and_slide()` работи само без delta"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Гравитацијата е промена на velocity, па се множи: `velocity += get_gravity() * delta`.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm09",
+      "topic": "godot-movement",
+      "question": "Која проверка спречува скок во воздух?",
+      "options": [
+        "`is_on_floor()`",
+        "`is_on_wall()`",
+        "`is_on_ceiling()`",
+        "`move_toward()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Чест причина за скок во воздух е што недостасува `is_on_floor()`.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm10",
+      "topic": "godot-movement",
+      "question": "Што значи `var hp := 100`?",
+      "options": [
+        "Типот се одредува автоматски (int) и потоа е фиксен",
+        "Променливата е константа",
+        "Променливата е нетипизирана и може да држи било што",
+        "Грешка во синтакса"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`var thing = 5` е нетипизирана, а `var speed: float = 200.0` има експлицитен тип.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm11",
+      "topic": "godot-movement",
+      "question": "Која е валидна декларација на функција во GDScript?",
+      "options": [
+        "`func heal(amount):`",
+        "`def heal(amount):`",
+        "`function heal(amount) {`",
+        "`fn heal(amount)`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "GDScript е сличен на Python, но користи `func`, `var`, и `true`/`false` со мали букви.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm12",
+      "topic": "godot-movement",
+      "question": "Како да се постигне камерата да го следи играчот без код?",
+      "options": [
+        "Camera2D како child на Player node",
+        "Camera2D како child на TileMapLayer",
+        "Camera2D во посебна сцена без врска",
+        "CanvasLayer со TextureRect"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Child секогаш се движи со родителот. Limit и Position Smoothing се подесуваат во Inspector.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm13",
+      "topic": "godot-movement",
+      "question": "Како да се направи позадина што стои фиксно додека камерата се движи?",
+      "options": [
+        "CanvasLayer со Layer −1 и TextureRect во Full Rect",
+        "Camera2D со Zoom",
+        "StaticBody2D со Sprite2D",
+        "Area2D со CollisionShape2D"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "CanvasLayer ја игнорира камерата; −1 е позади играта, 1 е пред играта (UI).",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm14",
+      "topic": "godot-movement",
+      "question": "Како работи killzone-от за пропаст?",
+      "options": [
+        "Area2D со WorldBoundaryShape2D (бесконечна линија) под нивото; при допир timer го рестартира нивото",
+        "StaticBody2D што го блокира играчот",
+        "Camera2D со Limit Bottom",
+        "RayCast2D што го следи играчот"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Рестартот е со `get_tree().reload_current_scene()`; треба да се поврзат signals `body_entered` и `timeout`.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm15",
+      "topic": "godot-movement",
+      "question": "Што прави One Way Collision на платформа?",
+      "options": [
+        "Играчот може да скокне низ неа одоздола и да застане одозгора",
+        "Платформата се движи само во една насока",
+        "Играчот минува низ неа одозгора",
+        "Платформата е невидлива"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "За платформа што се движи се користи AnimatableBody2D.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm16",
+      "topic": "godot-movement",
+      "question": "Што е RayCast2D и како се користи кај непријателот?",
+      "options": [
+        "Невидлива линија што проверува со `is_colliding()` дали допира тело; при допир на ѕид непријателот го менува правецот",
+        "Камера што го следи непријателот",
+        "Тип на анимација",
+        "Sprite со видлива линија"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "RayCastRight (12, 0) и RayCastLeft (−12, 0) со mask само World.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gm17",
+      "topic": "godot-movement",
+      "question": "Кога A детектира B според collision layers и masks?",
+      "options": [
+        "Кога mask на A го содржи layer на B",
+        "Кога layer на A е ист со layer на B",
+        "Секогаш кога се допираат",
+        "Кога mask на B го содржи layer на A"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Layer = „што сум јас“, mask = „на што реагирам“. Killzone mask 2 (Player) реагира само на играчот.",
+      "sources": [
+        "godot4"
+      ]
+    },
+    {
+      "id": "gs01",
+      "topic": "godot-signals",
+      "question": "Како се подготвува berry сцена за собирање?",
+      "options": [
+        "Root Area2D, Sprite2D, CollisionShape2D (CircleShape2D) и група `collectables` на root",
+        "Root CharacterBody2D без collision shape",
+        "Root Node2D со Label",
+        "Root Control со Button"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Групата е на root, па секоја копија автоматски е во неа.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs02",
+      "topic": "godot-signals",
+      "question": "Како се дефинира и испраќа custom signal?",
+      "options": [
+        "`signal collected` и `collected.emit()`",
+        "`event collected` и `collected.fire()`",
+        "`func collected()` и `collected.call()`",
+        "`@signal collected` и `emit_signal`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "За податок: `signal collected(points)` и `collected.emit(points)`.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs03",
+      "topic": "godot-signals",
+      "question": "Што значи правилото „call down, signal up“?",
+      "options": [
+        "Родителите викаат функции на децата, а децата праќаат signals нагоре",
+        "Децата викаат функции на родителите, а родителите праќаат signals надолу",
+        "Сите node се викаат меѓусебно директно",
+        "Signals се користат само за UI"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Berry не го знае score; само објавува „собрано сум“, а нивото реагира.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs04",
+      "topic": "godot-signals",
+      "question": "Во кој редослед треба да се испрати signal-от во berry?",
+      "options": [
+        "Прво `collected.emit()`, па `queue_free()`",
+        "Прво `queue_free()`, па `collected.emit()`",
+        "Само `queue_free()`",
+        "Само `emit()` без `queue_free()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "По `queue_free()` node-от се брише, па signal-от мора да се испрати пред тоа.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs05",
+      "topic": "godot-signals",
+      "question": "Како нивото ги поврзува сите berries со функција?",
+      "options": [
+        "Во `_ready()`: `for berry in get_tree().get_nodes_in_group(\"collectables\"): berry.collected.connect(_on_berry_collected)`",
+        "Рачно секој berry во Inspector без код",
+        "Со `$Berry.collected = _on_berry_collected`",
+        "Со `get_tree().connect_all()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Децата се подготвени пред родителот, па сите berries веќе постојат во `_ready()`.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs06",
+      "topic": "godot-signals",
+      "question": "Зошто score расте за 2 наместо за 1?",
+      "options": [
+        "Signal-от е поврзан двапати (и во editor и во код)",
+        "Berry е во две групи",
+        "delta е погрешна",
+        "CanvasLayer е на погрешен layer"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Користи еден начин на поврзување по врска.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs07",
+      "topic": "godot-signals",
+      "question": "Што мора да важи за функција поврзана на signal со аргумент (`signal collected(points)`)?",
+      "options": [
+        "Да прима ист број аргументи колку што signal-от праќа",
+        "Да нема аргументи",
+        "Да се вика `_on_ready`",
+        "Да се наоѓа во berry.gd"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "На пример `func _on_berry_collected(points): score += points`.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs08",
+      "topic": "godot-signals",
+      "question": "Каде треба да е ScoreLabel за да не се движи со камерата?",
+      "options": [
+        "Во CanvasLayer (HUD)",
+        "Директно во level (Node2D)",
+        "Како child на Player",
+        "Во TileMapLayer"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "CanvasLayer ја игнорира камерата; HUD користи Layer 1 (пред играта).",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs09",
+      "topic": "godot-signals",
+      "question": "Која наредба го прикажува `Berries: 3` кога `score = 3`?",
+      "options": [
+        "`score_label.text = \"Berries: %d\" % [score]`",
+        "`score_label = \"Berries: \" + score`",
+        "`score_label.print(score)`",
+        "`score_label.text = Berries: score`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Еквивалентно: `\"Berries: \" + str(score)`. `%d` се заменува со цел број.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs10",
+      "topic": "godot-signals",
+      "question": "Што прави VBoxContainer?",
+      "options": [
+        "Ги реди децата вертикално, па не можат рачно да се преместуваат",
+        "Ги реди децата хоризонтално",
+        "Ја прикажува позадината",
+        "Го пушта звукот"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "HBoxContainer е хоризонтално. Простор меѓу копчињата: Theme Overrides → Constants → Separation.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs11",
+      "topic": "godot-signals",
+      "question": "Која наредба го менува нивото од главното мени?",
+      "options": [
+        "`get_tree().change_scene_to_file(\"res://scenes/level.tscn\")`",
+        "`get_tree().load_scene(\"level\")`",
+        "`get_tree().reload_current_scene()`",
+        "`get_tree().quit()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`quit()` ја затвора играта, `reload_current_scene()` го рестартира тековното ниво.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs12",
+      "topic": "godot-signals",
+      "question": "Која е разликата меѓу F5 и F6 во Godot?",
+      "options": [
+        "F5 ја стартува главната сцена, F6 тековната сцена",
+        "F5 тековната сцена, F6 главната сцена",
+        "F5 ја паузира играта, F6 ја зачувува",
+        "Нема разлика"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "F6 е практично за тестирање на нивото; F5 ја стартува играта од менито.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs13",
+      "topic": "godot-signals",
+      "question": "Што прави `get_tree().paused = true`?",
+      "options": [
+        "Ги запира сите node што не се Always (играч, непријател, платформи, timers)",
+        "Само музиката",
+        "Само играчот",
+        "Ја затвора играта"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Па и копчињата во end menu, ако Process Mode не е Always.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs14",
+      "topic": "godot-signals",
+      "question": "Зошто копчињата во end menu не реагираат кога играта е паузирана?",
+      "options": [
+        "Process Mode на EndMenu не е Always",
+        "Копчињата немаат Text",
+        "CanvasLayer е на Layer 0",
+        "Нема collision shape"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Со Always, децата го наследуваат режимот, па работат и при пауза.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs15",
+      "topic": "godot-signals",
+      "question": "Што мора да се направи пред `reload_current_scene()` при Restart?",
+      "options": [
+        "`get_tree().paused = false`",
+        "`queue_free()` на сите berries",
+        "`get_tree().quit()`",
+        "`music.stop()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "paused е на SceneTree, па останува true по reload и новото ниво почнува замрзнато.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs16",
+      "topic": "godot-signals",
+      "question": "Зошто root на end menu е CanvasLayer?",
+      "options": [
+        "Control во Node2D е во светот, па камерата се оддалечува од него; CanvasLayer останува на екранот",
+        "Затоа што е побрз",
+        "Затоа што Control не може да има деца",
+        "Затоа што CanvasLayer има collision shape"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Исто објаснување важи за HUD со score.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs17",
+      "topic": "godot-signals",
+      "question": "Која е улогата на Endzone?",
+      "options": [
+        "Area2D што праќа signal `finished`, а нивото одлучува (end menu + пауза)",
+        "Area2D што ја прикажува музиката",
+        "StaticBody2D што го блокира играчот",
+        "Label што го покажува score"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Исто како berry: објавува настан, а некој друг реагира.",
+      "sources": [
+        "godot5"
+      ]
+    },
+    {
+      "id": "gs18",
+      "topic": "godot-signals",
+      "question": "Која е разликата меѓу AudioStreamPlayer и AudioStreamPlayer2D?",
+      "options": [
+        "AudioStreamPlayer е иста јачина насекаде (музика, UI), 2D верзијата се стишува со растојание",
+        "AudioStreamPlayer е за звуци во светот, 2D за музика",
+        "Нема разлика",
+        "AudioStreamPlayer2D е само за .wav"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Музиката запира при пауза ако Process Mode не е Always.",
+      "sources": [
+        "godot5"
+      ]
+    }
+  ]
+}

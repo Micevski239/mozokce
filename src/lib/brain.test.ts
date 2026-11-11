@@ -107,6 +107,16 @@ describe("поени", () => {
     expect(minPoints(70, 30)).toBe(21);
     expect(minPoints(30, 50)).toBe(15);
     expect(minPoints(null, 50)).toBeNull();
+    expect(minPoints(250, null, 126)).toBe(126);
+  });
+  it("скала за оценки и минимум во поени се читаат", () => {
+    const b = minimal();
+    const a = b.assessment as Record<string, unknown>;
+    a.total = { points: 250, min_percent: null, min_points: 126 };
+    a.grade_scale = [{ from: 126, to: 150, grade: 6 }, { from: 226, to: null, grade: 10 }];
+    const parsed = parseBrain(b).assessment;
+    expect(parsed.total).toEqual({ points: 250, min_percent: null, min_points: 126 });
+    expect(parsed.grade_scale?.[1]).toEqual({ from: 226, to: null, grade: 10 });
   });
   it("поен / поени", () => {
     expect(pointsLabel(21)).toBe("21 поен");

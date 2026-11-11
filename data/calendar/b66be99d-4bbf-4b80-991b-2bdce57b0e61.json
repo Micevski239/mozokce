@@ -8,7 +8,9 @@
   "end_time": "17:45",
   "repeat_weekly": true,
   "repeat_until": "2027-01-15",
-  "skip_dates": [],
+  "skip_dates": [
+    "2026-11-16"
+  ],
   "location": "Амф МФ",
   "notes": "Ненад Анчев · насока 4г-ПИТ-1 · од распоредот на ФИНКИ"
 }

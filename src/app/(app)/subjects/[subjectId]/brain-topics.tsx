@@ -1,4 +1,4 @@
-import { Importance, SourceChips } from "@/components/brain-ui";
+import { BrainText, Importance, SourceChips } from "@/components/brain-ui";
 import { Panel } from "@/components/ui";
 import type { Brain, ProgressSummary } from "@/lib/brain";
 
@@ -30,7 +30,9 @@ export function BrainTopics({ brain, summary }: { brain: Brain; summary: Progres
               {t.key_points.map((p, i) => (
                 <li key={i} className="flex gap-2.5 text-[14.5px] leading-relaxed">
                   <span className="mt-[9px] h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                  <span>{p}</span>
+                  <span className="min-w-0">
+                    <BrainText text={p} />
+                  </span>
                 </li>
               ))}
             </ul>

@@ -3,7 +3,7 @@
 import { ArrowRight, Check, Eye, Flag, Play, RotateCcw, ShieldAlert, Undo2, X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { ProgressBar, SourceChips, STATE_COLORS, StateLegend } from "@/components/brain-ui";
+import { BrainText, ProgressBar, SourceChips, STATE_COLORS, StateLegend } from "@/components/brain-ui";
 import { Panel } from "@/components/ui";
 import {
   progressMapOf,
@@ -301,7 +301,9 @@ export function QuestionPractice({
           <div className="h-full rounded-full bg-accent transition-[width]" style={{ width: `${(run.index / run.items.length) * 100}%` }} />
         </div>
 
-        <h2 className="mt-5 text-lg font-semibold leading-snug sm:text-xl">{q.question}</h2>
+        <h2 className="mt-5 text-lg font-semibold leading-snug sm:text-xl">
+          <BrainText text={q.question} />
+        </h2>
         {multi && <p className="mt-1.5 text-sm text-accent-2">Повеќе точни одговори: означи ги сите, па Поднеси.</p>}
 
         <ul className="mt-4 space-y-2">
@@ -323,7 +325,9 @@ export function QuestionPractice({
                   className={`fill flex w-full items-start gap-3 p-3 text-left disabled:cursor-default ${state}`}
                 >
                   <span className="keycap mt-0.5 shrink-0">{i + 1}</span>
-                  <span className="min-w-0 flex-1 leading-snug">{q.options[orig]}</span>
+                  <span className="min-w-0 flex-1 leading-snug">
+                    <BrainText text={q.options[orig]} />
+                  </span>
                   {answer && isRight && !isSel && <span className="mt-0.5 shrink-0 font-mono text-[11px] text-success">не го означи</span>}
                   {answer && isRight && <Check size={18} className="mt-0.5 shrink-0 text-success" />}
                   {answer && isSel && !isRight && <X size={18} className="mt-0.5 shrink-0 text-danger" />}
@@ -336,7 +340,9 @@ export function QuestionPractice({
         {answer && (
           <div className={`mt-4 rounded-2xl p-4 ${answer.ok ? "bg-success-soft" : "bg-danger-soft"}`}>
             <div className={`display font-semibold ${answer.ok ? "text-success" : "text-danger"}`}>{answer.ok ? "Точно" : "Погрешно"}</div>
-            <p className="mt-1 text-sm leading-relaxed">{q.explanation}</p>
+            <p className="mt-1 text-sm leading-relaxed">
+              <BrainText text={q.explanation} />
+            </p>
             {answer.status && <p className="mt-2 font-mono text-[11.5px] text-ink-2">{answer.status}</p>}
             <div className="mt-2">
               <SourceChips ids={q.sources} brain={brain} />
@@ -390,8 +396,14 @@ export function QuestionPractice({
             <ul className="space-y-2">
               {wrongItems.map(({ q }) => (
                 <li key={q.id} className="fill p-3 text-sm">
-                  <p className="font-medium leading-snug">{q.question}</p>
-                  <p className="mt-1 text-success">{q.answer.map((i) => q.options[i]).join(" · ")}</p>
+                  <p className="font-medium leading-snug">
+                    <BrainText text={q.question} />
+                  </p>
+                  {q.answer.map((i) => (
+                    <p key={i} className="mt-1 text-success">
+                      <BrainText text={q.options[i]} />
+                    </p>
+                  ))}
                 </li>
               ))}
             </ul>
@@ -474,17 +486,21 @@ export function QuestionPractice({
               <li key={q.id} className="fill p-4">
                 <div className="flex items-start gap-2">
                   <span className="mt-0.5 font-mono text-xs text-ink-3">{n + 1}.</span>
-                  <p className="min-w-0 flex-1 font-medium leading-snug">{q.question}</p>
+                  <p className="min-w-0 flex-1 font-medium leading-snug">
+                    <BrainText text={q.question} />
+                  </p>
                   <span className="mt-1.5 h-2 w-2 shrink-0 rounded-full" style={{ background: STATE_COLORS[state] }} title={STATE_LABELS[state]} />
                 </div>
                 <ul className="mt-2 space-y-1 pl-5 text-sm">
                   {q.options.map((o, i) => (
                     <li key={i} className={q.answer.includes(i) ? "font-medium text-success" : "text-ink-2"}>
-                      {choiceLabel(i)}) {o}
+                      {choiceLabel(i)}) <BrainText text={o} />
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 pl-5 text-xs leading-relaxed text-ink-3">{q.explanation}</p>
+                <p className="mt-2 pl-5 text-xs leading-relaxed text-ink-3">
+                  <BrainText text={q.explanation} />
+                </p>
               </li>
             );
           })}

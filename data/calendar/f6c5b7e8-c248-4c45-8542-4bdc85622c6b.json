@@ -1,0 +1,14 @@
+{
+  "id": "f6c5b7e8-c248-4c45-8542-4bdc85622c6b",
+  "subject_id": "dos",
+  "title": "Прв колоквиум",
+  "kind": "kolokvium",
+  "date": "2026-11-20",
+  "start_time": null,
+  "end_time": null,
+  "repeat_weekly": false,
+  "repeat_until": null,
+  "skip_dates": [],
+  "location": null,
+  "notes": "Датум од предлог-распоредот за првите колоквиуми; часот и салата уште не се објавени."
+}

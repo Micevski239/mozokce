@@ -1,0 +1,16 @@
+{
+  "id": "9ee25abb-c55c-4850-9666-9d4934e976c8",
+  "subject_id": "pvi",
+  "kind": "file",
+  "title": "sudoku.py (пример колоквиум)",
+  "body": null,
+  "storage_path": "pvi/9ee25abb-c55c-4850-9666-9d4934e976c8.py",
+  "file_name": "sudoku.py",
+  "mime_type": "text/plain",
+  "size_bytes": 3283,
+  "origin": "exam",
+  "source_date": "2026-10-10",
+  "created_by": "ilijaatanasov04",
+  "created_at": "2026-10-30T23:31:45.004129Z",
+  "pinned": false
+}

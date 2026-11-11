@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import {
   SOURCE_TRUST,
   SOURCE_TYPE_LABELS,
@@ -44,13 +45,44 @@ export function SourceChips({ ids, brain }: { ids: string[]; brain: Pick<Brain, 
   );
 }
 
+const CODE_BLOCK = /```[a-z]*\n?([\s\S]*?)\n?```/g;
+const INLINE_CODE = /`([^`\n]+)`/g;
+
+/**
+ * Текст од мозокот со код: ```блок``` ги чува новите редови и вовлекувањето, `код` е во ред.
+ * Само span и code, за да може да стои и во наслов, параграф или копче.
+ */
+export function BrainText({ text }: { text: string }) {
+  return text.split(CODE_BLOCK).map((part, i) =>
+    i % 2 === 1 ? (
+      <span key={i} className="my-2 block overflow-x-auto whitespace-pre rounded-xl bg-[var(--line)] px-3 py-2 text-left font-mono text-[12.5px] font-normal leading-relaxed">
+        {part}
+      </span>
+    ) : (
+      <Fragment key={i}>
+        {part.split(INLINE_CODE).map((s, j) =>
+          j % 2 === 1 ? (
+            <code key={j} className="rounded-md bg-[var(--line)] px-1 font-mono text-[0.88em]">
+              {s}
+            </code>
+          ) : (
+            s
+          ),
+        )}
+      </Fragment>
+    ),
+  );
+}
+
 /** Листа точки со извори (што се паѓало, замки, гласини…). */
 export function PointList({ points, brain, tone }: { points: SourcedPoint[]; brain: Pick<Brain, "sources">; tone?: "warn" }) {
   return (
     <ul className="space-y-2">
       {points.map((p, i) => (
         <li key={i} className={`fill p-3 ${tone === "warn" ? "!border-l-[3px] !border-l-[color:var(--warn)]" : ""}`}>
-          <p className="text-sm leading-relaxed">{p.text}</p>
+          <p className="text-sm leading-relaxed">
+            <BrainText text={p.text} />
+          </p>
           <div className="mt-2">
             <SourceChips ids={p.sources} brain={brain} />
           </div>

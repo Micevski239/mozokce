@@ -1,0 +1,2994 @@
+{
+  "schema_version": 1,
+  "id": "mis",
+  "subject": {
+    "code": "МИС",
+    "name": "Мобилни информациски системи"
+  },
+  "updated": "2026-11-11",
+  "sources": [
+    {
+      "id": "voved",
+      "type": "courses",
+      "title": "Courses: Предавање „Вовед и cross-platform развој“",
+      "note": "Ивица Димитровски, 2026/27: цели на предметот, начин на оценување, видови мобилни апликации и cross-platform технологии."
+    },
+    {
+      "id": "dizajn",
+      "type": "courses",
+      "title": "Courses: Предавање „Design principles“",
+      "note": "Како до успешна апликација: дизајн, MVP, прототип, трошоци, маркетинг, метрики, перформанси, објавување на App Store и Google Play."
+    },
+    {
+      "id": "av1",
+      "type": "courses",
+      "title": "Courses: Аудиториски 1, Вовед во Flutter",
+      "note": "Ивица Димитровски, Мила Додевска: што е Flutter, шесте причини за Flutter, Dart, Hello World, инсталација. Презентацијата (pptx, 37 MB поради видеата) не е во материјалите; текстот од слајдовите е пренесен во мозокот."
+    },
+    {
+      "id": "av2",
+      "type": "courses",
+      "title": "Courses: Аудиториски 2, Flutter widgets и животен циклус",
+      "note": "Stateless и Stateful widgets, животен циклус на State, setState, 12 основни widgets."
+    },
+    {
+      "id": "api",
+      "type": "courses",
+      "title": "Courses: Предавање „APIs, Middleware and Backend Integration in Mobile Applications“",
+      "note": "REST и GraphQL, HTTP библиотеки по платформи, middleware, автентикација (OAuth 2.0, OIDC, PKCE, JWT), безбедна комуникација, серијализација и кеширање, повторни обиди, offline синхронизација, push нотификации, трети API (карти, плаќање, облак, AI), трендови."
+    },
+    {
+      "id": "test-prasanja",
+      "type": "discord_chat",
+      "title": "Discord: 20 прашања од тестот 2025 (по сеќавање)",
+      "note": "Колега ги запишал прашањата по тестот; понудените одговори не се запишани."
+    },
+    {
+      "id": "test-odgovori",
+      "type": "discord_file",
+      "title": "mis_test_odgovoreni.pdf: одговори на колега за прашањата 1–15",
+      "note": "За 5, 6, 12 и 14 нема одговор, само пример код."
+    },
+    {
+      "id": "study-guide",
+      "type": "friend_note",
+      "title": "MIS Study Guide за тестот 2025/26",
+      "note": "Водич од колега, направен од тест-белешките и презентациите од лани (вклучувајќи State Management и API, кои уште ги нема на courses)."
+    },
+    {
+      "id": "beleski",
+      "type": "friend_note",
+      "title": "Белешки од колеги (MIS.pdf, mis_notes V1 и V2)",
+      "note": "Резимеа од предавањата и аудиториските од лани, на македонски и англиски."
+    },
+    {
+      "id": "claude",
+      "type": "claude",
+      "title": "Дополнето од Claude",
+      "note": "Понудените одговори кај прашањата од тестот (колегата ги запишал само прашањата), прашањата од предавањата, објаснувањата."
+    }
+  ],
+  "assessment": {
+    "summary": "Електронски тест е главниот дел и сам носи најмногу оценка 7. За оценка 8–10 се прави и проект, кој не е задолжителен.",
+    "total": null,
+    "parts": [
+      {
+        "id": "e-test",
+        "name": "Електронски тест (e-test)",
+        "points": null,
+        "min_percent": null,
+        "summary": "Главниот дел од оценувањето. Само со тестот најмногу 7.",
+        "facts": [
+          {
+            "label": "Форма",
+            "value": "електронски тест"
+          },
+          {
+            "label": "Највисока оценка",
+            "value": "7 (без проект)"
+          }
+        ],
+        "steps": [],
+        "rules": [],
+        "from_students": [
+          {
+            "text": "Тестот во 2025 имал 20 прашања: точно/неточно, заокружување, поврзување (тип на апликација ↔ технологија), избор на точен код и резултат од даден код.",
+            "sources": [
+              "test-prasanja"
+            ]
+          },
+          {
+            "text": "Речиси сите прашања биле за Flutter и Dart: Row/Column и оски, Expanded/Flexible, Stack, животен циклус на StatefulWidget, JSON, Provider, Future и параметри.",
+            "sources": [
+              "test-prasanja"
+            ]
+          }
+        ],
+        "sources": [
+          "voved"
+        ]
+      },
+      {
+        "id": "proekt",
+        "name": "Проект (за 8–10)",
+        "points": null,
+        "min_percent": null,
+        "summary": "Не е задолжителен; потребен е само за оценка повисока од 7.",
+        "facts": [
+          {
+            "label": "Задолжителен",
+            "value": "не"
+          },
+          {
+            "label": "Технологија",
+            "value": "било која cross-platform или хибридна"
+          },
+          {
+            "label": "Над 20 MB",
+            "value": "линк во текстуална датотека (лимит на Moodle)"
+          }
+        ],
+        "steps": [],
+        "rules": [
+          "Проектот не мора да биде во Flutter или React Native: може во било кој cross-platform или хибриден јазик.",
+          "Ако предавањето е поголемо од 20 MB (лимитот на Moodle), качи текстуална датотека со линк."
+        ],
+        "from_students": [],
+        "sources": [
+          "voved"
+        ]
+      }
+    ],
+    "confirmed": true,
+    "note": "Предавањето не дава поени, минимуми ни скала: само дека тестот носи најмногу 7, а проектот е за 8–10.",
+    "sources": [
+      "voved"
+    ]
+  },
+  "overview": {
+    "summary": "Развој на мобилни апликации за повеќе платформи; вежбите се во Flutter (Dart) и React Native. Се полага со електронски тест, кој носи најмногу 7, а за 8–10 се прави и проект во која било cross-platform технологија. Тестот во 2025 имал 20 прашања, речиси сите за Flutter: Row/Column и оски, Expanded/Flexible, Stack, животен циклус на StatefulWidget, JSON, Provider, Future, параметри во Dart и видови мобилни апликации.",
+    "focus": [
+      {
+        "title": "Животен циклус на StatefulWidget",
+        "why": "4 од 20 прашања на тестот: кои се фазите, дали `build` и `didChangeDependencies` се повикуваат повеќе пати, сценарио со навигација.",
+        "topic": "lifecycle"
+      },
+      {
+        "title": "Row и Column: главна и спротивна оска",
+        "why": "Првите две прашања на тестот се точно/неточно со оските. Row → главна хоризонтална, Column → главна вертикална; cross е спротивната.",
+        "topic": "layout"
+      },
+      {
+        "title": "Provider",
+        "why": "3 прашања: моделот наследува `ChangeNotifier`, `MultiProvider` е за повеќе providers без вгнездување, `listen: false` само повикува метод.",
+        "topic": "provider"
+      },
+      {
+        "title": "Препознавање код за изглед",
+        "why": "Container со позадина и padding, Row за икона и текст, Stack + Positioned за профилна со статус и резултат од Stack код.",
+        "topic": "layout"
+      },
+      {
+        "title": "Проект ако сакаш повеќе од 7",
+        "why": "Без проект највисоката оценка е 7. Може во која било cross-platform технологија."
+      }
+    ],
+    "exam_patterns": [
+      {
+        "text": "Точно/неточно за `MainAxisAlignment` и `CrossAxisAlignment`, со формулации што намерно ги мешаат оските.",
+        "sources": [
+          "test-prasanja",
+          "study-guide"
+        ]
+      },
+      {
+        "text": "„Кој код најсоодветно прави…“: сина позадина и 16 px околу текст, икона и текст едно до друго, профилна слика со online статус.",
+        "sources": [
+          "test-prasanja"
+        ]
+      },
+      {
+        "text": "Резултат од даден код со `Stack` и `Positioned`.",
+        "sources": [
+          "test-prasanja"
+        ]
+      },
+      {
+        "text": "JSON: избор на код што декодира JSON листа во `List<Product>` и што кодира листа објекти во JSON.",
+        "sources": [
+          "test-prasanja"
+        ]
+      },
+      {
+        "text": "Поврзување: native, hybrid, cross-platform, web app ↔ Kotlin/Swift, HTML/CSS/JS, Dart…",
+        "sources": [
+          "test-prasanja",
+          "test-odgovori"
+        ]
+      },
+      {
+        "text": "Животен циклус: кои фази постојат, кои методи се повикуваат повеќе пати, кој метод се повикува во дадено сценарио.",
+        "sources": [
+          "test-prasanja"
+        ]
+      }
+    ],
+    "professor_said": [
+      {
+        "text": "Презентациите се на англиски, а предавањата на македонски.",
+        "sources": [
+          "voved"
+        ]
+      },
+      {
+        "text": "Вежбите се во Flutter и React Native.",
+        "sources": [
+          "voved"
+        ]
+      },
+      {
+        "text": "„Rule of thumb: default to stateless; go stateful only when the widget must remember something between rebuilds.“",
+        "sources": [
+          "av2"
+        ]
+      }
+    ],
+    "pitfalls": [
+      {
+        "text": "MIS.pdf ги наведува React Native и Flutter како hybrid. Според предавањето тие се cross-platform; hybrid се веб технологии во WebView (Cordova, Ionic, Capacitor).",
+        "sources": [
+          "beleski",
+          "voved"
+        ]
+      },
+      {
+        "text": "Дел од белешките велат дека животниот циклус има 4 фази (createState, initState, build, dispose). На тестот се бараат сите осум од аудиториските: createState, initState, didChangeDependencies, build, setState, didUpdateWidget, deactivate, dispose.",
+        "sources": [
+          "beleski",
+          "av2",
+          "test-odgovori"
+        ]
+      },
+      {
+        "text": "Прашање 15 (копчиња 1, 2, 3, навигација, првото копче повеќе не постои): одговорот `didUpdateWidget` е од белешката на колега и не е потврден.",
+        "sources": [
+          "test-odgovori",
+          "study-guide"
+        ]
+      },
+      {
+        "text": "Параметарот е `listen: false`, а не `listener`, како што е запишано во прашањето по сеќавање.",
+        "sources": [
+          "test-prasanja",
+          "claude"
+        ]
+      },
+      {
+        "text": "Кај прашања со НЕ или „неточно“ прво одреди дали е Row или Column (Row → H, Column → V), па дури тогаш главна или спротивна оска.",
+        "sources": [
+          "study-guide"
+        ]
+      },
+      {
+        "text": "Padding е простор внатре (позадината го опфаќа), а margin е простор надвор. „Сина позадина 16 px околу текстот“ значи `Container(color: …, padding: EdgeInsets.all(16))`.",
+        "sources": [
+          "study-guide",
+          "claude"
+        ]
+      }
+    ],
+    "rumors": [
+      {
+        "text": "Study guide-от има совет „техника за 15 минути“: можно е тестот да е краток, но времетраењето не е потврдено.",
+        "sources": [
+          "study-guide"
+        ]
+      }
+    ],
+    "gaps": [
+      "Датумот на тестот и дали има повеќе термини.",
+      "Колку прашања и колку време има тестот оваа година (лани 20 прашања).",
+      "Дали тестот има негативни поени.",
+      "Колку носи проектот, како се оценува и до кога се предава.",
+      "Предавањата и аудиториските за State Management (Provider) и JSON/FutureBuilder уште ги нема на courses, а лани беа на тестот. Од API-то е додадено предавањето „APIs, Middleware and Backend Integration“; не е јасно дали тоа е на тестот."
+    ]
+  },
+  "staff": [
+    {
+      "name": "Ивица Димитровски",
+      "role": "Предавања"
+    },
+    {
+      "name": "Мила Додевска",
+      "role": "Аудиториски вежби"
+    }
+  ],
+  "topics": [
+    {
+      "id": "layout",
+      "title": "Распоред: Row, Column, оски, Expanded, Stack",
+      "importance": 5,
+      "summary": "Најчеста тема на тестот: оските, Expanded/Flexible, Stack со Positioned и препознавање код за изглед.",
+      "key_points": [
+        "Row → главна оска хоризонтална, спротивна (cross) вертикална. Column → главна вертикална, спротивна хоризонтална.",
+        "`MainAxisAlignment` подредува по главната оска, `CrossAxisAlignment` по спротивната.",
+        "MainAxisAlignment: start, end, center, spaceBetween (простор само меѓу децата), spaceAround (половина простор на рабовите), spaceEvenly (еднаков простор и на рабовите).",
+        "CrossAxisAlignment: start, end, center, stretch (децата ја пополнуваат спротивната оска).",
+        "Expanded го тера детето да го пополни расположливиот простор; Flexible му дозволува да биде помало. И двата се користат во Row, Column и Flex.",
+        "Row и Column не скролаат; за скролање: `SingleChildScrollView`, `ListView`.",
+        "Wrap пренесува децата во нов ред кога нема место.",
+        "Stack ги става децата еден врз друг; `Positioned(right: 0, top: 0, …)` го поставува детето во аголот.",
+        "Икона и текст едно до друго → `Row(children: [Icon(…), Text(…)])`; едно под друго → Column; едно врз друго → Stack.",
+        "Профилна со статус: `Stack` + `CircleAvatar` + `Positioned` со мал круг (`Container` со `BoxShape.circle`).",
+        "Позадина + простор околу → `Container(color: Colors.blue, padding: EdgeInsets.all(16), child: Text(…))`; само простор → `Padding`; фиксна големина → `SizedBox`."
+      ],
+      "sources": [
+        "study-guide",
+        "test-odgovori",
+        "beleski"
+      ]
+    },
+    {
+      "id": "lifecycle",
+      "title": "Stateless, Stateful и животен циклус",
+      "importance": 5,
+      "summary": "Stateless widget нема состојба; Stateful widget има State објект што преживува rebuild. Тестот прашува за фазите и колку пати се повикуваат.",
+      "key_points": [
+        "Widgets се immutable нацрти; кога нешто се менува, Flutter гради нови, ги споредува со старите и го обновува само тоа што се разликува (UI = f(state)).",
+        "StatelessWidget: сите податоци преку конструкторот, само `build()`. За етикети, икони, статичен распоред (Text, Icon, IconButton).",
+        "StatefulWidget: самата класа е immutable, но нејзиниот State е mutable. За внес, анимации, тајмери, вчитување (TextField, Form, Checkbox).",
+        "Фази: 1. createState, 2. initState, 3. didChangeDependencies, 4. build, 5. setState, 6. didUpdateWidget, 7. deactivate, 8. dispose.",
+        "`createState()` го создава State објектот; `initState()` еднаш, за почетни поставки (контролери, API повик).",
+        "`didChangeDependencies()` по initState и секогаш кога ќе се смени InheritedWidget од кој зависи; може повеќе пати.",
+        "`build()` се повикува многу пати: по секој setState, по didUpdateWidget, по didChangeDependencies.",
+        "`setState()` му кажува на Flutter дека податоците се промениле; build се повикува за тој widget и поддрвото, а State објектот останува ист.",
+        "`didUpdateWidget()`: родителот го изградил widget-от со нова конфигурација, State-от е ист.",
+        "`deactivate()`: State се отстранува од дрвото (можеби привремено); `dispose()`: трајно, тука се чистат контролери и stream-ови.",
+        "Правило: стандардно stateless; stateful само кога widget-от мора да памети нешто меѓу rebuild-ови."
+      ],
+      "sources": [
+        "av2",
+        "beleski",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "provider",
+      "title": "State management: Provider",
+      "importance": 4,
+      "summary": "Пакет за споделување и менување state низ widget tree. Моделот наследува ChangeNotifier и вика notifyListeners().",
+      "key_points": [
+        "`flutter pub add provider`.",
+        "ChangeNotifier го чува state-от и ги известува listeners; ChangeNotifierProvider го дистрибуира низ дрвото; Consumer слуша и го обновува UI.",
+        "Моделот: `class Counter extends ChangeNotifier { … notifyListeners(); }`.",
+        "`Provider.of<Counter>(context)` оди нагоре низ дрвото до првиот Counter; ако го нема, фрла exception.",
+        "`listen: false`: widget-от не се обновува при промени, само повикува метод (на пр. во onPressed). `listen: true` (стандардно): за прикажување вредност.",
+        "MultiProvider: повеќе providers на едно ниво (најчесто околу MaterialApp), без вгнездување еден во друг.",
+        "Provider работи и со stateless и со stateful widgets; со Provider widget-от може да биде StatelessWidget, без setState.",
+        "За мали апликации доволно е StatefulWidget или InheritedWidget; за поголеми Provider или BLoC."
+      ],
+      "sources": [
+        "beleski",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "dart",
+      "title": "Dart: параметри, final/const, Future, JSON",
+      "importance": 4,
+      "summary": "Јазикот на Flutter: positional и named параметри, константи, асинхроност и претворање во/од JSON.",
+      "key_points": [
+        "Dart: објектно-ориентиран, класен, со garbage collection и синтакса како C; развиен од Google.",
+        "Positional: позицијата одредува кој параметар ја добива вредноста; стандардно задолжителни.",
+        "Named: декларирани во `{ }`, се повикуваат по име, редоследот не е важен; стандардно опционални, освен `required`.",
+        "Функција декларирана со positional параметри не може да се повика со named, и обратно.",
+        "Flutter widgets мешаат: најважниот аргумент positional, другото named (`Text('abc', style: x, maxLines: 2)`); `child` оди последен.",
+        "`final`: се задава еднаш при извршување (на пр. `DateTime.now()`); `const`: познат при компајлирање, длабоко immutable; const widgets не се градат одново.",
+        "`Future<T>`: вредност или грешка што ќе дојде подоцна (API, база); со `async`/`await`.",
+        "FutureBuilder (и StreamBuilder) го обновува UI кога ќе пристигнат податоците: `waiting` → loading, `hasError` → грешка, `hasData` → податоци.",
+        "JSON → објект: `fromJson`; објект → JSON: `toJson`. Листа: `jsonList.map((x) => Product.fromJson(x)).toList()` и `products.map((x) => x.toJson()).toList()`.",
+        "`mixin`: споделени методи, се додаваат со `with`.",
+        "`pubspec.yaml` (во root): зависности, метаподатоци, assets (фонтови, слики)."
+      ],
+      "sources": [
+        "beleski",
+        "study-guide",
+        "av1"
+      ]
+    },
+    {
+      "id": "widgets",
+      "title": "Основни widgets",
+      "importance": 3,
+      "summary": "„Everything is a widget“: видливи (Text, Icon, Image), невидлив распоред (Padding, Row), однесување (GestureDetector) и самата апликација (MaterialApp).",
+      "key_points": [
+        "Hello World: MaterialApp → Scaffold → Center → Text.",
+        "Scaffold: рамка на екранот (app bar, body, FAB, drawer).",
+        "Container: padding, margin, големина, боја и decoration во еден widget.",
+        "Image.network од URL, Image.asset од asset bundle, Image.memory од бајти.",
+        "ListView.builder ги гради само редовите на екранот; GridView за мрежа; PageView по страници.",
+        "GestureDetector додава гестови на child; AnimatedContainer мазно анимира големина, боја, padding.",
+        "TextField + Form за внес и валидација; Checkbox, Switch (вклучено/исклучено), Slider (опсег).",
+        "RichText: текст со повеќе стилови преку TextSpan.",
+        "Semantics: значење за screen readers.",
+        "Подобро класи отколку функции што враќаат widgets: Flutter може да ги следи и обновува поединечно."
+      ],
+      "sources": [
+        "av2",
+        "av1",
+        "beleski"
+      ]
+    },
+    {
+      "id": "tipovi",
+      "title": "Видови мобилни апликации и cross-platform",
+      "importance": 4,
+      "summary": "Native, hybrid, PWA и cross-platform; технологиите за секој пристап и рамките React Native, Flutter, .NET MAUI, Kotlin Multiplatform, Ionic.",
+      "key_points": [
+        "Native: за една платформа, со platform SDK (Kotlin/Java за Android, Swift за iOS). Најдобри перформанси и пристап до хардверот, но посебен код и поголем трошок.",
+        "Hybrid: HTML, CSS, JS во WebView (web container со мост кон native API); Cordova, Ionic, Capacitor. Еден код, послаби перформанси.",
+        "PWA: веб апликација што изгледа како native, во прелистувач, без app store, со offline и push известувања.",
+        "Cross-platform: споделен код (до 90%) со речиси native перформанси: React Native, Flutter, .NET MAUI, Kotlin Multiplatform.",
+        "Табела за поврзување: Native → Kotlin (Android), Swift (iOS); Hybrid → HTML + CSS + JS (Cordova, Ionic); Cross-platform → Dart (Flutter), C# (Xamarin/MAUI), JavaScript (React Native); Web app → HTML, CSS, JS.",
+        "React Native: Meta, JavaScript и React компоненти. Flutter: Google, Dart, свој rendering engine (Impeller на iOS и Android).",
+        ".NET MAUI: Microsoft, C#, еволуција на Xamarin.Forms. Kotlin Multiplatform: JetBrains, споделена бизнис логика, UI native или Compose Multiplatform.",
+        "Предизвици на cross-platform: мал губиток на перформанси, доцнење на нови OS функции, сложен платформски UI.",
+        "Mobile information system: цел екосистем (уреди, апликации, мрежа, backend), не само апликацијата.",
+        "Lifecycle на апликација: Idea → Design → Development → Testing → Deployment → Maintenance.",
+        "Клучни фактори: scope, performance, UI дизајн, data/memory model, communications model."
+      ],
+      "sources": [
+        "voved",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "flutter",
+      "title": "Flutter и Dart: вовед",
+      "importance": 3,
+      "summary": "Flutter е open-source рамка од Google за апликации со еден код за мобилни, веб, десктоп и вградени уреди.",
+      "key_points": [
+        "Еден код: Android, iOS, Web, Windows, macOS, Linux, embedded.",
+        "Компајлира во ARM или Intel машински код, а за веб во JavaScript (или WebAssembly).",
+        "Декларативен: UI ја одразува состојбата; кога таа се менува, се гради нова инстанца од widget-от.",
+        "Hot Reload: промените се гледаат речиси веднаш без да се изгуби состојбата.",
+        "Претставен 2015 на Dart Developer Summit под името Sky („Dart on mobile“).",
+        "Пакети и plugins: pub.dev.",
+        "„Flutter is the first UI platform designed for an ambient computing world“ (Tim Sneath): open-source рамка од Google за убави, нативно компајлирани апликации за повеќе платформи од еден код.",
+        "Зошто Flutter (шест својства): Fast (машински код за ARM/Intel и JavaScript), Flexible (контрола на секој пиксел, адаптивен дизајн), Beautiful (UI се пишува во Dart, без посебен markup јазик или визуелен дизајнер), Productive (Hot Reload), Open (бесплатен и open source), Portable (ист код секаде).",
+        "Над 200.000 апликации во Flutter, од стартапи до големи компании; многу апликации на Google се напишани во Flutter. Илјадници plugins и библиотеки на pub.dev.",
+        "Hello World: `MaterialApp` → `Scaffold` → `Center` → `Text`. „Everything is a widget.“ `debugShowCheckedModeBanner` ја вклучува или исклучува лентата DEBUG во аголот.",
+        "Dart е јазик оптимизиран за клиент (client-optimized), за брзи апликации на секоја платформа. Предности: оптимизиран за UI, продуктивен развој (Hot Reload), брз на сите платформи (ARM и x64 за мобилни, десктоп и backend, JavaScript за веб).",
+        "Dart програм почнува од `main()`: ```dart\nvoid main() {\n  print('Hello, World!');\n}\n```",
+        "Инсталацијата е прикажана за Windows; за пуштање на вистински Android уред упатството е на developer.android.com/studio/run/device."
+      ],
+      "sources": [
+        "av1",
+        "beleski"
+      ]
+    },
+    {
+      "id": "dizajn",
+      "title": "Design principles: успешна апликација",
+      "importance": 2,
+      "summary": "Од проблем до објавена апликација: корисници, дизајн, MVP, прототип, трошоци, маркетинг, метрики, перформанси, објавување.",
+      "key_points": [
+        "Почни од проблем, не од апликација; elevator pitch = идејата во една реченица.",
+        "UI принципи: clarity, consistency, feedback, efficiency, accessibility. Apple Human Interface Guidelines наспроти Google Material Design 3.",
+        "iOS: San Francisco, SF Symbols, tab bars; Android: Roboto, Material Symbols, navigation bars, rails, drawers.",
+        "MVP: прво must-have функциите; nice-to-have и future features подоцна.",
+        "Прототип: user flows → wireframes → поврзани екрани → тест со корисници (Figma, Balsamiq, Penpot, Proto.io).",
+        "Регистрација: Apple $99 годишно (App Store Connect, TestFlight); Google Play $25 еднаш (Play Console, internal/closed/open testing).",
+        "Метрики: DAU, MAU, DAU/MAU, retention, churn, CPA, LTV, ARPU (приход / корисници).",
+        "Cold start (процесот не работи), warm start (UI се креира одново), hot start (веќе во меморија).",
+        "5 E на употребливост: Effective, Efficient, Engaging, Error tolerant, Easy to learn.",
+        "Модели на приход: in-app purchases, претплати, реклами.",
+        "Analytics (Firebase Analytics, Mixpanel), crash monitoring (Crashlytics, Sentry, Bugsnag), пазар (Sensor Tower)."
+      ],
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "api",
+      "title": "API, middleware и backend интеграција",
+      "importance": 3,
+      "summary": "Како мобилната апликација комуницира со сервер: REST/GraphQL, формати, библиотеки, middleware, автентикација, безбедност, кеширање, offline и повторни обиди, push нотификации и вообичаени трети API.",
+      "key_points": [
+        "Мобилната апликација е клиент што бара ресурси или акции од сервер преку HTTP(S); податоците се во JSON или XML (понекогаш Protobuf). Одговорите се парсираат во native објекти.",
+        "REST: функционалност организирана околу ресурси со URL; методи GET, POST, PUT, PATCH, DELETE; stateless (секое барање ги носи сите информации потребни на серверот).",
+        "GraphQL: јазик за барања; клиентот бара точно што му треба, па нема over-fetching и under-fetching. Погоден за сложени апликации (социјални мрежи, dashboards).",
+        "Библиотеки: Android (Kotlin/Java) Retrofit и OkHttp, Ktor Client; iOS (Swift) URLSession и Alamofire; Flutter (Dart) пакетот `http` (едноставно) и Dio (напредно); React Native Fetch API и Axios. Заедничко: асинхроно, JSON, автентикација, timeout, обработка на грешки.",
+        "Најдобри практики: прочитај ја документацијата (endpoints, автентикација, rate limits); минимизирај барања, користи кеш и пагинација; асинхроно (не го блокирај UI); тајните API клучеви на backend, токените безбедно; тестирај откази на мрежата, timeouts и невалидни одговори.",
+        "Предизвици: верзионирање (API-то се менува), латентност и сигурност, rate limits, неконзистентни одговори од трети страни, безбедност на податоците.",
+        "Middleware е меѓу клиентот и backend: управува со тек на податоци, кеширање и безбедносни политики (API gateway, auth сервис, message queue). Го одвојува клиентскиот код од сложеноста на backend.",
+        "Типичен backend: Node.js/Express, Django/DRF или Spring Boot; бази PostgreSQL, MongoDB или Firebase Firestore; на cloud (AWS, Azure, GCP).",
+        "Authentication = кој си; authorization = што смееш. OAuth 2.0 е delegated authorization, OpenID Connect (OIDC) додава стандардизирана автентикација. Мобилните апликации користат Authorization Code Flow со PKCE. Access token отвора заштитен API; JWT е формат на токен, а не протокол за автентикација.",
+        "Безбедна комуникација: HTTPS (TLS), валидација на сертификат, по потреба certificate pinning; чувај токени во Android Keystore / iOS Keychain; валидација на влез и проверки на серверот против injection.",
+        "Серијализација претвора објекти во JSON или Protocol Buffers. Кеширање: Room/SQLite за структурирани податоци, Jetpack DataStore за поставки. Пример: временска прогноза: JSON од API, Room за offline, DataStore за °C/°F.",
+        "Грешки и повторни обиди: ограничен број обиди со exponential backoff; повторувај само барања што е безбедно да се повторат (идемпотентни); јасни пораки, индикатор за вчитување, рачен retry, offline со кеш.",
+        "Offline-first: основните податоци се локално; синхронизација кога ќе се врати мрежата, со решавање конфликти. Firebase Cloud Firestore има вградена offline перзистенција и синхронизација.",
+        "Push нотификации: FCM (Firebase Cloud Messaging) и APNs (Apple Push Notification service). Background задачи: Android WorkManager и iOS BGTaskScheduler; OS го ограничува извршувањето во позадина заради батерија и мрежа.",
+        "Автентикација API: Firebase Authentication, OAuth 2.0 / OIDC, Auth0 (SSO, MFA, passwordless), Amazon Cognito. Карти: Google Maps, Mapbox, Apple MapKit, Foursquare. Плаќање: Stripe, PayPal, Google Play Billing, Apple In-App Purchase (StoreKit). Облак: Firebase Cloud Storage, Amazon S3, Dropbox, Google Drive.",
+        "Трендови: API orchestration и Backend for Frontend (BFF), AI API, serverless и BaaS, edge и on-device обработка (на пр. LiteRT), event-driven комуникација (WebSockets, push) наместо постојано polling."
+      ],
+      "sources": [
+        "api"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "t01",
+      "topic": "layout",
+      "question": "`CrossAxisAlignment` подредува во главната оска (хоризонтално за Row, вертикално за Column).",
+      "options": [
+        "Точно",
+        "Неточно"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Cross е спротивната оска: кај Row вертикално, кај Column хоризонтално. Главната ја подредува `MainAxisAlignment`.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "t02",
+      "topic": "layout",
+      "question": "`MainAxisAlignment` подредува во спротивната оска (вертикално за Row, хоризонтално за Column).",
+      "options": [
+        "Точно",
+        "Неточно"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Main е главната оска: кај Row хоризонтално, кај Column вертикално.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "t03",
+      "topic": "lifecycle",
+      "question": "Кои од следниве се фази во животниот циклус на StatefulWidget? (повеќе одговори)",
+      "options": [
+        "`initState()`",
+        "`didChangeDependencies()`",
+        "`onCreate()`",
+        "`didUpdateWidget()`",
+        "`viewDidLoad()`",
+        "`dispose()`"
+      ],
+      "answer": [
+        0,
+        1,
+        3,
+        5
+      ],
+      "explanation": "Осумте фази: createState, initState, didChangeDependencies, build, setState, didUpdateWidget, deactivate, dispose. `onCreate` е од Android Activity, `viewDidLoad` од iOS.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori",
+        "av2"
+      ]
+    },
+    {
+      "id": "t04",
+      "topic": "layout",
+      "question": "Која е разликата меѓу Expanded и Flexible?",
+      "options": [
+        "Expanded го тера детето да го пополни расположливиот простор, а Flexible му дозволува да биде помало",
+        "Flexible го тера детето да го пополни просторот, а Expanded му дозволува да биде помало",
+        "Expanded работи само во Column, а Flexible само во Row",
+        "Нема разлика, Expanded е постаро име"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Мнемоника: EXPANDED = се шири до крај, FLEXIBLE = флексибилно. И двата се користат во Row, Column и Flex.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "t05",
+      "topic": "dart",
+      "question": "Кој код ја декодира JSON листата `jsonList` во листа од `Product`?",
+      "options": [
+        "`jsonList.map((x) => Product.fromJson(x)).toList()`",
+        "`jsonList.map((x) => x.toJson()).toList()`",
+        "`Product.fromJson(jsonList)`",
+        "`jsonList.toList().fromJson()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "JSON → објект = `fromJson`; за листа: за секој елемент `fromJson`, па `toList()`.",
+      "sources": [
+        "test-prasanja",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "t06",
+      "topic": "dart",
+      "question": "Како се кодира листата `products` (`List<Product>`) во JSON листа?",
+      "options": [
+        "`products.map((x) => x.toJson()).toList()`",
+        "`products.map((x) => Product.fromJson(x)).toList()`",
+        "`Product.toJson(products)`",
+        "`products.fromJson().toList()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Објект → JSON = `toJson`, повикан на секој објект.",
+      "sources": [
+        "test-prasanja",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "t07",
+      "topic": "provider",
+      "question": "За што се користи MultiProvider?",
+      "options": [
+        "За повеќе providers на едно ниво, без длабоко вгнездување во widget tree",
+        "За една апликација со повеќе MaterialApp",
+        "За паралелно извршување на повеќе Future",
+        "За StatelessWidget да стане StatefulWidget"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Наместо providers вгнездени еден во друг, сите се во листата `providers:`, најчесто околу MaterialApp.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "t08",
+      "topic": "dart",
+      "question": "Кој тип се користи за асинхрони податоци, т.е. резултат што ќе дојде подоцна?",
+      "options": [
+        "`Future`",
+        "`List`",
+        "`Map`",
+        "`dynamic`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "На пр. `Future<List<Product>> fetchProducts() async { … }`.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "t09",
+      "topic": "dart",
+      "question": "Дали е валиден овој повик?\n```\nint doSomething(int a, int b, int c) { ... }   // декларација\n\ndoSomething(b: 10, c: 20, a: 5);               // повик\n```",
+      "options": [
+        "Не: параметрите се positional, па не може да се повикаат по име",
+        "Да: Dart ги совпаѓа по име",
+        "Да, ако редоследот е ист како во декларацијата",
+        "Само ако параметрите се `const`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Named параметрите се декларираат во `{ }`: `int doSomething({required int a, …})`. Што е декларирано positional не може да се повика named, и обратно.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "t10a",
+      "topic": "tipovi",
+      "question": "Со која технологија се прават native апликации?",
+      "options": [
+        "Kotlin (Android) и Swift (iOS)",
+        "HTML, CSS и JavaScript",
+        "Dart",
+        "C# (Xamarin)"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Native = platform SDK за секоја платформа посебно.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori",
+        "voved"
+      ]
+    },
+    {
+      "id": "t10b",
+      "topic": "tipovi",
+      "question": "Со која технологија се прават hybrid апликации (Cordova, Ionic)?",
+      "options": [
+        "HTML, CSS и JavaScript во WebView",
+        "Kotlin и Swift",
+        "Dart",
+        "C++"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Hybrid апликациите работат во web container со мост кон native API.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori",
+        "voved"
+      ]
+    },
+    {
+      "id": "t10c",
+      "topic": "tipovi",
+      "question": "Кој јазик го користи Flutter (cross-platform)?",
+      "options": [
+        "Dart",
+        "JavaScript",
+        "Kotlin",
+        "Swift"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Другите cross-platform: React Native → JavaScript, Xamarin/.NET MAUI → C#.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori",
+        "voved"
+      ]
+    },
+    {
+      "id": "t10d",
+      "topic": "tipovi",
+      "question": "Кој јазик го користи React Native?",
+      "options": [
+        "JavaScript (React)",
+        "Dart",
+        "C#",
+        "Swift"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "React Native е од Meta и користи React компоненти.",
+      "sources": [
+        "test-odgovori",
+        "voved"
+      ]
+    },
+    {
+      "id": "t11",
+      "topic": "provider",
+      "question": "Класата на моделот што се користи со Provider наследува (extends):",
+      "options": [
+        "`ChangeNotifier`",
+        "`StatefulWidget`",
+        "`Provider`",
+        "`StatelessWidget`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`class Counter extends ChangeNotifier`, за да може да вика `notifyListeners()`.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori"
+      ]
+    },
+    {
+      "id": "t12",
+      "topic": "layout",
+      "question": "Кој код најсоодветно прави Text со сина позадина и 16 px простор околу текстот?",
+      "options": [
+        "```\nContainer(\n  color: Colors.blue,\n  padding: EdgeInsets.all(16),\n  child: Text('Hello'),\n)\n```",
+        "```\nPadding(\n  padding: EdgeInsets.all(16),\n  child: Text('Hello', style: TextStyle(color: Colors.blue)),\n)\n```",
+        "```\nContainer(\n  margin: EdgeInsets.all(16),\n  color: Colors.blue,\n  child: Text('Hello'),\n)\n```",
+        "```\nSizedBox(\n  width: 16,\n  height: 16,\n  child: Text('Hello'),\n)\n```"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Padding е простор внатре, па сината позадина го опфаќа. Со margin просторот е надвор и сино е само веднаш зад текстот. Вториот го бои текстот, не позадината.",
+      "sources": [
+        "test-prasanja",
+        "claude"
+      ]
+    },
+    {
+      "id": "t13",
+      "topic": "layout",
+      "question": "Кој виџет е најсоодветен за профилна слика со мал круг за online статус во аголот?",
+      "options": [
+        "`Stack` со `CircleAvatar` и `Positioned`",
+        "`Row` со `CircleAvatar` и `Icon`",
+        "`Column` со `Image` и `Text`",
+        "`ListView`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Stack = еден врз друг, CircleAvatar = профилна, Positioned (на пр. `right: 0, bottom: 0`) = каде стои ознаката.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "t14",
+      "topic": "layout",
+      "question": "Кој код прави икона за кошче и текст едно до друго?",
+      "options": [
+        "```\nRow(\n  children: [\n    Icon(Icons.delete),\n    Text('Избриши'),\n  ],\n)\n```",
+        "```\nColumn(\n  children: [\n    Icon(Icons.delete),\n    Text('Избриши'),\n  ],\n)\n```",
+        "```\nStack(\n  children: [\n    Icon(Icons.delete),\n    Text('Избриши'),\n  ],\n)\n```",
+        "```\nIcon(Icons.delete, child: Text('Избриши'))\n```"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Row = хоризонтално, Column = едно под друго, Stack = едно врз друго. Icon нема `child`.",
+      "sources": [
+        "test-prasanja",
+        "claude"
+      ]
+    },
+    {
+      "id": "t15",
+      "topic": "lifecycle",
+      "question": "Страница има копчиња 1, 2, 3. Клик води на друга страница, а кога ќе се вратиш, првото копче веќе не постои. Кој метод од животниот циклус се повикува?",
+      "options": [
+        "`didUpdateWidget()`",
+        "`initState()`",
+        "`createState()`",
+        "`didChangeDependencies()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Ова е одговорот од белешката на колега, непотврден. Објаснување: копчињата без `Key` Flutter ги поврзува со State објектите по позиција, па State-от на првото место добива нова конфигурација (поранешното копче 2) и се повикува `didUpdateWidget`. State-от што останува без widget добива `deactivate` и `dispose`.",
+      "sources": [
+        "test-prasanja",
+        "test-odgovori",
+        "claude"
+      ]
+    },
+    {
+      "id": "t16",
+      "topic": "lifecycle",
+      "question": "Дали `build()` може да се повика повеќе пати во животниот циклус на State?",
+      "options": [
+        "Да",
+        "Не"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Да: по секој `setState`, `didUpdateWidget` и `didChangeDependencies`.",
+      "sources": [
+        "test-prasanja",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "t17",
+      "topic": "lifecycle",
+      "question": "Дали `didChangeDependencies()` може да се повика повеќе пати во животниот циклус на State?",
+      "options": [
+        "Да",
+        "Не"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Да: прво веднаш по `initState`, а потоа секогаш кога ќе се смени InheritedWidget од кој зависи (Theme, MediaQuery, Provider…).",
+      "sources": [
+        "test-prasanja",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "t18",
+      "topic": "dart",
+      "question": "Кои виџети се прават за асинхрони податоци? (повеќе одговори)",
+      "options": [
+        "`FutureBuilder`",
+        "`StreamBuilder`",
+        "`SizedBox`",
+        "`Padding`"
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "FutureBuilder се обновува кога ќе пристигне резултатот од Future, StreamBuilder за секоја нова вредност од Stream.",
+      "sources": [
+        "test-prasanja",
+        "av2"
+      ]
+    },
+    {
+      "id": "t19",
+      "topic": "layout",
+      "question": "Што ќе прикаже овој код?\n```\nStack(\n  children: [\n    Container(color: Colors.blue),\n    Positioned(\n      right: 0,\n      top: 0,\n      child: Container(width: 50, height: 50, color: Colors.red),\n    ),\n  ],\n)\n```",
+      "options": [
+        "Сина позадина со црвен квадрат 50×50 горе десно",
+        "Црвен квадрат горе лево, без сина позадина",
+        "Сино и црвено едно под друго",
+        "Сина позадина со црвен квадрат долу десно"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Првото дете во Stack е најдолу (сината позадина), а Positioned со `right: 0, top: 0` го става црвениот квадрат во горниот десен агол.",
+      "sources": [
+        "test-prasanja",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "t20",
+      "topic": "provider",
+      "question": "Што значи `listen: false` во `Provider.of<Counter>(context, listen: false).incrementCounter()`?",
+      "options": [
+        "Widget-от не слуша за промени и не се обновува поради нив; само го повикува методот",
+        "`incrementCounter()` нема да се изврши",
+        "`notifyListeners()` престанува да работи во целата апликација",
+        "Provider-от се исклучува"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Се користи во onPressed: само се праќа акција. Другите widgets што слушаат сепак се обновуваат по `notifyListeners()`.",
+      "sources": [
+        "test-prasanja",
+        "beleski",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "lay01",
+      "topic": "layout",
+      "question": "Кај Column, `MainAxisAlignment` ги подредува децата:",
+      "options": [
+        "вертикално",
+        "хоризонтално",
+        "и во двете оски",
+        "дијагонално"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Column → главна оска вертикална.",
+      "sources": [
+        "study-guide"
+      ]
+    },
+    {
+      "id": "lay02",
+      "topic": "layout",
+      "question": "Кај Row, `CrossAxisAlignment` НЕ ги подредува елементите хоризонтално.",
+      "options": [
+        "Точно",
+        "Неточно"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Точно: кај Row главната е хоризонтална, па спротивната (cross) е вертикална. Пример од study guide-от за прашања со негација.",
+      "sources": [
+        "study-guide"
+      ]
+    },
+    {
+      "id": "lay03",
+      "topic": "layout",
+      "question": "Што прави `CrossAxisAlignment.stretch` кај Row?",
+      "options": [
+        "Децата се растегнуваат по висина (спротивната оска)",
+        "Децата се растегнуваат по ширина",
+        "Децата се центрираат",
+        "Празниот простор се дели меѓу децата"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "stretch ја пополнува спротивната оска; кај Row тоа е висината.",
+      "sources": [
+        "beleski",
+        "claude"
+      ]
+    },
+    {
+      "id": "lay04",
+      "topic": "layout",
+      "question": "Што прави `MainAxisAlignment.spaceBetween`?",
+      "options": [
+        "Празниот простор е само меѓу децата: првото е на почетокот, последното на крајот",
+        "Еднаков простор и пред првото и по последното, колку меѓу децата",
+        "Половина простор на рабовите",
+        "Сите деца се на средина"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "spaceEvenly = еднаков простор и на рабовите; spaceAround = на рабовите половина од просторот меѓу децата.",
+      "sources": [
+        "beleski",
+        "claude"
+      ]
+    },
+    {
+      "id": "lay05",
+      "topic": "layout",
+      "question": "Во кои widgets се користат Expanded и Flexible?",
+      "options": [
+        "Row, Column и Flex",
+        "Само Stack",
+        "Само ListView",
+        "Container"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Тие го делат просторот по главната оска на flex распоредот.",
+      "sources": [
+        "test-odgovori",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "lay06",
+      "topic": "layout",
+      "question": "Кој widget пренесува деца во нов ред кога нема место во тековниот?",
+      "options": [
+        "Wrap",
+        "Row",
+        "Stack",
+        "Center"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Row не пренесува; децата излегуваат надвор (overflow).",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "lay07",
+      "topic": "layout",
+      "question": "Row и Column не скролаат. Кој widget го прави својот child скролабилен кога е поголем од екранот?",
+      "options": [
+        "`SingleChildScrollView`",
+        "`SizedBox`",
+        "`Padding`",
+        "`Center`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "За долги листи е подобар `ListView.builder`.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "lay08",
+      "topic": "layout",
+      "question": "Кој widget ги става децата еден врз друг, во однос на рабовите на својата кутија?",
+      "options": [
+        "Stack",
+        "Wrap",
+        "Column",
+        "Align"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Со Positioned се задава кое дете каде стои.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "lc01",
+      "topic": "lifecycle",
+      "question": "Кој метод се повикува само еднаш, при иницијализација на State (контролери, API повик)?",
+      "options": [
+        "`initState()`",
+        "`build()`",
+        "`didUpdateWidget()`",
+        "`setState()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Се повикува по createState, пред првиот build.",
+      "sources": [
+        "beleski",
+        "av2"
+      ]
+    },
+    {
+      "id": "lc02",
+      "topic": "lifecycle",
+      "question": "Каде се ослободуваат ресурси (контролери, stream-ови) кога State трајно се отстранува?",
+      "options": [
+        "`dispose()`",
+        "`deactivate()`",
+        "`initState()`",
+        "`build()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "deactivate може да биде привремено; dispose е крајот.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "lc03",
+      "topic": "lifecycle",
+      "question": "Што прави `setState()`?",
+      "options": [
+        "Му кажува на Flutter дека податоците се промениле, па `build()` се повикува повторно за овој widget и поддрвото",
+        "Го создава State објектот",
+        "Ја затвора страницата",
+        "Го обновува целиот екран, сите widgets"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Остатокот од екранот останува каков што е.",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "lc04",
+      "topic": "lifecycle",
+      "question": "По `setState()`, што се случува со State објектот?",
+      "options": [
+        "Останува ист (со вредностите во него), а widget-от се гради одново",
+        "Се брише и се создава нов",
+        "Се враќа на `initState()`",
+        "Се повикува `dispose()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Во примерот LikeCounter, `_likes` е во State и преживува rebuild.",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "lc05",
+      "topic": "lifecycle",
+      "question": "Кога е доволен StatelessWidget?",
+      "options": [
+        "Кога widget-от не треба да памети ништо меѓу rebuild-ови (етикети, икони, статичен распоред)",
+        "За внес на текст",
+        "За анимации и тајмери",
+        "За вчитување податоци"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Default to stateless; go stateful only when the widget must remember something between rebuilds.“",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "lc06",
+      "topic": "lifecycle",
+      "question": "Кој метод на StatefulWidget го враќа State објектот?",
+      "options": [
+        "`createState()`",
+        "`initState()`",
+        "`build()`",
+        "`getState()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`State<LikeCounter> createState() => _LikeCounterState();`",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "lc07",
+      "topic": "lifecycle",
+      "question": "Кој е точниот редослед на почетокот на животниот циклус?",
+      "options": [
+        "createState → initState → didChangeDependencies → build",
+        "initState → createState → build → didChangeDependencies",
+        "build → initState → createState → didChangeDependencies",
+        "createState → build → initState → didChangeDependencies"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Потоа: setState → build …, didUpdateWidget, deactivate, dispose.",
+      "sources": [
+        "av2",
+        "beleski"
+      ]
+    },
+    {
+      "id": "lc08",
+      "topic": "lifecycle",
+      "question": "Кога се повикува `didUpdateWidget()`?",
+      "options": [
+        "Кога родителот го гради widget-от одново со нова конфигурација, а State објектот останува ист",
+        "Кога State се создава",
+        "Кога widget-от трајно се отстранува",
+        "Секогаш кога се притиска копче"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "По него следи build.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "lc09",
+      "topic": "lifecycle",
+      "question": "Кога се повикува `deactivate()`?",
+      "options": [
+        "Кога State се отстранува од widget tree (можеби привремено)",
+        "При првото градење",
+        "По секој `setState()`",
+        "Само при затворање на апликацијата"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Ако не се врати во дрвото, следи dispose.",
+      "sources": [
+        "beleski",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "lc10",
+      "topic": "lifecycle",
+      "question": "StatefulWidget класата е immutable, а нејзиниот State е:",
+      "options": [
+        "mutable (може да се менува)",
+        "исто immutable",
+        "секогаш `const`",
+        "глобален"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Затоа податоците што се менуваат се чуваат во State, не во самиот widget.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "lc11",
+      "topic": "lifecycle",
+      "question": "Кои од овие widgets се stateful? (повеќе одговори)",
+      "options": [
+        "TextField",
+        "Checkbox",
+        "Text",
+        "Icon"
+      ],
+      "answer": [
+        0,
+        1
+      ],
+      "explanation": "Stateful: TextField, Form, Checkbox (се менуваат со интеракција). Stateless: Text, Icon, IconButton.",
+      "sources": [
+        "av2",
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr01",
+      "topic": "provider",
+      "question": "Што прави `notifyListeners()`?",
+      "options": [
+        "Ги известува listeners (widgets) дека податоците се промениле, па тие се обновуваат",
+        "Ја зачувува вредноста на диск",
+        "Создава нов provider",
+        "Ја запира апликацијата"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Се вика во методите на класата што наследува ChangeNotifier, по секоја промена.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr02",
+      "topic": "provider",
+      "question": "Која е улогата на `ChangeNotifierProvider`?",
+      "options": [
+        "Го дистрибуира ChangeNotifier низ widget tree",
+        "Слуша за промени и го обновува UI",
+        "Го чува state-от",
+        "Прави HTTP барања"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "ChangeNotifier го чува state-от, ChangeNotifierProvider го дава на дрвото, Consumer слуша.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr03",
+      "topic": "provider",
+      "question": "Што е `Consumer` во Provider?",
+      "options": [
+        "Widget што слуша за промени и го обновува UI",
+        "Класа што го чува state-от",
+        "Го дистрибуира provider-от",
+        "Пакет за HTTP"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од белешките на колеги.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr04",
+      "topic": "provider",
+      "question": "Што се случува ако `Provider.of<Counter>(context)` не најде Counter нагоре во widget tree?",
+      "options": [
+        "Се фрла exception",
+        "Враќа null",
+        "Се создава нов Counter",
+        "Ништо"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Flutter оди нагоре низ дрвото до првиот Counter; ако нема, грешка.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr05",
+      "topic": "provider",
+      "question": "Со кои widgets работи Provider?",
+      "options": [
+        "И со stateless и со stateful",
+        "Само со StatefulWidget",
+        "Само со StatelessWidget",
+        "Само со MaterialApp"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Со Provider страницата може да биде StatelessWidget, без setState.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr06",
+      "topic": "provider",
+      "question": "Кога е потребно `listen: true` (стандардно)?",
+      "options": [
+        "Кога widget-от прикажува вредност и треба да се обнови при промена",
+        "Кога само се повикува метод во onPressed",
+        "Никогаш",
+        "Само во `initState()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`listen: false` е за повици на методи без обновување.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr07",
+      "topic": "provider",
+      "question": "Со која команда се додава пакетот provider?",
+      "options": [
+        "`flutter pub add provider`",
+        "`npm install provider`",
+        "`pip install provider`",
+        "`flutter create provider`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Зависноста се запишува во `pubspec.yaml`.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "pr08",
+      "topic": "provider",
+      "question": "Според белешките, што е доволно за state кај мали апликации, а што кај поголеми?",
+      "options": [
+        "Мали: StatefulWidget или InheritedWidget; поголеми: Provider или BLoC",
+        "Мали: BLoC; поголеми: setState",
+        "Секогаш само setState",
+        "Секогаш само Provider"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Изборот зависи од сложеноста на апликацијата.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt01",
+      "topic": "dart",
+      "question": "Кај positional параметри, што одредува кој параметар ја добива вредноста?",
+      "options": [
+        "Позицијата (редоследот)",
+        "Името",
+        "Типот",
+        "Ништо, случајно е"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`makeProfile('John', 25, 'Paris')`.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt02",
+      "topic": "dart",
+      "question": "Како се декларираат named параметри?",
+      "options": [
+        "Со `{ }` околу параметрите",
+        "Со `[ ]` околу параметрите",
+        "Со `named` пред името",
+        "Со `@` пред името"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`[ ]` се опционални positional параметри.",
+      "sources": [
+        "beleski",
+        "study-guide"
+      ]
+    },
+    {
+      "id": "dt03",
+      "topic": "dart",
+      "question": "Named параметрите стандардно се:",
+      "options": [
+        "опционални, освен ако не се означени `required`",
+        "задолжителни",
+        "секогаш `const`",
+        "positional"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од белешките на колеги.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt04",
+      "topic": "dart",
+      "question": "Кој повик е валиден за `void makeProfile({String? name, int? age, String? city})`?",
+      "options": [
+        "`makeProfile(city: 'Paris', name: 'John', age: 25)`",
+        "`makeProfile('John', 25, 'Paris')`",
+        "`makeProfile(name = 'John')`",
+        "`makeProfile{name: 'John'}`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Кај named редоследот не е важен.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt05",
+      "topic": "dart",
+      "question": "Која е разликата меѓу `final` и `const`?",
+      "options": [
+        "`final` се задава еднаш при извршување; `const` мора да е познат при компајлирање и е длабоко immutable",
+        "Нема разлика",
+        "`const` може да се менува, `final` не",
+        "`final` е само за класи, `const` само за функции"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од белешките на колеги.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt06",
+      "topic": "dart",
+      "question": "Која декларација НЕ е валидна?",
+      "options": [
+        "`const time = DateTime.now();`",
+        "`final time = DateTime.now();`",
+        "`const pi = 3.14;`",
+        "`final name = getUserName();`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`DateTime.now()` се знае дури при извршување, па може `final`, но не `const`.",
+      "sources": [
+        "beleski",
+        "claude"
+      ]
+    },
+    {
+      "id": "dt07",
+      "topic": "dart",
+      "question": "Зошто се пишува `const` пред widgets што не се менуваат?",
+      "options": [
+        "Не се градат одново кога нема промени, па перформансите се подобри",
+        "За да може да се менуваат",
+        "Задолжително е",
+        "За асинхрони податоци"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од белешките на колеги.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt08",
+      "topic": "dart",
+      "question": "Што е `Future`?",
+      "options": [
+        "Вредност или грешка што ќе дојде подоцна; се користи со async/await",
+        "Листа што расте со време",
+        "Константа",
+        "Тип за децимални броеви"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "На пр. API повик или читање од база.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt09",
+      "topic": "dart",
+      "question": "Како се чека резултатот од Future во функција?",
+      "options": [
+        "Функцијата е `async`, а резултатот се чека со `await`",
+        "Со `wait()`",
+        "Со `sleep()`",
+        "Не може да се чека"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`Future<dynamic> fetchData() async { final response = await http.get(…); }`",
+      "sources": [
+        "study-guide"
+      ]
+    },
+    {
+      "id": "dt10",
+      "topic": "dart",
+      "question": "Во FutureBuilder, што значи `snapshot.connectionState == ConnectionState.waiting`?",
+      "options": [
+        "Податоците уште се вчитуваат (се прикажува loading)",
+        "Има грешка",
+        "Податоците пристигнале",
+        "Future е откажан"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "`hasError` → грешка, `hasData` → податоците се тука.",
+      "sources": [
+        "study-guide"
+      ]
+    },
+    {
+      "id": "dt11",
+      "topic": "dart",
+      "question": "JSON → објект се прави со ___, а објект → JSON со ___.",
+      "options": [
+        "`fromJson` / `toJson`",
+        "`toJson` / `fromJson`",
+        "`map` / `toList`",
+        "`parse` / `print`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "На тестот прво одреди ја насоката (JSON → објект или обратно), па барај `fromJson` или `toJson`.",
+      "sources": [
+        "study-guide"
+      ]
+    },
+    {
+      "id": "dt12",
+      "topic": "dart",
+      "question": "Што е `mixin` во Dart?",
+      "options": [
+        "Споделени методи што се додаваат со `with`, не со `extends`",
+        "Тип за асинхрони податоци",
+        "Константа",
+        "Widget"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од белешките на колеги.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "dt13",
+      "topic": "dart",
+      "question": "Каков јазик е Dart?",
+      "options": [
+        "Објектно-ориентиран, класен, со garbage collection и синтакса како C",
+        "Функциски јазик без класи",
+        "Јазик за бази на податоци",
+        "Само за прелистувач"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Развиен од Google; за клиентски апликации, но и за сервер и десктоп.",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "dt14",
+      "topic": "dart",
+      "question": "Што е `pubspec.yaml`?",
+      "options": [
+        "Конфигурација во root папката: зависности, метаподатоци и assets (фонтови, слики)",
+        "Главниот Dart фајл",
+        "Фајл со тестови",
+        "Android манифест"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Зависност без верзија (на пр. само `http:`) ја зема најновата компатибилна верзија.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "wd01",
+      "topic": "widgets",
+      "question": "Како се прикажува слика од URL?",
+      "options": [
+        "`Image.network('https://…')`",
+        "`Image.asset('https://…')`",
+        "`Image.url('https://…')`",
+        "`Image.file('https://…')`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Исто: `Image(image: NetworkImage('https://…'))`. `Image.url` не постои.",
+      "sources": [
+        "study-guide"
+      ]
+    },
+    {
+      "id": "wd02",
+      "topic": "widgets",
+      "question": "Како се прикажува слика од assets на апликацијата?",
+      "options": [
+        "`Image.asset('assets/images/profile.png')`",
+        "`Image.network('assets/images/profile.png')`",
+        "`Image.memory('assets/images/profile.png')`",
+        "`Image.url('assets/images/profile.png')`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Сликата мора да е наведена во assets во `pubspec.yaml`.",
+      "sources": [
+        "study-guide"
+      ]
+    },
+    {
+      "id": "wd03",
+      "topic": "widgets",
+      "question": "Кој widget во еден ги има позадината, padding, margin, decoration и големината?",
+      "options": [
+        "Container",
+        "Padding",
+        "SizedBox",
+        "Center"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Padding само додава простор, SizedBox само фиксна големина.",
+      "sources": [
+        "study-guide",
+        "av2"
+      ]
+    },
+    {
+      "id": "wd04",
+      "topic": "widgets",
+      "question": "Што е Scaffold?",
+      "options": [
+        "Рамка на екранот: app bar, body, floating action button, drawer",
+        "Листа што скрола",
+        "Копче",
+        "Анимација"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските 2 (widgets и животен циклус).",
+      "sources": [
+        "av2",
+        "beleski"
+      ]
+    },
+    {
+      "id": "wd05",
+      "topic": "widgets",
+      "question": "Што е посебно кај `ListView.builder`?",
+      "options": [
+        "Ги гради само редовите што се на екранот (lazy)",
+        "Ги гради сите редови одеднаш",
+        "Не скрола",
+        "Е само за слики"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Затоа е за долги листи.",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "wd06",
+      "topic": "widgets",
+      "question": "Што прави GestureDetector?",
+      "options": [
+        "Додава гестови (tap, swipe…) на својот child",
+        "Ја чита GPS локацијата",
+        "Црта градиенти",
+        "Чита JSON"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските 2 (widgets и животен циклус).",
+      "sources": [
+        "av2",
+        "beleski"
+      ]
+    },
+    {
+      "id": "wd07",
+      "topic": "widgets",
+      "question": "За што служи Semantics?",
+      "options": [
+        "Го опишува значењето на UI за screen readers (пристапност)",
+        "Ја проверува синтаксата",
+        "Преведува текст",
+        "Анимира"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските 2 (widgets и животен циклус).",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "wd08",
+      "topic": "widgets",
+      "question": "Зошто е подобро да се пишуваат widget класи отколку функции што враќаат widgets?",
+      "options": [
+        "Flutter може да ги следи, прескокнува и обновува поединечно",
+        "Функциите не се дозволени",
+        "Класите се пократки",
+        "Нема разлика"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските 2 (widgets и животен циклус).",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "wd09",
+      "topic": "widgets",
+      "question": "Која е структурата на Hello World апликација во Flutter?",
+      "options": [
+        "MaterialApp → Scaffold → Center → Text",
+        "Scaffold → MaterialApp → Text",
+        "Text → Center → Scaffold",
+        "Center → MaterialApp → Scaffold"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Everything is a widget.“",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "wd10",
+      "topic": "widgets",
+      "question": "Што прави Flutter кога ќе се сменат податоците (UI = f(state))?",
+      "options": [
+        "Гради нов опис со build, го споредува со стариот и ги обновува само деловите што се промениле",
+        "Го црта целиот екран од нула",
+        "Ја рестартира апликацијата",
+        "Ништо, додека не се притисне копче"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските 2 (widgets и животен циклус).",
+      "sources": [
+        "av2"
+      ]
+    },
+    {
+      "id": "wd11",
+      "topic": "widgets",
+      "question": "Кој widget е за вклучено/исклучено поставување?",
+      "options": [
+        "Switch",
+        "Slider",
+        "TextField",
+        "RichText"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Slider е за избор од опсег, Checkbox за штиклирање.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "wd12",
+      "topic": "widgets",
+      "question": "Кој widget прикажува текст со повеќе стилови преку дрво од TextSpan?",
+      "options": [
+        "RichText",
+        "Text",
+        "SelectionArea",
+        "TextField"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Text има само еден стил; SelectionArea го прави текстот селектибилен.",
+      "sources": [
+        "beleski"
+      ]
+    },
+    {
+      "id": "tp01",
+      "topic": "tipovi",
+      "question": "Кој НЕ е еден од четирите пристапи за мобилни апликации според предавањето?",
+      "options": [
+        "Desktop apps",
+        "Native apps",
+        "Progressive web apps",
+        "Cross-platform apps"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Четирите се: native, hybrid, progressive web apps и cross-platform.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp02",
+      "topic": "tipovi",
+      "question": "Каде работат hybrid апликациите?",
+      "options": [
+        "Во web container (WebView) со мост кон native API",
+        "Директно на ОС, со platform SDK",
+        "Само во прелистувач, без инсталација",
+        "На серверот"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Се пакуваат како инсталација, но внатре се HTML, CSS, JS.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp03",
+      "topic": "tipovi",
+      "question": "Кои се примери за hybrid рамки?",
+      "options": [
+        "Cordova, Ionic, Capacitor",
+        "Flutter, React Native",
+        "Kotlin, Swift",
+        "SwiftUI, Jetpack Compose"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Flutter и React Native се cross-platform.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp04",
+      "topic": "tipovi",
+      "question": "Што е Progressive Web App (PWA)?",
+      "options": [
+        "Веб апликација што изгледа и работи како native, во прелистувач, без app store, со offline и push известувања",
+        "Native апликација за iOS",
+        "Апликација само за Android",
+        "Игра за конзола"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Погодна за портали, резервации, мал e-commerce.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp05",
+      "topic": "tipovi",
+      "question": "Колку код може да се сподели меѓу платформите кај cross-platform развој, според предавањето?",
+      "options": [
+        "до 90%",
+        "околу 10%",
+        "секогаш 100%",
+        "околу 50%"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp06",
+      "topic": "tipovi",
+      "question": "Кој ја развива рамката React Native?",
+      "options": [
+        "Meta (Facebook)",
+        "Google",
+        "Microsoft",
+        "JetBrains"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Ја користат Facebook, Microsoft Office, Amazon Shopping, Shopify…",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp07",
+      "topic": "tipovi",
+      "question": "Flutter е развиен од ___ и користи ___.",
+      "options": [
+        "Google / Dart",
+        "Meta / JavaScript",
+        "Microsoft / C#",
+        "JetBrains / Kotlin"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање.",
+      "sources": [
+        "voved",
+        "av1"
+      ]
+    },
+    {
+      "id": "tp08",
+      "topic": "tipovi",
+      "question": "Што е .NET MAUI?",
+      "options": [
+        "Еволуција на Xamarin.Forms, од Microsoft, со C#",
+        "Рамка од Google со Dart",
+        "Рамка од JetBrains со Kotlin",
+        "Hybrid рамка со HTML"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp09",
+      "topic": "tipovi",
+      "question": "Што е Kotlin Multiplatform?",
+      "options": [
+        "Технологија од JetBrains: споделена бизнис логика, а UI native или со Compose Multiplatform",
+        "Рамка од Google само за UI",
+        "Рамка од Microsoft со C#",
+        "Друго име за Ionic"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp10",
+      "topic": "tipovi",
+      "question": "Кој rendering engine го користат современите верзии на Flutter на iOS и Android?",
+      "options": [
+        "Impeller",
+        "WebKit",
+        "Blink",
+        "Gecko"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Flutter црта со свој engine, не со native компоненти ни WebView.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp11",
+      "topic": "tipovi",
+      "question": "Кој е недостаток на native развојот?",
+      "options": [
+        "Посебен код за секоја платформа, повеќе време и трошок",
+        "Лоши перформанси",
+        "Нема пристап до камерата",
+        "Не може во app store"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp12",
+      "topic": "tipovi",
+      "question": "Што е мобилен информациски систем (MIS)?",
+      "options": [
+        "Цел екосистем: уреди, апликации, мрежи и backend системи за пристап до информации секаде",
+        "Само мобилната апликација",
+        "Само мобилната мрежа",
+        "Оперативен систем за телефони"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Клучни компоненти: mobile clients, mobile applications, network infrastructure, enterprise или cloud backend.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp13",
+      "topic": "tipovi",
+      "question": "Кој е редоследот во lifecycle на мобилна апликација?",
+      "options": [
+        "Idea → Design → Development → Testing → Deployment → Maintenance",
+        "Design → Idea → Testing → Development → Maintenance → Deployment",
+        "Development → Testing → Idea → Design → Deployment → Maintenance",
+        "Idea → Development → Deployment → Design → Testing → Maintenance"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од воведното предавање.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp14",
+      "topic": "tipovi",
+      "question": "Кој НЕ е клучен фактор за мобилен развој според предавањето?",
+      "options": [
+        "Бојата на логото",
+        "Performance",
+        "Communications model",
+        "Data / memory model"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Петте фактори: scope, performance, UI design, data/memory model, communications model.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp15",
+      "topic": "tipovi",
+      "question": "Кој е предизвик кај cross-platform развојот?",
+      "options": [
+        "Новите OS функции стигнуваат со доцнење",
+        "Не може да се објави во app store",
+        "Мора посебен код за секоја платформа",
+        "Нема hot reload"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Другите: мал губиток на перформанси, сложен платформски UI.",
+      "sources": [
+        "voved"
+      ]
+    },
+    {
+      "id": "tp16",
+      "topic": "flutter",
+      "question": "Во што компајлира Flutter?",
+      "options": [
+        "ARM или Intel машински код, а за веб JavaScript",
+        "Само JavaScript",
+        "Java bytecode",
+        "Python"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските 1 (Вовед во Flutter).",
+      "sources": [
+        "av1",
+        "beleski"
+      ]
+    },
+    {
+      "id": "tp17",
+      "topic": "flutter",
+      "question": "Што е Hot Reload?",
+      "options": [
+        "Промените во кодот се гледаат речиси веднаш, без да се изгуби состојбата",
+        "Рестарт на уредот",
+        "Бришење на апликацијата",
+        "Ажурирање во app store"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од аудиториските 1 (Вовед во Flutter).",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "tp18",
+      "topic": "flutter",
+      "question": "Под кое име првпат е претставен Flutter (2015, Dart Developer Summit)?",
+      "options": [
+        "Sky",
+        "Dart",
+        "Fuchsia",
+        "Impeller"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Претставен како „Dart on mobile“.",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "tp19",
+      "topic": "flutter",
+      "question": "Кое НЕ е едно од шесте својства во „Why Flutter?“ од аудиториските 1?",
+      "options": [
+        "Fast",
+        "Productive",
+        "Portable",
+        "Lightweight"
+      ],
+      "answer": [
+        3
+      ],
+      "explanation": "Шесте се Fast, Flexible, Beautiful, Productive, Open и Portable.",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "tp20",
+      "topic": "flutter",
+      "question": "Што значи „Beautiful: no compromises for your designers“ кај Flutter?",
+      "options": [
+        "UI се пишува во Dart, без посебен markup јазик или визуелен дизајнер",
+        "Секоја апликација добива готова тема од Google",
+        "Дизајнерите мора да користат Figma",
+        "Апликацијата изгледа исто како нативна iOS апликација"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Flutter е декларативен: UI ја одразува состојбата, а при промена се гради нова инстанца од widget-от.",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "tp21",
+      "topic": "flutter",
+      "question": "Што значи својството Portable?",
+      "options": [
+        "Ист код, работи секаде",
+        "Апликацијата е мала",
+        "Работи без интернет",
+        "Може да се копира на USB"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Same code, runs everywhere“: Android, iOS, веб, Windows, macOS, Linux, embedded.",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "tp22",
+      "topic": "flutter",
+      "question": "За каков свет Tim Sneath вели дека е првата UI платформа Flutter?",
+      "options": [
+        "Ambient computing",
+        "Cloud computing",
+        "Quantum computing",
+        "Edge computing"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Flutter is the first UI platform designed for an ambient computing world.“",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "tp23",
+      "topic": "flutter",
+      "question": "Што прави `debugShowCheckedModeBanner` во `MaterialApp`?",
+      "options": [
+        "Ја прикажува или крие лентата DEBUG во горниот десен агол",
+        "Ги прикажува грешките на екран",
+        "Го вклучува Hot Reload",
+        "Го менува насловот на апликацијата"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Во Hello World од аудиториските е `true`; со `false` лентата не се гледа.",
+      "sources": [
+        "av1",
+        "claude"
+      ]
+    },
+    {
+      "id": "tp24",
+      "topic": "flutter",
+      "question": "Кои се трите предности на Dart според аудиториските 1?",
+      "options": [
+        "Оптимизиран за UI, продуктивен развој (Hot Reload), брз на сите платформи",
+        "Динамички типови, без компајлер, само за веб",
+        "Најбрз јазик за сервери, без garbage collection, нативен само за iOS",
+        "Нема класи, нема null, нема async"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Компајлира во ARM и x64 машински код за мобилни, десктоп и backend, или во JavaScript за веб.",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "tp25",
+      "topic": "flutter",
+      "question": "Од која функција почнува Dart програмата?",
+      "options": [
+        "`main()`",
+        "`build()`",
+        "`runApp()`",
+        "`initState()`"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Hello World во Dart е `void main() { print('Hello, World!'); }`. Во Flutter, `main()` го повикува `runApp()`.",
+      "sources": [
+        "av1"
+      ]
+    },
+    {
+      "id": "ds01",
+      "topic": "dizajn",
+      "question": "Кое НЕ е едно од петте E на употребливост?",
+      "options": [
+        "Expensive",
+        "Effective",
+        "Efficient",
+        "Error tolerant"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Effective, Efficient, Engaging, Error tolerant, Easy to learn (Quesenbery).",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds02",
+      "topic": "dizajn",
+      "question": "Што е cold start?",
+      "options": [
+        "Процесот на апликацијата не работи и мора да се иницијализира",
+        "Апликацијата е веќе во меморија",
+        "Дел од ресурсите се достапни, но UI мора да се создаде одново",
+        "Апликацијата паѓа при стартување"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Warm start: дел од ресурсите постојат, UI се создава одново. Hot start: веќе во меморија.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds03",
+      "topic": "dizajn",
+      "question": "Што е hot start?",
+      "options": [
+        "Апликацијата е веќе во меморија и брзо се враќа во преден план",
+        "Прво стартување по инсталација",
+        "UI се создава одново",
+        "Стартување по рестарт на телефонот"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од предавањето Design principles.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds04",
+      "topic": "dizajn",
+      "question": "Колку чини регистрација на Google Play Console?",
+      "options": [
+        "$25 еднократно",
+        "$99 годишно",
+        "бесплатно",
+        "$25 месечно"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Apple Developer Program е $99 годишно.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds05",
+      "topic": "dizajn",
+      "question": "Колку чини Apple Developer Program?",
+      "options": [
+        "$99 годишно",
+        "$25 еднократно",
+        "бесплатно",
+        "$99 еднократно"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од предавањето Design principles.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds06",
+      "topic": "dizajn",
+      "question": "Со што се прави beta тестирање на iOS?",
+      "options": [
+        "TestFlight",
+        "Internal/closed/open testing tracks",
+        "Firebase Crashlytics",
+        "Figma"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Testing tracks се на Google Play.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds07",
+      "topic": "dizajn",
+      "question": "Апликација заработува $50.000 месечно од 10.000 корисници. Колку е ARPU?",
+      "options": [
+        "$5",
+        "$50",
+        "$0,20",
+        "$500"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "ARPU = приход / број корисници = 50.000 / 10.000.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds08",
+      "topic": "dizajn",
+      "question": "Што мери churn rate?",
+      "options": [
+        "Колку корисници престануваат да ја користат апликацијата или откажуваат претплата",
+        "Колку корисници се враќаат",
+        "Колку корисници се активни секој ден",
+        "Колку чини да се добие корисник"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Retention е колку се враќаат, CPA е цената на нов корисник.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds09",
+      "topic": "dizajn",
+      "question": "Што кажува односот DAU / MAU?",
+      "options": [
+        "Колку често месечната публика ја користи апликацијата",
+        "Приходот по корисник",
+        "Бројот на преземања",
+        "Бројот на падови"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од предавањето Design principles.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds10",
+      "topic": "dizajn",
+      "question": "Што е LTV (Lifetime Value)?",
+      "options": [
+        "Вредноста што корисникот ја носи низ целиот однос со производот",
+        "Трошок за стекнување корисник",
+        "Време на стартување",
+        "Број корисници во месец"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од предавањето Design principles.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds11",
+      "topic": "dizajn",
+      "question": "Што оди во првото издание (MVP)?",
+      "options": [
+        "Must-have функциите што го решаваат главниот проблем",
+        "Сите идеи",
+        "Nice-to-have функциите",
+        "Future features"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Build the smallest useful version, release it, and learn from users.“",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds12",
+      "topic": "dizajn",
+      "question": "Како се викаат дизајн системите на Apple и Google?",
+      "options": [
+        "Human Interface Guidelines / Material Design 3",
+        "Material Design / Fluent",
+        "Cupertino / Bootstrap",
+        "SF Symbols / Roboto"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "SF Symbols и Roboto се икони/фонт, не цел систем.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds13",
+      "topic": "dizajn",
+      "question": "Кој фонт и икони се стандардни на iOS?",
+      "options": [
+        "San Francisco и SF Symbols",
+        "Roboto и Material Symbols",
+        "Helvetica и Font Awesome",
+        "Arial и Emoji"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "На Android: Roboto и Material Symbols.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds14",
+      "topic": "dizajn",
+      "question": "Која алатка е за брзи low-fidelity wireframes?",
+      "options": [
+        "Balsamiq",
+        "Firebase Crashlytics",
+        "Sensor Tower",
+        "Mixpanel"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Figma е за UI и интерактивни прототипи, Penpot open-source, Proto.io интерактивни прототипи.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds15",
+      "topic": "dizajn",
+      "question": "Која алатка е за следење падови (crash monitoring)?",
+      "options": [
+        "Firebase Crashlytics",
+        "Figma",
+        "Balsamiq",
+        "Sensor Tower"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "И Sentry, Bugsnag. Sensor Tower е за пазар, Mixpanel за аналитика.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds16",
+      "topic": "dizajn",
+      "question": "Зошто внимателно со neumorphism?",
+      "options": [
+        "Нискиот контраст ги прави контролите тешки за препознавање",
+        "Бавен е",
+        "Не работи на iOS",
+        "Скап е за лиценца"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Од предавањето Design principles.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds17",
+      "topic": "dizajn",
+      "question": "Кој е подобар дизајн според принципот feedback?",
+      "options": [
+        "Потврда или индикатор за напредок по испраќање",
+        "Икона без ознака",
+        "Различна навигација на секој екран",
+        "Ситен текст со слаб контраст"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Другите се лоши примери за clarity, consistency и accessibility.",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds18",
+      "topic": "dizajn",
+      "question": "Што е elevator pitch?",
+      "options": [
+        "Идејата за апликацијата објаснета во една реченица",
+        "Маркетинг кампања",
+        "Презентација за инвеститори од еден час",
+        "Демо во лифт"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Start with a problem, not an app!“",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ds19",
+      "topic": "dizajn",
+      "question": "Што е поважно од бројот на преземања?",
+      "options": [
+        "Ангажираноста, задржувањето и вредноста за корисниците",
+        "Бројот на функции",
+        "Големината на апликацијата",
+        "Бројот на екрани"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "„Downloads don't equal success.“",
+      "sources": [
+        "dizajn"
+      ]
+    },
+    {
+      "id": "ap01",
+      "topic": "api",
+      "question": "Што значи дека REST комуникацијата е stateless?",
+      "options": [
+        "Секое барање ги содржи сите информации потребни на серверот за да го обработи",
+        "Серверот не користи база",
+        "Клиентот не праќа податоци",
+        "Не се користат HTTP методи"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Серверот не чува состојба на сесијата меѓу барањата.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap02",
+      "topic": "api",
+      "question": "Кои HTTP методи најчесто ги користи REST API?",
+      "options": [
+        "GET, POST, PUT, PATCH и DELETE",
+        "Само GET и POST",
+        "SELECT, INSERT, UPDATE и DELETE",
+        "OPEN, SEND и CLOSE"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "SELECT/INSERT/UPDATE/DELETE се SQL наредби, а не HTTP методи.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap03",
+      "topic": "api",
+      "question": "Која е главната предност на GraphQL во однос на REST?",
+      "options": [
+        "Клиентот бара точно податоците што му требаат, без over-fetching и under-fetching",
+        "Секогаш е побрз од REST",
+        "Не користи HTTP",
+        "Нема потреба од сервер"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Погоден за сложени апликации како социјални мрежи и dashboards.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap04",
+      "topic": "api",
+      "question": "Кој пакет се користи за едноставни API барања во Flutter, а кој за напредни?",
+      "options": [
+        "`http` за едноставни, Dio за напредни",
+        "Dio за едноставни, `http` за напредни",
+        "Retrofit за едноставни, OkHttp за напредни",
+        "Fetch за едноставни, Axios за напредни"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Retrofit/OkHttp се за Android, Fetch/Axios за React Native.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap05",
+      "topic": "api",
+      "question": "Кое е native API за мрежна комуникација на iOS?",
+      "options": [
+        "URLSession",
+        "Retrofit",
+        "OkHttp",
+        "Dio"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Alamofire е библиотека врз URLSession; Retrofit и OkHttp се на Android.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap06",
+      "topic": "api",
+      "question": "Која е улогата на middleware меѓу клиентот и backend?",
+      "options": [
+        "Управува со податоци, кеширање и безбедносни политики и го одвојува клиентот од сложеноста на backend",
+        "Ја прикажува кориснички интерфејс",
+        "Ја заменува базата на податоци",
+        "Го компајлира Flutter кодот"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Примери: API gateway, auth сервис, message queue.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap07",
+      "topic": "api",
+      "question": "Која е разликата меѓу OAuth 2.0 и OpenID Connect (OIDC)?",
+      "options": [
+        "OAuth 2.0 е delegated authorization, OIDC додава стандардизирана автентикација врз него",
+        "OAuth 2.0 е автентикација, OIDC е авторизација",
+        "Двата се формати на токени",
+        "OIDC е само за веб"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Authentication ја верификува идентитетот, authorization одлучува кон кои ресурси смее да пристапи.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap08",
+      "topic": "api",
+      "question": "Кој тек (flow) најчесто го користат мобилните апликации за безбедна автентикација?",
+      "options": [
+        "Authorization Code Flow со PKCE",
+        "Implicit flow без ништо дополнително",
+        "Basic автентикација со лозинка во URL",
+        "Само API клуч во апликацијата"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "PKCE = Proof Key for Code Exchange.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap09",
+      "topic": "api",
+      "question": "Што е JWT?",
+      "options": [
+        "Најчест формат на токен, но не е протокол за автентикација",
+        "Протокол за автентикација",
+        "База за токени",
+        "Библиотека за HTTP"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Access token се користи за пристап до заштитен API.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap10",
+      "topic": "api",
+      "question": "Каде треба да се чуваат токените за автентикација на уредот?",
+      "options": [
+        "Во Android Keystore / iOS Keychain",
+        "Во обичен текстуален фајл",
+        "Во URL на барањето",
+        "Во кодот на апликацијата"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Тајните API клучеви се чуваат на backend, а не во апликацијата.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap11",
+      "topic": "api",
+      "question": "Која стратегија за повторен обид е препорачана?",
+      "options": [
+        "Ограничен број обиди со exponential backoff, само за идемпотентни барања",
+        "Бесконечно повторување без пауза",
+        "Повторување на сите барања веднаш",
+        "Без повторување, секогаш грешка"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Автоматски повторувај само барања што е безбедно да се повторат.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap12",
+      "topic": "api",
+      "question": "Кои се двата вида локално чување од примерот за временска прогноза?",
+      "options": [
+        "Room (SQLite) за последната прогноза и DataStore за поставки како °C/°F",
+        "Room за поставки и DataStore за прогнозата",
+        "Само SharedPreferences",
+        "Само Firebase"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Кога пак ќе има мрежа, апликацијата презема нови податоци и го освежува кешот.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap13",
+      "topic": "api",
+      "question": "Што нуди Firebase Cloud Firestore во контекст на offline?",
+      "options": [
+        "Вградена offline перзистенција и синхронизација",
+        "Само складирање слики",
+        "Само push нотификации",
+        "Нема offline поддршка"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Алтернатива: Room/SQLite со сопствена синхронизација со backend.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap14",
+      "topic": "api",
+      "question": "Кои два сервиси се за push нотификации на Android и iOS?",
+      "options": [
+        "FCM и APNs",
+        "WorkManager и BGTaskScheduler",
+        "Retrofit и URLSession",
+        "Stripe и PayPal"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "WorkManager и BGTaskScheduler се за background задачи.",
+      "sources": [
+        "api"
+      ]
+    },
+    {
+      "id": "ap15",
+      "topic": "api",
+      "question": "Што е Backend for Frontend (BFF)?",
+      "options": [
+        "Комбинирање повеќе backend сервиси преку API прилагоден на потребите на мобилната апликација",
+        "Библиотека за UI",
+        "Тип на база",
+        "Метод за кеширање слики"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Други трендови: serverless/BaaS, edge и on-device обработка, event-driven (WebSockets, push).",
+      "sources": [
+        "api"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "1d0fc456-a4e7-4fe0-8446-da9f0185431e",
+  "subject_id": "mis",
+  "kind": "chat",
+  "title": "Discord: прашања од тестот 2025 (по сеќавање)",
+  "body": "MIS test prasana 2025\n\n1. Дали Crossaxisalignment подредува во главната оска (хоризонтално за редица, вертикално за колона)\n2. Дали Mainaxisalignment подредува во спротивната оска (вертикално за редица, хоризонтално за колона)\n3. Кои се можните фази за statefullwidget од понудените\n4. Кои се разликите измеѓу flexible и extended\n5. Кој од опциите декодирање json во класа Product како листа\n6. Како се кодира листа од класа во json\n7. За што се користи multiprovider\n8. Кој дата тип се користи кога се работи со асинхрони податоци (future)\n9. Дали може со named parameters да се повика класа која е крстена нормално\n\ndoSomething(b: 10, c: 20, a: 5) - повик\nint doSomething(int a, int b, int c){...} - декларација\n\n10. Поврзи тип на апликација (hybrid, native, web app...) со технологија (dart, kotlin/swift, html/css/js...)\n11. На виџет со Provider extend-ува со\n12. Со кој код најсоодветно се прави text со бојата на неговата позадина да е сина 16px околу него\n13. Кој виџет е најсоодветен за да се направи ова (слика од профилна со online статус како)\n14. Кој од наведените кодови ке направи кошче со икона и  текст едно по друго\n15. Кој дел од statefulwidget life cycle ќе биде повикан ако: имаме page со копчиња (1, 2, 3) и ако се кликне едно копчињата ќе насочи на друг page и после кога ќе врати на првиот page првото копче веќе не постои\n16.Дали се повикува build повеќе пати во животниот циклус на state\n17.Дали се повикува didChangeDependency() повеќе пати во животниот циклус на state\n18.Кои виџети може да користат асинхрони податоци\n19.Што ќе биде резултат на кодот (vakov kod od prilika)\nStack(\n  backgroundcolor:blue\n    children[\n      position: right=0 top=0\n      color: red\n      size:50px\n  ]\n)\n20.Што прави false во команда со Provider.of<Counter>(context, listener: false).incrementCounter()",
+  "storage_path": null,
+  "file_name": null,
+  "mime_type": null,
+  "size_bytes": null,
+  "origin": "exam",
+  "source_date": null,
+  "created_by": "ilijaatanasov04",
+  "created_at": "2026-10-31T00:17:02.434302Z",
+  "pinned": true
+}

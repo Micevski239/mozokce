@@ -1,0 +1,16 @@
+{
+  "id": "d70f17c5-5b3c-4a52-9b2a-f5d86c40e17c",
+  "subject_id": "ke",
+  "kind": "file",
+  "title": "Пример на дневник подготвен според правилата",
+  "body": null,
+  "storage_path": "ke/d70f17c5-5b3c-4a52-9b2a-f5d86c40e17c.pdf",
+  "file_name": "Дневник со вести од областите на предметот.pdf",
+  "mime_type": "application/pdf",
+  "size_bytes": 326450,
+  "origin": "official",
+  "source_date": null,
+  "created_by": "ilijaatanasov04",
+  "created_at": "2026-11-01T21:31:24.945878Z",
+  "pinned": true
+}

@@ -8,7 +8,9 @@
   "end_time": "13:45",
   "repeat_weekly": true,
   "repeat_until": "2027-01-15",
-  "skip_dates": [],
+  "skip_dates": [
+    "2026-11-16"
+  ],
   "location": "Б1",
   "notes": "Демонстратор 4 · насока 3г-ИЕ · од распоредот на ФИНКИ"
 }

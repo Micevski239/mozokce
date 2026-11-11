@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { Importance, PointList, ProgressBar, SourceChips, StateLegend } from "@/components/brain-ui";
+import { BrainText, Importance, PointList, ProgressBar, SourceChips, StateLegend } from "@/components/brain-ui";
 import { ScheduleList } from "@/components/schedule-list";
 import { Panel } from "@/components/ui";
 import { minPoints, pointsLabel, type AssessmentPart, type Brain, type ProgressSummary } from "@/lib/brain";
@@ -81,7 +81,9 @@ export function BrainOverview({
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="font-semibold leading-snug">{f.title}</div>
-                      <p className="mt-0.5 text-sm text-ink-2">{f.why}</p>
+                      <p className="mt-0.5 text-sm text-ink-2">
+                        <BrainText text={f.why} />
+                      </p>
                       {topic && (
                         <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] text-ink-3">
                           <Importance value={topic.importance} />
@@ -133,7 +135,9 @@ export function BrainOverview({
               {overview.gaps.map((g, i) => (
                 <li key={i} className="flex gap-2">
                   <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--line-2)]" />
-                  <span className="text-ink-2">{g}</span>
+                  <span className="text-ink-2">
+                    <BrainText text={g} />
+                  </span>
                 </li>
               ))}
             </ul>
@@ -254,14 +258,23 @@ export function BrainOverview({
 /** „Како се полага“: табела со деловите (како на courses), па картичка за секој дел. */
 function AssessmentPanel({ brain }: { brain: Brain }) {
   const a = brain.assessment;
-  const totalPoints = a.total?.points ?? a.parts.reduce((sum, p) => sum + (p.points ?? 0), 0);
-  const minCell = (points: number | null, pct: number | null) => {
-    const min = minPoints(points, pct);
-    if (pct === null) return <span className="text-ink-3">—</span>;
+  const totalPoints = a.total?.points ?? a.parts.reduce((sum, p) => sum + (p.bonus ? 0 : (p.points ?? 0)), 0);
+  const bonusPoints = a.parts.reduce((sum, p) => sum + (p.bonus ? (p.points ?? 0) : 0), 0);
+  const minCell = (points: number | null, pct: number | null, explicit?: number | null) => {
+    const min = minPoints(points, pct, explicit);
+    if (min === null) return <span className="text-ink-3">—</span>;
+    // Кога правилата даваат минимум во поени, тој е главниот број; процентот е само ако е даден.
+    if (explicit != null)
+      return (
+        <>
+          <span className="font-semibold">{pointsLabel(min)}</span>
+          {pct !== null && <span className="block font-mono text-[11px] text-ink-3">{pct}%</span>}
+        </>
+      );
     return (
       <>
         <span className="font-semibold">{pct}%</span>
-        {min !== null && <span className="block font-mono text-[11px] text-ink-3">{pointsLabel(min)}</span>}
+        <span className="block font-mono text-[11px] text-ink-3">{pointsLabel(min)}</span>
       </>
     );
   };
@@ -278,7 +291,8 @@ function AssessmentPanel({ brain }: { brain: Brain }) {
     >
       <p className="text-sm text-ink-2">{a.summary}</p>
 
-      {a.parts.length > 0 && (
+      {/* Без поени (на пр. „тест до 7, проект за 8–10“) табелата би била само цртички; картичките подолу кажуваат сè. */}
+      {a.parts.some((p) => p.points !== null) && (
         <div className="fill mt-4 overflow-hidden" role="table" aria-label="Делови на оценката">
           <div role="row" className="grid grid-cols-[minmax(0,1fr)_4rem_6.5rem] gap-3 border-b border-[var(--line)] px-4 py-2.5 sm:grid-cols-[minmax(0,1fr)_5rem_9rem]">
             <span role="columnheader" className="kicker !text-[10px]">Дел</span>
@@ -288,24 +302,44 @@ function AssessmentPanel({ brain }: { brain: Brain }) {
           {a.parts.map((p) => (
             <div key={p.id} role="row" className="grid grid-cols-[minmax(0,1fr)_4rem_6.5rem] items-center gap-3 border-b border-[var(--line)] px-4 py-3 sm:grid-cols-[minmax(0,1fr)_5rem_9rem]">
               <span role="cell" className="min-w-0">
-                <span className="block font-medium leading-snug">{p.name}</span>
+                <span className="block font-medium leading-snug">
+                  {p.name}
+                  {p.bonus && <span className="chip ml-2 !px-1.5 !py-0 align-middle !text-[10px] normal-case !tracking-normal">бонус</span>}
+                </span>
                 {p.points !== null && totalPoints > 0 && (
                   <span className="mt-1.5 block h-1.5 overflow-hidden rounded-full bg-[var(--line)]">
-                    <span className="block h-full rounded-full bg-accent" style={{ width: `${(p.points / totalPoints) * 100}%` }} />
+                    <span
+                      className={`block h-full rounded-full ${p.bonus ? "bg-[var(--line-2)]" : "bg-accent"}`}
+                      style={{ width: `${Math.min(100, (p.points / totalPoints) * 100)}%` }}
+                    />
                   </span>
                 )}
               </span>
               <span role="cell" className="display text-right text-lg font-semibold">{p.points ?? "—"}</span>
-              <span role="cell" className="text-right text-sm leading-tight">{minCell(p.points, p.min_percent)}</span>
+              <span role="cell" className="text-right text-sm leading-tight">{minCell(p.points, p.min_percent, p.min_points)}</span>
             </div>
           ))}
           {a.total && (
             <div role="row" className="grid grid-cols-[minmax(0,1fr)_4rem_6.5rem] items-center gap-3 bg-accent-soft px-4 py-3 sm:grid-cols-[minmax(0,1fr)_5rem_9rem]">
               <span role="cell" className="font-semibold">Вкупно за положување</span>
-              <span role="cell" className="display text-right text-lg font-semibold">{a.total.points}</span>
-              <span role="cell" className="text-right text-sm leading-tight">{minCell(a.total.points, a.total.min_percent)}</span>
+              <span role="cell" className="display text-right text-lg font-semibold">
+                {a.total.points}
+                {bonusPoints > 0 && <span className="block font-mono text-[11px] font-normal text-ink-3">({a.total.points + bonusPoints} со бонус)</span>}
+              </span>
+              <span role="cell" className="text-right text-sm leading-tight">{minCell(a.total.points, a.total.min_percent, a.total.min_points)}</span>
             </div>
           )}
+        </div>
+      )}
+
+      {a.grade_scale && a.grade_scale.length > 0 && (
+        <div className="mt-3 flex flex-wrap items-center gap-1.5">
+          <span className="kicker mr-1 !text-[10px]">Оценки</span>
+          {a.grade_scale.map((g) => (
+            <span key={g.grade} className="chip normal-case !tracking-normal">
+              {g.to === null ? `${g.from}+` : `${g.from}–${g.to}`} → <b className="text-ink">{g.grade}</b>
+            </span>
+          ))}
         </div>
       )}
 
@@ -355,7 +389,9 @@ function PartCard({ part }: { part: AssessmentPart }) {
                 {part.rules.map((r, i) => (
                   <li key={i} className="flex gap-2 text-sm leading-snug">
                     <Check size={15} className="mt-0.5 shrink-0 text-accent-2" />
-                    <span>{r}</span>
+                    <span>
+                      <BrainText text={r} />
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -391,7 +427,9 @@ function PartCard({ part }: { part: AssessmentPart }) {
                   {part.from_students.map((pt, i) => (
                     <li key={i} className="flex gap-2 text-sm leading-snug">
                       <span className="mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-warn" />
-                      <span>{pt.text}</span>
+                      <span>
+                        <BrainText text={pt.text} />
+                      </span>
                     </li>
                   ))}
                 </ul>

@@ -88,6 +88,15 @@ describe("parseBrain", () => {
     b.questions.push({ ...b.questions[0] });
     expect(() => parseBrain(b)).toThrow(/„q1“ се повторува/);
   });
+
+  it("есејските прашања се незадолжителни и се проверуваат", () => {
+    expect(parseBrain(minimal()).essays).toEqual([]);
+    const ok = { id: "e1", group: "Прв колоквиум", question: "Што е X?", answer: "X е…", sources: ["s1"] };
+    expect(parseBrain({ ...minimal(), essays: [ok] }).essays).toHaveLength(1);
+    expect(() => parseBrain({ ...minimal(), essays: [{ ...ok, answer: "" }] })).toThrow(/essays\[0\]\.answer/);
+    expect(() => parseBrain({ ...minimal(), essays: [{ ...ok, sources: ["nema"] }] })).toThrow(/непознат извор „nema“/);
+    expect(() => parseBrain({ ...minimal(), essays: [ok, ok] })).toThrow(/„e1“ се повторува/);
+  });
 });
 
 const row = (over: Partial<QuestionProgressRow>): QuestionProgressRow => ({

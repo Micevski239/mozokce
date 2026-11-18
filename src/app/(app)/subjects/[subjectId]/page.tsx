@@ -34,6 +34,7 @@ import { fileUrl, getProgressRows, getSubject, listEvents, listMaterials } from 
 import { renameSubject, setSubjectArchived } from "../../actions";
 import { AddMaterial } from "./add-material";
 import { BrainOverview } from "./brain-overview";
+import { BrainEssays } from "./brain-essays";
 import { BrainTopics } from "./brain-topics";
 import { QuestionPractice } from "./question-practice";
 import { MaterialList } from "./material-list";
@@ -86,12 +87,13 @@ export default async function SubjectPage({ params, searchParams }: PageProps<"/
       </section>
 
       <SubjectTabs
-        counts={brain ? { ...counts, topic: brain.topics.length, question: brain.questions.length } : counts}
+        counts={brain ? { ...counts, topic: brain.topics.length, question: brain.questions.length, essay: brain.essays.length } : counts}
         panels={{
           ...(brain && progress
             ? {
                 topics: <BrainTopics brain={brain} summary={progress} />,
                 questions: <QuestionPractice brain={brain} initialRows={rowsProgress} />,
+                ...(brain.essays.length > 0 ? { essays: <BrainEssays brain={brain} /> } : {}),
               }
             : {}),
           overview: brain && progress ? (

@@ -115,6 +115,16 @@ export interface BrainQuestion {
   sources: string[];
 }
 
+/** Отворено (есејско) прашање со идеален одговор, за предмети каде се полага со есеј. */
+export interface BrainEssay {
+  id: string;
+  /** Група за филтер (на пр. „Прв колоквиум“). */
+  group: string;
+  question: string;
+  answer: string;
+  sources: string[];
+}
+
 export interface Brain {
   schema_version: number;
   id: string;
@@ -126,6 +136,8 @@ export interface Brain {
   staff: { name: string; role: string }[];
   topics: BrainTopic[];
   questions: BrainQuestion[];
+  /** Незадолжително: есејски прашања со идеален одговор. */
+  essays: BrainEssay[];
 }
 
 export const SOURCE_TYPE_LABELS: Record<SourceType, string> = {
@@ -350,6 +362,19 @@ export function parseBrain(raw: unknown): Brain {
   });
   unique(questions.map((q) => q.id), "questions");
 
+  const essays: BrainEssay[] = (b.essays === undefined ? [] : arr(b.essays, "essays")).map((e, i) => {
+    const o = obj(e, `essays[${i}]`);
+    const p = `essays[${i}]`;
+    return {
+      id: id(o.id, `${p}.id`),
+      group: str(o.group, `${p}.group`),
+      question: str(o.question, `${p}.question`),
+      answer: str(o.answer, `${p}.answer`),
+      sources: refs(o.sources, `${p}.sources`),
+    };
+  });
+  unique(essays.map((e) => e.id), "essays");
+
   return {
     schema_version: BRAIN_SCHEMA_VERSION,
     id: id(b.id, "id"),
@@ -364,6 +389,7 @@ export function parseBrain(raw: unknown): Brain {
     }),
     topics,
     questions,
+    essays,
   };
 }
 

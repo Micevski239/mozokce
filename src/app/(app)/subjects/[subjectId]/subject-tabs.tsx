@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   ListChecks,
   MessagesSquare,
+  PenLine,
   Settings2,
   StickyNote,
   type LucideIcon,
@@ -13,13 +14,14 @@ import {
 import { useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 
-export type SubjectTab = "overview" | "topics" | "questions" | "files" | "chats" | "notes" | "settings";
-type CountKey = "topic" | "question" | "file" | "chat" | "note";
+export type SubjectTab = "overview" | "topics" | "questions" | "essays" | "files" | "chats" | "notes" | "settings";
+type CountKey = "topic" | "question" | "essay" | "file" | "chat" | "note";
 
 const TABS: { key: SubjectTab; label: string; icon: LucideIcon; count?: CountKey }[] = [
   { key: "overview", label: "Преглед", icon: LayoutDashboard },
   { key: "topics", label: "Теми", icon: BookOpen, count: "topic" },
   { key: "questions", label: "Прашања", icon: ListChecks, count: "question" },
+  { key: "essays", label: "Есеј", icon: PenLine, count: "essay" },
   { key: "files", label: "Датотеки", icon: FileText, count: "file" },
   { key: "chats", label: "Discord", icon: MessagesSquare, count: "chat" },
   { key: "notes", label: "Белешки", icon: StickyNote, count: "note" },
@@ -39,7 +41,7 @@ function goToTab(tab: SubjectTab) {
   window.history.pushState(null, "", url);
 }
 
-/** Јазичињата „Теми“ и „Прашања“ постојат само кога предметот има мозок (нема панел → нема јазиче). */
+/** Јазичињата „Теми“, „Прашања“ и „Есеј“ постојат само кога предметот има мозок (нема панел → нема јазиче). */
 export function SubjectTabs({
   counts,
   panels,
